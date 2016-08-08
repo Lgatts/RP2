@@ -18,6 +18,8 @@ public class Inicial extends javax.swing.JFrame {
      */
     public Inicial() {
         initComponents();
+        this.setTitle("RP II - MENU");
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -30,31 +32,72 @@ public class Inicial extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jButtonShortCourse = new javax.swing.JButton();
+        jLabelMenu = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Monografias");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jButtonShortCourse.setText("Minicursos");
+        jButtonShortCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonShortCourseActionPerformed(evt);
+            }
+        });
+
+        jLabelMenu.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabelMenu.setText("Menu");
+
+        jButton2.setText("Palestras");
+
+        jButton3.setText("Resumos");
+
+        jButton4.setText("Artigos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addComponent(jButton1)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(jLabelMenu))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonShortCourse, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(226, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabelMenu)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonShortCourse)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(51, 51, 51))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -63,6 +106,13 @@ public class Inicial extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Monografia monografia = new Monografia(titulo, situacao, tipo, autor, instituicao, orientador, curso, ano, nPaginas, palavraChave, resumo, abstractText)
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonShortCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShortCourseActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        PanelShortCourse openWindow = new PanelShortCourse();
+        openWindow.setVisible(true);
+    }//GEN-LAST:event_jButtonShortCourseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,5 +151,10 @@ public class Inicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonShortCourse;
+    private javax.swing.JLabel jLabelMenu;
     // End of variables declaration//GEN-END:variables
 }
