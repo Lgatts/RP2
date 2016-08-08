@@ -18,6 +18,8 @@ public class Inicial extends javax.swing.JFrame {
      */
     public Inicial() {
         initComponents();
+        this.setTitle("RP II - MENU");
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -79,6 +81,22 @@ public class Inicial extends javax.swing.JFrame {
         jLabel7.setText("Ano");
 
         jLabel8.setText("Nº Paginas");
+
+        jButtonShortCourse.setText("Minicursos");
+        jButtonShortCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonShortCourseActionPerformed(evt);
+            }
+        });
+
+        jLabelMenu.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabelMenu.setText("Menu");
+
+        jButton2.setText("Palestras");
+
+        jButton3.setText("Resumos");
+
+        jButton4.setText("Artigos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

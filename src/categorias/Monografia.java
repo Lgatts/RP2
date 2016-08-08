@@ -59,7 +59,7 @@ public class Monografia {
 
     /**
      *
-     * @return
+     * @return String com o nome da instituição
      */
     public String getInstituicao() {
         return instituicao;
@@ -150,5 +150,20 @@ public class Monografia {
         this.resumo = resumo;
         this.abstractText = abstractText;
     }
+    
+    public void adicionar(){
+        
+    }
+    
+    public void consultar(){
+        
+    }
 
+    public void excluir(){
+        
+    }
+    
+    public void editar(){
+        
+    }
 }
