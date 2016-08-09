@@ -25,35 +25,7 @@ public class Monografia {
     private String resumo;
     private String abstractText;
 
-    /**
-     *
-     * @param titulo
-     * @param situacao
-     * @param tipo
-     * @param autor
-     * @param instituicao
-     * @param orientador
-     * @param curso
-     * @param ano
-     * @param numeroDePaginas
-     * @param palavraChave
-     * @param resumo
-     * @param abstractText
-     */
-    public Monografia(String titulo, String situacao, String tipo, String[] autor, String instituicao, String orientador, String curso, int ano, int numeroDePaginas, String[] palavraChave, String resumo, String abstractText) {
-        this.titulo = titulo;
-        this.situacao = situacao;
-        this.tipo = tipo;
-        this.autor = autor;
-        this.instituicao = instituicao;
-        this.orientador = orientador;
-        this.curso = curso;
-        this.ano = ano;
-        this.numeroDePaginas = numeroDePaginas;
-        this.palavraChave = palavraChave;
-        this.resumo = resumo;
-        this.abstractText = abstractText;
-    }
+  
     /**
      *
      * @return
