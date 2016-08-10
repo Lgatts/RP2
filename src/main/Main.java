@@ -8,6 +8,7 @@ package main;
 import categorias.Monografia;
 import categorias.ShortCourse;
 import frames.Inicial;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,7 +17,7 @@ import java.util.List;
  * @author Lucas
  */
 public class Main {
-    private static List<Monografia> monografiaList;
+    private static List<Monografia> monografiaList = new ArrayList();
     private static List<ShortCourse> shortCourseList;
 
     public static List<Monografia> getMonografiaList() {

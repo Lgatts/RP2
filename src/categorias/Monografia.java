@@ -15,12 +15,12 @@ public class Monografia {
     private String titulo;
     private String situacao;
     private String tipo;
-    private String[] autor;
+    private String autor;
     private String instituicao;
     private String orientador;
     private String curso;
     private int ano;
-    private int numeroDePaginas;
+    private int nPaginas;
     private String[] palavraChave;
     private String resumo;
     private String abstractText;
@@ -54,7 +54,7 @@ public class Monografia {
      *
      * @return
      */
-    public String[] getAutor() {
+    public String getAutor() {
         return autor;
     }
 
@@ -94,8 +94,8 @@ public class Monografia {
      *
      * @return
      */
-    public int getNumeroDePaginas() {
-        return numeroDePaginas;
+    public int getNPaginas() {
+        return nPaginas;
     }
 
     /**
@@ -134,7 +134,7 @@ public class Monografia {
         this.tipo = tipo;
     }
 
-    public void setAutor(String[] autor) {
+    public void setAutor(String autor) {
         this.autor = autor;
     }
 
@@ -154,8 +154,8 @@ public class Monografia {
         this.ano = ano;
     }
 
-    public void setNumeroDePaginas(int numeroDePaginas) {
-        this.numeroDePaginas = numeroDePaginas;
+    public void setNPaginas(int nPaginas) {
+        this.nPaginas = nPaginas;
     }
 
     public void setPalavraChave(String[] palavraChave) {
