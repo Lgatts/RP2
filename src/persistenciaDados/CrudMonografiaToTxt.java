@@ -26,4 +26,23 @@ public class CrudMonografiaToTxt {
     public static void read(String txtName, List list){
         
     }
+    
+    public static String VerifyFile(String fileName, boolean writer) {
+
+        String filePath = null;
+
+        if (writer == true) {
+
+            filePath = System.getenv("APPDATA") + "\\.RP2" + "\\" + fileName;
+
+        } else if (new File(System.getenv("APPDATA") + "\\.RP2" + "\\" + fileName).exists()) {
+
+            filePath = System.getenv("APPDATA") + "\\.RP2" + "\\" + fileName;
+
+        }
+        return filePath;
+
+    }
+    
+    
 }
