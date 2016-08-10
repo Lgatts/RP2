@@ -17,6 +17,14 @@ public class MonografiaCrud {
 
     private static List<Monografia> monografiaList = new ArrayList();   
 
+    public static void setMonografiaList(List<Monografia> monografiaList) {
+        MonografiaCrud.monografiaList = monografiaList;
+    }
+
+    public static List<Monografia> getMonografiaList() {
+        return monografiaList;
+    }
+
     public static void adicionar(Monografia monografia) {
 
         monografiaList.add(monografia);

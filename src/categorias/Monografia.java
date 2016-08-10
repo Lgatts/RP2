@@ -5,12 +5,12 @@ package categorias;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import java.io.Serializable;
 /**
  *
  * @author Lucas
  */
-public class Monografia {
+public class Monografia implements Serializable {
 
     private String titulo;
     private String situacao;

@@ -583,9 +583,9 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                              <Component id="jPalavraChaveTextField1" min="-2" pref="104" max="-2" attributes="0"/>
+                                              <Component id="jPalavraChaveTextField0" min="-2" pref="104" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jPalavraChaveTextField2" min="-2" pref="88" max="-2" attributes="0"/>
+                                              <Component id="jPalavraChaveTextField1" min="-2" pref="88" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
@@ -596,9 +596,9 @@
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jPalavraChaveTextField3" min="-2" pref="89" max="-2" attributes="0"/>
+                                              <Component id="jPalavraChaveTextField2" min="-2" pref="89" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jPalavraChaveTextField4" min="-2" pref="105" max="-2" attributes="0"/>
+                                              <Component id="jPalavraChaveTextField3" min="-2" pref="105" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jAdicionarAbstractButton" min="-2" max="-2" attributes="0"/>
@@ -670,10 +670,10 @@
                       <Component id="jPalavrasChavesLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jPalavraChaveTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPalavraChaveTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPalavraChaveTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPalavraChaveTextField0" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jPalavraChaveTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPalavraChaveTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPalavraChaveTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -785,13 +785,13 @@
                 <Property name="text" type="java.lang.String" value="Palavras Chave"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JTextField" name="jPalavraChaveTextField0">
+            </Component>
             <Component class="javax.swing.JTextField" name="jPalavraChaveTextField1">
             </Component>
             <Component class="javax.swing.JTextField" name="jPalavraChaveTextField2">
             </Component>
             <Component class="javax.swing.JTextField" name="jPalavraChaveTextField3">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jPalavraChaveTextField4">
             </Component>
             <Component class="javax.swing.JButton" name="jAdicionarResumoButton">
               <Properties>

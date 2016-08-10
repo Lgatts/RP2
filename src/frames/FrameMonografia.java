@@ -9,7 +9,7 @@ import categorias.Monografia;
 import cruds.MonografiaCrud;
 import java.util.List;
 import javax.swing.DefaultListModel;
-
+import persistenciaDados.CrudMonografiaObjects;
 
 /**
  *
@@ -18,8 +18,7 @@ import javax.swing.DefaultListModel;
 public class FrameMonografia extends javax.swing.JFrame {
 
     private List<String> displayList;
-    
-    
+
     /**
      * Creates new form FrameMonografia1
      */
@@ -104,10 +103,10 @@ public class FrameMonografia extends javax.swing.JFrame {
         jCursoTextField = new javax.swing.JTextField();
         jCursoLabel = new javax.swing.JLabel();
         jPalavrasChavesLabel = new javax.swing.JLabel();
+        jPalavraChaveTextField0 = new javax.swing.JTextField();
         jPalavraChaveTextField1 = new javax.swing.JTextField();
         jPalavraChaveTextField2 = new javax.swing.JTextField();
         jPalavraChaveTextField3 = new javax.swing.JTextField();
-        jPalavraChaveTextField4 = new javax.swing.JTextField();
         jAdicionarResumoButton = new javax.swing.JButton();
         jAdicionarAbstractButton = new javax.swing.JButton();
         jSalvarButton = new javax.swing.JButton();
@@ -520,9 +519,9 @@ public class FrameMonografia extends javax.swing.JFrame {
                                 .addGroup(jAdicionarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jAdicionarPanelLayout.createSequentialGroup()
                                         .addGap(10, 10, 10)
-                                        .addComponent(jPalavraChaveTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jPalavraChaveTextField0, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jPalavraChaveTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jPalavraChaveTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jAdicionarPanelLayout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
@@ -530,9 +529,9 @@ public class FrameMonografia extends javax.swing.JFrame {
                                         .addGap(71, 71, 71)))
                                 .addGroup(jAdicionarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jAdicionarPanelLayout.createSequentialGroup()
-                                        .addComponent(jPalavraChaveTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jPalavraChaveTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jPalavraChaveTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jPalavraChaveTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jAdicionarPanelLayout.createSequentialGroup()
                                         .addComponent(jAdicionarAbstractButton)
                                         .addGap(63, 63, 63)))))))
@@ -589,10 +588,10 @@ public class FrameMonografia extends javax.swing.JFrame {
                 .addComponent(jPalavrasChavesLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jAdicionarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jPalavraChaveTextField0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPalavraChaveTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPalavraChaveTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPalavraChaveTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPalavraChaveTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPalavraChaveTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPalavraChaveTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jAdicionarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jAdicionarResumoButton)
@@ -811,7 +810,31 @@ public class FrameMonografia extends javax.swing.JFrame {
         monografia.setTipo(jTipoComboBox.getSelectedItem().toString());
         monografia.setSituacao(jSituacaoComboBox.getSelectedItem().toString());
 
+        if (jAnoTextField.getText().isEmpty() == false) {
+            monografia.setAno(Integer.valueOf(jAnoTextField.getText()));
+        }
+
+        if (jNPaginasTextField.getText().isEmpty() == false) {
+            monografia.setNPaginas(Integer.valueOf(jNPaginasTextField.getText()));
+        }
+
+        monografia.setInstituicao(jInstituicaoTextField.getText());
+        monografia.setCurso(jCursoTextField.getText());
+
+        String[] palavrasChave = new String[4];
+
+        palavrasChave[0] = jPalavraChaveTextField0.getText();
+        palavrasChave[1] = jPalavraChaveTextField1.getText();
+        palavrasChave[2] = jPalavraChaveTextField2.getText();
+        palavrasChave[3] = jPalavraChaveTextField3.getText();
+
+        monografia.setPalavraChave(palavrasChave);
+        monografia.setAbstractText("sdsdfs");
+        monografia.setResumo("sdfddaf");
+
         MonografiaCrud.adicionar(monografia);
+
+        CrudMonografiaObjects.createObject(MonografiaCrud.getMonografiaList());
 
         jMonografiaTabbedPanel.setSelectedIndex(0);
         jMonografiaTabbedPanel.setEnabledAt(2, false);
@@ -831,8 +854,12 @@ public class FrameMonografia extends javax.swing.JFrame {
     }//GEN-LAST:event_jSalvarButton1ActionPerformed
 
     private void jConsultaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaButtonActionPerformed
+        
+        
+        MonografiaCrud.setMonografiaList(CrudMonografiaObjects.readObject("blablabla"));
         displayList = MonografiaCrud.consultar(jConsultaComboBox.getSelectedItem().toString(), jConsultaTextField.getText());
         listar();
+        
     }//GEN-LAST:event_jConsultaButtonActionPerformed
 
     private void jAdicionarMonografiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdicionarMonografiaButtonActionPerformed
@@ -852,11 +879,11 @@ public class FrameMonografia extends javax.swing.JFrame {
     }//GEN-LAST:event_jMonografiaListValueChanged
 
     private void jExcluirMonografiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExcluirMonografiaButtonActionPerformed
-        
+
         MonografiaCrud.excluir(jMonografiaList.getSelectedValue());
-        displayList = MonografiaCrud.consultar("","");
+        displayList = MonografiaCrud.consultar("", "");
         listar();
-        
+
     }//GEN-LAST:event_jExcluirMonografiaButtonActionPerformed
 
     private void jConsultaAvancadaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaAvancadaButtonActionPerformed
@@ -905,17 +932,17 @@ public class FrameMonografia extends javax.swing.JFrame {
             }
         });
     }
-    
-    private void listar(){
-        
+
+    private void listar() {
+
         DefaultListModel listModel = new DefaultListModel();
-        
-        for(String element: displayList ){
+
+        for (String element : displayList) {
             listModel.addElement(element);
         }
-        
+
         jMonografiaList.setModel(listModel);
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -990,10 +1017,10 @@ public class FrameMonografia extends javax.swing.JFrame {
     private javax.swing.JLabel jOrientadorLabel1;
     private javax.swing.JTextField jOrientadorTextField;
     private javax.swing.JTextField jOrientadorTextField1;
+    private javax.swing.JTextField jPalavraChaveTextField0;
     private javax.swing.JTextField jPalavraChaveTextField1;
     private javax.swing.JTextField jPalavraChaveTextField2;
     private javax.swing.JTextField jPalavraChaveTextField3;
-    private javax.swing.JTextField jPalavraChaveTextField4;
     private javax.swing.JTextField jPalavraChaveTextField5;
     private javax.swing.JTextField jPalavraChaveTextField6;
     private javax.swing.JTextField jPalavraChaveTextField7;
