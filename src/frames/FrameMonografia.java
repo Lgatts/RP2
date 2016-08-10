@@ -7,6 +7,8 @@ package frames;
 
 import categorias.Monografia;
 import cruds.MonografiaCrud;
+import java.util.List;
+import javax.swing.DefaultListModel;
 
 
 /**
@@ -15,6 +17,9 @@ import cruds.MonografiaCrud;
  */
 public class FrameMonografia extends javax.swing.JFrame {
 
+    private List<String> displayList;
+    
+    
     /**
      * Creates new form FrameMonografia1
      */
@@ -171,6 +176,11 @@ public class FrameMonografia extends javax.swing.JFrame {
         });
 
         jVoltarMenuInicialButton.setText("Voltar");
+        jVoltarMenuInicialButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jVoltarMenuInicialButtonActionPerformed(evt);
+            }
+        });
 
         jConsultaLabel.setText("Consultar por:");
 
@@ -821,8 +831,8 @@ public class FrameMonografia extends javax.swing.JFrame {
     }//GEN-LAST:event_jSalvarButton1ActionPerformed
 
     private void jConsultaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaButtonActionPerformed
-        MonografiaCrud.consultar(jConsultaComboBox.getSelectedItem().toString(), jConsultaTextField.getText());
-        MonografiaCrud.listar(jMonografiaList);
+        displayList = MonografiaCrud.consultar(jConsultaComboBox.getSelectedItem().toString(), jConsultaTextField.getText());
+        listar();
     }//GEN-LAST:event_jConsultaButtonActionPerformed
 
     private void jAdicionarMonografiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdicionarMonografiaButtonActionPerformed
@@ -842,9 +852,11 @@ public class FrameMonografia extends javax.swing.JFrame {
     }//GEN-LAST:event_jMonografiaListValueChanged
 
     private void jExcluirMonografiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExcluirMonografiaButtonActionPerformed
+        
         MonografiaCrud.excluir(jMonografiaList.getSelectedValue());
-        MonografiaCrud.consultar("","");
-        MonografiaCrud.listar(jMonografiaList);
+        displayList = MonografiaCrud.consultar("","");
+        listar();
+        
     }//GEN-LAST:event_jExcluirMonografiaButtonActionPerformed
 
     private void jConsultaAvancadaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaAvancadaButtonActionPerformed
@@ -852,6 +864,11 @@ public class FrameMonografia extends javax.swing.JFrame {
         jMonografiaTabbedPanel.setEnabledAt(1, true);
         jMonografiaTabbedPanel.setEnabledAt(0, false);
     }//GEN-LAST:event_jConsultaAvancadaButtonActionPerformed
+
+    private void jVoltarMenuInicialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarMenuInicialButtonActionPerformed
+        new Inicial().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jVoltarMenuInicialButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -887,6 +904,18 @@ public class FrameMonografia extends javax.swing.JFrame {
                 new FrameMonografia().setVisible(true);
             }
         });
+    }
+    
+    private void listar(){
+        
+        DefaultListModel listModel = new DefaultListModel();
+        
+        for(String element: displayList ){
+            listModel.addElement(element);
+        }
+        
+        jMonografiaList.setModel(listModel);
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

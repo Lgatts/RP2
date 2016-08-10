@@ -6,9 +6,8 @@
 package cruds;
 
 import categorias.Monografia;
+import java.util.ArrayList;
 import java.util.List;
-import javax.swing.DefaultListModel;
-import main.Main;
 
 /**
  *
@@ -16,8 +15,7 @@ import main.Main;
  */
 public class MonografiaCrud {
 
-    private static List<Monografia> monografiaList = Main.getMonografiaList();
-    private static DefaultListModel listModel = new DefaultListModel();
+    private static List<Monografia> monografiaList = new ArrayList();   
 
     public static void adicionar(Monografia monografia) {
 
@@ -31,57 +29,51 @@ public class MonografiaCrud {
                 monografiaList.remove(monografia);
                 break;
             }
-        }              
-    }
+        }
+    }   
 
-    public static void listar(javax.swing.JList<String> jList) {
+    public static List<String> consultar(String tipoConsulta, String textoConsulta) {
 
-        jList.setModel(listModel);
-
-    }
-
-    public static void consultar(String tipoConsulta, String textoConsulta) {
-
-        listModel.clear();
+        List<String> listaConsulta = new ArrayList();
 
         switch (tipoConsulta) {
             case "Título":
                 for (Monografia monografia : monografiaList) {
                     if (monografia.getTitulo().equals(textoConsulta)) {
-                        listModel.addElement(monografia.getTitulo());
+                        listaConsulta.add(monografia.getTitulo());
                     }
                 }
                 break;
             case "Autor":
                 for (Monografia monografia : monografiaList) {
                     if (monografia.getAutor().equals(textoConsulta)) {
-                        listModel.addElement(monografia.getTitulo());
+                        listaConsulta.add(monografia.getTitulo());
                     }
                 }
                 break;
             case "Orientador":
                 for (Monografia monografia : monografiaList) {
                     if (monografia.getOrientador().equals(textoConsulta)) {
-                        listModel.addElement(monografia.getTitulo());
+                        listaConsulta.add(monografia.getTitulo());
                     }
                 }
                 break;
             case "Curso":
                 for (Monografia monografia : monografiaList) {
                     if (monografia.getCurso().equals(textoConsulta)) {
-                        listModel.addElement(monografia.getTitulo());
+                        listaConsulta.add(monografia.getTitulo());
                     }
                 }
                 break;
             default:
                 for (Monografia monografia : monografiaList) {
-
-                    listModel.addElement(monografia.getTitulo());
-
+                    listaConsulta.add(monografia.getTitulo());
                 }
                 break;
         }
 
+        return listaConsulta;
+        
     }
 
 }
