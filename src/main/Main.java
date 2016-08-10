@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Main {
     private static List<Monografia> monografiaList = new ArrayList();
-    private static List<ShortCourse> shortCourseList;
+    private static List<ShortCourse> shortCourseList = new ArrayList();
 
     public static List<Monografia> getMonografiaList() {
         return monografiaList;
