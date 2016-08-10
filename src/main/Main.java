@@ -17,7 +17,6 @@ import java.util.List;
 public class Main {
     
     private static List<ShortCourse> shortCourseList;
-    
 
     public static List<ShortCourse> getShortCourseList() {
         return shortCourseList;
