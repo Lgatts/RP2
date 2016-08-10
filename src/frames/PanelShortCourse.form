@@ -209,16 +209,17 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jLabelAbstractText" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPaneAbstractText" max="32767" attributes="0"/>
+                                      <Component id="jScrollPaneAbstractText" min="-2" pref="193" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabelTitle" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jTextTitle" min="-2" pref="205" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -227,8 +228,8 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPaneResumoText" max="32767" attributes="0"/>
                                           <Component id="jComboBoxSituation" max="32767" attributes="0"/>
+                                          <Component id="jScrollPaneResumoText" min="-2" pref="193" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -237,7 +238,7 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPaneMethodology" max="32767" attributes="0"/>
+                                      <Component id="jScrollPaneMethodology" min="-2" pref="236" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -247,10 +248,7 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jTextResources" max="32767" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              <Component id="jFormattedDuration" min="-2" pref="218" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="jFormattedDuration" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -265,7 +263,7 @@
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                       <Component id="jTextAuthor" min="-2" pref="204" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jComboBoxAuthorInsert" pref="61" max="32767" attributes="0"/>
+                                      <Component id="jComboBoxAuthorInsert" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -299,13 +297,13 @@
                           <Component id="jComboBoxSituation" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPaneMethodology" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelResumoText" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPaneResumoText" min="-2" pref="86" max="-2" attributes="0"/>
+                          <Component id="jScrollPaneResumoText" max="32767" attributes="0"/>
+                          <Component id="jScrollPaneMethodology" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      <EmptySpace pref="53" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabelAbstractText" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -319,7 +317,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jTextAuthor2" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPaneAbstractText" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jScrollPaneAbstractText" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
