@@ -8,6 +8,7 @@ package cruds;
 import categorias.ShortCourse;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultListModel;
 import main.Main;
 
 /**
@@ -16,11 +17,25 @@ import main.Main;
  */
 public class ShortCourseCrud {
     
-    /**
-     * @param courseList
-     */
     private static List<ShortCourse> shortCourseList = Main.getShortCourseList();
+    private static DefaultListModel mList = new DefaultListModel();
     
+    /**
+     * 
+     * @param jListShortCourse 
+     */
+    public static void list(javax.swing.JList<String> jListShortCourse){
+        jListShortCourse.setModel(mList);
+    }
+    
+    public static void consult(){
+        mList.clear();
+        
+        for(ShortCourse course: shortCourseList){
+            mList.addElement(course.getTitle());
+        }
+        
+    }
     /**
      * 
      * @param title
@@ -34,7 +49,7 @@ public class ShortCourseCrud {
      * @param author1
      * @param author2 
      */
-    public void insertCourse(String title, String situation, String resumoText, String abstractText, String duration, String resources, String methodology, String author, String author1, String author2){
+    public static void insertCourse(String title, String situation, String resumoText, String abstractText, String duration, String resources, String methodology, String author, String author1, String author2){
         ShortCourse course = new ShortCourse(title, situation, resumoText, abstractText, duration, resources, methodology, author, author1, author2);
         shortCourseList.add(course);
         Main.setShortCourseList(shortCourseList);
@@ -54,8 +69,8 @@ public class ShortCourseCrud {
      * @param author1
      * @param author2 
      */
-    public void editCourse(String editName, String title, String situation, String resumoText, String abstractText, String duration, String resources, String methodology, String author, String author1, String author2){
-        for(categorias.ShortCourse course : shortCourseList){
+    public static void editCourse(String editName, String title, String situation, String resumoText, String abstractText, String duration, String resources, String methodology, String author, String author1, String author2){
+        for(ShortCourse course : shortCourseList){
             if(editName.equals(course.getTitle())){
                 course.setTitle(title);
                 course.setSituation(situation);
@@ -74,12 +89,13 @@ public class ShortCourseCrud {
      * 
      * @param deleteName 
      */
-    public void deleteCourse(String deleteName){
-        for(categorias.ShortCourse course : shortCourseList){
-            if(deleteName.equalsIgnoreCase(course.getTitle())){
+    public static void deleteCourse(String deleteName){
+        for(ShortCourse course : shortCourseList){
+            if(deleteName.equals(course.getTitle())){
                 shortCourseList.remove(course);
+                break;
             }
         }
-        main.Main.setShortCourseList(shortCourseList);
+        Main.setShortCourseList(shortCourseList);
     }
 }

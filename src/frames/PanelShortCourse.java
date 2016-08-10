@@ -5,6 +5,7 @@
  */
 package frames;
 import categorias.ShortCourse;
+import cruds.ShortCourseCrud;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -29,6 +30,9 @@ public class PanelShortCourse extends javax.swing.JFrame {
         jTextAuthor1Edit.setEnabled(false);
         jTextAuthor2Edit.setEnabled(false);
         
+        jButtonEdit.setEnabled(false);
+        jButtonDelete.setEnabled(false);
+        jButtonMoreDetails.setEnabled(false);
         
         jTextAuthor1.setEnabled(false);
         jTextAuthor2.setEnabled(false);
@@ -221,11 +225,6 @@ public class PanelShortCourse extends javax.swing.JFrame {
         jLabelSituation.setText("Situação:");
 
         jComboBoxSituation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sob avaliação", "Aprovado", "Reprovado" }));
-        jComboBoxSituation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxSituationActionPerformed(evt);
-            }
-        });
 
         jLabelResumoText.setText("Resumo: ");
 
@@ -242,19 +241,8 @@ public class PanelShortCourse extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedDuration.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedDurationActionPerformed(evt);
-            }
-        });
 
         jLabelResources.setText("Recursos:");
-
-        jTextResources.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextResourcesActionPerformed(evt);
-            }
-        });
 
         jLabel1.setText("Metodologia:");
 
@@ -408,12 +396,6 @@ public class PanelShortCourse extends javax.swing.JFrame {
         }
 
         jLabelResourcesEdit.setText("Recursos:");
-
-        jTextResourcesEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextResourcesEditActionPerformed(evt);
-            }
-        });
 
         jLabelMethodologyEdit.setText("Metodologia:");
 
@@ -619,43 +601,26 @@ public class PanelShortCourse extends javax.swing.JFrame {
         jTextAuthor2.setText("");
     }//GEN-LAST:event_jButtonSaveInsertActionPerformed
 
-    private void jTextResourcesEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextResourcesEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextResourcesEditActionPerformed
-
-    private void jTextResourcesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextResourcesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextResourcesActionPerformed
-
     private void jButtonSaveEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveEditActionPerformed
         // TODO add your handling code here:
         cruds.ShortCourseCrud edit = new cruds.ShortCourseCrud();
         edit.editCourse(nameToEdit, jTextTitleEdit.getText(), jComboBoxSituationEdit.getSelectedItem().toString(), jTextPaneResumoTextEdit.getText(), jTextPaneAbstractTextEdit.getText(), jFormattedDurationEdit.getText(), jTextResourcesEdit.getText(), jTextPaneMethodologyEdit.getText(), jTextAuthorEdit.getText(), jTextAuthor1Edit.getText(), jTextAuthor2Edit.getText());
-        
-        jTextTitleEdit.setText("");
-        jComboBoxSituationEdit.setSelectedIndex(0);
-        jTextPaneResumoTextEdit.setText("");
-        jTextPaneAbstractTextEdit.setText("");
-        jFormattedDurationEdit.setText("");
-        jTextResourcesEdit.setText(""); 
-        jTextPaneMethodologyEdit.setText("");
-        jTextAuthorEdit.setText("");
-        jTextAuthor1Edit.setText("");
-        jTextAuthor2Edit.setText("");
+
+        ShortCourseCrud.consult();
+        ShortCourseCrud.list(jListNamesShortCourses);
+
+        jTabShortCourse.setSelectedIndex(0);
+        jTabShortCourse.setEnabledAt(0, true);
+        jTabShortCourse.setEnabledAt(1, true);
+        jTabShortCourse.setEnabledAt(2, false);
     }//GEN-LAST:event_jButtonSaveEditActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // TODO add your handling code here:
-        
+        ShortCourseCrud.deleteCourse(jListNamesShortCourses.getSelectedValue());
+        ShortCourseCrud.consult();
+        ShortCourseCrud.list(jListNamesShortCourses);
     }//GEN-LAST:event_jButtonDeleteActionPerformed
-
-    private void jFormattedDurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedDurationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedDurationActionPerformed
-
-    private void jComboBoxSituationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSituationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxSituationActionPerformed
 
     private void jListNamesShortCoursesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListNamesShortCoursesValueChanged
         // TODO add your handling code here:
@@ -715,11 +680,8 @@ public class PanelShortCourse extends javax.swing.JFrame {
 
     private void jButtonConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultActionPerformed
         // TODO add your handling code here:
-        DefaultListModel mList = new DefaultListModel();
-        for(ShortCourse course: courseList){
-            mList.addElement(course.getTitle());
-        }
-        jListNamesShortCourses.setModel(mList);
+        ShortCourseCrud.consult();
+        ShortCourseCrud.list(jListNamesShortCourses);
     }//GEN-LAST:event_jButtonConsultActionPerformed
 
     /**
