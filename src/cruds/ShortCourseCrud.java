@@ -28,13 +28,47 @@ public class ShortCourseCrud {
         jListShortCourse.setModel(mList);
     }
     
-    public static void consult(){
-        mList.clear();
+    public static void advancedConsult(String nameAuthor, String nameAuthor1, String nameAuthor2 , String title){
         
         for(ShortCourse course: shortCourseList){
-            mList.addElement(course.getTitle());
+            if(course.getAuthor()[0].trim().equalsIgnoreCase(nameAuthor.trim()) || course.getAuthor()[0].trim().equalsIgnoreCase(nameAuthor1.trim()) || course.getAuthor()[0].trim().equalsIgnoreCase(nameAuthor2.trim()))
+                if(course.getAuthor()[1].trim().equalsIgnoreCase(nameAuthor.trim()) || course.getAuthor()[1].trim().equalsIgnoreCase(nameAuthor1.trim()) || course.getAuthor()[1].trim().equalsIgnoreCase(nameAuthor2.trim()))
+                    if(course.getAuthor()[2].trim().equalsIgnoreCase(nameAuthor.trim()) || course.getAuthor()[2].trim().equalsIgnoreCase(nameAuthor1.trim()) || course.getAuthor()[2].trim().equalsIgnoreCase(nameAuthor2.trim()))
+                        if(course.getTitle().trim().equalsIgnoreCase(title.trim()))
+                            mList.addElement(course.getTitle().trim());
+            
         }
+    }
+    
+    /**
+     * 
+     * @param typeConsult
+     * @param textConsult 
+     */
+    public static void consult(String typeConsult, String textConsult){
+        mList.clear();
         
+        switch(typeConsult){
+            case "Autor":
+                for(ShortCourse course: shortCourseList){
+                    if(course.getAuthor()[0].equalsIgnoreCase(textConsult) || course.getAuthor()[1].equalsIgnoreCase(textConsult) || course.getAuthor()[2].equalsIgnoreCase(textConsult)){
+                        mList.addElement(course.getTitle());
+                    }
+                }
+                break;
+            case "Titulo":
+                for(ShortCourse course: shortCourseList){
+                    if(course.getTitle().equalsIgnoreCase(textConsult)){
+                        mList.addElement(course.getTitle());
+                    }
+                }
+                break;
+            default:
+                for(ShortCourse course: shortCourseList){
+                    mList.addElement(course.getTitle());
+                }
+                break;
+        }
     }
     /**
      * 

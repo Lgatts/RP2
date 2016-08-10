@@ -165,31 +165,35 @@ public class PanelShortCourse extends javax.swing.JFrame {
                 .addGroup(jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextConsult, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelListLayout.createSequentialGroup()
+                        .addComponent(jLabelConsult)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBoxConsult, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanelListLayout.createSequentialGroup()
                         .addGroup(jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonMoreDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonBackListInit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPaneNamesShortCourses))
-                    .addGroup(jPanelListLayout.createSequentialGroup()
-                        .addComponent(jLabelConsult)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBoxConsult, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonConsult, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)))
+                        .addComponent(jScrollPaneNamesShortCourses)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelListLayout.createSequentialGroup()
+                .addContainerGap(114, Short.MAX_VALUE)
+                .addComponent(jButtonConsult, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(133, 133, 133))
         );
         jPanelListLayout.setVerticalGroup(
             jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelListLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(17, 17, 17)
                 .addGroup(jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelConsult)
-                    .addComponent(jComboBoxConsult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonConsult))
+                    .addComponent(jComboBoxConsult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextConsult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonConsult)
                 .addGap(30, 30, 30)
                 .addGroup(jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelListLayout.createSequentialGroup()
@@ -198,7 +202,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
                         .addComponent(jButtonEdit)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonDelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                         .addComponent(jButtonBackListInit))
                     .addComponent(jScrollPaneNamesShortCourses))
                 .addContainerGap())
@@ -278,7 +282,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
                                 .addGroup(jPanelInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelSituation)
                                     .addComponent(jLabelResumoText))
-                                .addGap(0, 0, 0)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPaneResumoText)
                                     .addComponent(jComboBoxSituation, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -331,13 +335,13 @@ public class PanelShortCourse extends javax.swing.JFrame {
                         .addComponent(jLabelResources)
                         .addComponent(jTextResources, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jComboBoxSituation))
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addGroup(jPanelInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPaneMethodology)
                     .addComponent(jLabel1)
                     .addComponent(jLabelResumoText)
                     .addComponent(jScrollPaneResumoText, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addGap(53, 53, 53)
                 .addGroup(jPanelInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelAbstractText)
                     .addGroup(jPanelInsertLayout.createSequentialGroup()
@@ -381,10 +385,12 @@ public class PanelShortCourse extends javax.swing.JFrame {
 
         jLabelResumoTextEdit.setText("Resumo:");
 
+        jTextPaneResumoTextEdit.setMaximumSize(new java.awt.Dimension(6, 10));
         jScrollPaneResumoTextEdit.setViewportView(jTextPaneResumoTextEdit);
 
         jLabelAbstractTextEdit.setText("Abstract:");
 
+        jTextPaneAbstractTextEdit.setMaximumSize(new java.awt.Dimension(6, 20));
         jScrollPaneAbstractTextEdit.setViewportView(jTextPaneAbstractTextEdit);
 
         jLabelDurationEdit.setText("Duração:");
@@ -399,6 +405,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
 
         jLabelMethodologyEdit.setText("Metodologia:");
 
+        jTextPaneMethodologyEdit.setMaximumSize(new java.awt.Dimension(6, 20));
         jScrollPaneMethodologyEdit.setViewportView(jTextPaneMethodologyEdit);
 
         jLabelAuthorEdit.setText("Autor: ");
@@ -444,7 +451,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
                             .addGroup(jPanelEditLayout.createSequentialGroup()
                                 .addComponent(jLabelMethodologyEdit)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPaneMethodologyEdit))
+                                .addComponent(jScrollPaneMethodologyEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelEditLayout.createSequentialGroup()
                                 .addComponent(jLabelDurationEdit)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -454,7 +461,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
                                 .addGap(0, 0, 0)
                                 .addComponent(jTextAuthorEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBoxAuthorEdit, 0, 56, Short.MAX_VALUE)
+                                .addComponent(jComboBoxAuthorEdit, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(4, 4, 4))
                             .addGroup(jPanelEditLayout.createSequentialGroup()
                                 .addComponent(jLabelResourcesEdit)
@@ -485,13 +492,13 @@ public class PanelShortCourse extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelResumoTextEdit)
-                    .addComponent(jScrollPaneResumoTextEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
                     .addComponent(jLabelMethodologyEdit)
-                    .addComponent(jScrollPaneMethodologyEdit))
+                    .addComponent(jScrollPaneMethodologyEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneResumoTextEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelAbstractTextEdit)
-                    .addComponent(jScrollPaneAbstractTextEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneAbstractTextEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelEditLayout.createSequentialGroup()
                         .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelEditLayout.createSequentialGroup()
@@ -516,7 +523,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabShortCourse)
+            .addComponent(jTabShortCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -606,7 +613,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
         cruds.ShortCourseCrud edit = new cruds.ShortCourseCrud();
         edit.editCourse(nameToEdit, jTextTitleEdit.getText(), jComboBoxSituationEdit.getSelectedItem().toString(), jTextPaneResumoTextEdit.getText(), jTextPaneAbstractTextEdit.getText(), jFormattedDurationEdit.getText(), jTextResourcesEdit.getText(), jTextPaneMethodologyEdit.getText(), jTextAuthorEdit.getText(), jTextAuthor1Edit.getText(), jTextAuthor2Edit.getText());
 
-        ShortCourseCrud.consult();
+        ShortCourseCrud.consult(jComboBoxConsult.getSelectedItem().toString(), jTextConsult.getText());
         ShortCourseCrud.list(jListNamesShortCourses);
 
         jTabShortCourse.setSelectedIndex(0);
@@ -618,7 +625,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // TODO add your handling code here:
         ShortCourseCrud.deleteCourse(jListNamesShortCourses.getSelectedValue());
-        ShortCourseCrud.consult();
+        ShortCourseCrud.consult("","");
         ShortCourseCrud.list(jListNamesShortCourses);
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
@@ -680,7 +687,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
 
     private void jButtonConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultActionPerformed
         // TODO add your handling code here:
-        ShortCourseCrud.consult();
+        ShortCourseCrud.consult(jComboBoxConsult.getSelectedItem().toString(), jTextConsult.getText());
         ShortCourseCrud.list(jListNamesShortCourses);
     }//GEN-LAST:event_jButtonConsultActionPerformed
 
