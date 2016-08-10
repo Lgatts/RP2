@@ -106,7 +106,7 @@ public ShortCourse(String title, String situation, String resumoText, String abs
      *
      * @return 
      */
-    private String[] getAuthor(){
+    public String[] getAuthor(){
         return this.author;
                 
     }
@@ -173,7 +173,7 @@ public ShortCourse(String title, String situation, String resumoText, String abs
      * @param nameAuthor1
      * @param nameAuthor2
      */
-    private void setAuthor(String nameAuthor, String nameAuthor1, String nameAuthor2){
+    public void setAuthor(String nameAuthor, String nameAuthor1, String nameAuthor2){
         this.author[0] = nameAuthor;
         this.author[1] = nameAuthor1;
         this.author[2] = nameAuthor2;
