@@ -17,7 +17,7 @@ import main.Main;
  */
 public class ShortCourseCrud {
     
-    private static List<ShortCourse> shortCourseList = Main.getShortCourseList();
+    private static List<ShortCourse> shortCourseList = new ArrayList<>();
     private static DefaultListModel mList = new DefaultListModel();
     
     /**
@@ -86,7 +86,6 @@ public class ShortCourseCrud {
     public static void insertCourse(String title, String situation, String resumoText, String abstractText, String duration, String resources, String methodology, String author, String author1, String author2){
         ShortCourse course = new ShortCourse(title, situation, resumoText, abstractText, duration, resources, methodology, author, author1, author2);
         shortCourseList.add(course);
-        Main.setShortCourseList(shortCourseList);
     }
     
     /**
@@ -116,7 +115,6 @@ public class ShortCourseCrud {
                 course.setAuthor(author, author1, author2);
             }
         }
-        Main.setShortCourseList(shortCourseList);
     }
     
     /**
@@ -130,6 +128,9 @@ public class ShortCourseCrud {
                 break;
             }
         }
-        Main.setShortCourseList(shortCourseList);
+    }
+    
+    public static List<ShortCourse> getShortCourseList(){
+        return shortCourseList;
     }
 }
