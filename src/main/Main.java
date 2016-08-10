@@ -5,29 +5,31 @@
  */
 package main;
 
-import categorias.ShortCourse;
 import frames.Inicial;
-import java.util.List;
-
+import java.io.File;
 
 /**
  *
  * @author Lucas
  */
-public class Main {
+public class Main {       
     
-    private static List<ShortCourse> shortCourseList;
-
-    public static List<ShortCourse> getShortCourseList() {
-        return shortCourseList;
-    }
-
-    public static void setShortCourseList(List<ShortCourse> shortCourseList) {
-        Main.shortCourseList = shortCourseList;
-    }
-    
-    public static void main(String[] args) {
+    public static void main(String[] args) { 
+        
+        createDirectory();        
         new Inicial().setVisible(true);
+        
     }
+    
+    private static void createDirectory(){
+        if(new File(System.getenv("APPDATA") + "\\.RP2").exists()){
+            
+        }
+        else{
+            new File(System.getenv("APPDATA") + "\\.RP2").mkdir();
+        }
+    }
+    
+    
     
 }
