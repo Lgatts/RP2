@@ -115,6 +115,11 @@ public class PanelShortCourse extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButtonMoreDetails.setText("Mais Detalhes");
+        jButtonMoreDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMoreDetailsActionPerformed(evt);
+            }
+        });
 
         jButtonEdit.setText("Editar");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -162,12 +167,12 @@ public class PanelShortCourse extends javax.swing.JFrame {
             .addGroup(jPanelListLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextConsult, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextConsult, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelListLayout.createSequentialGroup()
                         .addComponent(jLabelConsult)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBoxConsult, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 0, 0))
                     .addGroup(jPanelListLayout.createSequentialGroup()
                         .addGroup(jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonMoreDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -178,7 +183,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
                         .addGroup(jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelListLayout.createSequentialGroup()
                                 .addComponent(jButtonConsult, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 110, Short.MAX_VALUE))
+                                .addGap(0, 0, 0))
                             .addComponent(jScrollPaneNamesShortCourses))))
                 .addContainerGap())
         );
@@ -300,19 +305,20 @@ public class PanelShortCourse extends javax.swing.JFrame {
                                     .addComponent(jLabelResources))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextResources)
-                                    .addComponent(jFormattedDuration)))
+                                    .addComponent(jFormattedDuration)
+                                    .addComponent(jTextResources, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInsertLayout.createSequentialGroup()
                                 .addGap(35, 35, 35)
-                                .addGroup(jPanelInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextAuthor2)
-                                    .addComponent(jTextAuthor1)))
+                                .addComponent(jTextAuthor2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInsertLayout.createSequentialGroup()
                                 .addComponent(jLabelAuthor)
                                 .addGap(0, 0, 0)
                                 .addComponent(jTextAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBoxAuthorInsert, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jComboBoxAuthorInsert, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInsertLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jTextAuthor1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInsertLayout.createSequentialGroup()
                         .addComponent(jButtonBackInsertInit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -429,7 +435,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
                             .addGroup(jPanelEditLayout.createSequentialGroup()
                                 .addComponent(jLabelTitleEdit)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextTitleEdit))
+                                .addComponent(jTextTitleEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelEditLayout.createSequentialGroup()
                                 .addComponent(jLabelSituationEdit)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -445,10 +451,6 @@ public class PanelShortCourse extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelEditLayout.createSequentialGroup()
-                                .addComponent(jLabelMethodologyEdit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPaneMethodologyEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelEditLayout.createSequentialGroup()
                                 .addComponent(jLabelDurationEdit)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jFormattedDurationEdit))
@@ -459,15 +461,23 @@ public class PanelShortCourse extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jComboBoxAuthorEdit, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(4, 4, 4))
-                            .addGroup(jPanelEditLayout.createSequentialGroup()
-                                .addComponent(jLabelResourcesEdit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextResourcesEdit))
-                            .addGroup(jPanelEditLayout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextAuthor1Edit)
-                                    .addComponent(jTextAuthor2Edit)))))
+                            .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanelEditLayout.createSequentialGroup()
+                                    .addComponent(jLabelResourcesEdit)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTextResourcesEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelEditLayout.createSequentialGroup()
+                                    .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelEditLayout.createSequentialGroup()
+                                            .addComponent(jLabelMethodologyEdit)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jScrollPaneMethodologyEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanelEditLayout.createSequentialGroup()
+                                            .addGap(38, 38, 38)
+                                            .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jTextAuthor2Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jTextAuthor1Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGap(0, 0, Short.MAX_VALUE)))))
                     .addGroup(jPanelEditLayout.createSequentialGroup()
                         .addComponent(jButtonBackList)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -549,9 +559,9 @@ public class PanelShortCourse extends javax.swing.JFrame {
 
     private void jButtonBackListInitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackListInitActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         Inicial back = new Inicial();
-        back.setVisible(true);
-        this.dispose();        
+        back.setVisible(true);        
     }//GEN-LAST:event_jButtonBackListInitActionPerformed
 
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
@@ -689,6 +699,12 @@ public class PanelShortCourse extends javax.swing.JFrame {
         ShortCourseCrud.consult(jComboBoxConsult.getSelectedItem().toString(), jTextConsult.getText());
         ShortCourseCrud.list(jListNamesShortCourses);
     }//GEN-LAST:event_jButtonConsultActionPerformed
+
+    private void jButtonMoreDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMoreDetailsActionPerformed
+        // TODO add your handling code here:
+        MoreDetailsShortCourse details = new MoreDetailsShortCourse(jListNamesShortCourses.getSelectedValue());
+        details.setVisible(true);
+    }//GEN-LAST:event_jButtonMoreDetailsActionPerformed
 
     /**
      * @param args the command line arguments

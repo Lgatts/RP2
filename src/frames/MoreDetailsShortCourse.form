@@ -71,7 +71,7 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jLabelMoreDetailsResources" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextMoreDetailsResources" max="32767" attributes="0"/>
+                                          <Component id="jTextMoreDetailsResources" min="-2" pref="199" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="jLabelMoreDetailsMethodology" min="-2" max="-2" attributes="0"/>
@@ -88,13 +88,14 @@
                                   <Component id="jLabelMoreDetailsAuthor" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jTextMoreDetailsAuthor" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jTextMoreDetailsAuthor" min="-2" pref="172" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jComboBoxMoreDetailsNumberAuthors" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jTextMoreDetailsAuthor1" max="32767" attributes="0"/>
-                                      <Component id="jTextMoreDetailsAuthor2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextMoreDetailsAuthor2" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                      <Component id="jTextMoreDetailsAuthor1" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -127,10 +128,10 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jScrollPaneMoreDetailsAbstractText" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabelMoreDetailsResumoText" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelMoreDetailsMethodology" min="-2" max="-2" attributes="0"/>
                       <Component id="jScrollPaneMoreDetailsMethodology" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                      <Component id="jScrollPaneMoreDetailsAbstractText" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -205,7 +206,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextPane" name="jTextPaneMoreDetailsResumoText1">
+            <Component class="javax.swing.JTextPane" name="jTextPaneMoreDetailsResumoText">
             </Component>
           </SubComponents>
         </Container>

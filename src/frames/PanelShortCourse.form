@@ -49,15 +49,15 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextConsult" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jTextConsult" min="-2" pref="564" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jLabelConsult" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jComboBoxConsult" min="-2" pref="321" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -70,7 +70,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jButtonConsult" min="-2" pref="335" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="110" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPaneNamesShortCourses" max="32767" attributes="0"/>
                               </Group>
@@ -115,6 +115,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mais Detalhes"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMoreDetailsActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonEdit">
               <Properties>
@@ -251,16 +254,13 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTextResources" max="32767" attributes="0"/>
                                           <Component id="jFormattedDuration" max="32767" attributes="0"/>
+                                          <Component id="jTextResources" min="-2" pref="250" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTextAuthor2" max="32767" attributes="0"/>
-                                          <Component id="jTextAuthor1" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="jTextAuthor2" min="-2" pref="267" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabelAuthor" min="-2" max="-2" attributes="0"/>
@@ -268,6 +268,10 @@
                                       <Component id="jTextAuthor" min="-2" pref="204" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jComboBoxAuthorInsert" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="jTextAuthor1" min="-2" pref="267" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -493,7 +497,7 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabelTitleEdit" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextTitleEdit" max="32767" attributes="0"/>
+                                      <Component id="jTextTitleEdit" min="-2" pref="208" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabelSituationEdit" min="-2" max="-2" attributes="0"/>
@@ -513,11 +517,6 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelMethodologyEdit" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPaneMethodologyEdit" min="-2" pref="230" max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabelDurationEdit" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -531,16 +530,28 @@
                                       <Component id="jComboBoxAuthorEdit" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelResourcesEdit" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextResourcesEdit" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTextAuthor1Edit" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jTextAuthor2Edit" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabelResourcesEdit" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jTextResourcesEdit" min="-2" pref="244" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabelMethodologyEdit" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jScrollPaneMethodologyEdit" min="-2" pref="230" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jTextAuthor2Edit" min="-2" pref="258" max="-2" attributes="0"/>
+                                                      <Component id="jTextAuthor1Edit" min="-2" pref="258" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>

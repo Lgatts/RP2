@@ -5,24 +5,56 @@
  */
 package frames;
 
+import categorias.ShortCourse;
+import cruds.ShortCourseCrud;
+import java.util.List;
+
 /**
  *
  * @author YuryAlencar
  */
 public class MoreDetailsShortCourse extends javax.swing.JFrame {
 
+    List<ShortCourse> shortCourseList = ShortCourseCrud.getShortCourseList();
     /**
      * Creates new form MoreDetailsShortCourse
      */
-    public MoreDetailsShortCourse() {
+    public MoreDetailsShortCourse(String titleDetails) {
         initComponents();
         this.setTitle("RP II - Detalhes");
         this.setLocationRelativeTo(null);
         
+        int indexSituation = 0, indexNumberAuthors = 0;
+        
+        for(ShortCourse course : shortCourseList){
+            if(course.getTitle().equals(titleDetails)){
+                for(int i=0; i<jComboBoxMoreDetailsSituation.getItemCount(); i++){
+                    if(course.getSituation().equals(jComboBoxMoreDetailsSituation.getItemAt(i))){
+                        indexSituation = i;
+                    }
+                }
+                jTextMoreDetailsTitle.setText(course.getTitle());
+                jComboBoxMoreDetailsSituation.setSelectedIndex(indexSituation);
+                jTextPaneMoreDetailsResumoText.setText(course.getResumoText());
+                jTextPaneMoreDetailsAbstractText.setText(course.getAbstractText());
+                jFormattedTextMoreDetailsDuration.setText(course.getDuration());
+                jTextPaneMoreDetailsMethodology.setText(course.getMethodology());
+                jTextMoreDetailsResources.setText(course.getResources());
+                jTextMoreDetailsAuthor.setText(course.getAuthor()[0]);
+                jTextMoreDetailsAuthor1.setText(course.getAuthor()[1]);
+                jTextMoreDetailsAuthor2.setText(course.getAuthor()[2]);
+                if(!(jTextMoreDetailsAuthor1.getText().trim().equals("")))
+                    indexNumberAuthors = 1;
+                if(!(jTextMoreDetailsAuthor2.getText().trim().equals("")))
+                    indexNumberAuthors = 2;
+                jComboBoxMoreDetailsNumberAuthors.setSelectedIndex(indexNumberAuthors);
+                
+            }
+        }
         
         jTextMoreDetailsTitle.setEnabled(false);
         jComboBoxMoreDetailsSituation.setEnabled(false);
-        jTextPaneMoreDetailsResumoText1.setEnabled(false);
+        jTextPaneMoreDetailsResumoText.setEnabled(false);
         jTextPaneMoreDetailsAbstractText.setEnabled(false);
         jFormattedTextMoreDetailsDuration.setEnabled(false);
         jComboBoxMoreDetailsNumberAuthors.setEnabled(false);
@@ -51,7 +83,7 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
         jScrollPaneMoreDetailsResumoText = new javax.swing.JScrollPane();
         jTextPaneMoreDetailsAbstractText = new javax.swing.JTextPane();
         jScrollPaneMoreDetailsAbstractText = new javax.swing.JScrollPane();
-        jTextPaneMoreDetailsResumoText1 = new javax.swing.JTextPane();
+        jTextPaneMoreDetailsResumoText = new javax.swing.JTextPane();
         jLabelMoreDetailsAbstractText = new javax.swing.JLabel();
         jLabelMoreDetailsDuration = new javax.swing.JLabel();
         jFormattedTextMoreDetailsDuration = new javax.swing.JFormattedTextField();
@@ -79,7 +111,7 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
 
         jScrollPaneMoreDetailsResumoText.setViewportView(jTextPaneMoreDetailsAbstractText);
 
-        jScrollPaneMoreDetailsAbstractText.setViewportView(jTextPaneMoreDetailsResumoText1);
+        jScrollPaneMoreDetailsAbstractText.setViewportView(jTextPaneMoreDetailsResumoText);
 
         jLabelMoreDetailsAbstractText.setText("Abstract:");
 
@@ -140,7 +172,7 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
                                     .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
                                         .addComponent(jLabelMoreDetailsResources)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextMoreDetailsResources))
+                                        .addComponent(jTextMoreDetailsResources, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
                                         .addComponent(jLabelMoreDetailsMethodology)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -154,11 +186,12 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
-                                        .addComponent(jTextMoreDetailsAuthor)
+                                        .addComponent(jTextMoreDetailsAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBoxMoreDetailsNumberAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextMoreDetailsAuthor1)
-                                    .addComponent(jTextMoreDetailsAuthor2)))))
+                                        .addComponent(jComboBoxMoreDetailsNumberAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jTextMoreDetailsAuthor2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextMoreDetailsAuthor1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
                         .addGap(232, 232, 232)
                         .addComponent(jButtonMoreDetailsBack, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -181,10 +214,10 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
                     .addComponent(jTextMoreDetailsResources, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPaneMoreDetailsAbstractText)
                     .addComponent(jLabelMoreDetailsResumoText)
                     .addComponent(jLabelMoreDetailsMethodology)
-                    .addComponent(jScrollPaneMoreDetailsMethodology, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPaneMoreDetailsMethodology, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneMoreDetailsAbstractText, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelMoreDetailsAbstractText)
@@ -254,7 +287,7 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MoreDetailsShortCourse().setVisible(true);
+                new MoreDetailsShortCourse(null).setVisible(true);
             }
         });
     }
@@ -283,6 +316,6 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
     private javax.swing.JTextField jTextMoreDetailsTitle;
     private javax.swing.JTextPane jTextPaneMoreDetailsAbstractText;
     private javax.swing.JTextPane jTextPaneMoreDetailsMethodology;
-    private javax.swing.JTextPane jTextPaneMoreDetailsResumoText1;
+    private javax.swing.JTextPane jTextPaneMoreDetailsResumoText;
     // End of variables declaration//GEN-END:variables
 }
