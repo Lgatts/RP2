@@ -57,7 +57,6 @@
                               <Component id="jLabelConsult" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jComboBoxConsult" min="-2" pref="321" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -68,10 +67,7 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jButtonConsult" min="-2" pref="335" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jButtonConsult" min="-2" pref="335" max="-2" attributes="0"/>
                                   <Component id="jScrollPaneNamesShortCourses" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -258,20 +254,18 @@
                                           <Component id="jTextResources" min="-2" pref="250" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="jTextAuthor2" min="-2" pref="267" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabelAuthor" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="jTextAuthor" min="-2" pref="204" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jComboBoxAuthorInsert" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="jTextAuthor1" min="-2" pref="267" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jTextAuthor1" alignment="1" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jTextAuthor" min="-2" pref="204" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jComboBoxAuthorInsert" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="jTextAuthor2" alignment="1" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -356,14 +350,14 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelTitle">
               <Properties>
-                <Property name="text" type="java.lang.String" value="T&#xed;tulo: "/>
+                <Property name="text" type="java.lang.String" value="T&#xed;tulo:* "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextTitle">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelSituation">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Situa&#xe7;&#xe3;o:"/>
+                <Property name="text" type="java.lang.String" value="Situa&#xe7;&#xe3;o:*"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBoxSituation">
@@ -382,7 +376,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelResumoText">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Resumo: "/>
+                <Property name="text" type="java.lang.String" value="Resumo:*"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPaneResumoText">
@@ -398,7 +392,7 @@
             </Container>
             <Component class="javax.swing.JLabel" name="jLabelAbstractText">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Abstract:"/>
+                <Property name="text" type="java.lang.String" value="Abstract:*"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPaneAbstractText">
@@ -414,7 +408,7 @@
             </Container>
             <Component class="javax.swing.JLabel" name="jLabelDuration">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Dura&#xe7;&#xe3;o:"/>
+                <Property name="text" type="java.lang.String" value="Dura&#xe7;&#xe3;o:*"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="jFormattedDuration">
@@ -426,14 +420,14 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelResources">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Recursos:"/>
+                <Property name="text" type="java.lang.String" value="Recursos:*"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextResources">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Metodologia:"/>
+                <Property name="text" type="java.lang.String" value="Metodologia:*"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPaneMethodology">
@@ -449,7 +443,7 @@
             </Container>
             <Component class="javax.swing.JLabel" name="jLabelAuthor">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Autor:"/>
+                <Property name="text" type="java.lang.String" value="Autor:*"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextAuthor">
@@ -530,29 +524,27 @@
                                       <Component id="jComboBoxAuthorEdit" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabelResourcesEdit" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextResourcesEdit" min="-2" pref="244" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabelMethodologyEdit" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jScrollPaneMethodologyEdit" min="-2" pref="230" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" attributes="0">
-                                                  <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jTextAuthor2Edit" min="-2" pref="258" max="-2" attributes="0"/>
-                                                      <Component id="jTextAuthor1Edit" min="-2" pref="258" max="-2" attributes="0"/>
-                                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabelResourcesEdit" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jTextResourcesEdit" min="-2" pref="244" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabelMethodologyEdit" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jScrollPaneMethodologyEdit" min="-2" pref="230" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jTextAuthor2Edit" min="-2" pref="258" max="-2" attributes="0"/>
+                                                  <Component id="jTextAuthor1Edit" min="-2" pref="258" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -639,14 +631,14 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelTitleEdit">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Titulo:"/>
+                <Property name="text" type="java.lang.String" value="Titulo:*"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextTitleEdit">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelSituationEdit">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Situa&#xe7;&#xe3;o:"/>
+                <Property name="text" type="java.lang.String" value="Situa&#xe7;&#xe3;o:*"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBoxSituationEdit">
@@ -665,7 +657,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelResumoTextEdit">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Resumo:"/>
+                <Property name="text" type="java.lang.String" value="Resumo:*"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPaneResumoTextEdit">
@@ -686,7 +678,7 @@
             </Container>
             <Component class="javax.swing.JLabel" name="jLabelAbstractTextEdit">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Abstract:"/>
+                <Property name="text" type="java.lang.String" value="Abstract:*"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPaneAbstractTextEdit">
@@ -707,7 +699,7 @@
             </Container>
             <Component class="javax.swing.JLabel" name="jLabelDurationEdit">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Dura&#xe7;&#xe3;o:"/>
+                <Property name="text" type="java.lang.String" value="Dura&#xe7;&#xe3;o:*"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="jFormattedDurationEdit">
@@ -719,14 +711,14 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelResourcesEdit">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Recursos:"/>
+                <Property name="text" type="java.lang.String" value="Recursos:*"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextResourcesEdit">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelMethodologyEdit">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Metodologia:"/>
+                <Property name="text" type="java.lang.String" value="Metodologia:*"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPaneMethodologyEdit">
@@ -747,7 +739,7 @@
             </Container>
             <Component class="javax.swing.JLabel" name="jLabelAuthorEdit">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Autor: "/>
+                <Property name="text" type="java.lang.String" value="Autor:*"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextAuthorEdit">

@@ -253,8 +253,6 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
     private void jButtonMoreDetailsBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMoreDetailsBackActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        PanelShortCourse openWindow = new PanelShortCourse();
-        openWindow.setVisible(true);
     }//GEN-LAST:event_jButtonMoreDetailsBackActionPerformed
 
     /**

@@ -51,14 +51,14 @@ public class ShortCourseCrud {
         switch(typeConsult){
             case "Autor":
                 for(ShortCourse course: shortCourseList){
-                    if(course.getAuthor()[0].equalsIgnoreCase(textConsult) || course.getAuthor()[1].equalsIgnoreCase(textConsult) || course.getAuthor()[2].equalsIgnoreCase(textConsult)){
+                    if(course.getAuthor()[0].trim().equalsIgnoreCase(textConsult.trim()) || course.getAuthor()[1].trim().equalsIgnoreCase(textConsult.trim()) || course.getAuthor()[2].trim().equalsIgnoreCase(textConsult.trim())){
                         mList.addElement(course.getTitle());
                     }
                 }
                 break;
             case "Titulo":
                 for(ShortCourse course: shortCourseList){
-                    if(course.getTitle().equalsIgnoreCase(textConsult)){
+                    if(course.getTitle().trim().equalsIgnoreCase(textConsult.trim())){
                         mList.addElement(course.getTitle());
                     }
                 }
