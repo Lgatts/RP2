@@ -9,7 +9,6 @@ import categorias.ShortCourse;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
-import main.Main;
 
 /**
  *
@@ -18,26 +17,25 @@ import main.Main;
 public class ShortCourseCrud {
     
     private static List<ShortCourse> shortCourseList = new ArrayList<>();
-    private static DefaultListModel mList = new DefaultListModel();
     
     /**
      * 
-     * @param jListShortCourse 
+     * @param nameAuthor
+     * @param title 
      */
-    public static void list(javax.swing.JList<String> jListShortCourse){
-        jListShortCourse.setModel(mList);
-    }
-    
-    public static void advancedConsult(String nameAuthor, String nameAuthor1, String nameAuthor2 , String title){
+    public static List advancedConsult(String nameAuthor, String title){
+        
+        List<String> displayList = new ArrayList<>();
         
         for(ShortCourse course: shortCourseList){
-            if(course.getAuthor()[0].trim().equalsIgnoreCase(nameAuthor.trim()) || course.getAuthor()[0].trim().equalsIgnoreCase(nameAuthor1.trim()) || course.getAuthor()[0].trim().equalsIgnoreCase(nameAuthor2.trim()))
-                if(course.getAuthor()[1].trim().equalsIgnoreCase(nameAuthor.trim()) || course.getAuthor()[1].trim().equalsIgnoreCase(nameAuthor1.trim()) || course.getAuthor()[1].trim().equalsIgnoreCase(nameAuthor2.trim()))
-                    if(course.getAuthor()[2].trim().equalsIgnoreCase(nameAuthor.trim()) || course.getAuthor()[2].trim().equalsIgnoreCase(nameAuthor1.trim()) || course.getAuthor()[2].trim().equalsIgnoreCase(nameAuthor2.trim()))
-                        if(course.getTitle().trim().equalsIgnoreCase(title.trim()))
-                            mList.addElement(course.getTitle().trim());
-            
+            if(course.getAuthor()[0].trim().equalsIgnoreCase(nameAuthor.trim()) || course.getAuthor()[1].trim().equalsIgnoreCase(nameAuthor.trim()) || course.getAuthor()[2].trim().equalsIgnoreCase(nameAuthor.trim())){
+                if(course.getTitle().trim().equalsIgnoreCase(title.trim())){
+                    displayList.add(course.getTitle());
+                }
+            }
         }
+        
+        return displayList;
     }
     
     /**
@@ -45,31 +43,35 @@ public class ShortCourseCrud {
      * @param typeConsult
      * @param textConsult 
      */
-    public static void consult(String typeConsult, String textConsult){
-        mList.clear();
+    public static List consult(String typeConsult, String textConsult){
+        
+        List<String> displayList = new ArrayList<>();        
         
         switch(typeConsult){
             case "Autor":
                 for(ShortCourse course: shortCourseList){
                     if(course.getAuthor()[0].trim().equalsIgnoreCase(textConsult.trim()) || course.getAuthor()[1].trim().equalsIgnoreCase(textConsult.trim()) || course.getAuthor()[2].trim().equalsIgnoreCase(textConsult.trim())){
-                        mList.addElement(course.getTitle());
+                        displayList.add(course.getTitle());
                     }
                 }
                 break;
             case "Titulo":
                 for(ShortCourse course: shortCourseList){
                     if(course.getTitle().trim().equalsIgnoreCase(textConsult.trim())){
-                        mList.addElement(course.getTitle());
+                        displayList.add(course.getTitle());
                     }
                 }
                 break;
             default:
                 for(ShortCourse course: shortCourseList){
-                    mList.addElement(course.getTitle());
+                        displayList.add(course.getTitle());
                 }
                 break;
         }
+
+        return displayList;
     }
+    
     /**
      * 
      * @param title
