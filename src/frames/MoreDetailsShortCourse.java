@@ -24,17 +24,12 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
         this.setTitle("RP II - Detalhes");
         this.setLocationRelativeTo(null);
         
-        int indexSituation = 0, indexNumberAuthors = 0;
+        String indexNumberAuthors = "1";
         
         for(ShortCourse course : shortCourseList){
             if(course.getTitle().equals(titleDetails)){
-                for(int i=0; i<jComboBoxMoreDetailsSituation.getItemCount(); i++){
-                    if(course.getSituation().equals(jComboBoxMoreDetailsSituation.getItemAt(i))){
-                        indexSituation = i;
-                    }
-                }
                 jTextMoreDetailsTitle.setText(course.getTitle());
-                jComboBoxMoreDetailsSituation.setSelectedIndex(indexSituation);
+                jTextMoreDetailsSituation.setText(course.getSituation());
                 jTextPaneMoreDetailsResumoText.setText(course.getResumoText());
                 jTextPaneMoreDetailsAbstractText.setText(course.getAbstractText());
                 jFormattedTextMoreDetailsDuration.setText(course.getDuration());
@@ -44,20 +39,20 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
                 jTextMoreDetailsAuthor1.setText(course.getAuthor()[1]);
                 jTextMoreDetailsAuthor2.setText(course.getAuthor()[2]);
                 if(!(jTextMoreDetailsAuthor1.getText().trim().equals("")))
-                    indexNumberAuthors = 1;
+                    indexNumberAuthors = "2";
                 if(!(jTextMoreDetailsAuthor2.getText().trim().equals("")))
-                    indexNumberAuthors = 2;
-                jComboBoxMoreDetailsNumberAuthors.setSelectedIndex(indexNumberAuthors);
+                    indexNumberAuthors = "3";
+                jTextMoreDetailsNumberAuthors.setText(indexNumberAuthors);
                 
             }
         }
         
         jTextMoreDetailsTitle.setEnabled(false);
-        jComboBoxMoreDetailsSituation.setEnabled(false);
+        jTextMoreDetailsSituation.setEnabled(false);
         jTextPaneMoreDetailsResumoText.setEnabled(false);
         jTextPaneMoreDetailsAbstractText.setEnabled(false);
         jFormattedTextMoreDetailsDuration.setEnabled(false);
-        jComboBoxMoreDetailsNumberAuthors.setEnabled(false);
+        jTextMoreDetailsNumberAuthors.setEnabled(false);
         jTextPaneMoreDetailsMethodology.setEnabled(false);
         jTextMoreDetailsResources.setEnabled(false);
         jTextMoreDetailsAuthor.setEnabled(false);
@@ -77,7 +72,6 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
         jPanelMoreDetails = new javax.swing.JPanel();
         jLabelMoreDetailsTitle = new javax.swing.JLabel();
         jTextMoreDetailsTitle = new javax.swing.JTextField();
-        jComboBoxMoreDetailsSituation = new javax.swing.JComboBox<>();
         jLabelMoreDetailsSituation = new javax.swing.JLabel();
         jLabelMoreDetailsResumoText = new javax.swing.JLabel();
         jScrollPaneMoreDetailsResumoText = new javax.swing.JScrollPane();
@@ -94,18 +88,17 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
         jTextPaneMoreDetailsMethodology = new javax.swing.JTextPane();
         jLabelMoreDetailsAuthor = new javax.swing.JLabel();
         jTextMoreDetailsAuthor = new javax.swing.JTextField();
-        jComboBoxMoreDetailsNumberAuthors = new javax.swing.JComboBox<>();
         jTextMoreDetailsAuthor1 = new javax.swing.JTextField();
         jTextMoreDetailsAuthor2 = new javax.swing.JTextField();
         jButtonMoreDetailsBack = new javax.swing.JButton();
+        jTextMoreDetailsSituation = new javax.swing.JTextField();
+        jTextMoreDetailsNumberAuthors = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelMoreDetailsTitle.setText("Título: ");
 
         jTextMoreDetailsTitle.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-
-        jComboBoxMoreDetailsSituation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sob avaliação", "Aprovado", "Reprovado" }));
 
         jLabelMoreDetailsSituation.setText("Situação:");
 
@@ -141,8 +134,6 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
 
         jTextMoreDetailsAuthor.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-        jComboBoxMoreDetailsNumberAuthors.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
-
         jTextMoreDetailsAuthor1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         jTextMoreDetailsAuthor2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -154,6 +145,10 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
             }
         });
 
+        jTextMoreDetailsSituation.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextMoreDetailsNumberAuthors.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout jPanelMoreDetailsLayout = new javax.swing.GroupLayout(jPanelMoreDetails);
         jPanelMoreDetails.setLayout(jPanelMoreDetailsLayout);
         jPanelMoreDetailsLayout.setHorizontalGroup(
@@ -162,21 +157,23 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
                 .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
                                 .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
                                         .addComponent(jLabelMoreDetailsTitle)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextMoreDetailsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextMoreDetailsTitle))
                                     .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
-                                        .addComponent(jLabelMoreDetailsSituation)
+                                        .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabelMoreDetailsResumoText)
+                                            .addComponent(jLabelMoreDetailsSituation))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBoxMoreDetailsSituation, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
-                                        .addComponent(jLabelMoreDetailsResumoText)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jScrollPaneMoreDetailsAbstractText, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jScrollPaneMoreDetailsAbstractText, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
+                                                .addComponent(jTextMoreDetailsSituation)
+                                                .addGap(1, 1, 1)))))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
@@ -202,13 +199,13 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
                                     .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
                                         .addComponent(jTextMoreDetailsAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBoxMoreDetailsNumberAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextMoreDetailsAuthor2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextMoreDetailsAuthor1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jTextMoreDetailsNumberAuthors))
+                                    .addComponent(jTextMoreDetailsAuthor1)
+                                    .addComponent(jTextMoreDetailsAuthor2)))))
                     .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
                         .addGap(232, 232, 232)
                         .addComponent(jButtonMoreDetailsBack, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
         jPanelMoreDetailsLayout.setVerticalGroup(
             jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,9 +219,9 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMoreDetailsSituation)
-                    .addComponent(jComboBoxMoreDetailsSituation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelMoreDetailsResources)
-                    .addComponent(jTextMoreDetailsResources, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextMoreDetailsResources, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextMoreDetailsSituation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelMoreDetailsResumoText)
@@ -238,7 +235,7 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
                         .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelMoreDetailsAuthor)
                             .addComponent(jTextMoreDetailsAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxMoreDetailsNumberAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextMoreDetailsNumberAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jTextMoreDetailsAuthor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -305,8 +302,6 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonMoreDetailsBack;
-    private javax.swing.JComboBox<String> jComboBoxMoreDetailsNumberAuthors;
-    private javax.swing.JComboBox<String> jComboBoxMoreDetailsSituation;
     private javax.swing.JFormattedTextField jFormattedTextMoreDetailsDuration;
     private javax.swing.JLabel jLabelMoreDetailsAbstractText;
     private javax.swing.JLabel jLabelMoreDetailsAuthor;
@@ -323,7 +318,9 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
     private javax.swing.JTextField jTextMoreDetailsAuthor;
     private javax.swing.JTextField jTextMoreDetailsAuthor1;
     private javax.swing.JTextField jTextMoreDetailsAuthor2;
+    private javax.swing.JTextField jTextMoreDetailsNumberAuthors;
     private javax.swing.JTextField jTextMoreDetailsResources;
+    private javax.swing.JTextField jTextMoreDetailsSituation;
     private javax.swing.JTextField jTextMoreDetailsTitle;
     private javax.swing.JTextPane jTextPaneMoreDetailsAbstractText;
     private javax.swing.JTextPane jTextPaneMoreDetailsMethodology;
