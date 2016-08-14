@@ -75,9 +75,9 @@ public class AdvancedConsultShortCourse extends javax.swing.JFrame {
                         .addComponent(jTextAdvancedConsultAuthor, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(jButtonAdvancedConsultConsult, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(134, 134, 134))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonAdvancedConsultConsult, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(126, 126, 126))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,6 +98,15 @@ public class AdvancedConsultShortCourse extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void displayList() {
+        DefaultListModel mList = new DefaultListModel();
+        
+        for(String element : displayList){
+            mList.addElement(element);
+        }
+        jListNamesShortCourses.setModel(mList);
+    }
+
     private void jButtonAdvancedConsultConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdvancedConsultConsultActionPerformed
         // TODO add your handling code here:
         if(jTextAdvancedConsultAuthor.getText().trim().equals("") || jTextAdvancedConsultTitle.getText().trim().equals("")){
@@ -109,16 +118,6 @@ public class AdvancedConsultShortCourse extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_jButtonAdvancedConsultConsultActionPerformed
-
-    
-    public void displayList() {
-        DefaultListModel mList = new DefaultListModel();
-        
-        for(String element : displayList){
-            mList.addElement(element);
-        }
-        jListNamesShortCourses.setModel(mList);
-    }
     
     
     /**

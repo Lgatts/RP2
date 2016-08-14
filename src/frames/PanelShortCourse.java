@@ -662,7 +662,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
         // TODO add your handling code here:
         jTabShortCourse.setSelectedIndex(0);
         jTabShortCourse.setEnabledAt(0, true);
-        jTabShortCourse.setEnabledAt(1, true);
+        jTabShortCourse.setEnabledAt(1, false);
         jTabShortCourse.setEnabledAt(2, false);
     }//GEN-LAST:event_jButtonBackListActionPerformed
 
@@ -720,7 +720,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
             
             jTabShortCourse.setSelectedIndex(0);
             jTabShortCourse.setEnabledAt(0, true);
-            jTabShortCourse.setEnabledAt(1, true);
+            jTabShortCourse.setEnabledAt(1, false);
             jTabShortCourse.setEnabledAt(2, false);
         }
     }//GEN-LAST:event_jButtonSaveEditActionPerformed
