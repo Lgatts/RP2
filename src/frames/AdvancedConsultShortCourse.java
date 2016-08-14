@@ -98,7 +98,7 @@ public class AdvancedConsultShortCourse extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "É necessário o preenchimento de todos os campos(*) para realizar a consulta avançada");
         }else{
             PanelShortCourse oPanel = new PanelShortCourse();
-            oPanel.displayList = ShortCourseCrud.advancedConsult(jTextAdvancedConsultAuthor.getText(), jTextAdvancedConsultTitle.getText());
+            oPanel.displayList = ShortCourseCrud.advancedConsult(jTextAdvancedConsultTitle.getText(),jTextAdvancedConsultAuthor.getText());
             oPanel.displayList();
             this.dispose();
         }

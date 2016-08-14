@@ -162,6 +162,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextMoreDetailsTitle">
+          <Properties>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxMoreDetailsSituation">
           <Properties>
@@ -195,6 +200,11 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Component class="javax.swing.JTextPane" name="jTextPaneMoreDetailsAbstractText">
+              <Properties>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -206,6 +216,11 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Component class="javax.swing.JTextPane" name="jTextPaneMoreDetailsResumoText">
+              <Properties>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -224,6 +239,9 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="##:##:##" subtype="-1" type="5"/>
             </Property>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelMoreDetailsResources">
@@ -232,6 +250,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextMoreDetailsResources">
+          <Properties>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelMoreDetailsMethodology">
           <Properties>
@@ -246,6 +269,11 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Component class="javax.swing.JTextPane" name="jTextPaneMoreDetailsMethodology">
+              <Properties>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -255,6 +283,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextMoreDetailsAuthor">
+          <Properties>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxMoreDetailsNumberAuthors">
           <Properties>
@@ -271,8 +304,18 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextMoreDetailsAuthor1">
+          <Properties>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextMoreDetailsAuthor2">
+          <Properties>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonMoreDetailsBack">
           <Properties>

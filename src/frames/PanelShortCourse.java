@@ -653,6 +653,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
         // TODO add your handling code here:
         jTabShortCourse.setSelectedIndex(0);
         jTabShortCourse.setEnabledAt(0, true);
+        jTabShortCourse.setEnabledAt(1, false);
 
     }//GEN-LAST:event_jButtonBackInsertInitActionPerformed
 

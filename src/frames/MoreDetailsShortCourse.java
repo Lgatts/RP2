@@ -103,14 +103,18 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
 
         jLabelMoreDetailsTitle.setText("Título: ");
 
+        jTextMoreDetailsTitle.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
         jComboBoxMoreDetailsSituation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sob avaliação", "Aprovado", "Reprovado" }));
 
         jLabelMoreDetailsSituation.setText("Situação:");
 
         jLabelMoreDetailsResumoText.setText("Resumo:");
 
+        jTextPaneMoreDetailsAbstractText.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jScrollPaneMoreDetailsResumoText.setViewportView(jTextPaneMoreDetailsAbstractText);
 
+        jTextPaneMoreDetailsResumoText.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jScrollPaneMoreDetailsAbstractText.setViewportView(jTextPaneMoreDetailsResumoText);
 
         jLabelMoreDetailsAbstractText.setText("Abstract:");
@@ -122,16 +126,26 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextMoreDetailsDuration.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         jLabelMoreDetailsResources.setText("Recursos:");
 
+        jTextMoreDetailsResources.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
         jLabelMoreDetailsMethodology.setText("Metodologia:");
 
+        jTextPaneMoreDetailsMethodology.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jScrollPaneMoreDetailsMethodology.setViewportView(jTextPaneMoreDetailsMethodology);
 
         jLabelMoreDetailsAuthor.setText("Autor:");
 
+        jTextMoreDetailsAuthor.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
         jComboBoxMoreDetailsNumberAuthors.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+
+        jTextMoreDetailsAuthor1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextMoreDetailsAuthor2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         jButtonMoreDetailsBack.setText("Voltar");
         jButtonMoreDetailsBack.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +162,7 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
                 .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
                                 .addGroup(jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
@@ -188,14 +202,13 @@ public class MoreDetailsShortCourse extends javax.swing.JFrame {
                                     .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
                                         .addComponent(jTextMoreDetailsAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBoxMoreDetailsNumberAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(jComboBoxMoreDetailsNumberAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jTextMoreDetailsAuthor2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextMoreDetailsAuthor1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanelMoreDetailsLayout.createSequentialGroup()
                         .addGap(232, 232, 232)
                         .addComponent(jButtonMoreDetailsBack, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelMoreDetailsLayout.setVerticalGroup(
             jPanelMoreDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

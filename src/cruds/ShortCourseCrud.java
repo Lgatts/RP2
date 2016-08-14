@@ -23,7 +23,7 @@ public class ShortCourseCrud {
      * @param nameAuthor
      * @param title 
      */
-    public static List advancedConsult(String nameAuthor, String title){
+    public static List advancedConsult(String title, String nameAuthor){
         
         List<String> displayList = new ArrayList<>();
         
