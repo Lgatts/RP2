@@ -12,24 +12,59 @@ import java.io.File;
  *
  * @author Lucas
  */
-public class Main {       
-    
-    public static void main(String[] args) { 
-        
-        createDirectory();        
+public class Main {
+
+    public static void main(String[] args) {
+
+        createDirectories();
         new Inicial().setVisible(true);
-        
+
     }
-    
-    private static void createDirectory(){
-        if(new File(System.getenv("APPDATA") + "\\.RP2").exists()){
-            
-        }
-        else{
+
+    private static void createDirectories() {
+        //Criação diretório principal
+        if (new File(System.getenv("APPDATA") + "\\.RP2").exists()) {
+
+        } else {
             new File(System.getenv("APPDATA") + "\\.RP2").mkdir();
         }
+
+        //Criação diretório Monografias
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\Monografias").exists()) {
+
+        } else {
+            new File(System.getenv("APPDATA") + "\\.RP2\\Monografias").mkdir();
+        }
+
+        //Criação diretorio Artigos
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\Artigos").exists()) {
+
+        } else {
+            new File(System.getenv("APPDATA") + "\\.RP2\\Artigos").mkdir();
+        }
+
+        //Criação diretório Palestras
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\Palestras").exists()) {
+
+        } else {
+            new File(System.getenv("APPDATA") + "\\.RP2\\Palestras").mkdir();
+        }
+
+        //Criação diretorio MiniCursos
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\MiniCursos").exists()) {
+
+        } else {
+            new File(System.getenv("APPDATA") + "\\.RP2\\MiniCursos").mkdir();
+        }
+        
+        //Criação diretorio Resumos
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\Resumos").exists()) {
+
+        } else {
+            new File(System.getenv("APPDATA") + "\\.RP2\\Resumos").mkdir();
+        }
+
+
     }
-    
-    
-    
+
 }

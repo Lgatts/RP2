@@ -6,6 +6,9 @@
 package frames;
 
 import cruds.ShortCourseCrud;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,12 +16,15 @@ import javax.swing.JOptionPane;
  * @author YuryAlencar
  */
 public class AdvancedConsultShortCourse extends javax.swing.JFrame {
-
+    
+    private JList jListNamesShortCourses;
+    private List<String> displayList;
     /**
      * Creates new form AdvancedConsultShortCourse
      */
-    public AdvancedConsultShortCourse() {
+    public AdvancedConsultShortCourse(JList jListNamesShortCourses) {
         initComponents();
+        this.jListNamesShortCourses = jListNamesShortCourses;
         
         this.setTitle("RP II - Consulta Avançada");
         this.setLocationRelativeTo(null);
@@ -97,13 +103,24 @@ public class AdvancedConsultShortCourse extends javax.swing.JFrame {
         if(jTextAdvancedConsultAuthor.getText().trim().equals("") || jTextAdvancedConsultTitle.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null, "É necessário o preenchimento de todos os campos(*) para realizar a consulta avançada");
         }else{
-            PanelShortCourse oPanel = new PanelShortCourse();
-            oPanel.displayList = ShortCourseCrud.advancedConsult(jTextAdvancedConsultTitle.getText(),jTextAdvancedConsultAuthor.getText());
-            oPanel.displayList();
+            
+            displayList = ShortCourseCrud.advancedConsult(jTextAdvancedConsultTitle.getText(),jTextAdvancedConsultAuthor.getText());
+            displayList();
             this.dispose();
         }
     }//GEN-LAST:event_jButtonAdvancedConsultConsultActionPerformed
 
+    
+    public void displayList() {
+        DefaultListModel mList = new DefaultListModel();
+        
+        for(String element : displayList){
+            mList.addElement(element);
+        }
+        jListNamesShortCourses.setModel(mList);
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -134,7 +151,7 @@ public class AdvancedConsultShortCourse extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdvancedConsultShortCourse().setVisible(true);
+                new AdvancedConsultShortCourse(null).setVisible(true);
             }
         });
     }

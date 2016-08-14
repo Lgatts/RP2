@@ -20,8 +20,9 @@ import javax.swing.JOptionPane;
 public class PanelShortCourse extends javax.swing.JFrame {
 
     private String nameToEdit;
-    public List<String> displayList;
+    private List<String> displayList;    
     private List<ShortCourse> courses = ShortCourseCrud.getShortCourseList();
+    
     /**
      * Creates new form panelShortCourse
      */
@@ -802,7 +803,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
 
     private void jButtonAdvancedConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdvancedConsultActionPerformed
         // TODO add your handling code here:
-        AdvancedConsultShortCourse aConsult = new AdvancedConsultShortCourse();
+        AdvancedConsultShortCourse aConsult = new AdvancedConsultShortCourse(jListNamesShortCourses);
         aConsult.setVisible(true);
     }//GEN-LAST:event_jButtonAdvancedConsultActionPerformed
 
@@ -813,6 +814,9 @@ public class PanelShortCourse extends javax.swing.JFrame {
         jTabShortCourse.setEnabledAt(0, false);
     }//GEN-LAST:event_jButtonInsertCourseActionPerformed
 
+    
+    
+    
     /**
      * @param args the command line arguments
      */
