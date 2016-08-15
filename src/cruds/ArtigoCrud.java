@@ -25,15 +25,28 @@ public class ArtigoCrud {
 
     public static List<String> consultar(String titulo) {
 
-        List<String> buscar = new ArrayList();
+        List<String> busca = new ArrayList();
 
         for (Artigo artigo : artigoList) {
             //trim() apaga os espaços na frente e atras
             //equalsIgnoreCase ignora maiusculas e minusculas
             if (artigo.getTitulo().trim().equalsIgnoreCase(titulo.trim())) {
-                
-                buscar.add();
+
+                busca.add(artigo.getTitulo());
             }
         }
+        return busca;
     }
+
+    public static List buscar(String pesquisa) {
+        List<String> busca = new ArrayList<>();
+
+        for (Artigo artigo : artigoList) {
+            if (artigo.getAutor()[0].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getAutor()[1].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getAutor()[2].trim().equalsIgnoreCase(pesquisa.trim())) {
+                busca.add(artigo.getTitulo());
+            }
+        }
+        return busca;
+    }
+
 }
