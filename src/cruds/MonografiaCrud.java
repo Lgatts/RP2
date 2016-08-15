@@ -8,6 +8,8 @@ package cruds;
 import categorias.Monografia;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import persistenciaDados.CrudMonografiaObjects;
 
 /**
  *
@@ -15,7 +17,7 @@ import java.util.List;
  */
 public class MonografiaCrud {
 
-    private static List<Monografia> monografiaList = new ArrayList();   
+    private static List<Monografia> monografiaList = new ArrayList();
 
     public static void setMonografiaList(List<Monografia> monografiaList) {
         MonografiaCrud.monografiaList = monografiaList;
@@ -25,9 +27,31 @@ public class MonografiaCrud {
         return monografiaList;
     }
 
-    public static void adicionar(Monografia monografia) {
+    /**
+     * Função adicionar: Recebe os dados e cria o objeto que é inserido em uma
+     * lista.
+     *
+     * @param titulo tipo
+     * @param autor
+     * @param orientador
+     * @param tipo
+     * @param situacao
+     * @param ano
+     * @param nPaginas
+     * @param instituicao
+     * @param curso
+     * @param palavraChave
+     * @param resumo
+     * @param abstractText
+     */
+    public static void adicionar(String titulo, String autor, String orientador, String tipo, String situacao, int ano, int nPaginas, String instituicao, String curso, String[] palavraChave, String resumo, String abstractText) {
+
+        String monografiaID = UUID.randomUUID().toString();
+
+        Monografia monografia = new Monografia(monografiaID, titulo, situacao, tipo, autor, instituicao, orientador, curso, ano, nPaginas, palavraChave, resumo, abstractText);
 
         monografiaList.add(monografia);
+        CrudMonografiaObjects.saveObject(monografia, "Monografias");
 
     }
 
@@ -35,10 +59,11 @@ public class MonografiaCrud {
         for (Monografia monografia : monografiaList) {
             if (monografia.getTitulo().equals(titulo)) {
                 monografiaList.remove(monografia);
+                CrudMonografiaObjects.deleteObject(monografia, "Monografias");
                 break;
             }
         }
-    }   
+    }
 
     public static List<String> consultar(String tipoConsulta, String textoConsulta) {
 
@@ -81,7 +106,7 @@ public class MonografiaCrud {
         }
 
         return listaConsulta;
-        
+
     }
 
 }

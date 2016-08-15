@@ -42,23 +42,27 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabelMoreDetailsTitle" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextMoreDetailsTitle" min="-2" pref="220" max="-2" attributes="0"/>
+                                          <Component id="jTextMoreDetailsTitle" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabelMoreDetailsSituation" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabelMoreDetailsResumoText" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabelMoreDetailsSituation" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jComboBoxMoreDetailsSituation" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabelMoreDetailsResumoText" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jScrollPaneMoreDetailsAbstractText" min="-2" pref="205" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jScrollPaneMoreDetailsAbstractText" min="-2" pref="205" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jTextMoreDetailsSituation" max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -91,10 +95,10 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jTextMoreDetailsAuthor" min="-2" pref="172" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jComboBoxMoreDetailsNumberAuthors" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextMoreDetailsNumberAuthors" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jTextMoreDetailsAuthor2" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
-                                      <Component id="jTextMoreDetailsAuthor1" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                      <Component id="jTextMoreDetailsAuthor1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextMoreDetailsAuthor2" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -104,7 +108,7 @@
                           <Component id="jButtonMoreDetailsBack" min="-2" pref="123" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="23" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -121,9 +125,9 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelMoreDetailsSituation" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBoxMoreDetailsSituation" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelMoreDetailsResources" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextMoreDetailsResources" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextMoreDetailsSituation" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -139,7 +143,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabelMoreDetailsAuthor" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextMoreDetailsAuthor" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBoxMoreDetailsNumberAuthors" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextMoreDetailsNumberAuthors" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jTextMoreDetailsAuthor1" min="-2" max="-2" attributes="0"/>
@@ -162,20 +166,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextMoreDetailsTitle">
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBoxMoreDetailsSituation">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Sob avalia&#xe7;&#xe3;o"/>
-                <StringItem index="1" value="Aprovado"/>
-                <StringItem index="2" value="Reprovado"/>
-              </StringArray>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelMoreDetailsSituation">
           <Properties>
@@ -195,6 +190,11 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Component class="javax.swing.JTextPane" name="jTextPaneMoreDetailsAbstractText">
+              <Properties>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -206,6 +206,11 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Component class="javax.swing.JTextPane" name="jTextPaneMoreDetailsResumoText">
+              <Properties>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -224,6 +229,9 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="##:##:##" subtype="-1" type="5"/>
             </Property>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelMoreDetailsResources">
@@ -232,6 +240,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextMoreDetailsResources">
+          <Properties>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelMoreDetailsMethodology">
           <Properties>
@@ -246,6 +259,11 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Component class="javax.swing.JTextPane" name="jTextPaneMoreDetailsMethodology">
+              <Properties>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -255,24 +273,25 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextMoreDetailsAuthor">
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBoxMoreDetailsNumberAuthors">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="1"/>
-                <StringItem index="1" value="2"/>
-                <StringItem index="2" value="3"/>
-              </StringArray>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextMoreDetailsAuthor1">
+          <Properties>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextMoreDetailsAuthor2">
+          <Properties>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonMoreDetailsBack">
           <Properties>
@@ -281,6 +300,20 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMoreDetailsBackActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextMoreDetailsSituation">
+          <Properties>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextMoreDetailsNumberAuthors">
+          <Properties>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
