@@ -11,11 +11,23 @@ public class Palestras {
     private String abstracText;
     private String duracao;
     private String curriculo;
+    
+    /**
+     * 
+     * @param titulo
+     * @param situacao
+     * @param autor
+     * @param resumo
+     * @param abstracText
+     * @param duracao
+     * @param curriculo 
+     */
 
    /*Construtor*/
     
-   public Palestras(String titulo, String situacao, String autor, String resumo, String abstracText, String duracao, String curriculo) {
-        this.titulo = titulo;
+ 
+    public Palestras(String titulo, String situacao, String autor, String resumo, String abstracText, String duracao, String curriculo) {
+         this.titulo = titulo;
         this.situacao = situacao;
         this.autor = autor;
         this.resumo = resumo;
