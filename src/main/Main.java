@@ -5,38 +5,66 @@
  */
 package main;
 
-import categorias.Monografia;
-import categorias.ShortCourse;
 import frames.Inicial;
-import java.util.List;
-
+import java.io.File;
 
 /**
  *
  * @author Lucas
  */
 public class Main {
-    private static List<Monografia> monografiaList;
-    private static List<ShortCourse> shortCourseList;
 
-    public static List<Monografia> getMonografiaList() {
-        return monografiaList;
-    }
-
-    public static void setMonografiaList(List<Monografia> monografiaList) {
-        Main.monografiaList = monografiaList;
-    }
-
-    public static List<ShortCourse> getShortCourseList() {
-        return shortCourseList;
-    }
-
-    public static void setShortCourseList(List<ShortCourse> shortCourseList) {
-        Main.shortCourseList = shortCourseList;
-    }
-    
     public static void main(String[] args) {
+
+        createDirectories();
         new Inicial().setVisible(true);
+
     }
-    
+
+    private static void createDirectories() {
+        //Criação diretório principal
+        if (new File(System.getenv("APPDATA") + "\\.RP2").exists()) {
+
+        } else {
+            new File(System.getenv("APPDATA") + "\\.RP2").mkdir();
+        }
+
+        //Criação diretório Monografias
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\Monografias").exists()) {
+
+        } else {
+            new File(System.getenv("APPDATA") + "\\.RP2\\Monografias").mkdir();
+        }
+
+        //Criação diretorio Artigos
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\Artigos").exists()) {
+
+        } else {
+            new File(System.getenv("APPDATA") + "\\.RP2\\Artigos").mkdir();
+        }
+
+        //Criação diretório Palestras
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\Palestras").exists()) {
+
+        } else {
+            new File(System.getenv("APPDATA") + "\\.RP2\\Palestras").mkdir();
+        }
+
+        //Criação diretorio MiniCursos
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\MiniCursos").exists()) {
+
+        } else {
+            new File(System.getenv("APPDATA") + "\\.RP2\\MiniCursos").mkdir();
+        }
+        
+        //Criação diretorio Resumos
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\Resumos").exists()) {
+
+        } else {
+            new File(System.getenv("APPDATA") + "\\.RP2\\Resumos").mkdir();
+        }
+
+
+    }
+
 }

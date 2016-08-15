@@ -21,7 +21,7 @@ public class ShortCourse {
     private String[] author = new String [3];
     
     /**
-     *
+     * 
      * @param title
      * @param situation
      * @param resumoText
@@ -31,7 +31,7 @@ public class ShortCourse {
      * @param methodology
      * @param nameAuthor
      * @param nameAuthor1
-     * @param nameAuthor2
+     * @param nameAuthor2 
      */
 public ShortCourse(String title, String situation, String resumoText, String abstractText, String duration, String resources, String methodology, String nameAuthor, String nameAuthor1, String nameAuthor2){
         this.title = title;
@@ -106,7 +106,7 @@ public ShortCourse(String title, String situation, String resumoText, String abs
      *
      * @return 
      */
-    private String[] getAuthor(){
+    public String[] getAuthor(){
         return this.author;
                 
     }
@@ -173,7 +173,7 @@ public ShortCourse(String title, String situation, String resumoText, String abs
      * @param nameAuthor1
      * @param nameAuthor2
      */
-    private void setAuthor(String nameAuthor, String nameAuthor1, String nameAuthor2){
+    public void setAuthor(String nameAuthor, String nameAuthor1, String nameAuthor2){
         this.author[0] = nameAuthor;
         this.author[1] = nameAuthor1;
         this.author[2] = nameAuthor2;
