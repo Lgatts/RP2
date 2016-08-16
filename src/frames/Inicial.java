@@ -58,11 +58,6 @@ public class Inicial extends javax.swing.JFrame {
         jLabelMenu.setText("Menu");
 
         jButton2.setText("Palestras");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         jButton3.setText("Resumos");
 
@@ -119,12 +114,6 @@ public class Inicial extends javax.swing.JFrame {
         PanelShortCourse openWindow = new PanelShortCourse();
         openWindow.setVisible(true);
     }//GEN-LAST:event_jButtonShortCourseActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-this.dispose();
-FramePalestras open = new FramePalestras();
-open.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
