@@ -8,27 +8,27 @@ import javax.swing.DefaultListModel;
 
 /**
  *
- * @author Lucascorrea
+ * @author LucasCorrea
  */
 public class PalestrasCrud {
 
-    private static List<Palestras> PalestrasLista = new ArrayList<>();
+    private static List<Palestras> palestrasLista = new ArrayList<>();
 
-    public static void inserirpalestra(String titulo, String situacao, String autor, String resumo, String abstracText, String duracao, String curriculo) {
+    public static void inserirPalestra(String titulo, String situacao, String autor, String resumo, String abstracText, String duracao, String curriculo) {
         Palestras palestra = new Palestras(titulo, situacao, autor, resumo, abstracText, duracao, curriculo);
-        PalestrasLista.add(palestra);
+        palestrasLista.add(palestra);
 
     }
 
-    public static List<String> listarpalestra(String titulo) {
+    public static List<String> listarPalestra(String titulo) {
         List<String> consultaLista = new ArrayList();
 
         if (titulo.trim().equals("")) {
-            for (Palestras palestra : PalestrasLista) {
+            for (Palestras palestra : palestrasLista) {
                 consultaLista.add(palestra.getTitulo());
             }
         } else {
-            for (Palestras palestra : PalestrasLista) {
+            for (Palestras palestra : palestrasLista) {
                 if(palestra.getTitulo().trim().equalsIgnoreCase(titulo)){
                 palestra.getTitulo().trim().equalsIgnoreCase(titulo);
                 consultaLista.add(palestra.getTitulo());
@@ -37,6 +37,12 @@ public class PalestrasCrud {
 
         }
         return consultaLista;
+    }
+    
+    public static List<Palestras> getLista(){
+    
+        return palestrasLista;
+    
     }
 
 }
