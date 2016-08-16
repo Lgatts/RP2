@@ -8,7 +8,6 @@ package cruds;
 import categorias.Monografia;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import persistenciaDados.CrudMonografiaObjects;
 
 /**
@@ -27,34 +26,24 @@ public class MonografiaCrud {
         return monografiaList;
     }
 
-    /**
-     * Função adicionar: Recebe os dados e cria o objeto que é inserido em uma
-     * lista.
-     *
-     * @param titulo tipo
-     * @param autor
-     * @param orientador
-     * @param tipo
-     * @param situacao
-     * @param ano
-     * @param nPaginas
-     * @param instituicao
-     * @param curso
-     * @param palavraChave
-     * @param resumo
-     * @param abstractText
-     */
-    public static void adicionar(String titulo, String autor, String orientador, String tipo, String situacao, int ano, int nPaginas, String instituicao, String curso, String[] palavraChave, String resumo, String abstractText) {
-
-        String monografiaID = UUID.randomUUID().toString();
-
-        Monografia monografia = new Monografia(monografiaID, titulo, situacao, tipo, autor, instituicao, orientador, curso, ano, nPaginas, palavraChave, resumo, abstractText);
-
+  /**
+   * Recebe o objeto monografia 
+   * @param monografia 
+   */
+    public static void adicionar(Monografia monografia) {
+        
         monografiaList.add(monografia);
         CrudMonografiaObjects.saveObject(monografia, "Monografias");
 
     }
 
+    /**
+     * Percorre a lista e se encontar alguma monografia com o Titulo
+     * correspondente a mesma é excluida da lista, esse metodo ainda exclui o
+     * objeto do hd.
+     *
+     * @param titulo
+     */
     public static void excluir(String titulo) {
         for (Monografia monografia : monografiaList) {
             if (monografia.getTitulo().equals(titulo)) {
@@ -65,6 +54,15 @@ public class MonografiaCrud {
         }
     }
 
+    /**
+     *
+     * @param tipoConsulta Especifca com qual campo será feita a consulta, pode
+     * ser Titulo, Autor, Curso, Orientador, "vazio" retorna todas as
+     * monografias existentes
+     * @param textoConsulta Texto informado pelo usuário com o qual será
+     * realizado a consulta
+     * @return Lista de Strings com os titulos das monografias correspondentes
+     */
     public static List<String> consultar(String tipoConsulta, String textoConsulta) {
 
         List<String> listaConsulta = new ArrayList();
@@ -107,6 +105,19 @@ public class MonografiaCrud {
 
         return listaConsulta;
 
+    }
+    
+    /**
+     * Função para retornar o objeto do tipo Monografia através do título
+     * @param titulo String Titulo da monografia desejada
+     * @return Objecto Monografia
+     */
+    public static Monografia getMonografia(String titulo){
+        for(Monografia monografia: monografiaList){
+            if (monografia.getTitulo().equalsIgnoreCase(titulo))
+                return monografia;
+        }
+        return null;
     }
 
 }

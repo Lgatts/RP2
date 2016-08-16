@@ -2,14 +2,16 @@ package categorias;
 
 public class Artigo {
 
+    /* Inserção dos atributos do artigo, em privativo */
     private String titulo;
     private String situacao;
-    private String autor;
-    private String instituicao;
-    private String palavrachave;
+    private String autor[];
+    private String instituicao[];
+    private String palavrachave[];
     private String resumo;
     private String abstrat;
 
+    /* Inserção dos métodos getter e settter */
     public String getTitulo() {
         return titulo;
     }
@@ -26,27 +28,27 @@ public class Artigo {
         this.situacao = situacao;
     }
 
-    public String getAutor() {
+    public String[] getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
+    public void setAutor(String[] autor) {
         this.autor = autor;
     }
 
-    public String getInstituicao() {
+    public String[] getInstituicao() {
         return instituicao;
     }
 
-    public void setInstituicao(String instituicao) {
+    public void setInstituicao(String[] instituicao) {
         this.instituicao = instituicao;
     }
 
-    public String getPalavrachave() {
+    public String[] getPalavrachave() {
         return palavrachave;
     }
 
-    public void setPalavrachave(String palavrachave) {
+    public void setPalavrachave(String[] palavrachave) {
         this.palavrachave = palavrachave;
     }
 
