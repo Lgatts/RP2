@@ -11,6 +11,7 @@ public class Palestras {
     private String abstracText;
     private String duracao;
     private String curriculo;
+    private String numero;
     
     /**
      * 
@@ -34,6 +35,7 @@ public class Palestras {
         this.abstracText = abstracText;
         this.duracao = duracao;
         this.curriculo = curriculo;
+        
     }
    
    /*Getter and Setter*/

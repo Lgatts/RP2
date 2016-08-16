@@ -8,7 +8,7 @@ import javax.swing.DefaultListModel;
 
 /**
  *
- * @author LucasCorrea
+ * @author Lucascorrea
  */
 public class PalestrasCrud {
 
