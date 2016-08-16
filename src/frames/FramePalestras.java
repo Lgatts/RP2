@@ -17,23 +17,23 @@ import javax.swing.JList;
  * @author LucasCorrea
  */
 public class FramePalestras extends javax.swing.JFrame {
-    
+
     private List<String> palestrasLista;
-    
+
     private DefaultListModel modelList = new DefaultListModel();
-    
+
     /**
-    * @param jList
-    */
-    
-    public void lista(){
-        for(String palestra : palestrasLista){
-        
-        modelList.addElement(palestra);
+     * @param jList
+     */
+    public void lista() {
+        modelList.clear();
+        for (String palestra : palestrasLista) {
+
+            modelList.addElement(palestra);
         }
         jList.setModel(modelList);
-        } 
-    
+    }
+
     public FramePalestras() {
         initComponents();
     }
@@ -176,7 +176,7 @@ public class FramePalestras extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jComboBoxAdicionar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Sob Avaliação", "Aprovado", "Reprovado" }));
+        jComboBoxAdicionar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sob Avaliação", "Aprovado", "Reprovado" }));
 
         jLabelSituacao.setText("Situação:");
 
@@ -418,7 +418,7 @@ public class FramePalestras extends javax.swing.JFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         String titulo, situacao, autor, resumo, abstracText, duracao, curriculo;
-        
+
         titulo = jTextAdicionarTitulo.getText();
         situacao = jComboBoxAdicionar.getSelectedItem().toString();
         autor = jTextAdicionarAutor.getText();
@@ -427,20 +427,24 @@ public class FramePalestras extends javax.swing.JFrame {
         duracao = jTextAdicionarDuracao.getText();
         curriculo = jTextAdicionarCurriculo.getText();
         
+        jTextAdicionarTitulo.setText("");
+        jComboBoxAdicionar.setSelectedIndex(0);
+        jTextAdicionarAutor.setText("");
+        jTextAdicionarResumo.setText("");
+        jTextAdicionarAbstract.setText("");
+        jTextAdicionarDuracao.setText("");
+        jTextAdicionarCurriculo.setText("");
+
         PalestrasCrud.inserirpalestra(titulo, situacao, autor, resumo, abstracText, duracao, curriculo);
-        
-        
-//        Palestras palestra = new Palestras(titulo, titulo, autor, titulo, autor, autor, titulo)
-        
-       
+
+
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
-        
-    
-       palestrasLista = PalestrasCrud.listarpalestra(jTextConsultar.getText());
-       list();
-       
+
+        palestrasLista = PalestrasCrud.listarpalestra(jTextConsultar.getText());
+        lista();
+
     }//GEN-LAST:event_jButtonListarActionPerformed
 
     /**
