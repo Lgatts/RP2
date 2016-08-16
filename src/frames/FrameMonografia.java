@@ -35,7 +35,6 @@ public class FrameMonografia extends javax.swing.JFrame {
         displayList = MonografiaCrud.consultar("", "");
 
         listar();
-
     }
 
     /**
@@ -255,6 +254,11 @@ public class FrameMonografia extends javax.swing.JFrame {
         });
 
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -784,6 +788,10 @@ public class FrameMonografia extends javax.swing.JFrame {
     private void jButtonEditarMonografiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarMonografiaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonEditarMonografiaActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
