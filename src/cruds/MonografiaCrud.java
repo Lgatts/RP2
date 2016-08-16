@@ -70,28 +70,28 @@ public class MonografiaCrud {
         switch (tipoConsulta) {
             case "Título":
                 for (Monografia monografia : monografiaList) {
-                    if (monografia.getTitulo().equals(textoConsulta)) {
+                    if (monografia.getTitulo().toUpperCase().contains(textoConsulta.toUpperCase())) {
                         listaConsulta.add(monografia.getTitulo());
                     }
                 }
                 break;
             case "Autor":
                 for (Monografia monografia : monografiaList) {
-                    if (monografia.getAutor().equals(textoConsulta)) {
+                    if (monografia.getAutor().toUpperCase().contains(textoConsulta.toUpperCase())) {
                         listaConsulta.add(monografia.getTitulo());
                     }
                 }
                 break;
             case "Orientador":
                 for (Monografia monografia : monografiaList) {
-                    if (monografia.getOrientador().equals(textoConsulta)) {
+                    if (monografia.getOrientador().toUpperCase().contains(textoConsulta.toUpperCase())) {
                         listaConsulta.add(monografia.getTitulo());
                     }
                 }
                 break;
             case "Curso":
                 for (Monografia monografia : monografiaList) {
-                    if (monografia.getCurso().equals(textoConsulta)) {
+                    if (monografia.getCurso().toUpperCase().contains(textoConsulta.toUpperCase())) {
                         listaConsulta.add(monografia.getTitulo());
                     }
                 }
@@ -118,6 +118,19 @@ public class MonografiaCrud {
                 return monografia;
         }
         return null;
+    }
+    
+    public static void editar(Monografia monografiaEditada){
+        for(Monografia monografia: monografiaList){
+            if (monografia.getMonografiaId().equals(monografiaEditada.getMonografiaId())){
+                
+                monografiaList.remove(monografia);
+                monografiaList.add(monografiaEditada);
+                CrudMonografiaObjects.saveObject(monografiaEditada, "Monografias");
+                break;
+                
+            }
+        }
     }
 
 }

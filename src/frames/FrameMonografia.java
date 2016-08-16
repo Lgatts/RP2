@@ -21,7 +21,7 @@ import persistenciaDados.CrudMonografiaObjects;
 public class FrameMonografia extends javax.swing.JFrame {
 
     private List<String> displayList;
-    private Monografia monografiaDetalhes;
+    private Monografia monografiaSelecionada;
 
     /**
      * Creates new form FrameMonografia1
@@ -101,8 +101,8 @@ public class FrameMonografia extends javax.swing.JFrame {
         jTextPaneResumo = new javax.swing.JTextPane();
         jLabelAbstractText = new javax.swing.JLabel();
         jPanelEditar = new javax.swing.JPanel();
-        jSalvarButton1 = new javax.swing.JButton();
-        jCancelarButton1 = new javax.swing.JButton();
+        jSalvarButtonEditar = new javax.swing.JButton();
+        jCancelarButtonEditar = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         jPanelEditar1 = new javax.swing.JPanel();
         jLabelTituloEditar = new javax.swing.JLabel();
@@ -233,7 +233,7 @@ public class FrameMonografia extends javax.swing.JFrame {
                     .addGroup(jPanelListarLayout.createSequentialGroup()
                         .addGroup(jPanelListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonEditarMonografia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonAdicionarMonografia, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                            .addComponent(jButtonAdicionarMonografia, javax.swing.GroupLayout.PREFERRED_SIZE, 82, Short.MAX_VALUE)
                             .addComponent(jButtonExcluirMonografia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jlButtonVoltarMenuInicia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
@@ -310,12 +310,6 @@ public class FrameMonografia extends javax.swing.JFrame {
         jLabelCurso.setText("Curso");
 
         jLabelInstituicao.setText("Instituição");
-
-        jTextFieldCurso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCursoActionPerformed(evt);
-            }
-        });
 
         jLabelPalavrasChaves.setText("Palavras Chave");
 
@@ -493,14 +487,19 @@ public class FrameMonografia extends javax.swing.JFrame {
 
         jTabbedPaneMonografia.addTab("Adicionar", jPanelAdicionar);
 
-        jSalvarButton1.setText("Salvar");
-        jSalvarButton1.addActionListener(new java.awt.event.ActionListener() {
+        jSalvarButtonEditar.setText("Salvar");
+        jSalvarButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jSalvarButton1ActionPerformed(evt);
+                jSalvarButtonEditarActionPerformed(evt);
             }
         });
 
-        jCancelarButton1.setText("Cancelar");
+        jCancelarButtonEditar.setText("Cancelar");
+        jCancelarButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCancelarButtonEditarActionPerformed(evt);
+            }
+        });
 
         jScrollPane6.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -526,12 +525,6 @@ public class FrameMonografia extends javax.swing.JFrame {
         jLabelCursoEditar.setText("Curso");
 
         jLabelInstituicaoEditar.setText("Instituição");
-
-        jTextFieldCursoEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCursoEditarActionPerformed(evt);
-            }
-        });
 
         jLabelPalavrasChavesEditar.setText("Palavras Chave");
 
@@ -673,9 +666,9 @@ public class FrameMonografia extends javax.swing.JFrame {
             jPanelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEditarLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jCancelarButton1)
+                .addComponent(jCancelarButtonEditar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSalvarButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSalvarButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
             .addGroup(jPanelEditarLayout.createSequentialGroup()
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -687,8 +680,8 @@ public class FrameMonografia extends javax.swing.JFrame {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCancelarButton1)
-                    .addComponent(jSalvarButton1))
+                    .addComponent(jCancelarButtonEditar)
+                    .addComponent(jSalvarButtonEditar))
                 .addGap(23, 23, 23))
         );
 
@@ -720,17 +713,58 @@ public class FrameMonografia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTabbedPaneMonografiaStateChanged
 
-    private void jTextFieldCursoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCursoEditarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCursoEditarActionPerformed
+    private void jSalvarButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalvarButtonEditarActionPerformed
+        String titulo, autor, orientador, tipo, situacao, instituicao, curso, abstractText, resumo;
+        String[] palavrasChave = new String[4];
+        int ano = 0, nPaginas = 0;
 
-    private void jSalvarButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalvarButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jSalvarButton1ActionPerformed
+        titulo = jTextFieldTituloEditar.getText();
+        autor = jTextFieldAutorEditar.getText();
+        orientador = jTextFieldOrientadorEditar.getText();
+        tipo = jComboBoxTipoEditar.getSelectedItem().toString();
+        situacao = jComboBoxSituacaoEditar.getSelectedItem().toString();
 
-    private void jTextFieldCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCursoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCursoActionPerformed
+        if (jTextFieldAnoEditar.getText().isEmpty() == false) {
+            ano = Integer.valueOf(jTextFieldAnoEditar.getText());
+        }
+
+        if (jTextFieldnPaginasEditar.getText().isEmpty() == false) {
+            nPaginas = Integer.valueOf(jTextFieldnPaginasEditar.getText());
+        }
+
+        instituicao = jTextFieldInstituicaoEditar.getText();
+        curso = jTextFieldCursoEditar.getText();
+
+        palavrasChave[0] = jTextFieldPalavraChaveEditar0.getText();
+        palavrasChave[1] = jTextFieldPalavraChaveEditar1.getText();
+        palavrasChave[2] = jTextFieldPalavraChaveEditar2.getText();
+        palavrasChave[3] = jTextFieldPalavraChaveEditar3.getText();
+
+        resumo = jTextPaneResumoEditar.getText();
+        abstractText = jTextPaneAbstractTextEditar.getText();
+
+        String monografiaID = monografiaSelecionada.getMonografiaId();
+
+        Monografia monografia = new Monografia(monografiaID,
+                titulo,
+                situacao,
+                tipo,
+                autor,
+                instituicao,
+                orientador,
+                curso,
+                ano,
+                nPaginas,
+                palavrasChave,
+                resumo,
+                abstractText);
+
+        MonografiaCrud.editar(monografia);
+        
+        jTabbedPaneMonografia.setSelectedIndex(0);
+        jTabbedPaneMonografia.setEnabledAt(0, true);
+        jTabbedPaneMonografia.setEnabledAt(2, false);
+    }//GEN-LAST:event_jSalvarButtonEditarActionPerformed
 
     private void jButtonConsultaAvancadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaAvancadaActionPerformed
 
@@ -827,38 +861,73 @@ public class FrameMonografia extends javax.swing.JFrame {
         jTabbedPaneMonografia.setEnabledAt(0, true);
         jTabbedPaneMonografia.setEnabledAt(1, false);
         jTabbedPaneMonografia.setSelectedIndex(0);
+        
+        limparCampos();
+        
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonEditarMonografiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarMonografiaActionPerformed
-        // TODO add your handling code here:
+
+        monografiaSelecionada = MonografiaCrud.getMonografia(jListMonografia.getSelectedValue());
+
+        jTextFieldTituloEditar.setText(monografiaSelecionada.getTitulo());
+        jTextFieldAutorEditar.setText(monografiaSelecionada.getAutor());
+        jTextFieldCursoEditar.setText(monografiaSelecionada.getCurso());
+        jTextFieldOrientadorEditar.setText(monografiaSelecionada.getOrientador());
+        jTextFieldInstituicaoEditar.setText(monografiaSelecionada.getInstituicao());
+        jTextFieldAnoEditar.setText(String.valueOf(monografiaSelecionada.getAno()));
+        jTextFieldnPaginasEditar.setText(String.valueOf(monografiaSelecionada.getnPaginas()));
+        //jTextFieldTipoE.setText(monografiaSelecionada.getTipo());
+        //jTextFieldSituacao.setText(monografiaSelecionada.getSituacao());
+        jTextPaneResumoEditar.setText(monografiaSelecionada.getResumo());
+        jTextPaneAbstractTextEditar.setText(monografiaSelecionada.getAbstractText());
+
+        jTextFieldPalavraChaveEditar0.setText(monografiaSelecionada.getPalavraChave()[0]);
+        jTextFieldPalavraChaveEditar1.setText(monografiaSelecionada.getPalavraChave()[1]);
+        jTextFieldPalavraChaveEditar2.setText(monografiaSelecionada.getPalavraChave()[2]);
+        jTextFieldPalavraChaveEditar3.setText(monografiaSelecionada.getPalavraChave()[3]);
+
+        jTabbedPaneMonografia.setSelectedIndex(2);
+        jTabbedPaneMonografia.setEnabledAt(2, true);
+        jTabbedPaneMonografia.setEnabledAt(0, false);
+        jTabbedPaneMonografia.setEnabledAt(1, false);
+
     }//GEN-LAST:event_jButtonEditarMonografiaActionPerformed
 
     private void jListMonografiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListMonografiaMouseClicked
         if (SwingUtilities.isRightMouseButton(evt)) {
             if (jListMonografia.getSelectedIndex() != -1) {
 
-                monografiaDetalhes = MonografiaCrud.getMonografia(jListMonografia.getSelectedValue());
-
-                jPopupMenuDetalhes.setLocation(evt.getXOnScreen()-5,evt.getYOnScreen()-5);
+                jPopupMenuDetalhes.setLocation(evt.getXOnScreen() - 5, evt.getYOnScreen() - 5);
                 jPopupMenuDetalhes.setVisible(true);
             }
         }
     }//GEN-LAST:event_jListMonografiaMouseClicked
 
     private void jMenuItemDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDetalhesActionPerformed
-        new FrameMonografiaDetalhes(monografiaDetalhes).setVisible(true);
+        monografiaSelecionada = MonografiaCrud.getMonografia(jListMonografia.getSelectedValue());
+        new FrameMonografiaDetalhes(monografiaSelecionada).setVisible(true);
         jPopupMenuDetalhes.setVisible(false);
     }//GEN-LAST:event_jMenuItemDetalhesActionPerformed
 
     private void jPopupMenuDetalhesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPopupMenuDetalhesMouseExited
-        if (jMenuItemDetalhes.getMousePosition() == null){
+        if (jMenuItemDetalhes.getMousePosition() == null) {
             jPopupMenuDetalhes.setVisible(false);
         }
     }//GEN-LAST:event_jPopupMenuDetalhesMouseExited
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        // TODO add your handling code here:
+        jTabbedPaneMonografia.setSelectedIndex(0);
+        jTabbedPaneMonografia.setEnabledAt(0, true);
+        jTabbedPaneMonografia.setEnabledAt(1, false);
+        limparCampos();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jCancelarButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelarButtonEditarActionPerformed
+        jTabbedPaneMonografia.setSelectedIndex(0);
+        jTabbedPaneMonografia.setEnabledAt(0, true);
+        jTabbedPaneMonografia.setEnabledAt(2, false);
+    }//GEN-LAST:event_jCancelarButtonEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -907,6 +976,25 @@ public class FrameMonografia extends javax.swing.JFrame {
         jListMonografia.setModel(listModel);
 
     }
+    
+    private void limparCampos(){
+        jTextFieldTitulo.setText("");
+        jTextFieldAutor.setText("");
+        jTextFieldCurso.setText("");
+        jTextFieldOrientador.setText("");
+        jTextFieldInstituicao.setText("");
+        jTextFieldAno.setText("");
+        jTextFieldnPaginas.setText("");
+        jComboBoxTipo.setSelectedIndex(0);
+        jComboBoxSituacao.setSelectedIndex(0);        
+        jTextPaneResumo.setText("");
+        jTextPaneAbstractText.setText("");
+
+        jTextFieldPalavraChave0.setText("");
+        jTextFieldPalavraChave1.setText("");
+        jTextFieldPalavraChave2.setText("");
+        jTextFieldPalavraChave3.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionarMonografia;
@@ -916,7 +1004,7 @@ public class FrameMonografia extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEditarMonografia;
     private javax.swing.JButton jButtonExcluirMonografia;
     private javax.swing.JButton jButtonSalvar;
-    private javax.swing.JButton jCancelarButton1;
+    private javax.swing.JButton jCancelarButtonEditar;
     private javax.swing.JComboBox<String> jComboBoxConsulta;
     private javax.swing.JComboBox<String> jComboBoxSituacao;
     private javax.swing.JComboBox<String> jComboBoxSituacaoEditar;
@@ -955,7 +1043,7 @@ public class FrameMonografia extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelEditar1;
     private javax.swing.JPanel jPanelListar;
     private javax.swing.JPopupMenu jPopupMenuDetalhes;
-    private javax.swing.JButton jSalvarButton1;
+    private javax.swing.JButton jSalvarButtonEditar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
