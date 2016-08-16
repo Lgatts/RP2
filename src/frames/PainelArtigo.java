@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package frames;
 
 import cruds.ArtigoCrud;
@@ -22,8 +17,8 @@ public class PainelArtigo extends javax.swing.JFrame {
         jTabbedPaneArtigo.setEnabledAt(2, false);
     }
 
-    public void Lista() {
-        
+    public void listar() {
+
         DefaultListModel modelList = new DefaultListModel();
 
         for (String element : Lista) {
@@ -31,10 +26,6 @@ public class PainelArtigo extends javax.swing.JFrame {
         }
 
         jListNomes.setModel(modelList);
-
-        Lista = ArtigoCrud.buscar("", "");
-
-        listar();
     }
 
     @SuppressWarnings("unchecked")
@@ -164,6 +155,11 @@ public class PainelArtigo extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton4.setText("Editar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton5.setText("Excluir");
@@ -742,8 +738,8 @@ public class PainelArtigo extends javax.swing.JFrame {
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
 
-            Lista = ArtigoCrud.buscar(jComboBoxPesquisar.getSelectedItem().toString(), jTextFieldBuscar.getText());
-            Lista();
+        Lista = ArtigoCrud.buscar(jComboBoxPesquisar.getSelectedItem().toString(), jTextFieldBuscar.getText());
+        listar();
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -770,6 +766,11 @@ public class PainelArtigo extends javax.swing.JFrame {
         listar();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        jTabbedPaneArtigo.setSelectedIndex(2);
+        jTabbedPaneArtigo.setEnabledAt(2, true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -779,17 +780,17 @@ public class PainelArtigo extends javax.swing.JFrame {
         });
     }
 
-    private void listar() {
-
-        DefaultListModel modelList = new DefaultListModel();
-
-        for (String element : Lista) {
-            modelList.addElement(element);
-        }
-
-        jListNomes.setModel(modelList);
-
-    }
+//    private void listar() {
+//
+//        DefaultListModel modelList = new DefaultListModel();
+//
+//        for (String element : Lista) {
+//            modelList.addElement(element);
+//        }
+//
+//        jListNomes.setModel(modelList);
+//
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

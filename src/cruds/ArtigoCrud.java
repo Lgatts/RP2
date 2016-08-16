@@ -23,21 +23,6 @@ public class ArtigoCrud {
         artigoList.add(artigo);
     }
 
-    public static List<String> consultar(String titulo) {
-
-        List<String> busca = new ArrayList();
-
-        for (Artigo artigo : artigoList) {
-            //trim() apaga os espaços na frente e atras
-            //equalsIgnoreCase ignora maiusculas e minusculas
-            if (artigo.getTitulo().trim().equalsIgnoreCase(titulo.trim())) {
-
-                busca.add(artigo.getTitulo());
-            }
-        }
-        return busca;
-    }
-
     public static void excluir(String titulo) {
 
         for (Artigo artigo : artigoList) {
@@ -49,26 +34,27 @@ public class ArtigoCrud {
         }
     }
 
-    public static List buscar(String tipoPesquisa, String pesquisa) {
+    public static List buscar(String tipoBusca, String pesquisa) {
+
         List<String> busca = new ArrayList<>();
 
-        if (tipoPesquisa.equals("Todos")) {
+        if (tipoBusca.equals("Todos")) {
             for (Artigo artigo : artigoList) {
                 busca.add(artigo.getTitulo());
             }
-        } else if (tipoPesquisa.equals("Titulo")) {
+        } else if (tipoBusca.equals("Titulo")) {
             for (Artigo artigo : artigoList) {
                 if (artigo.getTitulo().trim().equalsIgnoreCase(pesquisa.trim())) {
                     busca.add(artigo.getTitulo());
                 }
             }
-        } else if (tipoPesquisa.equals("Autor")) {
+        } else if (tipoBusca.equals("Autor")) {
             for (Artigo artigo : artigoList) {
                 if (artigo.getAutor()[0].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getAutor()[1].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getAutor()[2].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getAutor()[3].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getAutor()[4].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getAutor()[5].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getAutor()[6].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getAutor()[7].trim().equalsIgnoreCase(pesquisa.trim())) {
                     busca.add(artigo.getTitulo());
                 }
             }
-        } else if (tipoPesquisa.equals("Instituição")) {
+        } else if (tipoBusca.equals("Instituição")) {
             for (Artigo artigo : artigoList) {
                 if (artigo.getInstituicao()[0].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getInstituicao()[1].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getInstituicao()[2].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getInstituicao()[3].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getInstituicao()[4].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getInstituicao()[5].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getInstituicao()[6].trim().equalsIgnoreCase(pesquisa.trim()) || artigo.getInstituicao()[7].trim().equalsIgnoreCase(pesquisa.trim())) {
                     busca.add(artigo.getTitulo());
