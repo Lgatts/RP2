@@ -28,8 +28,8 @@ public class ShortCourseCrud {
         List<String> displayList = new ArrayList<>();
         
         for(ShortCourse course: shortCourseList){
-            if(course.getAuthor()[0].trim().equalsIgnoreCase(nameAuthor.trim()) || course.getAuthor()[1].trim().equalsIgnoreCase(nameAuthor.trim()) || course.getAuthor()[2].trim().equalsIgnoreCase(nameAuthor.trim())){
-                if(course.getTitle().trim().equalsIgnoreCase(title.trim())){
+            if(course.getAuthor()[0].toUpperCase().trim().contains(nameAuthor.toUpperCase().trim()) || course.getAuthor()[1].toUpperCase().trim().contains(nameAuthor.toUpperCase().trim()) || course.getAuthor()[2].toUpperCase().trim().contains(nameAuthor.toUpperCase().trim())){
+                if(course.getTitle().toUpperCase().trim().contains(title.toUpperCase().trim())){
                     displayList.add(course.getTitle());
                 }
             }
@@ -50,14 +50,14 @@ public class ShortCourseCrud {
         switch(typeConsult){
             case "Autor":
                 for(ShortCourse course: shortCourseList){
-                    if(course.getAuthor()[0].trim().equalsIgnoreCase(textConsult.trim()) || course.getAuthor()[1].trim().equalsIgnoreCase(textConsult.trim()) || course.getAuthor()[2].trim().equalsIgnoreCase(textConsult.trim())){
+                    if(course.getAuthor()[0].toUpperCase().trim().contains(textConsult.toUpperCase().trim()) || course.getAuthor()[1].toUpperCase().trim().contains(textConsult.toUpperCase().trim()) || course.getAuthor()[2].toUpperCase().trim().contains(textConsult.toUpperCase().trim())){
                         displayList.add(course.getTitle());
                     }
                 }
                 break;
             case "Titulo":
                 for(ShortCourse course: shortCourseList){
-                    if(course.getTitle().trim().equalsIgnoreCase(textConsult.trim())){
+                    if(course.getTitle().toUpperCase().trim().contains(textConsult.toUpperCase().trim())){
                         displayList.add(course.getTitle());
                     }
                 }

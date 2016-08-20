@@ -46,6 +46,9 @@ public class PanelShortCourse extends javax.swing.JFrame {
         jTabShortCourse.setEnabledAt(2, false);
     }
     
+    /**
+     *  Método para exibir a lista mo jList
+     */
     public void displayList() {
         DefaultListModel mList = new DefaultListModel();
         
@@ -77,16 +80,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
     
     /**
      * 
-     * @param title
-     * @param situation
-     * @param resumoText
-     * @param abstractText
-     * @param duration
-     * @param resources
-     * @param methodology
-     * @param author
-     * @param author1
-     * @param author2 
+     * @param jList 
      */
     private void edit(JList jList) {
         jTabShortCourse.setSelectedIndex(2);
@@ -696,6 +690,8 @@ public class PanelShortCourse extends javax.swing.JFrame {
             jTextAuthor1.setText("");
             jTextAuthor2.setText("");
             
+            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+            
             displayList = ShortCourseCrud.consult("", "");
             displayList();
 
@@ -712,6 +708,8 @@ public class PanelShortCourse extends javax.swing.JFrame {
             ShortCourseCrud edit = new ShortCourseCrud();
             edit.editCourse(nameToEdit, jTextTitleEdit.getText(), jComboBoxSituationEdit.getSelectedItem().toString(), jTextPaneResumoTextEdit.getText(), jTextPaneAbstractTextEdit.getText(), jFormattedDurationEdit.getText(), jTextResourcesEdit.getText(), jTextPaneMethodologyEdit.getText(), jTextAuthorEdit.getText(), jTextAuthor1Edit.getText(), jTextAuthor2Edit.getText());
 
+            JOptionPane.showMessageDialog(null, "Editado com sucesso!");
+            
             displayList = ShortCourseCrud.consult("","");
             displayList();
             
@@ -725,6 +723,7 @@ public class PanelShortCourse extends javax.swing.JFrame {
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // TODO add your handling code here:
         delete(jListNamesShortCourses.getSelectedValue().toString());
+        JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jListNamesShortCoursesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListNamesShortCoursesValueChanged
