@@ -31,7 +31,7 @@ public class Monografia implements Serializable {
      * @param monografiaId id criado para controle dos arquivos armazenados no sistema
      * @param titulo Titulo da monografia
      * @param situacao situação de avaliação da monografia podendo ser Em avaliação, 
-     * @param tipo String
+     * @param tipo String 
      * @param autor String
      * @param instituicao 
      * @param orientador
