@@ -121,7 +121,7 @@ public class Inicial extends javax.swing.JFrame {
     private void jButtonShortCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShortCourseActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        PanelShortCourse openWindow = new PanelShortCourse();
+        FrameMinicurso openWindow = new FrameMinicurso();
         openWindow.setVisible(true);
     }//GEN-LAST:event_jButtonShortCourseActionPerformed
 
