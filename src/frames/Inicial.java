@@ -131,9 +131,9 @@ public class Inicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMinicursoActionPerformed
 
     private void jButtonPalestrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPalestrasActionPerformed
-this.dispose();
-FramePalestras open = new FramePalestras();
-open.setVisible(true);
+        this.dispose();
+        FramePalestras open = new FramePalestras();
+        open.setVisible(true);
     }//GEN-LAST:event_jButtonPalestrasActionPerformed
     private void jButtonArtigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArtigosActionPerformed
         new PainelArtigo().setVisible(true);
