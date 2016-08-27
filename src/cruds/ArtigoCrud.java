@@ -27,9 +27,7 @@ public class ArtigoCrud {
 
         for (Artigo artigo : artigoList) {
             if (artigo.getTitulo().equals(titulo)) {
-                artigoList.remove(artigo);
-
-                break;
+                artigoList.remove(artigo);                
             }
         }
     }

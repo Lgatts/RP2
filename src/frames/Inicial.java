@@ -5,8 +5,6 @@
  */
 package frames;
 
-import categorias.Monografia;
-
 /**
  *
  * @author Lucas
@@ -118,11 +116,19 @@ public class Inicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Evento do botão que chama o modulo monografia
+     * @param evt 
+     */
     private void jButtonMonografiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMonografiasActionPerformed
         new FrameMonografia().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonMonografiasActionPerformed
 
+    /**
+     * Evento do Botão que chama o modulo Minicurso
+     * @param evt 
+     */
     private void jButtonMinicursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinicursoActionPerformed
         // TODO add your handling code here:
         this.dispose();
@@ -130,16 +136,24 @@ public class Inicial extends javax.swing.JFrame {
         openWindow.setVisible(true);
     }//GEN-LAST:event_jButtonMinicursoActionPerformed
 
+    /**
+     * Evento do Botão que chama o Modulo Palestras
+     * @param evt 
+     */
     private void jButtonPalestrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPalestrasActionPerformed
-this.dispose();
-FramePalestras open = new FramePalestras();
-open.setVisible(true);
+        this.dispose();
+        FramePalestras open = new FramePalestras();
+        open.setVisible(true);
     }//GEN-LAST:event_jButtonPalestrasActionPerformed
     private void jButtonArtigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArtigosActionPerformed
         new PainelArtigo().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonArtigosActionPerformed
 
+    /**
+     * Evento do botão que chama o modulo Resumo
+     * @param evt 
+     */
     private void jButtonResumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResumosActionPerformed
         // TODO add your handling code here:
         this.dispose();
