@@ -6,13 +6,9 @@
 package frames;
 
 import categorias.Palestras;
-import categorias.ShortCourse;
 import cruds.PalestrasCrud;
-import cruds.ShortCourseCrud;
 import javax.swing.DefaultListModel;
-import frames.FramePalestras;
 import java.util.List;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /*

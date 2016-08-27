@@ -1,10 +1,8 @@
 package cruds;
 
 import categorias.Palestras;
-import categorias.ShortCourse;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.DefaultListModel;
 
 /**
  *
