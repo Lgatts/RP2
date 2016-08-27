@@ -18,6 +18,9 @@ public class FrameMonografiaDetalhes extends javax.swing.JFrame {
      */
     public FrameMonografiaDetalhes(Monografia monografia) {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
+        
         jTextFieldTitulo.setText(monografia.getTitulo());
         jTextFieldAutor.setText(monografia.getAutor());
         jTextFieldCurso.setText(monografia.getCurso());
@@ -83,13 +86,19 @@ public class FrameMonografiaDetalhes extends javax.swing.JFrame {
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        jPanel1.setMaximumSize(new java.awt.Dimension(600, 700));
+        jPanel1.setMinimumSize(new java.awt.Dimension(600, 700));
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 700));
+
         jLabelTitulo.setText("Título");
 
         jTextFieldTitulo.setEditable(false);
         jTextFieldTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldTitulo.setPreferredSize(new java.awt.Dimension(560, 20));
 
         jTextFieldAutor.setEditable(false);
         jTextFieldAutor.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldAutor.setPreferredSize(new java.awt.Dimension(560, 20));
 
         jLabelAutor.setText("Autor");
 
@@ -97,6 +106,7 @@ public class FrameMonografiaDetalhes extends javax.swing.JFrame {
 
         jTextFieldOrientador.setEditable(false);
         jTextFieldOrientador.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldOrientador.setPreferredSize(new java.awt.Dimension(560, 20));
 
         jLabelTipo.setText("Tipo");
 
@@ -108,12 +118,15 @@ public class FrameMonografiaDetalhes extends javax.swing.JFrame {
 
         jTextFieldAno.setEditable(false);
         jTextFieldAno.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldAno.setPreferredSize(new java.awt.Dimension(125, 20));
 
         jTextFieldnPaginas.setEditable(false);
         jTextFieldnPaginas.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldnPaginas.setPreferredSize(new java.awt.Dimension(125, 20));
 
         jTextFieldInstituicao.setEditable(false);
         jTextFieldInstituicao.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldInstituicao.setPreferredSize(new java.awt.Dimension(560, 20));
 
         jLabelCurso.setText("Curso");
 
@@ -121,25 +134,36 @@ public class FrameMonografiaDetalhes extends javax.swing.JFrame {
 
         jTextFieldCurso.setEditable(false);
         jTextFieldCurso.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldCurso.setPreferredSize(new java.awt.Dimension(560, 20));
 
         jLabelPalavrasChaves.setText("Palavras Chave");
 
         jTextFieldPalavraChave0.setEditable(false);
         jTextFieldPalavraChave0.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldPalavraChave0.setPreferredSize(new java.awt.Dimension(125, 20));
 
         jTextFieldPalavraChave1.setEditable(false);
         jTextFieldPalavraChave1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldPalavraChave1.setPreferredSize(new java.awt.Dimension(125, 20));
 
         jTextFieldPalavraChave2.setEditable(false);
         jTextFieldPalavraChave2.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldPalavraChave2.setPreferredSize(new java.awt.Dimension(125, 20));
 
         jTextFieldPalavraChave3.setEditable(false);
         jTextFieldPalavraChave3.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldPalavraChave3.setPreferredSize(new java.awt.Dimension(125, 20));
 
         jLabelResumo.setText("Resumo");
 
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(270, 180));
+
         jTextPaneAbstractText.setEditable(false);
         jScrollPane2.setViewportView(jTextPaneAbstractText);
+
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(270, 180));
 
         jTextPaneResumo.setEditable(false);
         jScrollPane3.setViewportView(jTextPaneResumo);
@@ -148,9 +172,11 @@ public class FrameMonografiaDetalhes extends javax.swing.JFrame {
 
         jTextFieldTipo.setEditable(false);
         jTextFieldTipo.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldTipo.setPreferredSize(new java.awt.Dimension(125, 20));
 
         jTextFieldSituacao.setEditable(false);
         jTextFieldSituacao.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldSituacao.setPreferredSize(new java.awt.Dimension(125, 20));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -160,15 +186,15 @@ public class FrameMonografiaDetalhes extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jTextFieldSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(jTextFieldnPaginas))
-                    .addComponent(jTextFieldOrientador, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldCurso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+                        .addComponent(jTextFieldTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jTextFieldSituacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jTextFieldAno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jTextFieldnPaginas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldOrientador, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCurso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelAutor, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelOrientador, javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,26 +203,26 @@ public class FrameMonografiaDetalhes extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelInstituicao)
                             .addComponent(jLabelCurso)))
-                    .addComponent(jTextFieldInstituicao, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldAutor, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldInstituicao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldAutor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(204, 204, 204)
                         .addComponent(jLabelPalavrasChaves))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextFieldPalavraChave0, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldPalavraChave0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
-                                .addComponent(jTextFieldPalavraChave1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3))
+                                .addComponent(jTextFieldPalavraChave1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextFieldPalavraChave2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldPalavraChave2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
-                                .addComponent(jTextFieldPalavraChave3))
-                            .addComponent(jScrollPane2)))
+                                .addComponent(jTextFieldPalavraChave3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(jLabelTipo)
@@ -207,7 +233,7 @@ public class FrameMonografiaDetalhes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelnPaginas)
                         .addGap(19, 19, 19)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addComponent(jLabelResumo)
@@ -277,7 +303,7 @@ public class FrameMonografiaDetalhes extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

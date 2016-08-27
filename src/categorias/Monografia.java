@@ -7,7 +7,7 @@ package categorias;
  */
 import java.io.Serializable;
 /**
- *
+ * Classe que implenta a noção de monografia.
  * @author Lucas
  */
 public class Monografia implements Serializable {
@@ -30,17 +30,17 @@ public class Monografia implements Serializable {
      * Construtor da classe monografia, recebe todos os atributos da classe
      * @param monografiaId id criado para controle dos arquivos armazenados no sistema
      * @param titulo Titulo da monografia
-     * @param situacao situação de avaliação da monografia podendo ser Em avaliação, 
-     * @param tipo String 
-     * @param autor String
-     * @param instituicao 
-     * @param orientador
-     * @param curso
-     * @param ano
-     * @param nPaginas
-     * @param palavraChave
-     * @param resumo
-     * @param abstractText 
+     * @param situacao situação de avaliação da monografia podendo ser Em avaliação, Aprovado, Reprovado 
+     * @param tipo String pode ser Graduação, Especialização, Mestrado, Doutorado
+     * @param autor String Nome do autor da monografia
+     * @param instituicao String Instituição onde foi produzida a monografia
+     * @param orientador String Orientador
+     * @param curso String Curso de origem do autor
+     * @param ano String ano de produção
+     * @param nPaginas int número de páginas 
+     * @param palavraChave String[] palavras chaves
+     * @param resumo String resumo da monografia
+     * @param abstractText String resumo em ingles da monografia
      */
     public Monografia(String monografiaId, String titulo, String situacao, String tipo, String autor, String instituicao, String orientador, String curso, int ano, int nPaginas, String[] palavraChave, String resumo, String abstractText) {
         this.monografiaId = monografiaId;

@@ -80,6 +80,7 @@ public class FramePalestras extends javax.swing.JFrame {
         jButtonDeletar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jList = new javax.swing.JList<>();
+        jButtonVoltar = new javax.swing.JButton();
         jPanelAdicionar = new javax.swing.JPanel();
         jLabelTitulo = new javax.swing.JLabel();
         jTextAdicionarTitulo = new javax.swing.JTextField();
@@ -170,18 +171,27 @@ public class FramePalestras extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jList);
 
+        jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelConsultarLayout = new javax.swing.GroupLayout(jPanelConsultar);
         jPanelConsultar.setLayout(jPanelConsultarLayout);
         jPanelConsultarLayout.setHorizontalGroup(
             jPanelConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelConsultarLayout.createSequentialGroup()
                 .addGroup(jPanelConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanelConsultarLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
                     .addComponent(jButtonMaisDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonDeletar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonDeletar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelConsultarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addGap(23, 23, 23))
+                    .addComponent(jButtonVoltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanelConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelConsultarLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -215,7 +225,9 @@ public class FramePalestras extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonEditar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonDeletar)))
+                        .addComponent(jButtonDeletar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonVoltar)))
                 .addGap(99, 99, 99))
         );
 
@@ -501,7 +513,7 @@ public class FramePalestras extends javax.swing.JFrame {
 
         jTextAreaResumo.setColumns(20);
         jTextAreaResumo.setRows(5);
-        jTextAreaResumo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextAreaResumo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextAreaResumo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jScrollPane9.setViewportView(jTextAreaResumo);
 
@@ -711,6 +723,11 @@ public class FramePalestras extends javax.swing.JFrame {
         jTabbedPane.setEnabledAt(3, false);
     }//GEN-LAST:event_jButtonVoltarConsultarActionPerformed
 
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
+        this.dispose();
+        new Inicial().setVisible(true);
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -755,6 +772,7 @@ public class FramePalestras extends javax.swing.JFrame {
     private javax.swing.JButton jButtonListar;
     private javax.swing.JButton jButtonMaisDetalhes;
     private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JButton jButtonVoltarConsultar;
     private javax.swing.JComboBox<String> jComboBoxAdicionar;
     private javax.swing.JComboBox<String> jComboBoxEditar;

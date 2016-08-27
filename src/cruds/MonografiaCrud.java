@@ -11,7 +11,7 @@ import java.util.List;
 import persistenciaDados.CrudMonografiaObjects;
 
 /**
- *
+ * Classe que implementa ações como Criar, Exluir, Editar, e Consultar, sobre varias monografias.
  * @author Lucas
  */
 public class MonografiaCrud {
@@ -22,16 +22,21 @@ public class MonografiaCrud {
         MonografiaCrud.monografiaList = monografiaList;
     }
 
+    /**
+     *
+     * @return ArrayList<Monografia> contendo todas as monografias adicionadas
+     */
     public static List<Monografia> getMonografiaList() {
         return monografiaList;
     }
 
-  /**
-   * Recebe o objeto monografia 
-   * @param monografia 
-   */
+    /**
+     * Recebe o objeto monografia e armazena em um ArrayList
+     *
+     * @param monografia
+     */
     public static void adicionar(Monografia monografia) {
-        
+
         monografiaList.add(monografia);
         CrudMonografiaObjects.saveObject(monografia, "Monografias");
 
@@ -39,7 +44,7 @@ public class MonografiaCrud {
 
     /**
      * Percorre a lista e se encontar alguma monografia com o Titulo
-     * correspondente a mesma é excluida da lista, esse metodo ainda exclui o
+     * correspondente, a mesma é excluida da lista, esse metodo ainda chama o metodo de exclusão do
      * objeto do hd.
      *
      * @param titulo
@@ -106,29 +111,48 @@ public class MonografiaCrud {
         return listaConsulta;
 
     }
-    
+
     /**
      * Função para retornar o objeto do tipo Monografia através do título
+     *
      * @param titulo String Titulo da monografia desejada
-     * @return Objecto Monografia
+     * @return Objeto Monografia
      */
-    public static Monografia getMonografia(String titulo){
-        for(Monografia monografia: monografiaList){
-            if (monografia.getTitulo().equalsIgnoreCase(titulo))
+    public static Monografia getMonografia(String titulo) {
+        for (Monografia monografia : monografiaList) {
+            if (monografia.getTitulo().equalsIgnoreCase(titulo)) {
                 return monografia;
+            }
         }
         return null;
     }
-    
-    public static void editar(Monografia monografiaEditada){
-        for(Monografia monografia: monografiaList){
-            if (monografia.getMonografiaId().equals(monografiaEditada.getMonografiaId())){
+
+    /**
+     * Método que recebe um objeto monografia e a partir de seu id o substitui
+     * no ArrayList.
+     *
+     * @param monografiaEditada
+     */
+    public static void editar(Monografia monografiaEditada) {
+        for (Monografia monografia : monografiaList) {
+            if (monografia.getMonografiaId().equals(monografiaEditada.getMonografiaId())) {
+
+                monografia.setAutor(monografiaEditada.getAutor());
+                monografia.setAbstractText(monografiaEditada.getAbstractText());
+                monografia.setAno(monografiaEditada.getAno());
+                monografia.setCurso(monografiaEditada.getCurso());
+                monografia.setInstituicao(monografiaEditada.getInstituicao());
+                monografia.setOrientador(monografiaEditada.getOrientador());
+                monografia.setPalavraChave(monografiaEditada.getPalavraChave());
+                monografia.setResumo(monografiaEditada.getResumo());
+                monografia.setSituacao(monografiaEditada.getSituacao());
+                monografia.setTipo(monografiaEditada.getTipo());
+                monografia.setnPaginas(monografiaEditada.getnPaginas());
+                monografia.setTitulo(monografiaEditada.getTitulo());
                 
-                monografiaList.remove(monografia);
-                monografiaList.add(monografiaEditada);
-                CrudMonografiaObjects.saveObject(monografiaEditada, "Monografias");
+                CrudMonografiaObjects.saveObject(monografia, "Monografias");
                 break;
-                
+
             }
         }
     }
