@@ -17,95 +17,113 @@ public class Resumo {
     private String[] palavraChave = new String [4];
     
     
-/**
- * 
- * @param titulo
- * @param situacao
- * @param instituicao
- * @param palavraChave
- * @param autor 
- */
+    /**
+     * 
+     * @param titulo
+     * @param situacao
+     * @param instituicao
+     * @param palavraChave
+     * @param autor 
+     */
     public Resumo (String titulo, String situacao, String instituicao[], String palavraChave[], String autor[]){
         this.titulo = titulo;
         this.situacao = situacao;
-        this.autor = autor;
-        this.instituicao = instituicao;
-        this.palavraChave = palavraChave;
         
+        for(int i=0; i<autor.length;i++){
+            this.autor[i] = autor[i];
+            this.instituicao[i] = instituicao[i];
+        }
         
+        for(int i=0; i<palavraChave.length;i++){
+            this.palavraChave[i] = palavraChave[i];
+        }
         
     }
 
 
-/**
- * 
- * @return 
- */
+    /**
+     * 
+     * @return 
+     */
     public String getTitulo() {
         return titulo;
     }
-/**
- * 
- * @param titulo 
- */
+
+    /**
+    * 
+    * @param titulo 
+    */
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-/**
- * 
- * @return 
- */
+
+    /**
+     * 
+     * @return 
+     */
     public String getSituacao() {
         return situacao;
     }
-/**
- * 
- * @param situacao 
- */
+
+    /**
+     * 
+     * @param situacao 
+     */
     public void setSituacao(String situacao) {
         this.situacao = situacao;
     }
-/**
- * 
- * @return 
- */
+
+    /**
+     * 
+     * @return 
+     */
     public String[] getAutor() {
         return autor;
     }
-/**
- * 
- * @param autor 
- */
+
+    /**
+     * 
+     * @param autor 
+     */
     public void setAutor(String[] autor) {
-        this.autor = autor;
+        for(int i=0; i<autor.length;i++){
+            this.autor[i] = autor[i];
+        }
     }
-/**
- * 
- * @return 
- */
+
+    /**
+     * 
+     * @return 
+     */
     public String[] getInstituicao() {
         return instituicao;
     }
-/**
- * 
- * @param instituicao 
- */
+
+    /**
+     * 
+     * @param instituicao 
+     */
     public void setInstituicao(String[] instituicao) {
-        this.instituicao = instituicao;
+        for(int i=0; i<autor.length;i++){
+            this.instituicao[i] = instituicao[i];
+        }
     }
-/**
- * 
- * @return 
- */
+
+    /**
+     * 
+     * @return 
+     */
     public String[] getPalavraChave() {
         return palavraChave;
     }
-/**
- * 
- * @param palavraChave 
- */
-    public void setPalavraChave(String[] palavraChave) {
-        this.palavraChave = palavraChave;
-    }
 
+    /**
+     * 
+     * @param palavraChave 
+     */
+    public void setPalavraChave(String[] palavraChave) {
+        for(int i=0; i<palavraChave.length;i++){
+            this.palavraChave[i] = palavraChave[i];
+        }
+    }
 }

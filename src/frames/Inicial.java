@@ -31,45 +31,50 @@ public class Inicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButtonShortCourse = new javax.swing.JButton();
+        jButtonMonografias = new javax.swing.JButton();
+        jButtonMinicurso = new javax.swing.JButton();
         jLabelMenu = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonPalestras = new javax.swing.JButton();
+        jButtonResumos = new javax.swing.JButton();
+        jButtonArtigos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Monografias");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonMonografias.setText("Monografias");
+        jButtonMonografias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonMonografiasActionPerformed(evt);
             }
         });
 
-        jButtonShortCourse.setText("Minicursos");
-        jButtonShortCourse.addActionListener(new java.awt.event.ActionListener() {
+        jButtonMinicurso.setText("Minicursos");
+        jButtonMinicurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonShortCourseActionPerformed(evt);
+                jButtonMinicursoActionPerformed(evt);
             }
         });
 
         jLabelMenu.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabelMenu.setText("Menu");
 
-        jButton2.setText("Palestras");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPalestras.setText("Palestras");
+        jButtonPalestras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonPalestrasActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Resumos");
-
-        jButton4.setText("Artigos");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonResumos.setText("Resumos");
+        jButtonResumos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonResumosActionPerformed(evt);
+            }
+        });
+
+        jButtonArtigos.setText("Artigos");
+        jButtonArtigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonArtigosActionPerformed(evt);
             }
         });
 
@@ -85,11 +90,11 @@ public class Inicial extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonShortCourse, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButtonMinicurso, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                            .addComponent(jButtonMonografias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonPalestras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonResumos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonArtigos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -98,42 +103,49 @@ public class Inicial extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelMenu)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(jButtonArtigos)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(jButtonResumos)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(jButtonPalestras)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonShortCourse)
+                .addComponent(jButtonMinicurso)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(jButtonMonografias)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonMonografiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMonografiasActionPerformed
         new FrameMonografia().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonMonografiasActionPerformed
 
-    private void jButtonShortCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShortCourseActionPerformed
+    private void jButtonMinicursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinicursoActionPerformed
         // TODO add your handling code here:
         this.dispose();
         FrameMinicurso openWindow = new FrameMinicurso();
         openWindow.setVisible(true);
-    }//GEN-LAST:event_jButtonShortCourseActionPerformed
+    }//GEN-LAST:event_jButtonMinicursoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonPalestrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPalestrasActionPerformed
 this.dispose();
 FramePalestras open = new FramePalestras();
 open.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonPalestrasActionPerformed
+    private void jButtonArtigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArtigosActionPerformed
         new PainelArtigo().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonArtigosActionPerformed
+
+    private void jButtonResumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResumosActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        FrameResumo abrirJanela = new FrameResumo();
+        abrirJanela.setVisible(true);
+    }//GEN-LAST:event_jButtonResumosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,11 +183,11 @@ open.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButtonShortCourse;
+    private javax.swing.JButton jButtonArtigos;
+    private javax.swing.JButton jButtonMinicurso;
+    private javax.swing.JButton jButtonMonografias;
+    private javax.swing.JButton jButtonPalestras;
+    private javax.swing.JButton jButtonResumos;
     private javax.swing.JLabel jLabelMenu;
     // End of variables declaration//GEN-END:variables
 }
