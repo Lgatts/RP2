@@ -8,6 +8,10 @@ public class ArtigoCrud {
 
     private static List<Artigo> artigoList = new ArrayList();
 
+    public static List<Artigo> getLista() {
+        return artigoList;
+    }
+
     public static void incluir(String titulo, String situacao, String[] autor, String[] instituicao, String[] palavraChave, String resumo, String abstrat) {
 
         Artigo artigo = new Artigo();
@@ -28,8 +32,6 @@ public class ArtigoCrud {
         for (Artigo artigo : artigoList) {
             if (artigo.getTitulo().equals(titulo)) {
                 artigoList.remove(artigo);
-
-                break;
             }
         }
     }
