@@ -757,6 +757,8 @@ public class PainelArtigo extends javax.swing.JFrame {
 
     private void jButtonSalvarEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarEditActionPerformed
         ListarArtigo = ArtigoCrud.getLista();
+
+        String titulo, situacao, resumo, abstrat;
         
         String[] autor = new String[8];
         String[] instituicao = new String[8];
@@ -766,14 +768,36 @@ public class PainelArtigo extends javax.swing.JFrame {
             if (artigo.getTitulo().equals(editar)) {
 
                 artigo.setTitulo(jTextFieldEditTitulo.getText());
+                artigo.setSituacao(jComboBoxEditSituacao.getSelectedItem().toString());
 
                 autor[0] = (jTextFieldEditAutor0.getText());
-                autor[0] = (jTextFieldEditAutor0.getText());
-                autor[0] = (jTextFieldEditAutor0.getText());
-                autor[0] = (jTextFieldEditAutor0.getText());
-                autor[0] = (jTextFieldEditAutor0.getText());
-                autor[0] = (jTextFieldEditAutor0.getText());
-                
+                autor[1] = (jTextFieldEditAutor1.getText());
+                autor[2] = (jTextFieldEditAutor2.getText());
+                autor[3] = (jTextFieldEditAutor3.getText());
+                autor[4] = (jTextFieldEditAutor4.getText());
+                autor[5] = (jTextFieldEditAutor5.getText());
+                autor[6] = (jTextFieldEditAutor6.getText());
+                autor[7] = (jTextFieldEditAutor7.getText());
+
+                instituicao[0] = (jTextFieldInstituicao0.getText());
+                instituicao[1] = (jTextFieldInstituicao1.getText());
+                instituicao[2] = (jTextFieldInstituicao2.getText());
+                instituicao[3] = (jTextFieldInstituicao3.getText());
+                instituicao[4] = (jTextFieldInstituicao4.getText());
+                instituicao[5] = (jTextFieldInstituicao5.getText());
+                instituicao[6] = (jTextFieldInstituicao6.getText());
+                instituicao[7] = (jTextFieldInstituicao7.getText());
+
+                palavraChave[0] = (jTextFieldPalavraChave0.getText());
+                palavraChave[1] = (jTextFieldPalavraChave1.getText());
+                palavraChave[2] = (jTextFieldPalavraChave2.getText());
+                palavraChave[3] = (jTextFieldPalavraChave3.getText());
+
+                artigo.setResumo(jTextAreaResumo.getText());
+                artigo.setAbstrat(jTextAreaAbstract.getText());
+
+                ArtigoCrud.editar(artigo);
+
             }
         }
     }//GEN-LAST:event_jButtonSalvarEditActionPerformed
