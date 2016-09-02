@@ -4,25 +4,26 @@ import categorias.Artigo;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author MauricioEscobar
+ */
 public class ArtigoCrud {
 
     private static List<Artigo> artigoList = new ArrayList();
 
+    /**
+     *
+     * @return ArrayList<Artigo> lista de todos artigos
+     */
     public static List<Artigo> getLista() {
+
         return artigoList;
     }
 
     public static void incluir(String titulo, String situacao, String[] autor, String[] instituicao, String[] palavraChave, String resumo, String abstrat) {
 
-        Artigo artigo = new Artigo();
-
-        artigo.setTitulo(titulo);
-        artigo.setSituacao(situacao);
-        artigo.setAutor(autor);
-        artigo.setInstituicao(instituicao);
-        artigo.setPalavrachave(palavraChave);
-        artigo.setResumo(resumo);
-        artigo.setAbstrat(abstrat);
+        Artigo artigo = new Artigo(titulo, situacao, autor, instituicao, palavraChave, resumo, abstrat);
 
         artigoList.add(artigo);
     }
@@ -31,7 +32,23 @@ public class ArtigoCrud {
 
         for (Artigo artigo : artigoList) {
             if (artigo.getTitulo().equals(titulo)) {
+
                 artigoList.remove(artigo);
+            }
+        }
+    }
+    
+        public static void editar(Artigo artigoEditar) {
+        for (Artigo artigo : artigoList) {
+            if (artigo.getTitulo().equals(artigoEditar.getTitulo())) {
+
+                artigo.setTitulo(artigoEditar.getTitulo());
+                artigo.setSituacao(artigoEditar.getSituacao());
+                artigo.setAutor(artigoEditar.getAutor());
+                artigo.setInstituicao(artigoEditar.getInstituicao());
+                artigo.setPalavrachave(artigoEditar.getPalavrachave());
+                artigo.setResumo(artigoEditar.getResumo());
+                artigo.setAbstrat(artigoEditar.getAbstrat());
             }
         }
     }
