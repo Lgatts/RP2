@@ -5,14 +5,14 @@
  */
 package categorias;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author YuryAlencar
  */
 public class Minicurso extends SubmissaoApresentacao {
 
-    private String situacao;
-    private String duracao;
     private String recursos;
     private String metodologia;
     
@@ -29,23 +29,13 @@ public class Minicurso extends SubmissaoApresentacao {
      * @param nomeAutor1
      * @param nomeAutor2 
      */
-    public Minicurso(String titulo, String situacao, String resumoTexto, String abstractTexto,
-            int duracao, String recursos, String metodologia, String nomeAutor,
-            String nomeAutor1, String nomeAutor2) {
+    public Minicurso(String titulo, /*Situacao situacao,*/ String resumoTexto, String abstractTexto,
+            int duracao, String recursos, String metodologia, ArrayList<String> autores) {
         
         super(titulo, duracao, 3, resumoTexto, abstractTexto);
-        this.situacao = situacao;
         this.recursos = recursos;
         this.metodologia = metodologia;
-        
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getSituacao() {
-        return this.situacao;
+        super.setAutores(autores);
     }
 
     /**
@@ -62,22 +52,6 @@ public class Minicurso extends SubmissaoApresentacao {
      */
     public String getMetodologia() {
         return this.metodologia;
-    }
-
-    /**
-     *
-     * @param situacao
-     */
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
-
-    /**
-     *
-     * @param duracao
-     */
-    public void setDuracao(String duracao) {
-        this.duracao = duracao;
     }
 
     /**

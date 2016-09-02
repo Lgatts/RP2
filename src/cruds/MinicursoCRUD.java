@@ -6,6 +6,7 @@
 package cruds;
 
 import categorias.Minicurso;
+import categorias.Situacao;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -14,9 +15,10 @@ import javax.swing.DefaultListModel;
  *
  * @author YuryAlencar
  */
-public class MinicursoCRUD {
+public class MinicursoCRUD{
     
     private static List<Minicurso> minicursos = new ArrayList<>();
+    private static ArrayList<String> autores;
     
     /**
      * Consulta avançada ele recebe como parâmetros o nome do autor e o título 
@@ -29,9 +31,9 @@ public class MinicursoCRUD {
         List<String> visualizarLista = new ArrayList<>();
         
         for(Minicurso minicurso: minicursos){
-            if(minicurso.getAutor()[0].toUpperCase().trim().contains(nomeAutor.toUpperCase().trim()) || minicurso.getAutor()[1].toUpperCase().trim().contains(nomeAutor.toUpperCase().trim()) || minicurso.getAutor()[2].toUpperCase().trim().contains(nomeAutor.toUpperCase().trim())){
-                if(minicurso.getTitulo().toUpperCase().trim().contains(titulo.toUpperCase().trim())){
-                    visualizarLista.add(minicurso.getTitulo());
+            if(minicurso.isAutor(nomeAutor)){
+                if(minicurso.getTituloSubmissao().toUpperCase().trim().contains(titulo.toUpperCase().trim())){
+                    visualizarLista.add(minicurso.getTituloSubmissao());
                 }
             }
         }
@@ -52,21 +54,21 @@ public class MinicursoCRUD {
         switch(tipoConsulta){
             case "Autor":
                 for(Minicurso minicurso: minicursos){
-                    if(minicurso.getAutor()[0].toUpperCase().trim().contains(textoConsulta.toUpperCase().trim()) || minicurso.getAutor()[1].toUpperCase().trim().contains(textoConsulta.toUpperCase().trim()) || minicurso.getAutor()[2].toUpperCase().trim().contains(textoConsulta.toUpperCase().trim())){
-                        visualizarLista.add(minicurso.getTitulo());
+                    if(minicurso.isAutor(textoConsulta)){
+                        visualizarLista.add(minicurso.getTituloSubmissao());
                     }
                 }
                 break;
             case "Titulo":
                 for(Minicurso minicurso: minicursos){
-                    if(minicurso.getTitulo().toUpperCase().trim().contains(textoConsulta.toUpperCase().trim())){
-                        visualizarLista.add(minicurso.getTitulo());
+                    if(minicurso.getTituloSubmissao().toUpperCase().trim().contains(textoConsulta.toUpperCase().trim())){
+                        visualizarLista.add(minicurso.getTituloSubmissao());
                     }
                 }
                 break;
             default:
                 for(Minicurso minicurso: minicursos){
-                        visualizarLista.add(minicurso.getTitulo());
+                        visualizarLista.add(minicurso.getTituloSubmissao());
                 }
                 break;
         }
@@ -78,25 +80,10 @@ public class MinicursoCRUD {
      * Método para inserir o curso, recebendo todos os parâmetros para a criação
  de um objeto do tipo Minicurso, e depois o inserre na lista
      * 
-     * @param titulo
-     * @param situacao
-     * @param resumoTexto
-     * @param abstractTexto
-     * @param duracao
-     * @param recursos
-     * @param metodologia
-     * @param autor
-     * @param autor1
-     * @param autor2 
+     * @param novoMinicurso
      */
-    public static void inserirMinicurso(String titulo, String situacao, String resumoTexto,
-                                        String abstractTexto, String duracao, String recursos,
-                                        String metodologia, String autor, String autor1, 
-                                        String autor2){
-        Minicurso minicurso = new Minicurso(titulo, situacao, resumoTexto, abstractTexto,
-                                            duracao, recursos, metodologia, autor, autor1,
-                                            autor2);
-        minicursos.add(minicurso);
+    public static void inserirMinicurso(Minicurso novoMinicurso){
+        minicursos.add(novoMinicurso);
     }
     
     /**
@@ -115,19 +102,21 @@ public class MinicursoCRUD {
      * @param autor1
      * @param autor2 
      */
-    public static void editarMinicurso(String editName, String titulo, String situacao, 
-            String resumoTexto, String abstractTexto, String duracao, String recursos, 
-            String metodologia, String autor, String autor1, String autor2){
+    public static void editarMinicurso(String editName, String titulo,/* Situacao situacao,*/ 
+            String resumoTexto, String abstractTexto, int duracao, String recursos, 
+            String metodologia, ArrayList<String> autores){
+ 
         for(Minicurso minicurso : minicursos){
-            if(editName.equals(minicurso.getTitulo())){
-                minicurso.setTitulo(titulo);
-                minicurso.setSituacao(situacao);
-                minicurso.setResumoTexto(resumoTexto);
-                minicurso.setAbstractTexto(abstractTexto);
+            if(editName.equals(minicurso.getTituloSubmissao())){
+                minicurso.setTituloSubmissao(titulo);
+                //minicurso.setSituacaoSubmissao(situacao);
+                minicurso.setResumo(resumoTexto);
+                minicurso.setAbstractText(abstractTexto);
                 minicurso.setDuracao(duracao);
                 minicurso.setMetodologia(metodologia);
                 minicurso.setRecursos(recursos);
-                minicurso.setAuthor(autor, autor1, autor2);
+                minicurso.setAutores(autores);
+                break;
             }
         }
     }
@@ -140,7 +129,7 @@ public class MinicursoCRUD {
      */
     public static void deletarMinicurso(String titulo){
         for(Minicurso minicurso : minicursos){
-            if(titulo.equals(minicurso.getTitulo())){
+            if(titulo.equals(minicurso.getTituloSubmissao())){
                 minicursos.remove(minicurso);
                 break;
             }

@@ -24,24 +24,35 @@ public class FrameMinicursoDetalhes extends javax.swing.JFrame {
         this.setTitle("RP II - Detalhes");
         this.setLocationRelativeTo(null);
         
-        String indexNumberAuthors = "1";
+        String indexNumberAuthors = "";
+        int hora, minutos;
         
         for(Minicurso minicurso : minicursos){
-            if(minicurso.getTitulo().equals(titleDetails)){
-                jTextMaisDetalhesTitulo.setText(minicurso.getTitulo());
-                jTextMaisDetalhesSituacao.setText(minicurso.getSituacao());
-                jTextPaneMaisDetalhesResumoTexto.setText(minicurso.getResumoTexto());
-                jTextPaneMaisDetalhesAbstractTexto.setText(minicurso.getAbstractTexto());
-                jFormattedTextMaisDetalhesDuracao.setText(minicurso.getDuracao());
+            if(minicurso.getTituloSubmissao().equals(titleDetails)){
+                
+                hora = minicurso.getDuracao()/60;
+                minutos = 60*(minicurso.getDuracao()/60- hora);
+                
+                jTextMaisDetalhesTitulo.setText(minicurso.getTituloSubmissao());
+                jTextMaisDetalhesSituacao.setText(minicurso.getSituacaoSubmissao().toString());
+                jTextPaneMaisDetalhesResumoTexto.setText(minicurso.getResumo());
+                jTextPaneMaisDetalhesAbstractTexto.setText(minicurso.getAbstractText());
+                jFormattedTextMaisDetalhesDuracao.setText(hora+":"+minutos+":00");
                 jTextPaneMaisDetalhesMetodologia.setText(minicurso.getMetodologia());
                 jTextMaisDetalhesRecursos.setText(minicurso.getRecursos());
-                jTextMaisDetalhesAutor.setText(minicurso.getAutor()[0]);
-                jTextMaisDetalhesAutor1.setText(minicurso.getAutor()[1]);
-                jTextMaisDetalhesAutor2.setText(minicurso.getAutor()[2]);
-                if(!(jTextMaisDetalhesAutor1.getText().trim().equals("")))
+                if(minicurso.getAutores().size() == 1){
+                    jTextMaisDetalhesAutor.setText(minicurso.getAutores().get(0));
+                    indexNumberAuthors = "1";
+                } else if (minicurso.getAutores().size() == 2){
+                    jTextMaisDetalhesAutor.setText(minicurso.getAutores().get(0));
+                    jTextMaisDetalhesAutor1.setText(minicurso.getAutores().get(1));
                     indexNumberAuthors = "2";
-                if(!(jTextMaisDetalhesAutor2.getText().trim().equals("")))
+                } else if(minicurso.getAutores().size() == 3){
+                    jTextMaisDetalhesAutor.setText(minicurso.getAutores().get(0));
+                    jTextMaisDetalhesAutor1.setText(minicurso.getAutores().get(1));
+                    jTextMaisDetalhesAutor2.setText(minicurso.getAutores().get(2));
                     indexNumberAuthors = "3";
+                }
                 jTextMaisDetalhesNumeroAutores.setText(indexNumberAuthors);
                 
             }

@@ -47,6 +47,30 @@ public class FrameMinicurso extends javax.swing.JFrame {
     }
     
     /**
+     * Método para converter os campos de duracao para inteiro
+     * @param duracaoString
+     * @return 
+     */
+    public int converterStringEmNumero(String duracaoString){
+        String valores="";
+        int duracao=0, aux=0;
+        for(int i=0; i<duracaoString.length(); i++){
+            if(duracaoString.charAt(i) == ':'){
+                if(aux == 0){
+                    duracao = Integer.parseInt(valores)*60;
+                    valores ="";
+                    aux++;
+                } else {
+                    duracao += Integer.parseInt(valores);
+                }
+            } else {
+                valores += duracaoString.charAt(i);
+            }
+        }
+        return duracao;
+    }
+    
+    /**
      *  Método para exibir a lista no jList
      */
     public void visualizarLista() {
@@ -88,35 +112,41 @@ public class FrameMinicurso extends javax.swing.JFrame {
         jTabShortCourse.setEnabledAt(1, false);
         jTabShortCourse.setEnabledAt(2, true);
 
-        int indexEditarSituacao = 0, indexEditarAutor = 0;
+        int indexEditarSituacao = 0, indexEditarAutor = 0, hora, minutos;
         nomeEditar = jList.getSelectedValue().toString();
 
         for (categorias.Minicurso minicurso : minicursos) {
-            if (nomeEditar.equals(minicurso.getTitulo())) {
+            if (nomeEditar.equals(minicurso.getTituloSubmissao())) {
                 for (int i = 0; i < jComboBoxEditarSituacao.getItemCount(); i++) {
-                    if (minicurso.getSituacao().equals(jComboBoxEditarSituacao.getItemAt(i))) {
+                    if (minicurso.getSituacaoSubmissao().equals(jComboBoxEditarSituacao.getItemAt(i))) {
                         indexEditarSituacao = i;
                         
                     }
                 }
-                jTextEditarTitulo.setText(minicurso.getTitulo());
+
+                hora = minicurso.getDuracao()/60;
+                minutos = 60*(minicurso.getDuracao()/60- hora);
+                
+                jTextEditarTitulo.setText(minicurso.getTituloSubmissao());
                 jComboBoxEditarSituacao.setSelectedIndex(indexEditarSituacao);
-                jTextPaneEditarResumoTexto.setText(minicurso.getResumoTexto());
-                jTextPaneEditarAbstractTexto.setText(minicurso.getAbstractTexto());
-                jFormattedEditarDuracao.setText(minicurso.getDuracao());
+                jTextPaneEditarResumoTexto.setText(minicurso.getResumo());
+                jTextPaneEditarAbstractTexto.setText(minicurso.getAbstractText());
+                jFormattedEditarDuracao.setText(hora+":"+minutos+":00");
                 jTextEditarRecursos.setText(minicurso.getRecursos());
                 jTextPaneEditarMetodologia.setText(minicurso.getMetodologia());
-                jTextEditarAutor.setText(minicurso.getAutor()[0]);
-                jTextEditarAutor1.setText(minicurso.getAutor()[1]);
-                jTextEditarAutor2.setText(minicurso.getAutor()[2]);
-
-                if (!(minicurso.getAutor()[1].trim().equals(""))) {
-                    indexEditarAutor = 1;
+                
+                if(minicurso.getAutores().size() == 1){
+                    jTextEditarAutor.setText(minicurso.getAutores().get(0));
+                } else if (minicurso.getAutores().size() == 2){
+                    jTextEditarAutor.setText(minicurso.getAutores().get(0));
+                    jTextEditarAutor1.setText(minicurso.getAutores().get(1));
+                } else if(minicurso.getAutores().size() == 3){
+                    jTextEditarAutor.setText(minicurso.getAutores().get(0));
+                    jTextEditarAutor1.setText(minicurso.getAutores().get(1));
+                    jTextEditarAutor2.setText(minicurso.getAutores().get(2));
                 }
-                if (!(minicurso.getAutor()[2].equals(""))) {
-                    indexEditarAutor = 2;
-                }
-                jComboBoxEditarAutor.setSelectedIndex(indexEditarAutor);
+                
+                jComboBoxEditarAutor.setSelectedIndex(minicurso.getAutores().size()-1);
                 
             }
         }
@@ -676,14 +706,28 @@ public class FrameMinicurso extends javax.swing.JFrame {
         } else if (jTextAutor.getText().trim().equals("") && jTextAutor1.getText().trim().equals("") && jTextAutor2.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "É necessário o preenchimento de no mínimo um autor para efetuar a inserção de um minicurso.");
         } else {
-            MinicursoCRUD inserir = new MinicursoCRUD();
-            inserir.inserirMinicurso(jTextTitulo.getText().trim(),
-                    jComboBoxSituacao.getSelectedItem().toString(), 
+            ArrayList<String>nomeAutores = new ArrayList<>();
+            int duracao;
+            duracao = converterStringEmNumero(jFormattedDuracao.getText());
+
+            if(!(jTextAutor.getText().trim().equals(""))){
+                nomeAutores.add(jTextAutor.getText().trim());
+            }            
+            if(!(jTextAutor1.getText().trim().equals(""))){
+                nomeAutores.add(jTextAutor1.getText().trim());
+            }            
+            if(!(jTextAutor2.getText().trim().equals(""))){
+                nomeAutores.add(jTextAutor2.getText().trim());
+            }
+            
+            Minicurso novoMinicurso = new Minicurso(jTextTitulo.getText().trim(),
+                    //jComboBoxSituacao.getSelectedItem().toString(), 
                     jTextPaneResumoTexto.getText().trim(),
                     jTextPaneAbstractTexto.getText().trim(),
-                    jFormattedDuracao.getText(), jTextRecursos.getText().trim(),
-                    jTextPaneMetodologia.getText().trim(), jTextAutor.getText().trim(),
-                    jTextAutor1.getText().trim(), jTextAutor2.getText().trim());
+                    duracao, jTextRecursos.getText().trim(),
+                    jTextPaneMetodologia.getText().trim(), nomeAutores);
+            
+            MinicursoCRUD.inserirMinicurso(novoMinicurso);
             
             jTextTitulo.setText("");
             jComboBoxSituacao.setSelectedIndex(0);
@@ -711,14 +755,29 @@ public class FrameMinicurso extends javax.swing.JFrame {
         } else if (jTextEditarAutor.getText().trim().equals("") && jTextEditarAutor1.getText().trim().equals("") && jTextEditarAutor2.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "É necessário o preenchimento de no mínimo um autor para efetuar a edição de um minicurso.");
         } else {
+            
+            int duracao;
+            duracao = converterStringEmNumero(jFormattedEditarDuracao.getText());
+            ArrayList<String> nomeAutoresEdit = new ArrayList<>();
+            
+            if(!(jTextEditarAutor.getText().trim().equals(""))){
+                nomeAutoresEdit.add(jTextEditarAutor.getText().trim());
+            }            
+            if(!(jTextEditarAutor1.getText().trim().equals(""))){
+                nomeAutoresEdit.add(jTextEditarAutor1.getText().trim());
+            }            
+            if(!(jTextEditarAutor2.getText().trim().equals(""))){
+                nomeAutoresEdit.add(jTextEditarAutor2.getText());
+            }
+            
+            
             MinicursoCRUD editar = new MinicursoCRUD();
             editar.editarMinicurso(nomeEditar, jTextEditarTitulo.getText(),
-                    jComboBoxEditarSituacao.getSelectedItem().toString(),
+                  //  jComboBoxEditarSituacao.getSelectedItem().toString(),
                     jTextPaneEditarResumoTexto.getText(),
-                    jTextPaneEditarAbstractTexto.getText(), jFormattedEditarDuracao.getText(),
+                    jTextPaneEditarAbstractTexto.getText(), duracao,
                     jTextEditarRecursos.getText(), jTextPaneEditarMetodologia.getText(),
-                    jTextEditarAutor.getText(), jTextEditarAutor1.getText(),
-                    jTextEditarAutor2.getText());
+                    nomeAutoresEdit);
 
             JOptionPane.showMessageDialog(null, "Editado com sucesso!");
             

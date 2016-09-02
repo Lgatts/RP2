@@ -95,7 +95,9 @@ public abstract class Submissao {
             return false;
         }
         
-        for (int i=0; i<MAX_AUTORES;i++) {
+        this.autores.clear();
+        
+        for (int i=0; i<autores.size();i++) {
             this.autores.add(autores.get(i));
         }
         
