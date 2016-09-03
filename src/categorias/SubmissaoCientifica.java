@@ -14,17 +14,15 @@ import java.util.List;
  */
 public abstract class SubmissaoCientifica extends Submissao {
     
-    protected ArrayList<String> instituicao;
-    protected ArrayList<String> palavraChave;
+    protected List<String> instituicao;
+    protected List<String> palavraChave;
     protected final int MAX_INSTITUICAO;
     protected final int MAX_PALAVRACHAVE;
 
     /**
      * Construtor somente para a criação de uma submissão por default
      * @param tituloSubmissao
-     * @param MAX_AUTORES
-     * @param palavraChave
-     * @param instituicao 
+     * @param MAX_AUTORES 
      */
     public SubmissaoCientifica(String tituloSubmissao, int MAX_AUTORES,
             int MAX_INSTITUICAO, int MAX_PALAVRACHAVE) {

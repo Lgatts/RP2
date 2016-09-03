@@ -6,6 +6,7 @@
 package categorias;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,7 +16,7 @@ public abstract class Submissao {
     
     protected String tituloSubmissao;
     protected Situacao situacaoSubmissao;
-    protected ArrayList<String> autores;
+    protected List<String> autores;
     protected final int MAX_AUTORES;
     
     /**
@@ -27,7 +28,7 @@ public abstract class Submissao {
     public Submissao(String tituloSubmissao, int MAX_AUTORES){
         this.tituloSubmissao = tituloSubmissao;
         this.situacaoSubmissao = Situacao.SOBAVALIACAO;
-        this.autores = new ArrayList<>();
+        this.autores = new ArrayList();
         this.MAX_AUTORES = MAX_AUTORES;
     }
     
@@ -40,7 +41,7 @@ public abstract class Submissao {
     public Submissao(String tituloSubmissao, Situacao situacaoSubmissao, int MAX_AUTORES){
         this.tituloSubmissao = tituloSubmissao;
         this.situacaoSubmissao = situacaoSubmissao;
-        this.autores = new ArrayList<>();
+        this.autores = new ArrayList();
         this.MAX_AUTORES = MAX_AUTORES;
     }
 
@@ -80,7 +81,7 @@ public abstract class Submissao {
      * Retorna a lista com os autores
      * @return the autores
      */
-    public ArrayList<String> getAutores() {
+    public List<String> getAutores() {
         return autores;
     }
 
@@ -89,7 +90,7 @@ public abstract class Submissao {
      * só colocando na lista quando se tem no mínimo, e não deixando estrapolar o max
      * @param autores the autores to set
      */
-    public boolean setAutores(ArrayList<String> autores) {
+    public boolean setAutores(List<String> autores) {
         
         if(autores.size() > MAX_AUTORES || autores.size() == 0){
             return false;

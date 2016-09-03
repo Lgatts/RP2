@@ -6,58 +6,62 @@ package categorias;
  * and open the template in the editor.
  */
 import java.io.Serializable;
+import java.util.List;
+
 /**
  * Classe que implenta a noção de monografia.
+ *
  * @author Lucas
  */
-public class Monografia implements Serializable {
+public class Monografia extends SubmissaoCientifica implements Serializable {
 
     private String monografiaId;
-    private String titulo;
     private String situacao;
-    private String tipo;
-    private String autor;
-    private String instituicao;
     private String orientador;
     private String curso;
     private int ano;
     private int nPaginas;
-    private String[] palavraChave;
     private String resumo;
     private String abstractText;
 
     /**
      * Construtor da classe monografia, recebe todos os atributos da classe
-     * @param monografiaId id criado para controle dos arquivos armazenados no sistema
+     *
+     * @param monografiaId id criado para controle dos arquivos armazenados no
+     * sistema
      * @param titulo Titulo da monografia
-     * @param situacao situação de avaliação da monografia podendo ser Em avaliação, Aprovado, Reprovado 
-     * @param tipo String pode ser Graduação, Especialização, Mestrado, Doutorado
+     * @param situacao situação de avaliação da monografia podendo ser Em
+     * avaliação, Aprovado, Reprovado
+     * @param tipo String pode ser Graduação, Especialização, Mestrado,
+     * Doutorado
+     * @param autores
      * @param autor String Nome do autor da monografia
      * @param instituicao String Instituição onde foi produzida a monografia
      * @param orientador String Orientador
      * @param curso String Curso de origem do autor
      * @param ano String ano de produção
-     * @param nPaginas int número de páginas 
+     * @param nPaginas int número de páginas
      * @param palavraChave String[] palavras chaves
      * @param resumo String resumo da monografia
      * @param abstractText String resumo em ingles da monografia
      */
-    public Monografia(String monografiaId, String titulo, String situacao, String tipo, String autor, String instituicao, String orientador, String curso, int ano, int nPaginas, String[] palavraChave, String resumo, String abstractText) {
+    public Monografia(String monografiaId, String titulo, Situacao situacao, Tipo tipo, ArrayList<String> autores, List<String> instituicao, String orientador,
+            String curso, int ano, int nPaginas, int palavraChave, String resumo, String abstractText) {
+        
+        super(titulo, situacao, 1, 1, 4);
+        super.setAutores(autores);
+        super.setInstituicao(instituicao);
+        super.setPalavraChave(palavraChave);
         this.monografiaId = monografiaId;
-        this.titulo = titulo;
-        this.situacao = situacao;
-        this.tipo = tipo;
-        this.autor = autor;
-        this.instituicao = instituicao;
         this.orientador = orientador;
         this.curso = curso;
         this.ano = ano;
         this.nPaginas = nPaginas;
-        this.palavraChave = palavraChave;
         this.resumo = resumo;
         this.abstractText = abstractText;
+        
     }
-    
+
     public String getMonografiaId() {
         return monografiaId;
     }
@@ -161,5 +165,5 @@ public class Monografia implements Serializable {
     public void setAbstractText(String abstractText) {
         this.abstractText = abstractText;
     }
-     
+
 }
