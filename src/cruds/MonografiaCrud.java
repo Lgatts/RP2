@@ -11,7 +11,9 @@ import java.util.List;
 import persistenciaDados.CrudMonografiaObjects;
 
 /**
- * Classe que implementa ações como Criar, Exluir, Editar, e Consultar, sobre varias monografias.
+ * Classe que implementa ações como Criar, Exluir, Editar, e Consultar, sobre
+ * varias monografias.
+ *
  * @author Lucas
  */
 public class MonografiaCrud {
@@ -44,8 +46,8 @@ public class MonografiaCrud {
 
     /**
      * Percorre a lista e se encontar alguma monografia com o Titulo
-     * correspondente, a mesma é excluida da lista, esse metodo ainda chama o metodo de exclusão do
-     * objeto do hd.
+     * correspondente, a mesma é excluida da lista, esse metodo ainda chama o
+     * metodo de exclusão do objeto do hd.
      *
      * @param titulo
      */
@@ -149,7 +151,7 @@ public class MonografiaCrud {
                 monografia.setTipo(monografiaEditada.getTipo());
                 monografia.setnPaginas(monografiaEditada.getnPaginas());
                 monografia.setTitulo(monografiaEditada.getTitulo());
-                
+
                 CrudMonografiaObjects.saveObject(monografia, "Monografias");
                 break;
 
