@@ -6,13 +6,13 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-public class PainelArtigo extends javax.swing.JFrame {
+public class FrameArtigo extends javax.swing.JFrame {
 
     private List<String> Lista;
     private List<Artigo> ListarArtigo;
     private String editar;
 
-    public PainelArtigo() {
+    public FrameArtigo() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("RP2 - Artigos");
@@ -864,7 +864,7 @@ public class PainelArtigo extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PainelArtigo().setVisible(true);
+                new FrameArtigo().setVisible(true);
             }
         });
     }

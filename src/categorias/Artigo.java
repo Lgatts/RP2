@@ -4,13 +4,11 @@ package categorias;
  *
  * @author MauricioEscobar
  */
-//public class Artigo extends SubmissaoCientifica {
-public class Artigo {
+public class Artigo extends SubmissaoCientifica {
 
     private String titulo;
     private String situacao;
     private String autor[];
-    private String instituicao[];
     private String palavrachave[];
     private String resumo;
     private String abstrat;
@@ -25,12 +23,11 @@ public class Artigo {
      * @param abstrat
      */
     public Artigo(String titulo, String situacao, String autor[], String instituicao[], String palavrachave[], String resumo, String abstrat) {
-//        super(titulo, 8, 8, 4);
+        super(titulo, 8, 8, 4);
         
         this.titulo = titulo;
         this.situacao = situacao;
         this.autor = autor;
-        this.instituicao = instituicao;
         this.palavrachave = palavrachave;
         this.resumo = resumo;
         this.abstrat = abstrat;
@@ -79,19 +76,6 @@ public class Artigo {
     }
 
     /**
-     * @return the instituicao
-     */
-    public String[] getInstituicao() {
-        return instituicao;
-    }
-//
-//    /**
-//     * @param instituicao the instituicao to set
-//     */
-    public void setInstituicao(String[] instituicao) {
-        this.instituicao = instituicao;
-    }
-    /**
      * @return the palavrachave
      */
     public String[] getPalavrachave() {
@@ -133,8 +117,9 @@ public class Artigo {
         this.abstrat = abstrat;
     }
 
-//    public String toString() {
-//        return super.toString() + "Resumo" + resumo + "Abstract" + abstrat;
-//    }
+    @Override
+    public String toString() {
+        return super.toString() + "Resumo" + resumo + "Abstract" + abstrat;
+    }
 
 }
