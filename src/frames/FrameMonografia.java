@@ -6,13 +6,16 @@
 package frames;
 
 import categorias.Monografia;
+import categorias.Situacao;
+import categorias.Submissao;
+import categorias.Tipo;
 import cruds.MonografiaCrud;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import javax.swing.DefaultListModel;
 import javax.swing.SwingUtilities;
-import persistenciaDados.CrudMonografiaObjects;
+import persistenciaDados.ObjectCrud;
 
 /**
  *
@@ -22,7 +25,7 @@ public class FrameMonografia extends javax.swing.JFrame {
 
     private List<String> displayList;
     private Monografia monografiaSelecionada;
-
+    private MonografiaCrud monografiaCrud;
     /**
      * Creates new form FrameMonografia1
      */
@@ -35,11 +38,12 @@ public class FrameMonografia extends javax.swing.JFrame {
         jTabbedPaneMonografia.setEnabledAt(2, false);
 
         jButtonEditarMonografia.setEnabled(false);
-        jButtonExcluirMonografia.setEnabled(false);
-
-        MonografiaCrud.setMonografiaList(CrudMonografiaObjects.readObject("Monografias"));
-
-        displayList = MonografiaCrud.consultar("", "");
+        jButtonExcluirMonografia.setEnabled(false);        
+        
+        monografiaCrud = new MonografiaCrud();
+        
+        MonografiaCrud.setListaMonografias(ObjectCrud.readObject("Monografias"));
+        
         jButtonConsultaAvancada.setVisible(false);
         listar();
     }
@@ -487,7 +491,7 @@ public class FrameMonografia extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextFieldPalavraChave0, jTextFieldPalavraChave1, jTextFieldPalavraChave2, jTextFieldPalavraChave3});
@@ -689,7 +693,7 @@ public class FrameMonografia extends javax.swing.JFrame {
                 .addGroup(jPanelEditar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         jPanelEditar1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jScrollPane7, jScrollPane8});
@@ -758,8 +762,7 @@ public class FrameMonografia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTabbedPaneMonografiaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPaneMonografiaStateChanged
-        if (jTabbedPaneMonografia.getSelectedIndex() == 0) {
-            displayList = MonografiaCrud.consultar("", "");
+        if (jTabbedPaneMonografia.getSelectedIndex() == 0) {            
             listar();
         }
     }//GEN-LAST:event_jTabbedPaneMonografiaStateChanged
@@ -784,9 +787,7 @@ public class FrameMonografia extends javax.swing.JFrame {
 
     private void jButtonExcluirMonografiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirMonografiaActionPerformed
 
-        MonografiaCrud.excluir(jListMonografia.getSelectedValue());
-        displayList = MonografiaCrud.consultar("", "");
-
+        monografiaCrud.excluir(jListMonografia.getSelectedValue());        
         listar();
 
     }//GEN-LAST:event_jButtonExcluirMonografiaActionPerformed
@@ -809,16 +810,24 @@ public class FrameMonografia extends javax.swing.JFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
 
+        MonografiaCrud monografiaCrud = new MonografiaCrud();
+        
+        List<String> autores = new ArrayList();
+        List<String> instituicoes = new ArrayList();
+        List<String> palavrasChave = new ArrayList();
+        
         String titulo, autor, orientador, tipo, situacao, instituicao, curso, abstractText, resumo;
-        String[] palavrasChave = new String[4];
+        
         int ano = 0, nPaginas = 0;
 
         titulo = jTextFieldTitulo.getText();
-        autor = jTextFieldAutor.getText();
+        autores.add(jTextFieldAutor.getText());
         orientador = jTextFieldOrientador.getText();
         tipo = jComboBoxTipo.getSelectedItem().toString();
         situacao = jComboBoxSituacao.getSelectedItem().toString();
 
+        
+        
         if (jTextFieldAno.getText().isEmpty() == false) {
             ano = Integer.valueOf(jTextFieldAno.getText());
         }
@@ -827,34 +836,31 @@ public class FrameMonografia extends javax.swing.JFrame {
             nPaginas = Integer.valueOf(jTextFieldnPaginas.getText());
         }
 
-        instituicao = jTextFieldInstituicao.getText();
+        instituicoes.add(jTextFieldInstituicao.getText());
         curso = jTextFieldCurso.getText();
 
-        palavrasChave[0] = jTextFieldPalavraChave0.getText();
-        palavrasChave[1] = jTextFieldPalavraChave1.getText();
-        palavrasChave[2] = jTextFieldPalavraChave2.getText();
-        palavrasChave[3] = jTextFieldPalavraChave3.getText();
+        palavrasChave.add(jTextFieldPalavraChave0.getText());
+        palavrasChave.add(jTextFieldPalavraChave1.getText());
+        palavrasChave.add(jTextFieldPalavraChave2.getText());
+        palavrasChave.add(jTextFieldPalavraChave3.getText());
 
         resumo = jTextPaneResumo.getText();
         abstractText = jTextPaneAbstractText.getText();
 
-        String monografiaID = UUID.randomUUID().toString();
-
-        Monografia monografia = new Monografia(monografiaID,
-                titulo,
-                situacao,
-                tipo,
-                autor,
-                instituicao,
-                orientador,
-                curso,
-                ano,
-                nPaginas,
-                palavrasChave,
-                resumo,
+        Monografia monografia = new Monografia(titulo, 
+                Situacao.APROVADO, 
+                Tipo.MESTRADO, 
+                autores, 
+                instituicoes, 
+                orientador, 
+                curso, 
+                ano, 
+                nPaginas, 
+                palavrasChave, 
+                resumo, 
                 abstractText);
 
-        MonografiaCrud.adicionar(monografia);
+        monografiaCrud.incluir(monografia);
 
         jTabbedPaneMonografia.setEnabledAt(0, true);
         jTabbedPaneMonografia.setEnabledAt(1, false);
@@ -903,6 +909,8 @@ public class FrameMonografia extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonEditarMonografiaActionPerformed
 
+    
+    
     private void jListMonografiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListMonografiaMouseClicked
         if (SwingUtilities.isRightMouseButton(evt)) {
             if (jListMonografia.getSelectedIndex() != -1) {
@@ -1041,8 +1049,8 @@ public class FrameMonografia extends javax.swing.JFrame {
 
         DefaultListModel listModel = new DefaultListModel();
 
-        for (String element : displayList) {
-            listModel.addElement(element);
+        for (Submissao submissao : MonografiaCrud.getListaMonografias()) {
+            listModel.addElement(submissao.getTituloSubmissao());
         }
 
         jListMonografia.setModel(listModel);

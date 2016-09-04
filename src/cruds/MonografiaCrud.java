@@ -5,10 +5,10 @@
  */
 package cruds;
 
-import categorias.Monografia;
+import categorias.Submissao;
 import java.util.ArrayList;
 import java.util.List;
-import persistenciaDados.CrudMonografiaObjects;
+import persistenciaDados.ObjectCrud;
 
 /**
  * Classe que implementa ações como Criar, Exluir, Editar, e Consultar, sobre
@@ -16,147 +16,77 @@ import persistenciaDados.CrudMonografiaObjects;
  *
  * @author Lucas
  */
-public class MonografiaCrud {
+public class MonografiaCrud implements ListaSubmissoes {
 
-    private static List<Monografia> monografiaList = new ArrayList();
+    private static List<Submissao> listaMonografias = new ArrayList();
 
-    public static void setMonografiaList(List<Monografia> monografiaList) {
-        MonografiaCrud.monografiaList = monografiaList;
+    public static List<Submissao> getListaMonografias() {
+        return listaMonografias;
     }
 
-    /**
-     *
-     * @return ArrayList<Monografia> contendo todas as monografias adicionadas
-     */
-    public static List<Monografia> getMonografiaList() {
-        return monografiaList;
+    public static void setListaMonografias(List<Submissao> listaMonografias) {
+        MonografiaCrud.listaMonografias = listaMonografias;
+    } 
+    
+    @Override
+    public boolean incluir(Submissao submissao) {
+        listaMonografias.add(submissao);
+        ObjectCrud.saveObject(submissao, "Monografias");
+        return true;
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Consultas">
     /**
-     * Recebe o objeto monografia e armazena em um ArrayList
-     *
-     * @param monografia
-     */
-    public static void adicionar(Monografia monografia) {
-
-        monografiaList.add(monografia);
-        CrudMonografiaObjects.saveObject(monografia, "Monografias");
-
-    }
-
-    /**
-     * Percorre a lista e se encontar alguma monografia com o Titulo
-     * correspondente, a mesma é excluida da lista, esse metodo ainda chama o
-     * metodo de exclusão do objeto do hd.
+     * Método para buscar uma monografia a partir de um título ela pode buscar
+     * apenas uma parte do título
      *
      * @param titulo
+     * @return uma lista com todos os objetos monografia com titulos
+     * correspondentes
      */
-    public static void excluir(String titulo) {
-        for (Monografia monografia : monografiaList) {
-            if (monografia.getTitulo().equals(titulo)) {
-                monografiaList.remove(monografia);
-                CrudMonografiaObjects.deleteObject(monografia, "Monografias");
-                break;
+    @Override
+    public List<Submissao> consultarTitulo(String titulo) {
+        //Declaração da lista que irá ser retornada;
+        List<Submissao> listaConsulta = new ArrayList();
+
+        for (Submissao submissao : listaMonografias) {
+            if (submissao.getTituloSubmissao().toUpperCase().contains(titulo.toUpperCase())) {
+                listaConsulta.add(submissao);
             }
-        }
-    }
-
-    /**
-     *
-     * @param tipoConsulta Especifca com qual campo será feita a consulta, pode
-     * ser Titulo, Autor, Curso, Orientador, "vazio" retorna todas as
-     * monografias existentes
-     * @param textoConsulta Texto informado pelo usuário com o qual será
-     * realizado a consulta
-     * @return Lista de Strings com os titulos das monografias correspondentes
-     */
-    public static List<String> consultar(String tipoConsulta, String textoConsulta) {
-
-        List<String> listaConsulta = new ArrayList();
-
-        switch (tipoConsulta) {
-            case "Título":
-                for (Monografia monografia : monografiaList) {
-                    if (monografia.getTitulo().toUpperCase().contains(textoConsulta.toUpperCase())) {
-                        listaConsulta.add(monografia.getTitulo());
-                    }
-                }
-                break;
-            case "Autor":
-                for (Monografia monografia : monografiaList) {
-                    if (monografia.getAutor().toUpperCase().contains(textoConsulta.toUpperCase())) {
-                        listaConsulta.add(monografia.getTitulo());
-                    }
-                }
-                break;
-            case "Orientador":
-                for (Monografia monografia : monografiaList) {
-                    if (monografia.getOrientador().toUpperCase().contains(textoConsulta.toUpperCase())) {
-                        listaConsulta.add(monografia.getTitulo());
-                    }
-                }
-                break;
-            case "Curso":
-                for (Monografia monografia : monografiaList) {
-                    if (monografia.getCurso().toUpperCase().contains(textoConsulta.toUpperCase())) {
-                        listaConsulta.add(monografia.getTitulo());
-                    }
-                }
-                break;
-            default:
-                for (Monografia monografia : monografiaList) {
-                    listaConsulta.add(monografia.getTitulo());
-                }
-                break;
         }
 
         return listaConsulta;
-
     }
 
-    /**
-     * Função para retornar o objeto do tipo Monografia através do título
-     *
-     * @param titulo String Titulo da monografia desejada
-     * @return Objeto Monografia
-     */
-    public static Monografia getMonografia(String titulo) {
-        for (Monografia monografia : monografiaList) {
-            if (monografia.getTitulo().equalsIgnoreCase(titulo)) {
-                return monografia;
-            }
-        }
+    @Override
+    public List<Submissao> consultarAutor(String autor) {
         return null;
     }
+    //</editor-fold>
 
-    /**
-     * Método que recebe um objeto monografia e a partir de seu id o substitui
-     * no ArrayList.
-     *
-     * @param monografiaEditada
-     */
-    public static void editar(Monografia monografiaEditada) {
-        for (Monografia monografia : monografiaList) {
-            if (monografia.getMonografiaId().equals(monografiaEditada.getMonografiaId())) {
-
-                monografia.setAutor(monografiaEditada.getAutor());
-                monografia.setAbstractText(monografiaEditada.getAbstractText());
-                monografia.setAno(monografiaEditada.getAno());
-                monografia.setCurso(monografiaEditada.getCurso());
-                monografia.setInstituicao(monografiaEditada.getInstituicao());
-                monografia.setOrientador(monografiaEditada.getOrientador());
-                monografia.setPalavraChave(monografiaEditada.getPalavraChave());
-                monografia.setResumo(monografiaEditada.getResumo());
-                monografia.setSituacao(monografiaEditada.getSituacao());
-                monografia.setTipo(monografiaEditada.getTipo());
-                monografia.setnPaginas(monografiaEditada.getnPaginas());
-                monografia.setTitulo(monografiaEditada.getTitulo());
-
-                CrudMonografiaObjects.saveObject(monografia, "Monografias");
-                break;
-
+    @Override
+    public boolean editar(String titulo, Submissao submissao) {
+        
+        for(Submissao submissaoAnterior : listaMonografias){
+            if(submissaoAnterior.getTituloSubmissao().equals(titulo)){
+                submissaoAnterior = submissao;
+                ObjectCrud.saveObject(submissaoAnterior, "Monografias");
+                return true;
             }
         }
+        return false;
+    }
+
+    @Override
+    public boolean excluir(String titulo) {
+         for (Submissao submissao : listaMonografias) {
+            if (submissao.getTituloSubmissao().equals(titulo)) {
+                listaMonografias.remove(submissao);
+                ObjectCrud.deleteObject(submissao, "Monografias");
+                return true;
+            }
+        }
+        return false;
     }
 
 }
