@@ -24,20 +24,24 @@ public class FrameMinicursoDetalhes extends javax.swing.JFrame {
         this.setTitle("RP II - Detalhes");
         this.setLocationRelativeTo(null);
         
-        String indexNumberAuthors = "";
-        int hora, minutos;
+        String indexNumberAuthors = "", duracaoEditar;
+        int hora, minutos, segundos;
         
         for(Minicurso minicurso : minicursos){
             if(minicurso.getTituloSubmissao().equals(titleDetails)){
                 
-                hora = minicurso.getDuracao()/60;
-                minutos = 60*(minicurso.getDuracao()/60- hora);
+                hora = minicurso.getDuracao()/3600;
+                minutos = (minicurso.getDuracao()%3600)/60;
+                segundos = (minicurso.getDuracao()%3600)%60;
+                
+                duracaoEditar = String.valueOf(hora)+String.valueOf(minutos)
+                            +String.valueOf(segundos);
                 
                 jTextMaisDetalhesTitulo.setText(minicurso.getTituloSubmissao());
                 jTextMaisDetalhesSituacao.setText(minicurso.getSituacaoSubmissao().toString());
                 jTextPaneMaisDetalhesResumoTexto.setText(minicurso.getResumo());
                 jTextPaneMaisDetalhesAbstractTexto.setText(minicurso.getAbstractText());
-                jFormattedTextMaisDetalhesDuracao.setText(hora+":"+minutos+":00");
+                jFormattedTextMaisDetalhesDuracao.setText(duracaoEditar);
                 jTextPaneMaisDetalhesMetodologia.setText(minicurso.getMetodologia());
                 jTextMaisDetalhesRecursos.setText(minicurso.getRecursos());
                 if(minicurso.getAutores().size() == 1){
@@ -105,7 +109,7 @@ public class FrameMinicursoDetalhes extends javax.swing.JFrame {
         jTextMaisDetalhesSituacao = new javax.swing.JTextField();
         jTextMaisDetalhesNumeroAutores = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabelMaisDetalhesTitulo.setText("Título: ");
 

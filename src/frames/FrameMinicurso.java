@@ -47,26 +47,55 @@ public class FrameMinicurso extends javax.swing.JFrame {
     }
     
     /**
+     * Método para verificar a duracao
+     * @param duracao - recebe a duracao para verificar se é uma quantidade válida
+     * @return - boolean , verdadeiro caso for inválida
+     */
+    public boolean verificarDuracao(String duracaoString){
+        String valores="";
+        int duracao=0, aux=0;
+        for(int i=0; i<duracaoString.length(); i++){
+            
+            if(duracaoString.charAt(i) == ':'){
+                if(aux == 0){
+                    if(Integer.parseInt(valores)>=25){
+                        return true;
+                    }
+                    valores ="";
+                    aux++;
+                } else if (aux == 1) {
+                    if(60<=Integer.parseInt(valores)){
+                        return true;
+                    }
+                    valores ="";
+                    aux++;
+                }
+            } else {
+                valores += duracaoString.charAt(i);
+                if(aux==2)
+                    aux++;
+                if(aux == 3){
+                    if(60<=Integer.parseInt(valores)){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    
+    /**
      * Método para converter os campos de duracao para inteiro
      * @param duracaoString
      * @return 
      */
     public int converterStringEmNumero(String duracaoString){
-        String valores="";
-        int duracao=0, aux=0;
-        for(int i=0; i<duracaoString.length(); i++){
-            if(duracaoString.charAt(i) == ':'){
-                if(aux == 0){
-                    duracao = Integer.parseInt(valores)*60;
-                    valores ="";
-                    aux++;
-                } else {
-                    duracao += Integer.parseInt(valores);
-                }
-            } else {
-                valores += duracaoString.charAt(i);
-            }
-        }
+        int duracao=0;
+        
+        duracao += Integer.parseInt(duracaoString.substring(0, 2))*3600;
+        duracao += Integer.parseInt(duracaoString.substring(3, 5))*60;
+        duracao += Integer.parseInt(duracaoString.substring(6));
+        
         return duracao;
     }
     
@@ -97,7 +126,7 @@ public class FrameMinicurso extends javax.swing.JFrame {
      * @param jList 
      */
     private void deletar(String nomeMinicurso){
-        MinicursoCRUD.deletarMinicurso(nomeMinicurso);
+        MinicursoCRUD.excluir(nomeMinicurso);
         visualizarLista = MinicursoCRUD.consultar("", "");
         visualizarLista();
     }
@@ -112,7 +141,8 @@ public class FrameMinicurso extends javax.swing.JFrame {
         jTabShortCourse.setEnabledAt(1, false);
         jTabShortCourse.setEnabledAt(2, true);
 
-        int indexEditarSituacao = 0, indexEditarAutor = 0, hora, minutos;
+        String duracaoEditar;
+        int indexEditarSituacao = 0, indexEditarAutor = 0, hora, minutos,segundos;
         nomeEditar = jList.getSelectedValue().toString();
 
         for (categorias.Minicurso minicurso : minicursos) {
@@ -124,14 +154,18 @@ public class FrameMinicurso extends javax.swing.JFrame {
                     }
                 }
 
-                hora = minicurso.getDuracao()/60;
-                minutos = 60*(minicurso.getDuracao()/60- hora);
+                hora = minicurso.getDuracao()/3600;
+                minutos = (minicurso.getDuracao()%3600)/60;
+                segundos = (minicurso.getDuracao()%3600)%60;
+                
+                duracaoEditar = String.valueOf(hora)+String.valueOf(minutos)
+                            +String.valueOf(segundos);
                 
                 jTextEditarTitulo.setText(minicurso.getTituloSubmissao());
                 jComboBoxEditarSituacao.setSelectedIndex(indexEditarSituacao);
                 jTextPaneEditarResumoTexto.setText(minicurso.getResumo());
                 jTextPaneEditarAbstractTexto.setText(minicurso.getAbstractText());
-                jFormattedEditarDuracao.setText(hora+":"+minutos+":00");
+                jFormattedEditarDuracao.setText(duracaoEditar);
                 jTextEditarRecursos.setText(minicurso.getRecursos());
                 jTextPaneEditarMetodologia.setText(minicurso.getMetodologia());
                 
@@ -705,6 +739,8 @@ public class FrameMinicurso extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "É necessário o preenchimento de todos campos obrigatórios(*) para efetuar a inserção de um minicurso.");
         } else if (jTextAutor.getText().trim().equals("") && jTextAutor1.getText().trim().equals("") && jTextAutor2.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "É necessário o preenchimento de no mínimo um autor para efetuar a inserção de um minicurso.");
+        }else if(verificarDuracao(jFormattedDuracao.getText())){
+            JOptionPane.showMessageDialog(null, "Duração inválida");
         } else {
             ArrayList<String>nomeAutores = new ArrayList<>();
             int duracao;
@@ -727,7 +763,7 @@ public class FrameMinicurso extends javax.swing.JFrame {
                     duracao, jTextRecursos.getText().trim(),
                     jTextPaneMetodologia.getText().trim(), nomeAutores);
             
-            MinicursoCRUD.inserirMinicurso(novoMinicurso);
+            MinicursoCRUD.incluir(novoMinicurso);
             
             jTextTitulo.setText("");
             jComboBoxSituacao.setSelectedIndex(0);
@@ -772,7 +808,7 @@ public class FrameMinicurso extends javax.swing.JFrame {
             
             
             MinicursoCRUD editar = new MinicursoCRUD();
-            editar.editarMinicurso(nomeEditar, jTextEditarTitulo.getText(),
+            editar.editar(nomeEditar, jTextEditarTitulo.getText(),
                   //  jComboBoxEditarSituacao.getSelectedItem().toString(),
                     jTextPaneEditarResumoTexto.getText(),
                     jTextPaneEditarAbstractTexto.getText(), duracao,

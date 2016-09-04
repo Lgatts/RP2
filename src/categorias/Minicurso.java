@@ -6,6 +6,7 @@
 package categorias;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -30,7 +31,7 @@ public class Minicurso extends SubmissaoApresentacao {
      * @param nomeAutor2 
      */
     public Minicurso(String titulo, /*Situacao situacao,*/ String resumoTexto, String abstractTexto,
-            int duracao, String recursos, String metodologia, ArrayList<String> autores) {
+            int duracao, String recursos, String metodologia, List<String> autores) {
         
         super(titulo, duracao, 3, resumoTexto, abstractTexto);
         this.recursos = recursos;
