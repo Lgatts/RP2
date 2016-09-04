@@ -70,4 +70,12 @@ public class Minicurso extends SubmissaoApresentacao {
     public void setMetodologia(String metodologia) {
         this.metodologia = metodologia;
     }
+    
+    @Override
+    public String toString(){
+        String dados = super.toString();
+        dados += "\nMetodologia: "+getMetodologia();
+        dados += "\nRecursos: "+getRecursos();
+        return dados;
+    }
 }

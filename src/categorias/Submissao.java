@@ -94,20 +94,15 @@ public abstract class Submissao {
         
         if(autores.size() > MAX_AUTORES || autores.size() == 0){
             return false;
+        } else{
+            this.autores = autores;
+            return true;
         }
-        
-        this.autores.clear();
-        
-        for (int i=0; i<autores.size();i++) {
-            this.autores.add(autores.get(i));
-        }
-        
-        return true;
     }
     
     /**
      * Método para verificar se um autor é percetencente a esta submissão
-     * @param autor
+     * @param procuraAutor
      * @return 
      */
     public boolean isAutor(String procuraAutor){
