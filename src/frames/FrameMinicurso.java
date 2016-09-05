@@ -148,7 +148,8 @@ public class FrameMinicurso extends javax.swing.JFrame {
         for (categorias.Minicurso minicurso : minicursos) {
             if (nomeEditar.equals(minicurso.getTituloSubmissao())) {
                 for (int i = 0; i < jComboBoxEditarSituacao.getItemCount(); i++) {
-                    if (minicurso.getSituacaoSubmissao().equals(jComboBoxEditarSituacao.getItemAt(i))) {
+                    if (minicurso.getSituacaoSubmissao().equals
+                        (jComboBoxEditarSituacao.getItemAt(i))) {
                         indexEditarSituacao = i;
                         
                     }
@@ -750,10 +751,19 @@ public class FrameMinicurso extends javax.swing.JFrame {
 
     private void jButtonInserirSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirSalvarActionPerformed
         // TODO add your handling code here:
-        if (jTextTitulo.getText().trim().equals("") || jTextPaneResumoTexto.getText().trim().equals("") || jTextPaneAbstractTexto.getText().trim().equals("") || jFormattedDuracao.getText().equals("  :  :  ") || jTextRecursos.getText().trim().equals("") || jTextPaneMetodologia.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "É necessário o preenchimento de todos campos obrigatórios(*) para efetuar a inserção de um minicurso.");
-        } else if (jTextAutor.getText().trim().equals("") && jTextAutor1.getText().trim().equals("") && jTextAutor2.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "É necessário o preenchimento de no mínimo um autor para efetuar a inserção de um minicurso.");
+        if (jTextTitulo.getText().trim().equals("") 
+                || jTextPaneResumoTexto.getText().trim().equals("") 
+                || jTextPaneAbstractTexto.getText().trim().equals("") 
+                || jFormattedDuracao.getText().equals("  :  :  ") 
+                || jTextRecursos.getText().trim().equals("") 
+                || jTextPaneMetodologia.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "É necessário o preenchimento de todos"
+                    + " campos obrigatórios(*) para efetuar a inserção de um minicurso.");
+        } else if (jTextAutor.getText().trim().equals("") 
+                && jTextAutor1.getText().trim().equals("") 
+                && jTextAutor2.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "É necessário o preenchimento de no mínimo"
+                    + " um autor para efetuar a inserção de um minicurso.");
         }else if(verificarDuracao(jFormattedDuracao.getText())){
             JOptionPane.showMessageDialog(null, "Duração inválida");
         } else {
@@ -801,10 +811,21 @@ public class FrameMinicurso extends javax.swing.JFrame {
 
     private void jButtonEditarSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarSalvarActionPerformed
         // TODO add your handling code here:
-        if (jTextEditarTitulo.getText().trim().equals("") || jTextPaneEditarResumoTexto.getText().trim().equals("") || jTextPaneEditarAbstractTexto.getText().trim().equals("") || jFormattedEditarDuracao.getText().equals("  :  :  ") || jTextEditarRecursos.getText().trim().equals("") || jTextPaneEditarMetodologia.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "É necessário o preenchimento de todos campos obrigatórios(*) para efetuar a edição de um minicurso.");
-        } else if (jTextEditarAutor.getText().trim().equals("") && jTextEditarAutor1.getText().trim().equals("") && jTextEditarAutor2.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "É necessário o preenchimento de no mínimo um autor para efetuar a edição de um minicurso.");
+        if (jTextEditarTitulo.getText().trim().equals("") 
+                || jTextPaneEditarResumoTexto.getText().trim().equals("") 
+                || jTextPaneEditarAbstractTexto.getText().trim().equals("") 
+                || jFormattedEditarDuracao.getText().equals("  :  :  ") 
+                || jTextEditarRecursos.getText().trim().equals("") 
+                || jTextPaneEditarMetodologia.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null,
+                    "É necessário o preenchimento de todos campos obrigatórios(*)"
+                            + " para efetuar a edição de um minicurso.");
+        } else if (jTextEditarAutor.getText().trim().equals("") 
+                && jTextEditarAutor1.getText().trim().equals("") 
+                && jTextEditarAutor2.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null,
+                    "É necessário o preenchimento de no mínimo um autor para efetuar"
+                            + " a edição de um minicurso.");
         } else if(verificarDuracao(jFormattedEditarDuracao.getText())){
             JOptionPane.showMessageDialog(null, "Duração inválida.");
         }else{
@@ -907,10 +928,13 @@ public class FrameMinicurso extends javax.swing.JFrame {
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         // TODO add your handling code here:
-        if (jComboBoxConsultar.getSelectedIndex() != 0 && jTextConsultar.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "É necessário o preenchimento do campo para este tipo de consulta.");
+        if (jComboBoxConsultar.getSelectedIndex() != 0 
+                && jTextConsultar.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "É necessário o preenchimento do"
+                    + " campo para este tipo de consulta.");
         } else {
-            visualizarLista = MinicursoCRUD.consultar(jComboBoxConsultar.getSelectedItem().toString(), jTextConsultar.getText());
+            visualizarLista = MinicursoCRUD.consultar(jComboBoxConsultar.getSelectedItem().toString()
+                    , jTextConsultar.getText());
             visualizarLista();
         }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
@@ -922,7 +946,8 @@ public class FrameMinicurso extends javax.swing.JFrame {
 
     private void jButtonConsultaAvancadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaAvancadaActionPerformed
         // TODO add your handling code here:
-        FrameMinicursoConsultaAvancada consultaAvancada = new FrameMinicursoConsultaAvancada(jListNomesMinicursos);
+        FrameMinicursoConsultaAvancada consultaAvancada;
+        consultaAvancada = new FrameMinicursoConsultaAvancada(jListNomesMinicursos);
         consultaAvancada.setVisible(true);
     }//GEN-LAST:event_jButtonConsultaAvancadaActionPerformed
 
