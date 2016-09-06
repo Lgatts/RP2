@@ -15,7 +15,7 @@ Doutorado
  * @author Junior
  */
 public enum Tipo {
-    GRADUAÇAO("Graduação"),
+    GRADUAÇÃO("Graduação"),
     ESPECIALIZAÇÃO("Especialização"),
     MESTRADO("Mestrado"),
     DOUTORADO("Doutorado");
@@ -50,8 +50,8 @@ public enum Tipo {
             return Tipo.ESPECIALIZAÇÃO;
         } else if (Tipo.MESTRADO.getTipo().equals(tipo)) {
             return Tipo.MESTRADO;
-        } else if (Tipo.GRADUAÇAO.getTipo().equals(tipo)) {
-            return Tipo.GRADUAÇAO;
+        } else if (Tipo.GRADUAÇÃO.getTipo().equals(tipo)) {
+            return Tipo.GRADUAÇÃO;
         } else {
             return null;
         }

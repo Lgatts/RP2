@@ -102,6 +102,7 @@ public class FrameMonografia extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextPaneResumo = new javax.swing.JTextPane();
         jLabelAbstractText = new javax.swing.JLabel();
+        jLabelTituloObrigatorio = new javax.swing.JLabel();
         jPanelEditar = new javax.swing.JPanel();
         jPanelEditar1 = new javax.swing.JPanel();
         jLabelTituloEditar = new javax.swing.JLabel();
@@ -133,6 +134,7 @@ public class FrameMonografia extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         jTextPaneResumoEditar = new javax.swing.JTextPane();
         jLabelAbstractTextEditar = new javax.swing.JLabel();
+        jLabelTituloObrigatorioEditar = new javax.swing.JLabel();
         jSalvarButtonEditar = new javax.swing.JButton();
         jCancelarButtonEditar = new javax.swing.JButton();
 
@@ -314,6 +316,12 @@ public class FrameMonografia extends javax.swing.JFrame {
 
         jLabelTitulo.setText("Título");
 
+        jTextFieldTitulo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldTituloFocusLost(evt);
+            }
+        });
+
         jLabelAutor.setText("Autor");
 
         jLabelOrientador.setText("Orientador");
@@ -325,6 +333,18 @@ public class FrameMonografia extends javax.swing.JFrame {
         jLabelnPaginas.setText("Nº Páginas");
 
         jLabelAno.setText("Ano");
+
+        jTextFieldAno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldAnoKeyTyped(evt);
+            }
+        });
+
+        jTextFieldnPaginas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldnPaginasKeyTyped(evt);
+            }
+        });
 
         jComboBoxSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sob avaliação", "Aprovado", "Reprovado" }));
         jComboBoxSituacao.setToolTipText("");
@@ -355,63 +375,64 @@ public class FrameMonografia extends javax.swing.JFrame {
 
         jLabelAbstractText.setText("Abstract");
 
+        jLabelTituloObrigatorio.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(144, 144, 144)
+                        .addComponent(jLabelTituloObrigatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jTextFieldPalavraChave0, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(jTextFieldPalavraChave1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelPalavrasChaves)
+                            .addComponent(jLabelResumo))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextFieldPalavraChave0, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(20, 20, 20)
-                                        .addComponent(jTextFieldPalavraChave1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabelPalavrasChaves)
-                                    .addComponent(jLabelResumo))
+                                .addComponent(jTextFieldPalavraChave2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextFieldPalavraChave2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(20, 20, 20)
-                                        .addComponent(jTextFieldPalavraChave3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelAbstractText)))
-                            .addComponent(jTextFieldAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldOrientador, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelOrientador)
-                            .addComponent(jLabelAutor)
+                                .addComponent(jTextFieldPalavraChave3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelAbstractText)))
+                    .addComponent(jTextFieldAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldOrientador, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelOrientador)
+                    .addComponent(jLabelAutor)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jComboBoxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(20, 20, 20)
-                                        .addComponent(jComboBoxSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(20, 20, 20)
-                                        .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(44, 44, 44)
-                                        .addComponent(jLabelTipo)
-                                        .addGap(127, 127, 127)
-                                        .addComponent(jLabelSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(73, 73, 73)
-                                        .addComponent(jLabelAno)))
+                                .addComponent(jComboBoxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabelnPaginas)
-                                    .addComponent(jTextFieldnPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jTextFieldInstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelInstituicao)
-                            .addComponent(jLabelCurso)
-                            .addComponent(jTextFieldCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jComboBoxSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(jLabelTipo)
+                                .addGap(127, 127, 127)
+                                .addComponent(jLabelSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(73, 73, 73)
+                                .addComponent(jLabelAno)))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelnPaginas)
+                            .addComponent(jTextFieldnPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jTextFieldInstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelInstituicao)
+                    .addComponent(jLabelCurso)
+                    .addComponent(jTextFieldCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -427,7 +448,9 @@ public class FrameMonografia extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelTitulo)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTitulo)
+                    .addComponent(jLabelTituloObrigatorio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -524,6 +547,12 @@ public class FrameMonografia extends javax.swing.JFrame {
 
         jLabelTituloEditar.setText("Título");
 
+        jTextFieldTituloEditar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldTituloEditarFocusLost(evt);
+            }
+        });
+
         jLabelAutorEditar.setText("Autor");
 
         jLabelOrientadorEditar.setText("Orientador");
@@ -535,6 +564,18 @@ public class FrameMonografia extends javax.swing.JFrame {
         jLabelnPaginasEditar.setText("Nº Páginas");
 
         jLabelAnoEditar.setText("Ano");
+
+        jTextFieldAnoEditar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldAnoEditarKeyTyped(evt);
+            }
+        });
+
+        jTextFieldnPaginasEditar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldnPaginasEditarKeyTyped(evt);
+            }
+        });
 
         jComboBoxSituacaoEditar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sob avaliação", "Aprovado", "Reprovado" }));
         jComboBoxSituacaoEditar.setToolTipText("");
@@ -560,6 +601,8 @@ public class FrameMonografia extends javax.swing.JFrame {
 
         jLabelAbstractTextEditar.setText("Abstract");
 
+        jLabelTituloObrigatorioEditar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+
         javax.swing.GroupLayout jPanelEditar1Layout = new javax.swing.GroupLayout(jPanelEditar1);
         jPanelEditar1.setLayout(jPanelEditar1Layout);
         jPanelEditar1Layout.setHorizontalGroup(
@@ -572,7 +615,10 @@ public class FrameMonografia extends javax.swing.JFrame {
                     .addGroup(jPanelEditar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jTextFieldOrientadorEditar)
                         .addComponent(jTextFieldCursoEditar)
-                        .addComponent(jLabelTituloEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanelEditar1Layout.createSequentialGroup()
+                            .addComponent(jLabelTituloEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(129, 129, 129)
+                            .addComponent(jLabelTituloObrigatorioEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabelAutorEditar)
                         .addComponent(jLabelOrientadorEditar)
                         .addComponent(jTextFieldInstituicaoEditar)
@@ -629,7 +675,9 @@ public class FrameMonografia extends javax.swing.JFrame {
             jPanelEditar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEditar1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelTituloEditar)
+                .addGroup(jPanelEditar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTituloEditar)
+                    .addComponent(jLabelTituloObrigatorioEditar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldTituloEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -751,7 +799,7 @@ public class FrameMonografia extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPaneMonografiaStateChanged
 
     private void jButtonConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaActionPerformed
-        
+
         switch ((String) jComboBoxConsulta.getSelectedItem()) {
             case "Autor":
                 listar(monografiaCrud.consultarAutor(jTextFieldConsulta.getText()));
@@ -812,8 +860,6 @@ public class FrameMonografia extends javax.swing.JFrame {
         titulo = jTextFieldTitulo.getText();
         autores.add(jTextFieldAutor.getText());
         orientador = jTextFieldOrientador.getText();
-        tipo = jComboBoxTipo.getSelectedItem().toString();
-        situacao = jComboBoxSituacao.getSelectedItem().toString();
 
         if (jTextFieldAno.getText().isEmpty() == false) {
             ano = Integer.valueOf(jTextFieldAno.getText());
@@ -835,8 +881,8 @@ public class FrameMonografia extends javax.swing.JFrame {
         abstractText = jTextPaneAbstractText.getText();
 
         Monografia monografia = new Monografia(titulo,
-                Situacao.APROVADO,
-                Tipo.MESTRADO,
+                Situacao.verificarSituacao(jComboBoxSituacao.getSelectedItem().toString()),
+                Tipo.verificarTipo(jComboBoxTipo.getSelectedItem().toString()),
                 autores,
                 instituicoes,
                 orientador,
@@ -867,17 +913,17 @@ public class FrameMonografia extends javax.swing.JFrame {
         jTextFieldAnoEditar.setText(String.valueOf(monografiaSelecionada.getAno()));
         jTextFieldnPaginasEditar.setText(String.valueOf(monografiaSelecionada.getnPaginas()));
 
-//        for (int i = 0; i < 3; i++) {
-//            if (jComboBoxSituacaoEditar.getItemAt(i).equals(monografiaSelecionada.getSituacao())) {
-//                jComboBoxSituacaoEditar.setSelectedIndex(i);
-//            }
-//        }
-//
-//        for (int i = 0; i < 4; i++) {
-//            if (jComboBoxTipoEditar.getItemAt(i).equals(monografiaSelecionada.getTipo())) {
-//                jComboBoxTipoEditar.setSelectedIndex(i);
-//            }
-//        }
+        for (int i = 0; i < 3; i++) {
+            if (jComboBoxSituacaoEditar.getItemAt(i).equalsIgnoreCase(monografiaSelecionada.getSituacaoSubmissao().toString())) {
+                jComboBoxSituacaoEditar.setSelectedIndex(i);
+            }
+        }
+
+        for (int i = 0; i < 4; i++) {
+            if (jComboBoxTipoEditar.getItemAt(i).equalsIgnoreCase(monografiaSelecionada.getTipo().toString())) {
+                jComboBoxTipoEditar.setSelectedIndex(i);
+            }
+        }
         jTextPaneResumoEditar.setText(monografiaSelecionada.getResumo());
         jTextPaneAbstractTextEditar.setText(monografiaSelecionada.getAbstractText());
 
@@ -904,10 +950,10 @@ public class FrameMonografia extends javax.swing.JFrame {
     }//GEN-LAST:event_jListMonografiaMouseClicked
 
     private void jMenuItemDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDetalhesActionPerformed
-       
+
         new FrameMonografiaDetalhes(monografiaSelecionada).setVisible(true);
         jPopupMenuDetalhes.setVisible(false);
-        
+
     }//GEN-LAST:event_jMenuItemDetalhesActionPerformed
 
     private void jPopupMenuDetalhesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPopupMenuDetalhesMouseExited
@@ -942,8 +988,6 @@ public class FrameMonografia extends javax.swing.JFrame {
         titulo = jTextFieldTituloEditar.getText();
         autores.add(jTextFieldAutorEditar.getText());
         orientador = jTextFieldOrientadorEditar.getText();
-        //tipo = jComboBoxTipoEditar.getSelectedItem().toString();
-        //situacao = jComboBoxSituacaoEditar.getSelectedItem().toString();
 
         if (jTextFieldAnoEditar.getText().isEmpty() == false) {
             ano = Integer.valueOf(jTextFieldAnoEditar.getText());
@@ -966,8 +1010,8 @@ public class FrameMonografia extends javax.swing.JFrame {
 
         Monografia monografia = new Monografia(
                 titulo,
-                null,
-                null,
+                Situacao.verificarSituacao(jComboBoxSituacaoEditar.getSelectedItem().toString()),
+                Tipo.verificarTipo(jComboBoxTipoEditar.getSelectedItem().toString()),
                 autores,
                 instituicao,
                 orientador,
@@ -994,6 +1038,56 @@ public class FrameMonografia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextFieldConsultaKeyPressed
 
+    private void jTextFieldTituloFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldTituloFocusLost
+        if (jTextFieldTitulo.getText().trim().isEmpty()) {
+            jButtonSalvar.setEnabled(false);
+            jLabelTituloObrigatorio.setText("Campo Obrigatório");
+        } else {
+            jButtonSalvar.setEnabled(true);
+            jLabelTituloObrigatorio.setText("");
+        }
+    }//GEN-LAST:event_jTextFieldTituloFocusLost
+
+    private void jTextFieldTituloEditarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldTituloEditarFocusLost
+        if (jTextFieldTituloEditar.getText().trim().isEmpty()) {
+            jSalvarButtonEditar.setEnabled(false);
+            jLabelTituloObrigatorioEditar.setText("Campo Obrigatório");
+        } else {
+            jSalvarButtonEditar.setEnabled(true);
+            jLabelTituloObrigatorioEditar.setText("");
+        }
+    }//GEN-LAST:event_jTextFieldTituloEditarFocusLost
+
+    private void jTextFieldAnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAnoKeyTyped
+        soNumeros(evt);
+    }//GEN-LAST:event_jTextFieldAnoKeyTyped
+
+    private void jTextFieldnPaginasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldnPaginasKeyTyped
+        soNumeros(evt);
+    }//GEN-LAST:event_jTextFieldnPaginasKeyTyped
+
+    private void jTextFieldAnoEditarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAnoEditarKeyTyped
+        soNumeros(evt);
+    }//GEN-LAST:event_jTextFieldAnoEditarKeyTyped
+
+    private void jTextFieldnPaginasEditarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldnPaginasEditarKeyTyped
+        soNumeros(evt);
+    }//GEN-LAST:event_jTextFieldnPaginasEditarKeyTyped
+
+    /**
+     * Método que verifica e permite apenas números serem digitados nos textfields
+     * de ano e numero de paginas
+     * @param evt 
+     */
+    private void soNumeros(java.awt.event.KeyEvent evt) {
+        char ch = evt.getKeyChar();
+        if (ch >= '0' && ch <= '9') {
+
+        } else {
+            evt.consume();
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -1008,16 +1102,24 @@ public class FrameMonografia extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameMonografia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameMonografia.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameMonografia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameMonografia.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameMonografia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameMonografia.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameMonografia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameMonografia.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -1089,6 +1191,8 @@ public class FrameMonografia extends javax.swing.JFrame {
             jTextFieldPalavraChave1.setText("");
             jTextFieldPalavraChave2.setText("");
             jTextFieldPalavraChave3.setText("");
+            
+            jLabelTituloObrigatorio.setText("");
         }
 
     }
@@ -1129,6 +1233,8 @@ public class FrameMonografia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTipoEditar;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelTituloEditar;
+    private javax.swing.JLabel jLabelTituloObrigatorio;
+    private javax.swing.JLabel jLabelTituloObrigatorioEditar;
     private javax.swing.JLabel jLabelnPaginas;
     private javax.swing.JLabel jLabelnPaginasEditar;
     private javax.swing.JList<Monografia> jListMonografia;
