@@ -46,13 +46,21 @@ public class FrameMinicursoDetalhes extends javax.swing.JFrame {
                 else if(hora<10 && minutos<10)
                     duracaoEditar = "0"+String.valueOf(hora)+"0"+String.valueOf(minutos)
                             +String.valueOf(segundos);
+                else if(hora<10)
+                    duracaoEditar = "0"+String.valueOf(hora)+String.valueOf(minutos)
+                            +String.valueOf(segundos);
+                else if(minutos<10)
+                    duracaoEditar = String.valueOf(hora)+"0"+String.valueOf(minutos)
+                            +String.valueOf(segundos);
+                else if(segundos<10)
+                    duracaoEditar = String.valueOf(hora)+String.valueOf(minutos)
+                            +"0"+String.valueOf(segundos);
                 else
                     duracaoEditar = String.valueOf(hora)+String.valueOf(minutos)
                             +String.valueOf(segundos);
-                
-                
+                        
                 jTextMaisDetalhesTitulo.setText(minicurso.getTituloSubmissao());
-                jTextMaisDetalhesSituacao.setText(minicurso.getSituacaoSubmissao().toString());
+                jTextMaisDetalhesSituacao.setText(minicurso.getSituacaoSubmissao().getSituacao());
                 jTextPaneMaisDetalhesResumoTexto.setText(minicurso.getResumo());
                 jTextPaneMaisDetalhesAbstractTexto.setText(minicurso.getAbstractText());
                 jFormattedTextMaisDetalhesDuracao.setText(duracaoEditar);

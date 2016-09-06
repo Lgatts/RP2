@@ -6,6 +6,7 @@
 package frames;
 
 import categorias.Minicurso;
+import categorias.Situacao;
 import cruds.MinicursoCRUD;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,9 @@ public class FrameMinicurso extends javax.swing.JFrame {
     private String nomeEditar;
     private List<String> visualizarLista;    
     private List<Minicurso> minicursos = MinicursoCRUD.getMinicursos();
-    
+    private List<String> nomeAutores;
+
+            
     /**
      * Creates new form panelShortCourse
      */
@@ -58,9 +61,6 @@ public class FrameMinicurso extends javax.swing.JFrame {
             
             if(duracaoString.charAt(i) == ':'){
                 if(aux == 0){
-                    if(Integer.parseInt(valores)>=25){
-                        return true;
-                    }
                     valores ="";
                     aux++;
                 } else if (aux == 1) {
@@ -146,12 +146,14 @@ public class FrameMinicurso extends javax.swing.JFrame {
         nomeEditar = jList.getSelectedValue().toString();
 
         for (categorias.Minicurso minicurso : minicursos) {
+            
             if (nomeEditar.equals(minicurso.getTituloSubmissao())) {
+            
                 for (int i = 0; i < jComboBoxEditarSituacao.getItemCount(); i++) {
-                    if (minicurso.getSituacaoSubmissao().equals
+                    if (minicurso.getSituacaoSubmissao().getSituacao().equals
                         (jComboBoxEditarSituacao.getItemAt(i))) {
                         indexEditarSituacao = i;
-                        
+                        break;
                     }
                 }
 
@@ -171,10 +173,19 @@ public class FrameMinicurso extends javax.swing.JFrame {
                 else if(hora<10 && minutos<10)
                     duracaoEditar = "0"+String.valueOf(hora)+"0"+String.valueOf(minutos)
                             +String.valueOf(segundos);
+                else if(hora<10)
+                    duracaoEditar = "0"+String.valueOf(hora)+String.valueOf(minutos)
+                            +String.valueOf(segundos);
+                else if(minutos<10)
+                    duracaoEditar = String.valueOf(hora)+"0"+String.valueOf(minutos)
+                            +String.valueOf(segundos);
+                else if(segundos<10)
+                    duracaoEditar = String.valueOf(hora)+String.valueOf(minutos)
+                            +"0"+String.valueOf(segundos);
                 else
                     duracaoEditar = String.valueOf(hora)+String.valueOf(minutos)
                             +String.valueOf(segundos);
-                
+                        
                 jTextEditarTitulo.setText(minicurso.getTituloSubmissao());
                 jComboBoxEditarSituacao.setSelectedIndex(indexEditarSituacao);
                 jTextPaneEditarResumoTexto.setText(minicurso.getResumo());
@@ -200,6 +211,7 @@ public class FrameMinicurso extends javax.swing.JFrame {
         }
 
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -457,38 +469,25 @@ public class FrameMinicurso extends javax.swing.JFrame {
                     .addGroup(jPanelInserirLayout.createSequentialGroup()
                         .addGroup(jPanelInserirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelInserirLayout.createSequentialGroup()
+                                .addComponent(jLabelAbstractTexto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPaneAbstractTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelInserirLayout.createSequentialGroup()
+                                .addComponent(jLabelTitulo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelInserirLayout.createSequentialGroup()
                                 .addGroup(jPanelInserirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelSituacao)
                                     .addComponent(jLabelResumoTexto))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelInserirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBoxSituacao, 0, 203, Short.MAX_VALUE)
-                                    .addComponent(jScrollPaneResumoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanelInserirLayout.createSequentialGroup()
-                                .addGroup(jPanelInserirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanelInserirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPaneResumoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanelInserirLayout.createSequentialGroup()
-                                        .addComponent(jLabelAbstractTexto)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPaneAbstractTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanelInserirLayout.createSequentialGroup()
-                                        .addComponent(jLabelTitulo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
+                                        .addComponent(jComboBoxSituacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(4, 4, 4)))))
+                        .addGap(41, 41, 41)
                         .addGroup(jPanelInserirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelInserirLayout.createSequentialGroup()
-                                .addComponent(jLabelMetodologia)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPaneMetodologia, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelInserirLayout.createSequentialGroup()
-                                .addGroup(jPanelInserirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelDuracao)
-                                    .addComponent(jLabelRecursos))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelInserirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFormattedDuracao)
-                                    .addComponent(jTextRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanelInserirLayout.createSequentialGroup()
                                 .addComponent(jLabelAutor)
                                 .addGap(0, 0, 0)
@@ -497,10 +496,20 @@ public class FrameMinicurso extends javax.swing.JFrame {
                                         .addComponent(jTextAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jComboBoxInserirAutor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jTextAutor2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanelInserirLayout.createSequentialGroup()
-                                        .addComponent(jTextAutor1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                                    .addComponent(jTextAutor2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextAutor1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInserirLayout.createSequentialGroup()
+                                .addGroup(jPanelInserirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelDuracao)
+                                    .addComponent(jLabelRecursos))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelInserirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jFormattedDuracao)
+                                    .addComponent(jTextRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInserirLayout.createSequentialGroup()
+                                .addComponent(jLabelMetodologia)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPaneMetodologia, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInserirLayout.createSequentialGroup()
                         .addComponent(jButtonInserirVoltar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -636,28 +645,31 @@ public class FrameMinicurso extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelEditarLayout.createSequentialGroup()
-                                .addComponent(jLabelEditarMetodologia)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPaneEditarMetodologia, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelEditarLayout.createSequentialGroup()
                                 .addComponent(jLabelEditarRecursos)
                                 .addGap(8, 8, 8)
-                                .addComponent(jTextEditarRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextEditarRecursos))
                             .addGroup(jPanelEditarLayout.createSequentialGroup()
-                                .addComponent(jLabelEditarDuracao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedEditarDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelEditarLayout.createSequentialGroup()
-                                .addComponent(jLabelEditarAutor)
-                                .addGap(0, 0, 0)
-                                .addGroup(jPanelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelEditarLayout.createSequentialGroup()
-                                        .addComponent(jTextEditarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabelEditarDuracao)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBoxEditarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextEditarAutor1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextEditarAutor2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(jFormattedEditarDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanelEditarLayout.createSequentialGroup()
+                                            .addComponent(jLabelEditarMetodologia)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jScrollPaneEditarMetodologia, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanelEditarLayout.createSequentialGroup()
+                                            .addComponent(jLabelEditarAutor)
+                                            .addGap(0, 0, 0)
+                                            .addGroup(jPanelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEditarLayout.createSequentialGroup()
+                                                    .addComponent(jTextEditarAutor)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(jComboBoxEditarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jTextEditarAutor1)
+                                                .addComponent(jTextEditarAutor2)))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanelEditarLayout.createSequentialGroup()
                         .addComponent(jButtonVoltar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -720,7 +732,10 @@ public class FrameMinicurso extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * botao para voltar para a aba principal desta frame
+ * @param evt 
+ */
     private void jButtonInserirVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirVoltarActionPerformed
         // TODO add your handling code here:
         jTabShortCourse.setSelectedIndex(0);
@@ -728,27 +743,38 @@ public class FrameMinicurso extends javax.swing.JFrame {
         jTabShortCourse.setEnabledAt(1, false);
 
     }//GEN-LAST:event_jButtonInserirVoltarActionPerformed
-
+/**
+ * Botao para voltar para a aba principal desta frame
+ * @param evt 
+ */
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
         jTabShortCourse.setSelectedIndex(0);
         jTabShortCourse.setEnabledAt(0, true);
-        jTabShortCourse.setEnabledAt(1, false);
         jTabShortCourse.setEnabledAt(2, false);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
-
+/**
+ * Botao para voltar ao menu inicial
+ * @param evt 
+ */
     private void jButtonVoltarInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarInicioActionPerformed
         // TODO add your handling code here:
         this.dispose();
         Inicial back = new Inicial();
         back.setVisible(true);
     }//GEN-LAST:event_jButtonVoltarInicioActionPerformed
-
+/**
+ * Botao que chama o método editar
+ * @param evt 
+ */
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
         // TODO add your handling code here:
         editar(jListNomesMinicursos);
     }//GEN-LAST:event_jButtonEditarActionPerformed
-
+/**
+ * Botao para incluir um novo minicurso e já faz a verificação se os campos estão em branco
+ * @param evt 
+ */
     private void jButtonInserirSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirSalvarActionPerformed
         // TODO add your handling code here:
         if (jTextTitulo.getText().trim().equals("") 
@@ -767,7 +793,8 @@ public class FrameMinicurso extends javax.swing.JFrame {
         }else if(verificarDuracao(jFormattedDuracao.getText())){
             JOptionPane.showMessageDialog(null, "Duração inválida");
         } else {
-            ArrayList<String>nomeAutores = new ArrayList<>();
+            nomeAutores = new ArrayList();
+            
             int duracao;
             duracao = converterStringEmNumero(jFormattedDuracao.getText());
 
@@ -781,8 +808,8 @@ public class FrameMinicurso extends javax.swing.JFrame {
                 nomeAutores.add(jTextAutor2.getText().trim());
             }
             
-            Minicurso novoMinicurso = new Minicurso(jTextTitulo.getText().trim(),
-                    //jComboBoxSituacao.getSelectedItem().toString(), 
+            Minicurso novoMinicurso = new Minicurso(jTextTitulo.getText().trim(), 
+                    Situacao.verificarSituacao(jComboBoxSituacao.getSelectedItem().toString()), 
                     jTextPaneResumoTexto.getText().trim(),
                     jTextPaneAbstractTexto.getText().trim(),
                     duracao, jTextRecursos.getText().trim(),
@@ -808,7 +835,10 @@ public class FrameMinicurso extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jButtonInserirSalvarActionPerformed
-
+/**
+ * Botao para editar um minicurso, a e verifica se os campos estão em branco
+ * @param evt 
+ */
     private void jButtonEditarSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarSalvarActionPerformed
         // TODO add your handling code here:
         if (jTextEditarTitulo.getText().trim().equals("") 
@@ -831,26 +861,25 @@ public class FrameMinicurso extends javax.swing.JFrame {
         }else{
             int duracao;
             duracao = converterStringEmNumero(jFormattedEditarDuracao.getText());
-            ArrayList<String> nomeAutoresEdit = new ArrayList<>();
+            nomeAutores = new ArrayList();
             
             if(!(jTextEditarAutor.getText().trim().equals(""))){
-                nomeAutoresEdit.add(jTextEditarAutor.getText().trim());
+                nomeAutores.add(jTextEditarAutor.getText().trim());
             }            
             if(!(jTextEditarAutor1.getText().trim().equals(""))){
-                nomeAutoresEdit.add(jTextEditarAutor1.getText().trim());
+                nomeAutores.add(jTextEditarAutor1.getText().trim());
             }            
             if(!(jTextEditarAutor2.getText().trim().equals(""))){
-                nomeAutoresEdit.add(jTextEditarAutor2.getText());
+                nomeAutores.add(jTextEditarAutor2.getText());
             }
             
-            
             MinicursoCRUD editar = new MinicursoCRUD();
-            editar.editar(nomeEditar, jTextEditarTitulo.getText(),
-                  //  jComboBoxEditarSituacao.getSelectedItem().toString(),
+            editar.editar(nomeEditar, jTextEditarTitulo.getText(), 
+                    Situacao.verificarSituacao(jComboBoxEditarSituacao.getSelectedItem().toString()),
                     jTextPaneEditarResumoTexto.getText(),
                     jTextPaneEditarAbstractTexto.getText(), duracao,
                     jTextEditarRecursos.getText(), jTextPaneEditarMetodologia.getText(),
-                    nomeAutoresEdit);
+                    nomeAutores);
 
             JOptionPane.showMessageDialog(null, "Editado com sucesso!");
             
@@ -863,13 +892,20 @@ public class FrameMinicurso extends javax.swing.JFrame {
             jTabShortCourse.setEnabledAt(2, false);
         }
     }//GEN-LAST:event_jButtonEditarSalvarActionPerformed
-
+/**
+ * Deltar que chama um método enviando o valor que foi selecionado no jList,
+ * e infoma a mensagem deletado com sucesso
+ * @param evt 
+ */
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
         // TODO add your handling code here:
         deletar(jListNomesMinicursos.getSelectedValue().toString());
         JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
     }//GEN-LAST:event_jButtonDeletarActionPerformed
-
+/**
+ * Verificar se tem algo selecionado na lista , se sim ativar os botões
+ * @param evt 
+ */
     private void jListNomesMinicursosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListNomesMinicursosValueChanged
         // TODO add your handling code here:
         if (jListNomesMinicursos.isSelectionEmpty()) {
@@ -882,7 +918,10 @@ public class FrameMinicurso extends javax.swing.JFrame {
             jButtonMaisDetalhes.setEnabled(true);
         }
     }//GEN-LAST:event_jListNomesMinicursosValueChanged
-
+/**
+ * Ação para modificar os campos ativos atraves de um combo box
+ * @param evt 
+ */
     private void jComboBoxInserirAutorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxInserirAutorItemStateChanged
         // TODO add your handling code here:
         switch (jComboBoxInserirAutor.getSelectedItem().toString()) {
@@ -903,7 +942,11 @@ public class FrameMinicurso extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_jComboBoxInserirAutorItemStateChanged
-
+/**
+ * Combo box para ativar os campos de acordo com o número escolhido pelo
+ * comboBox
+ * @param evt 
+ */
     private void jComboBoxEditarAutorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxEditarAutorItemStateChanged
         // TODO add your handling code here:
         switch (jComboBoxEditarAutor.getSelectedItem().toString()) {
@@ -938,19 +981,30 @@ public class FrameMinicurso extends javax.swing.JFrame {
             visualizarLista();
         }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
-
+/**
+ * Mostra mais detalhes, botao chama um método criado anteriormente
+ * @param evt 
+ */
     private void jButtonMaisDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMaisDetalhesActionPerformed
         // TODO add your handling code here:
         maisDetalhes(jListNomesMinicursos.getSelectedValue());
     }//GEN-LAST:event_jButtonMaisDetalhesActionPerformed
-
+/**
+ * Este botão chama uma nova frame que tem o objetivo de fazer uma
+ * consulta avançada, que é por título e autor ao mesmo tempo
+ * @param evt 
+ */
     private void jButtonConsultaAvancadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaAvancadaActionPerformed
         // TODO add your handling code here:
         FrameMinicursoConsultaAvancada consultaAvancada;
         consultaAvancada = new FrameMinicursoConsultaAvancada(jListNomesMinicursos);
         consultaAvancada.setVisible(true);
     }//GEN-LAST:event_jButtonConsultaAvancadaActionPerformed
-
+/**
+ * Este botao muda de aba e desativa as que nao vao ser utilizadas para
+ * a inclusão de um novo minicurso
+ * @param evt 
+ */
     private void jButtonInserirMinicursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirMinicursoActionPerformed
         // TODO add your handling code here:
         jTabShortCourse.setSelectedIndex(1);

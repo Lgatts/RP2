@@ -232,51 +232,33 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabelAbstractTexto" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jScrollPaneAbstractTexto" min="-2" pref="193" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabelTitulo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jTextTitulo" min="-2" pref="205" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabelSituacao" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabelResumoTexto" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jComboBoxSituacao" pref="203" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jScrollPaneResumoTexto" min="-2" pref="193" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="jLabelAbstractTexto" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jScrollPaneAbstractTexto" min="-2" pref="193" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabelTitulo" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextTitulo" min="-2" pref="205" max="-2" attributes="0"/>
+                                              <Component id="jComboBoxSituacao" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabelMetodologia" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPaneMetodologia" min="-2" pref="236" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabelDuracao" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabelRecursos" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jFormattedDuracao" max="32767" attributes="0"/>
-                                          <Component id="jTextRecursos" min="-2" pref="250" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabelAutor" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -286,12 +268,25 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jComboBoxInserirAutor" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="jTextAutor2" alignment="1" min="-2" pref="301" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jTextAutor1" min="-2" pref="291" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="jTextAutor2" alignment="1" min="-2" pref="314" max="-2" attributes="0"/>
+                                          <Component id="jTextAutor1" alignment="0" min="-2" pref="314" max="-2" attributes="0"/>
                                       </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabelDuracao" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelRecursos" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jFormattedDuracao" max="32767" attributes="0"/>
+                                          <Component id="jTextRecursos" min="-2" pref="278" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabelMetodologia" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jScrollPaneMetodologia" min="-2" pref="236" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -541,35 +536,41 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelEditarMetodologia" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPaneEditarMetodologia" min="-2" pref="260" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabelEditarRecursos" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                      <Component id="jTextEditarRecursos" min="-2" pref="270" max="-2" attributes="0"/>
+                                      <Component id="jTextEditarRecursos" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="jLabelEditarDuracao" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jFormattedEditarDuracao" min="-2" pref="278" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelEditarAutor" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jTextEditarAutor" min="-2" pref="196" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabelEditarDuracao" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jComboBoxEditarAutor" min="-2" pref="93" max="-2" attributes="0"/>
+                                              <Component id="jFormattedEditarDuracao" min="-2" pref="289" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="jTextEditarAutor1" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
-                                          <Component id="jTextEditarAutor2" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabelEditarMetodologia" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jScrollPaneEditarMetodologia" min="-2" pref="260" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabelEditarAutor" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="102" alignment="1" attributes="0">
+                                                          <Component id="jTextEditarAutor" max="32767" attributes="0"/>
+                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                          <Component id="jComboBoxEditarAutor" min="-2" pref="93" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Component id="jTextEditarAutor1" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jTextEditarAutor2" alignment="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
                                       </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jButtonVoltar" min="-2" max="-2" attributes="0"/>

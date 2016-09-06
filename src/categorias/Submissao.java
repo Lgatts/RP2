@@ -119,15 +119,11 @@ public abstract class Submissao implements Serializable {
      */
     public boolean setAutores(List<String> autores) {
 
-        if (autores.size() > MAX_AUTORES || autores.size() == 0) {
+        if (autores.size() > MAX_AUTORES || autores.isEmpty()) {
             return false;
         }
 
-        this.autores.clear();
-
-        for (int i = 0; i < autores.size(); i++) {
-            this.autores.add(autores.get(i));
-        }
+        this.autores = autores;
 
         return true;
     }

@@ -7,7 +7,6 @@ package categorias;
 
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  *
  * @author YuryAlencar
@@ -18,22 +17,20 @@ public class Minicurso extends SubmissaoApresentacao {
     private String metodologia;
     
     /**
-     * 
-     * @param titulo
-     * @param situacao
-     * @param resumoTexto
-     * @param abstractTexto
-     * @param duracao
-     * @param recursos
-     * @param metodologia
-     * @param nomeAutor
-     * @param nomeAutor1
-     * @param nomeAutor2 
+     * Cria um minicurso novo
+     * @param titulo - Recebe o título do minicurso
+     * @param situacao - situação que é um tipo ENUM
+     * @param resumoTexto - recebe o resumo do minicurso
+     * @param abstractTexto - abstract também é necessario
+     * @param duracao - a duração em inteiro do minicurso
+     * @param recursos - recursos que serão utilizados para o minicurso
+     * @param metodologia - metodologia do minicurso específico
+     * @param autores - uma lista com todos os autores
      */
-    public Minicurso(String titulo, /*Situacao situacao,*/ String resumoTexto, String abstractTexto,
+    public Minicurso(String titulo, Situacao situacao, String resumoTexto, String abstractTexto,
             int duracao, String recursos, String metodologia, List<String> autores) {
         
-        super(titulo, duracao, 3, resumoTexto, abstractTexto);
+        super(titulo, situacao, duracao, 3, resumoTexto, abstractTexto);
         this.recursos = recursos;
         this.metodologia = metodologia;
         super.setAutores(autores);
@@ -41,7 +38,8 @@ public class Minicurso extends SubmissaoApresentacao {
 
     /**
      *
-     * @return
+     * @return - Retorna os recursos que serão
+     * utilizados para a execução do minicurso
      */
     public String getRecursos() {
         return this.recursos;
@@ -49,7 +47,8 @@ public class Minicurso extends SubmissaoApresentacao {
 
     /**
      *
-     * @return
+     * @return - retorna a metodologia presente no
+     * respectivo minicurso.
      */
     public String getMetodologia() {
         return this.metodologia;
@@ -57,7 +56,9 @@ public class Minicurso extends SubmissaoApresentacao {
 
     /**
      *
-     * @param recursos
+     * @param recursos - Modifica os recursos que serão
+     * necessários para o minicurso específico, através
+     * deste parâmetro recebido.
      */
     public void setRecursos(String recursos) {
         this.recursos = recursos;
@@ -65,12 +66,19 @@ public class Minicurso extends SubmissaoApresentacao {
 
     /**
      *
-     * @param metodologia
+     * @param metodologia - modifica a metodologia do
+     * minicurso específico a partir desta nova metodologia
+     * que é recebida por parâmetro
      */
     public void setMetodologia(String metodologia) {
         this.metodologia = metodologia;
     }
     
+    /**
+     * 
+     * @return - retorna uma string com todos os dados do
+     * minicurso específico.
+     */
     @Override
     public String toString(){
         String dados = super.toString();
