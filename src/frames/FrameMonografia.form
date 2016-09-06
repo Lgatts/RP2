@@ -138,14 +138,12 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jTextFieldConsulta" min="-2" pref="597" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabelConsulta" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                       <Component id="jComboBoxConsulta" min="-2" pref="195" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButtonConsultaAvancada" min="-2" pref="148" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -158,19 +156,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jComboBoxConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jButtonConsultaAvancada" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jComboBoxConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="jTextFieldConsulta" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -186,7 +176,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               <Component id="jButtonConsulta" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="11" max="32767" attributes="0"/>
                               <Component id="jScrollPaneMonografias" min="-2" pref="644" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -215,7 +205,7 @@
                     <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="jListMonografiaValueChanged"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Monografia&gt;"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -265,12 +255,10 @@
             <Component class="javax.swing.JComboBox" name="jComboBoxConsulta">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="5">
+                  <StringArray count="3">
                     <StringItem index="0" value="Listar tudo"/>
                     <StringItem index="1" value="T&#xed;tulo"/>
                     <StringItem index="2" value="Autor"/>
-                    <StringItem index="3" value="Orientador"/>
-                    <StringItem index="4" value="Curso"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -284,14 +272,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonConsultaActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonConsultaAvancada">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Consulta Avan&#xe7;ada"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonConsultaAvancadaActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

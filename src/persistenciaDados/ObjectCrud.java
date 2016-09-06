@@ -5,7 +5,6 @@
  */
 package persistenciaDados;
 
-import categorias.Monografia;
 import categorias.Submissao;
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,24 +23,27 @@ import java.util.logging.Logger;
  */
 public class ObjectCrud {
 
+    //<editor-fold defaultstate="collapsed" desc="Salvar objeto no hd">
     public static void saveObject(Submissao submisao, String tipo) {
         try {
             ObjectOutputStream oos = null;
-            
+
             String filePath = System.getenv("APPDATA") + "\\.RP2" + "\\" + tipo + "\\";
-            
+
             FileOutputStream fOutS = new FileOutputStream(filePath + submisao.getiD() + ".ser");
             oos = new ObjectOutputStream(fOutS);
-            
+
             oos.writeObject(submisao);
             oos.close();
         } catch (IOException ex) {
             Logger.getLogger(ObjectCrud.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Salvar lista de objetos no hd">
     public static void saveObjectFromList(List<Submissao> list, String tipo) {
-        
+
         ObjectOutputStream oos = null;
         String filePath = System.getenv("APPDATA") + "\\.RP2" + "\\" + tipo + "\\";
         int i = 0;
@@ -66,7 +68,9 @@ public class ObjectCrud {
             }
         }
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Criar uma lista com os objetos previamente salvos">
     public static List<Submissao> readObject(String tipo) {
 
         List<Submissao> list = new ArrayList();
@@ -74,8 +78,6 @@ public class ObjectCrud {
         File folder = new File(System.getenv("APPDATA") + "\\.RP2\\" + tipo);
         File[] listOfFiles = folder.listFiles();
 
-       
-        
         for (File file : listOfFiles) {
             if (file.isFile()) {
                 try {
@@ -93,14 +95,17 @@ public class ObjectCrud {
 
             }
         }
-        
+
         return list;
 
     }
+    //</editor-fold>
 
-    public static void deleteObject(Submissao submissao, String tipo){
-        File file = new File(System.getenv("APPDATA") + "\\.RP2\\" + tipo +"\\"+submissao.getiD()+".ser");
+    //<editor-fold defaultstate="collapsed" desc="Deletar um objeto através do id no hd">
+    public static void deleteObject(Submissao submissao, String tipo) {
+        File file = new File(System.getenv("APPDATA") + "\\.RP2\\" + tipo + "\\" + submissao.getiD() + ".ser");
         file.delete();
     }
-    
+    //</editor-fold>
+
 }

@@ -126,16 +126,17 @@ public class Monografia extends SubmissaoCientifica{
      */
     @Override
     public String toString() {
-        String dados;
-        dados = super.toString();
-        dados += "\n Tipo: " + this.tipo;
-        dados += "\n Orientador: " + this.orientador;
-        dados += "\n Curso: " + this.curso;
-        dados += "\n Ano: " + this.ano;
-        dados += "\n Número de Paginas: " + this.nPaginas;
-        dados += "\n Resumo: " + this.resumo;
-        dados += "\n Abstract: " + this.abstractText;
-        return dados;
+//        String dados;
+//        dados = super.toString();
+//        dados += "\n Tipo: " + this.tipo;
+//        dados += "\n Orientador: " + this.orientador;
+//        dados += "\n Curso: " + this.curso;
+//        dados += "\n Ano: " + this.ano;
+//        dados += "\n Número de Paginas: " + this.nPaginas;
+//        dados += "\n Resumo: " + this.resumo;
+//        dados += "\n Abstract: " + this.abstractText;
+        
+        return super.getTituloSubmissao();
     }
 //</editor-fold>
 
