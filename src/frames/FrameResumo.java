@@ -194,7 +194,7 @@ public class FrameResumo extends javax.swing.JFrame {
                 }*/
 
                 //lista.get(2)
-                jComboBoxSituacao.setSelectedItem(resumo.getSituacaoSubmissao());
+                jComboBoxSituacao.setSelectedItem(resumo.getSituacaoSubmissao().getSituacao());
                 
                 this.autores = resumo.getAutores();
                 switch (autores.size()) {
@@ -511,7 +511,7 @@ public class FrameResumo extends javax.swing.JFrame {
 
         jLabelInserirSituacao.setText("Situação:*");
 
-        jComboBoxSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sob Avaliação", "Aprovado", "Reprovado" }));
+        jComboBoxSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sob avaliação", "Aprovado", "Reprovado" }));
         jComboBoxSituacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxSituacaoActionPerformed(evt);
