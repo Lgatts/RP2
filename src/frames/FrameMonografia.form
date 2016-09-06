@@ -176,7 +176,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               <Component id="jButtonConsulta" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="11" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="jScrollPaneMonografias" min="-2" pref="644" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -498,7 +498,7 @@
                               <Component id="jScrollPane2" linkSize="8" min="-2" pref="166" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" linkSize="8" min="-2" pref="166" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="76" max="32767" attributes="0"/>
+                          <EmptySpace pref="37" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -561,11 +561,7 @@
                 <Component class="javax.swing.JComboBox" name="jComboBoxSituacao">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="Sob avalia&#xe7;&#xe3;o"/>
-                        <StringItem index="1" value="Aprovado"/>
-                        <StringItem index="2" value="Reprovado"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -576,12 +572,7 @@
                 <Component class="javax.swing.JComboBox" name="jComboBoxTipo">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Gradua&#xe7;&#xe3;o"/>
-                        <StringItem index="1" value="Especializa&#xe7;&#xe3;o"/>
-                        <StringItem index="2" value="Mestrado"/>
-                        <StringItem index="3" value="Doutorado"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -893,7 +884,7 @@
                               <Component id="jScrollPane8" linkSize="14" min="-2" pref="180" max="-2" attributes="0"/>
                               <Component id="jScrollPane7" linkSize="14" min="-2" pref="180" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="62" max="32767" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -956,11 +947,7 @@
                 <Component class="javax.swing.JComboBox" name="jComboBoxSituacaoEditar">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="Sob avalia&#xe7;&#xe3;o"/>
-                        <StringItem index="1" value="Aprovado"/>
-                        <StringItem index="2" value="Reprovado"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -971,12 +958,7 @@
                 <Component class="javax.swing.JComboBox" name="jComboBoxTipoEditar">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Gradua&#xe7;&#xe3;o"/>
-                        <StringItem index="1" value="Especializa&#xe7;&#xe3;o"/>
-                        <StringItem index="2" value="Mestrado"/>
-                        <StringItem index="3" value="Doutorado"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                   <AuxValues>
