@@ -1,9 +1,9 @@
 package cruds;
 
 import categorias.Artigo;
-import categorias.SubmissaoCientifica;
 import java.util.ArrayList;
 import java.util.List;
+import categorias.Situacao;
 
 /**
  *
@@ -22,10 +22,10 @@ public class ArtigoCrud {
         return artigoList;
     }
 
-    public static void incluir(String titulo, List<String> autor, List<String> instituicao,
+    public static void incluir(String titulo,Situacao situacao, List<String> autor, List<String> instituicao,
                                List<String> palavraChave, String resumo, String abstrat) {
 
-        Artigo artigo = new Artigo(titulo, autor, instituicao, palavraChave, resumo, abstrat);
+        Artigo artigo = new Artigo(titulo, situacao, autor, instituicao, palavraChave, resumo, abstrat);
 
         artigoList.add(artigo);
     }
