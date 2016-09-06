@@ -64,11 +64,11 @@ public class ResumoCrud {
             List<String> palavraChave, List<String> autor){
         for (Resumo resumo : resumoLista) {
             if(tituloEditar.equals(resumo.getTituloSubmissao())){
+                resumo.setTituloSubmissao(titulo);
+                resumo.setSituacaoSubmissao(situacao);
                 resumo.setAutores(autor);
                 resumo.setInstituicao(instituicao);
                 resumo.setPalavraChave(palavraChave);
-                resumo.setSituacaoSubmissao(situacao);
-                resumo.setTituloSubmissao(titulo);
                 break;
             }
         }
