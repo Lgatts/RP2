@@ -9,7 +9,6 @@ import categorias.Minicurso;
 import categorias.Situacao;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.DefaultListModel;
 
 /**
  *
@@ -82,7 +81,7 @@ public class MinicursoCRUD{
      * 
      * @param novoMinicurso
      */
-    public static void inserirMinicurso(Minicurso novoMinicurso){
+    public static void incluir(Minicurso novoMinicurso){
         minicursos.add(novoMinicurso);
     }
     
@@ -97,19 +96,17 @@ public class MinicursoCRUD{
      * @param abstractTexto
      * @param duracao
      * @param recursos
+     * @param autores
      * @param metodologia
-     * @param autor
-     * @param autor1
-     * @param autor2 
      */
-    public static void editarMinicurso(String editName, String titulo,/* Situacao situacao,*/ 
+    public static void editar(String editName, String titulo, Situacao situacao, 
             String resumoTexto, String abstractTexto, int duracao, String recursos, 
-            String metodologia, ArrayList<String> autores){
+            String metodologia, List<String> autores){
  
         for(Minicurso minicurso : minicursos){
             if(editName.equals(minicurso.getTituloSubmissao())){
                 minicurso.setTituloSubmissao(titulo);
-                //minicurso.setSituacaoSubmissao(situacao);
+                minicurso.setSituacaoSubmissao(situacao);
                 minicurso.setResumo(resumoTexto);
                 minicurso.setAbstractText(abstractTexto);
                 minicurso.setDuracao(duracao);
@@ -127,7 +124,7 @@ public class MinicursoCRUD{
      * 
      * @param titulo 
      */
-    public static void deletarMinicurso(String titulo){
+    public static void excluir(String titulo){
         for(Minicurso minicurso : minicursos){
             if(titulo.equals(minicurso.getTituloSubmissao())){
                 minicursos.remove(minicurso);

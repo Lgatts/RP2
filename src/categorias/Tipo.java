@@ -5,10 +5,55 @@
  */
 package categorias;
 
+/*
+Graduação
+Especialização
+Mestrado
+Doutorado
 /**
  *
- * @author Lucas
+ * @author Junior
  */
 public enum Tipo {
-    GRADUAÇAO, ESPECIALIZAÇÃO, MESTRADO, DOUTORADO;
+    GRADUAÇÃO("Graduação"),
+    ESPECIALIZAÇÃO("Especialização"),
+    MESTRADO("Mestrado"),
+    DOUTORADO("Doutorado");
+
+    private final String tipo;
+
+    /**
+     *
+     * @param tipo
+     */
+    private Tipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    /**
+     *
+     * @return Tipo
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     *
+     * @param tipo
+     * @return
+     */
+    public static Tipo verificarTipo(String tipo) {
+        if (Tipo.DOUTORADO.getTipo().equals(tipo)) {
+            return Tipo.DOUTORADO;
+        } else if (Tipo.ESPECIALIZAÇÃO.getTipo().equals(tipo)) {
+            return Tipo.ESPECIALIZAÇÃO;
+        } else if (Tipo.MESTRADO.getTipo().equals(tipo)) {
+            return Tipo.MESTRADO;
+        } else if (Tipo.GRADUAÇÃO.getTipo().equals(tipo)) {
+            return Tipo.GRADUAÇÃO;
+        } else {
+            return null;
+        }
+    }
 }

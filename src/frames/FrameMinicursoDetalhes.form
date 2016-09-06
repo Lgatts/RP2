@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -23,12 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanelMaisDetalhes" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanelMaisDetalhes" alignment="0" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanelMaisDetalhes" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanelMaisDetalhes" alignment="0" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -42,13 +42,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabelMaisDetalhesTitulo" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextMaisDetalhesTitulo" max="32767" attributes="0"/>
+                                          <Component id="jTextMaisDetalhesTitulo" min="-2" pref="223" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -65,22 +65,23 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="jLabelMaisDetalhesDuracao" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jFormattedTextMaisDetalhesDuracao" min="-2" pref="203" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabelMaisDetalhesRecursos" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabelMaisDetalhesRecursos" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabelMaisDetalhesMetodologia" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextMaisDetalhesRecursos" min="-2" pref="199" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabelMaisDetalhesMetodologia" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jScrollPaneMaisDetalhesMetodologia" min="-2" pref="185" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jScrollPaneMaisDetalhesMetodologia" min="-2" pref="185" max="-2" attributes="0"/>
+                                              <Component id="jTextMaisDetalhesRecursos" min="-2" pref="199" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                               </Group>
@@ -91,14 +92,14 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabelMaisDetalhesAutor" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jTextMaisDetalhesAutor" min="-2" pref="172" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jTextMaisDetalhesNumeroAutores" max="32767" attributes="0"/>
+                                          <Component id="jTextMaisDetalhesNumeroAutores" min="-2" pref="34" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jTextMaisDetalhesAutor1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextMaisDetalhesAutor2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextMaisDetalhesAutor2" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
+                                      <Component id="jTextMaisDetalhesAutor1" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -108,7 +109,7 @@
                           <Component id="jButtonMaisDetalhesVoltar" min="-2" pref="123" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

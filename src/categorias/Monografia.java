@@ -5,105 +5,69 @@ package categorias;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.io.Serializable;
+import java.util.List;
+
 /**
  * Classe que implenta a noção de monografia.
+ *
  * @author Lucas
  */
-public class Monografia implements Serializable {
+public class Monografia extends SubmissaoCientifica{
 
-    private String monografiaId;
-    private String titulo;
-    private String situacao;
-    private String tipo;
-    private String autor;
-    private String instituicao;
+    //<editor-fold defaultstate="collapsed" desc="Declaração de Variaveis">   
     private String orientador;
     private String curso;
     private int ano;
     private int nPaginas;
-    private String[] palavraChave;
     private String resumo;
     private String abstractText;
+    private Tipo tipo;
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Construtor">
     /**
      * Construtor da classe monografia, recebe todos os atributos da classe
-     * @param monografiaId id criado para controle dos arquivos armazenados no sistema
+     *
      * @param titulo Titulo da monografia
-     * @param situacao situação de avaliação da monografia podendo ser Em avaliação, Aprovado, Reprovado 
-     * @param tipo String pode ser Graduação, Especialização, Mestrado, Doutorado
-     * @param autor String Nome do autor da monografia
+     * @param situacao situação de avaliação da monografia podendo ser Em
+     * avaliação, Aprovado, Reprovado
+     * @param tipo String pode ser Graduação, Especialização, Mestrado,
+     * Doutorado
+     * @param autor Lista contendo a String com o nome do autor da monografia
      * @param instituicao String Instituição onde foi produzida a monografia
      * @param orientador String Orientador
      * @param curso String Curso de origem do autor
      * @param ano String ano de produção
-     * @param nPaginas int número de páginas 
+     * @param nPaginas int número de páginas
      * @param palavraChave String[] palavras chaves
      * @param resumo String resumo da monografia
      * @param abstractText String resumo em ingles da monografia
      */
-    public Monografia(String monografiaId, String titulo, String situacao, String tipo, String autor, String instituicao, String orientador, String curso, int ano, int nPaginas, String[] palavraChave, String resumo, String abstractText) {
-        this.monografiaId = monografiaId;
-        this.titulo = titulo;
-        this.situacao = situacao;
-        this.tipo = tipo;
-        this.autor = autor;
-        this.instituicao = instituicao;
+    public Monografia(String titulo, Situacao situacao, Tipo tipo, List<String> autor, List<String> instituicao, String orientador,
+            String curso, int ano, int nPaginas, List<String> palavraChave, String resumo, String abstractText) {
+
+        super(titulo, situacao, 1, 1, 4);
+        super.setAutores(autor);
+        super.setInstituicao(instituicao);
+        super.setPalavraChave(palavraChave);
         this.orientador = orientador;
         this.curso = curso;
         this.ano = ano;
         this.nPaginas = nPaginas;
-        this.palavraChave = palavraChave;
         this.resumo = resumo;
         this.abstractText = abstractText;
-    }
-    
-    public String getMonografiaId() {
-        return monografiaId;
-    }
+        this.tipo = tipo;
 
-    public void setMonografiaId(String monografiaId) {
-        this.monografiaId = monografiaId;
     }
+//</editor-fold>
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
-
-    public String getTipo() {
+    //<editor-fold defaultstate="collapsed" desc="Get Sets">
+    public Tipo getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(Tipo tipo) {
         this.tipo = tipo;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    public String getInstituicao() {
-        return instituicao;
-    }
-
-    public void setInstituicao(String instituicao) {
-        this.instituicao = instituicao;
     }
 
     public String getOrientador() {
@@ -138,14 +102,6 @@ public class Monografia implements Serializable {
         this.nPaginas = nPaginas;
     }
 
-    public String[] getPalavraChave() {
-        return palavraChave;
-    }
-
-    public void setPalavraChave(String[] palavraChave) {
-        this.palavraChave = palavraChave;
-    }
-
     public String getResumo() {
         return resumo;
     }
@@ -161,5 +117,28 @@ public class Monografia implements Serializable {
     public void setAbstractText(String abstractText) {
         this.abstractText = abstractText;
     }
-     
+//</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Métodos">
+    /**
+     * Método que trasforma todos os dados da monografia em uma String
+     *
+     * @return String com todos os atributos que forma preenchidos
+     */
+    @Override
+    public String toString() {
+//        String dados;
+//        dados = super.toString();
+//        dados += "\n Tipo: " + this.tipo;
+//        dados += "\n Orientador: " + this.orientador;
+//        dados += "\n Curso: " + this.curso;
+//        dados += "\n Ano: " + this.ano;
+//        dados += "\n Número de Paginas: " + this.nPaginas;
+//        dados += "\n Resumo: " + this.resumo;
+//        dados += "\n Abstract: " + this.abstractText;
+        
+        return super.getTituloSubmissao();
+    }
+//</editor-fold>
+
 }

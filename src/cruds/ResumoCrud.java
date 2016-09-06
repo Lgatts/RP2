@@ -6,6 +6,7 @@
 package cruds;
 
 import categorias.Resumo;
+import categorias.Situacao;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,36 +18,31 @@ public class ResumoCrud {
 
     private static List<Resumo> resumoLista = new ArrayList();
 
-    /**
-     * Método para incluir um resumo na lista
-     * @param titulo
-     * @param situacao
-     * @param instituicao
-     * @param palavraChave
-     * @param autor 
-     */
-    public static void incluir (String titulo, String situacao, String instituicao[], String palavraChave[], String autor[]){
-       Resumo novoResumo = new Resumo(titulo, situacao, instituicao, palavraChave, autor);
+   /**
+    * 
+    * @param novoResumo 
+    */
+    public static void incluir (Resumo novoResumo){
        resumoLista.add(novoResumo);
     }
     
-    /**
-     * Método para consultar, por título do resumo
-     * @param textoConsulta
-     * @return 
-     */
+  /**
+   * 
+   * @param textoConsulta
+   * @return 
+   */
     public static List<String> consultar(String textoConsulta) {
 
         List<String> listaConsulta = new ArrayList();
 
         if (textoConsulta.trim().equals("")) {
-            for (categorias.Resumo resumo : resumoLista) {
-                    listaConsulta.add(resumo.getTitulo());
+            for (Resumo resumo : resumoLista) {
+                    listaConsulta.add(resumo.getTituloSubmissao());
             }
         } else {
-            for (categorias.Resumo resumo : resumoLista) {
-                if (textoConsulta.trim().equalsIgnoreCase(resumo.getTitulo().trim())) {
-                    listaConsulta.add(resumo.getTitulo());
+            for (Resumo resumo : resumoLista) {
+                if (textoConsulta.trim().equalsIgnoreCase(resumo.getTituloSubmissao().trim())) {
+                    listaConsulta.add(resumo.getTituloSubmissao());
                 }
             }
         } 
@@ -63,14 +59,16 @@ public class ResumoCrud {
      * @param palavraChave
      * @param autor 
      */
-    public static void editar(String tituloEditar, String titulo, String situacao, String instituicao[], String palavraChave[], String autor[]){
+    public static void editar(String tituloEditar, 
+            String titulo, Situacao situacao, List<String> instituicao, 
+            List<String> palavraChave, List<String> autor){
         for (Resumo resumo : resumoLista) {
-            if(tituloEditar.equals(resumo.getTitulo())){
-                resumo.setAutor(autor);
+            if(tituloEditar.equals(resumo.getTituloSubmissao())){
+                resumo.setTituloSubmissao(titulo);
+                resumo.setSituacaoSubmissao(situacao);
+                resumo.setAutores(autor);
                 resumo.setInstituicao(instituicao);
                 resumo.setPalavraChave(palavraChave);
-                resumo.setSituacao(situacao);
-                resumo.setTitulo(titulo);
                 break;
             }
         }
@@ -83,7 +81,7 @@ public class ResumoCrud {
      */
     public static void deletar(String titulo){
         for (Resumo resumo : resumoLista) {
-            if(titulo.equals(resumo.getTitulo())){
+            if(titulo.equals(resumo.getTituloSubmissao())){
                 resumoLista.remove(resumo);
                 break;
             }

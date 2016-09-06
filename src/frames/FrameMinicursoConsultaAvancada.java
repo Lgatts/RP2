@@ -45,7 +45,7 @@ public class FrameMinicursoConsultaAvancada extends javax.swing.JFrame {
         jTextConsultaAvancadaTitulo = new javax.swing.JTextField();
         jTextConsultaAvancadaAutor = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabelConsultaAvancadaTitulo.setText("Título:*");
 
@@ -109,11 +109,14 @@ public class FrameMinicursoConsultaAvancada extends javax.swing.JFrame {
 
     private void jButtonConsultaAvancadaConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaAvancadaConsultarActionPerformed
         // TODO add your handling code here:
-        if(jTextConsultaAvancadaAutor.getText().trim().equals("") || jTextConsultaAvancadaTitulo.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null, "É necessário o preenchimento de todos os campos(*) para realizar a consulta avançada");
+        if(jTextConsultaAvancadaAutor.getText().trim().equals("") 
+                || jTextConsultaAvancadaTitulo.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null, "É necessário o preenchimento de todos"
+                    + " os campos(*) para realizar a consulta avançada");
         }else{
             
-            visualizarLista = MinicursoCRUD.consultaAvancada(jTextConsultaAvancadaTitulo.getText(),jTextConsultaAvancadaAutor.getText());
+            visualizarLista = MinicursoCRUD.consultaAvancada(jTextConsultaAvancadaTitulo.getText()
+                    ,jTextConsultaAvancadaAutor.getText());
             visualizarLista();
             this.dispose();
         }

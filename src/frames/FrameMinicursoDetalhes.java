@@ -24,20 +24,46 @@ public class FrameMinicursoDetalhes extends javax.swing.JFrame {
         this.setTitle("RP II - Detalhes");
         this.setLocationRelativeTo(null);
         
-        String indexNumberAuthors = "";
-        int hora, minutos;
+        String indexNumberAuthors = "", duracaoEditar;
+        int hora, minutos, segundos;
         
         for(Minicurso minicurso : minicursos){
             if(minicurso.getTituloSubmissao().equals(titleDetails)){
                 
-                hora = minicurso.getDuracao()/60;
-                minutos = 60*(minicurso.getDuracao()/60- hora);
+                hora = minicurso.getDuracao()/3600;
+                minutos = (minicurso.getDuracao()%3600)/60;
+                segundos = (minicurso.getDuracao()%3600)%60;
                 
+                if(segundos<10 && hora<10 && minutos <10)
+                    duracaoEditar = "0"+String.valueOf(hora)+"0"+String.valueOf(minutos)
+                            +"0"+String.valueOf(segundos);
+                else if(segundos<10 && hora<10)
+                    duracaoEditar = "0"+String.valueOf(hora)+String.valueOf(minutos)
+                            +"0"+String.valueOf(segundos);
+                else if(segundos<10 && minutos<10)
+                    duracaoEditar = String.valueOf(hora)+"0"+String.valueOf(minutos)
+                            +"0"+String.valueOf(segundos);
+                else if(hora<10 && minutos<10)
+                    duracaoEditar = "0"+String.valueOf(hora)+"0"+String.valueOf(minutos)
+                            +String.valueOf(segundos);
+                else if(hora<10)
+                    duracaoEditar = "0"+String.valueOf(hora)+String.valueOf(minutos)
+                            +String.valueOf(segundos);
+                else if(minutos<10)
+                    duracaoEditar = String.valueOf(hora)+"0"+String.valueOf(minutos)
+                            +String.valueOf(segundos);
+                else if(segundos<10)
+                    duracaoEditar = String.valueOf(hora)+String.valueOf(minutos)
+                            +"0"+String.valueOf(segundos);
+                else
+                    duracaoEditar = String.valueOf(hora)+String.valueOf(minutos)
+                            +String.valueOf(segundos);
+                        
                 jTextMaisDetalhesTitulo.setText(minicurso.getTituloSubmissao());
-                jTextMaisDetalhesSituacao.setText(minicurso.getSituacaoSubmissao().toString());
+                jTextMaisDetalhesSituacao.setText(minicurso.getSituacaoSubmissao().getSituacao());
                 jTextPaneMaisDetalhesResumoTexto.setText(minicurso.getResumo());
                 jTextPaneMaisDetalhesAbstractTexto.setText(minicurso.getAbstractText());
-                jFormattedTextMaisDetalhesDuracao.setText(hora+":"+minutos+":00");
+                jFormattedTextMaisDetalhesDuracao.setText(duracaoEditar);
                 jTextPaneMaisDetalhesMetodologia.setText(minicurso.getMetodologia());
                 jTextMaisDetalhesRecursos.setText(minicurso.getRecursos());
                 if(minicurso.getAutores().size() == 1){
@@ -105,7 +131,7 @@ public class FrameMinicursoDetalhes extends javax.swing.JFrame {
         jTextMaisDetalhesSituacao = new javax.swing.JTextField();
         jTextMaisDetalhesNumeroAutores = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabelMaisDetalhesTitulo.setText("Título: ");
 
@@ -168,13 +194,13 @@ public class FrameMinicursoDetalhes extends javax.swing.JFrame {
                 .addGroup(jPanelMaisDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelMaisDetalhesLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanelMaisDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanelMaisDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelMaisDetalhesLayout.createSequentialGroup()
-                                .addGroup(jPanelMaisDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanelMaisDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelMaisDetalhesLayout.createSequentialGroup()
                                         .addComponent(jLabelMaisDetalhesTitulo)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextMaisDetalhesTitulo))
+                                        .addComponent(jTextMaisDetalhesTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanelMaisDetalhesLayout.createSequentialGroup()
                                         .addGroup(jPanelMaisDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabelMaisDetalhesResumoTexto)
@@ -192,13 +218,13 @@ public class FrameMinicursoDetalhes extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jFormattedTextMaisDetalhesDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanelMaisDetalhesLayout.createSequentialGroup()
-                                        .addComponent(jLabelMaisDetalhesRecursos)
+                                        .addGroup(jPanelMaisDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabelMaisDetalhesRecursos)
+                                            .addComponent(jLabelMaisDetalhesMetodologia))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextMaisDetalhesRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanelMaisDetalhesLayout.createSequentialGroup()
-                                        .addComponent(jLabelMaisDetalhesMetodologia)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPaneMaisDetalhesMetodologia, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(jPanelMaisDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPaneMaisDetalhesMetodologia, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextMaisDetalhesRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanelMaisDetalhesLayout.createSequentialGroup()
                                 .addComponent(jLabelMaisDetalhesAbstractTexto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -206,17 +232,17 @@ public class FrameMinicursoDetalhes extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabelMaisDetalhesAutor)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelMaisDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanelMaisDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanelMaisDetalhesLayout.createSequentialGroup()
                                         .addComponent(jTextMaisDetalhesAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextMaisDetalhesNumeroAutores))
-                                    .addComponent(jTextMaisDetalhesAutor1)
-                                    .addComponent(jTextMaisDetalhesAutor2)))))
+                                        .addComponent(jTextMaisDetalhesNumeroAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextMaisDetalhesAutor2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextMaisDetalhesAutor1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanelMaisDetalhesLayout.createSequentialGroup()
                         .addGap(232, 232, 232)
                         .addComponent(jButtonMaisDetalhesVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28))
+                .addGap(14, 14, 14))
         );
         jPanelMaisDetalhesLayout.setVerticalGroup(
             jPanelMaisDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,11 +287,11 @@ public class FrameMinicursoDetalhes extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMaisDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMaisDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMaisDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMaisDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

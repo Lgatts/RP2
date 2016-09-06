@@ -5,7 +5,7 @@
  */
 package persistenciaDados;
 
-import categorias.Monografia;
+import categorias.Submissao;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -21,60 +21,63 @@ import java.util.logging.Logger;
  *
  * @author Lucas
  */
-public class CrudMonografiaObjects {
+public class ObjectCrud {
 
-    public static void saveObject(Monografia monografia, String tipo) {
+    //<editor-fold defaultstate="collapsed" desc="Salvar objeto no hd">
+    public static void saveObject(Submissao submisao, String tipo) {
         try {
             ObjectOutputStream oos = null;
-            
+
             String filePath = System.getenv("APPDATA") + "\\.RP2" + "\\" + tipo + "\\";
-            
-            FileOutputStream fOutS = new FileOutputStream(filePath + monografia.getMonografiaId() + ".ser");
+
+            FileOutputStream fOutS = new FileOutputStream(filePath + submisao.getiD() + ".ser");
             oos = new ObjectOutputStream(fOutS);
-            
-            oos.writeObject(monografia);
+
+            oos.writeObject(submisao);
             oos.close();
         } catch (IOException ex) {
-            Logger.getLogger(CrudMonografiaObjects.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ObjectCrud.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    //</editor-fold>
 
-    public static void saveObjectFromList(List<Monografia> list, String tipo) {
-        
+    //<editor-fold defaultstate="collapsed" desc="Salvar lista de objetos no hd">
+    public static void saveObjectFromList(List<Submissao> list, String tipo) {
+
         ObjectOutputStream oos = null;
         String filePath = System.getenv("APPDATA") + "\\.RP2" + "\\" + tipo + "\\";
         int i = 0;
-        for (Monografia monografia : list) {
+        for (Submissao submisao : list) {
             try {
 
                 FileOutputStream fOutS = new FileOutputStream(filePath + i + ".ser");
                 oos = new ObjectOutputStream(fOutS);
 
-                oos.writeObject(monografia);
+                oos.writeObject(submisao);
 
                 i++;
 
             } catch (IOException ex) {
-                Logger.getLogger(CrudMonografiaObjects.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ObjectCrud.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 try {
                     oos.close();
                 } catch (IOException ex) {
-                    Logger.getLogger(CrudMonografiaObjects.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ObjectCrud.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
     }
+    //</editor-fold>
 
-    public static List<Monografia> readObject(String tipo) {
+    //<editor-fold defaultstate="collapsed" desc="Criar uma lista com os objetos previamente salvos">
+    public static List<Submissao> readObject(String tipo) {
 
-        List<Monografia> list = new ArrayList();
+        List<Submissao> list = new ArrayList();
 
         File folder = new File(System.getenv("APPDATA") + "\\.RP2\\" + tipo);
         File[] listOfFiles = folder.listFiles();
 
-       
-        
         for (File file : listOfFiles) {
             if (file.isFile()) {
                 try {
@@ -82,24 +85,27 @@ public class CrudMonografiaObjects {
 
                     FileInputStream fin = new FileInputStream(filePath);
                     ObjectInputStream ois = new ObjectInputStream(fin);
-                    Monografia monografia = (Monografia) ois.readObject();
+                    Submissao submissao = (Submissao) ois.readObject();
 
-                    list.add(monografia);
+                    list.add(submissao);
                     ois.close();
                 } catch (IOException | ClassNotFoundException ex) {
-                    Logger.getLogger(CrudMonografiaObjects.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ObjectCrud.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
         }
-        
+
         return list;
 
     }
+    //</editor-fold>
 
-    public static void deleteObject(Monografia monografia, String tipo){
-        File file = new File(System.getenv("APPDATA") + "\\.RP2\\" + tipo +"\\"+monografia.getMonografiaId()+".ser");
+    //<editor-fold defaultstate="collapsed" desc="Deletar um objeto através do id no hd">
+    public static void deleteObject(Submissao submissao, String tipo) {
+        File file = new File(System.getenv("APPDATA") + "\\.RP2\\" + tipo + "\\" + submissao.getiD() + ".ser");
         file.delete();
     }
-    
+    //</editor-fold>
+
 }

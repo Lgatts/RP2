@@ -6,6 +6,7 @@
 package frames;
 
 import categorias.Palestras;
+import categorias.Situacao;
 import cruds.PalestrasCrud;
 import javax.swing.DefaultListModel;
 import java.util.List;
@@ -683,7 +684,8 @@ public class FramePalestras extends javax.swing.JFrame {
             jTextAdicionarDuracao.setText("");
             jTextAdicionarCurriculo.setText("");
 
-            PalestrasCrud.inserirPalestra(titulo, situacao, autor, resumo, abstracText, duracao, curriculo);
+            PalestrasCrud.inserirPalestra(titulo, Situacao.verificarSituacao(jComboBoxAdicionar.getSelectedItem().toString()),
+                    autor, resumo, abstracText, duracao, curriculo);
 
             JOptionPane.showMessageDialog(null, "Salvo Com Sucesso!");
 
@@ -705,21 +707,21 @@ public class FramePalestras extends javax.swing.JFrame {
         nomeeditar = jList.getSelectedValue().toString();
 
         for (categorias.Palestras palestra : pLista) {
-            if (nomeeditar.equals(palestra.getTitulo())) {
+            if (nomeeditar.equals(palestra.getTituloSubmissao())) {
                 for (int i = 0; i < jComboBoxEditar.getItemCount(); i++) {
-                    if (palestra.getSituacao().equals(jComboBoxEditar.getItemAt(i))) {
+                    if (palestra.getSituacaoSubmissao().equals(jComboBoxEditar.getItemAt(i))) {
                         indexEditSituation = i;
 
                     }
                 }
 
-                jTextEditarTitulo.setText(palestra.getTitulo());
+                jTextEditarTitulo.setText(palestra.getTituloSubmissao());
                 jComboBoxEditar.setSelectedIndex(indexEditSituation);
                 jTextEditarResumo.setText(palestra.getResumo());
-                jTextEditarDuracao.setText(palestra.getDuracao());
+                //jTextEditarDuracao.setText(palestra.getDuracao());
                 jTextEditarCurriculo.setText(palestra.getCurriculo());
-                jTextEditarAutor.setText(palestra.getAutor());
-                jTextEditarAbstract.setText(palestra.getAbstracText());
+                //jTextEditarAutor.setText(palestra.getAutores());
+                jTextEditarAbstract.setText(palestra.getAbstractText());
 
             }
         }
@@ -746,14 +748,14 @@ public class FramePalestras extends javax.swing.JFrame {
         jTabbedPane.setEnabledAt(3, true);
 
         for (Palestras palestra : pLista) {
-            if (palestra.getTitulo().equals(jList.getSelectedValue())) {
+            if (palestra.getTituloSubmissao().equals(jList.getSelectedValue())) {
 
-                jTextEditarTitulo2.setText(palestra.getTitulo());
-                jTextcombo2.setText(palestra.getSituacao());
-                jTextEditarAutor2.setText(palestra.getAutor());
+                jTextEditarTitulo2.setText(palestra.getTituloSubmissao());
+                //jTextcombo2.setText(palestra.getSituacaoSubmissao());
+                //jTextEditarAutor2.setText(palestra.getAutores());
                 jTextAreaResumo.setText(palestra.getResumo());
-                jTextAreaAbstract.setText(palestra.getAbstracText());
-                jTextEditarDuracao2.setText(palestra.getDuracao());
+                jTextAreaAbstract.setText(palestra.getAbstractText());
+                //jTextEditarDuracao2.setText(palestra.getDuracao());
                 jTextAreaCurriculo.setText(palestra.getCurriculo());
             }
         }
@@ -795,7 +797,10 @@ public class FramePalestras extends javax.swing.JFrame {
 
     private void jButtonEditarSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarSalvarActionPerformed
         PalestrasCrud editar = new PalestrasCrud();
-        editar.editarPalestra(nomeeditar, jTextEditarTitulo.getText(), jComboBoxEditar.getSelectedItem().toString(), jTextEditarAutor.getText(), jTextEditarResumo.getText(), jTextEditarAbstract.getText(), jTextEditarDuracao.getText(), jTextEditarCurriculo.getText());
+        editar.editarPalestra(nomeeditar, jTextEditarTitulo.getText(), Situacao.verificarSituacao(jComboBoxEditar.getSelectedItem().toString())
+                , jTextEditarAutor.getText(), jTextEditarResumo.getText(),
+                jTextEditarAbstract.getText(), jTextEditarDuracao.getText(), 
+                jTextEditarCurriculo.getText());
 
         jTabbedPane.setSelectedIndex(0);
 

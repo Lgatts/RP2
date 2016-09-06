@@ -13,45 +13,42 @@ import java.util.List;
  * @author yuryalencar
  */
 public abstract class SubmissaoCientifica extends Submissao {
-    
-    protected ArrayList<String> instituicao;
-    protected ArrayList<String> palavraChave;
+
+    protected List<String> instituicao;
+    protected List<String> palavraChave;
     protected final int MAX_INSTITUICAO;
     protected final int MAX_PALAVRACHAVE;
 
     /**
      * Construtor somente para a criação de uma submissão por default
+     *
      * @param tituloSubmissao
      * @param MAX_AUTORES
-     * @param palavraChave
-     * @param instituicao 
      */
     public SubmissaoCientifica(String tituloSubmissao, int MAX_AUTORES,
             int MAX_INSTITUICAO, int MAX_PALAVRACHAVE) {
-        
+
         super(tituloSubmissao, MAX_AUTORES);
-        
         this.MAX_INSTITUICAO = MAX_INSTITUICAO;
         this.MAX_PALAVRACHAVE = MAX_PALAVRACHAVE;
+        this.instituicao = new ArrayList();
+        this.palavraChave = new ArrayList();
 
     }
-    
+
     /**
      * Construtor para uma Submissão científica com todos os dados informados
+     *
      * @param tituloSubmissao - Titulo de submissao
-     * @param palavraChave - Palavras chaves das subissões
-     * @param instituicao - Instituições da submissao
+     * @param situacaoSubmissao - Situação da submissão do tipo Situacao
      */
-    public SubmissaoCientifica(String tituloSubmissao, Situacao situacaoSubmissao
-            , int MAX_AUTORES, int MAX_INSTITUICAO, int MAX_PALAVRACHAVE) {
-        
-        super(tituloSubmissao, situacaoSubmissao, MAX_AUTORES);
-        
-        this.MAX_INSTITUICAO = MAX_INSTITUICAO;
-        this.MAX_PALAVRACHAVE = MAX_PALAVRACHAVE;
-        
+    public SubmissaoCientifica(String tituloSubmissao, Situacao situacaoSubmissao, int MAX_AUTORES, int MAX_INSTITUICAO, int MAX_PALAVRACHAVE) {
+
+        this(tituloSubmissao, MAX_AUTORES, MAX_INSTITUICAO, MAX_PALAVRACHAVE);
+        super.setSituacaoSubmissao(situacaoSubmissao);
+
     }
-    
+
     /**
      * @return the instituicao
      */
@@ -60,21 +57,19 @@ public abstract class SubmissaoCientifica extends Submissao {
     }
 
     /**
-     * Método para inserir ou modificar uma instituição, e já verifica caso estrapole
-     * os limites pré-estabelecidos
+     * Método para inserir ou modificar uma instituição, e já verifica caso
+     * estrapole os limites pré-estabelecidos
+     *
      * @param instituicao the instituicao to set
      */
     public boolean setInstituicao(List<String> instituicao) {
-        
-        if(instituicao.size()>getMAX_INSTITUICAO() || instituicao.size() == 0){
+
+        if (instituicao.size() > getMAX_INSTITUICAO() || instituicao.size() == 0) {
             return false;
         }
-        
-        for(int i=0; i<instituicao.size(); i++){
-            this.getInstituicao().add(instituicao.get(i));
-        }
-        
+        this.instituicao = instituicao;
         return true;
+
     }
 
     /**
@@ -85,23 +80,21 @@ public abstract class SubmissaoCientifica extends Submissao {
     }
 
     /**
-     * Método para a inserção ou edição das palavras chavesjá tratando o erro que pode
-     * ter devido a quantidade excedente ou nula
+     * Método para a inserção ou edição das palavras chavesjá tratando o erro
+     * que pode ter devido a quantidade excedente ou nula
+     *
      * @param palavraChave the palavraChave to set
      */
     public boolean setPalavraChave(List<String> palavraChave) {
-        
-        if(palavraChave.size()>getMAX_PALAVRACHAVE() || palavraChave.size() ==0){
-           return false; 
+
+        if (palavraChave.size() > getMAX_PALAVRACHAVE() || palavraChave.size() == 0) {
+            return false;
         }
-        
-        for(int i=0; i<palavraChave.size(); i++){
-            this.getPalavraChave().add(palavraChave.get(i));
-        }
-        
+        this.palavraChave = palavraChave;
         return true;
+
     }
-    
+
     /**
      * @return the MAX_INSTITUICAO
      */
@@ -115,20 +108,20 @@ public abstract class SubmissaoCientifica extends Submissao {
     public int getMAX_PALAVRACHAVE() {
         return MAX_PALAVRACHAVE;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         String dados;
         dados = super.toString();
-        
-        for(int i=0; i<getPalavraChave().size();i++){
-            dados += "\nPalavra-chave: "+getPalavraChave().get(i);
+
+        for (int i = 0; i < getPalavraChave().size(); i++) {
+            dados += "\nPalavra-chave: " + getPalavraChave().get(i);
         }
-        
-        for(int i=0; i<getInstituicao().size();i++){
-            dados += "\nInstituição: "+getInstituicao().get(i);
+
+        for (int i = 0; i < getInstituicao().size(); i++) {
+            dados += "\nInstituição: " + getInstituicao().get(i);
         }
-        
+
         return dados;
     }
 }
