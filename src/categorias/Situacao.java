@@ -7,7 +7,7 @@ package categorias;
 
 /**
  *
- * @author yuryalencar
+ * @author Junior
  */
 public enum Situacao {
     APROVADO("Aprovado"),
