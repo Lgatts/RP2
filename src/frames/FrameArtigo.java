@@ -1,6 +1,7 @@
 package frames;
 
 import categorias.Artigo;
+import categorias.SubmissaoCientifica;
 import cruds.ArtigoCrud;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -676,14 +677,14 @@ public class FrameArtigo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        String titulo, situacao, resumo, abstrat;
+        String titulo, resumo, abstrat;
 
         String[] autor = new String[8];
         String[] instituicao = new String[8];
         String[] palavraChave = new String[4];
 
         titulo = jTextFieldTitulo.getText();
-        situacao = jComboBoxSituacao.getSelectedItem().toString();
+//        situacao = jComboBoxSituacao.getSelectedItem().toString();
 
         autor[0] = jTextFieldAutor0.getText();
         autor[1] = jTextFieldAutor1.getText();
@@ -711,7 +712,7 @@ public class FrameArtigo extends javax.swing.JFrame {
         resumo = jTextAreaResumo.getText();
         abstrat = jTextAreaAbstract.getText();
 
-        ArtigoCrud.incluir(titulo, situacao, autor, instituicao, palavraChave, resumo, abstrat);
+        ArtigoCrud.incluir(titulo, autor, instituicao, palavraChave, resumo, abstrat);
 
         jTextFieldTitulo.setText("");
 
@@ -764,11 +765,11 @@ public class FrameArtigo extends javax.swing.JFrame {
         String[] instituicao = new String[8];
         String[] palavraChave = new String[4];
 
-        for (Artigo artigo : ListarArtigo) {
-            if (artigo.getTitulo().equals(editar)) {
+        for (SubmissaoCientifica submissaoCientifica : ListarArtigo) {
+            if (submissaoCientifica.getTituloSubmissao().equals(editar)) {
 
-                artigo.setTitulo(jTextFieldEditTitulo.getText());
-                artigo.setSituacao(jComboBoxEditSituacao.getSelectedItem().toString());
+                submissaoCientifica.setTituloSubmissao(jTextFieldEditTitulo.getText());
+//                submissaoCientifica.setSituacaoSubmissao(jComboBoxEditSituacao.getSelectedItem().toString());
 
                 autor[0] = (jTextFieldEditAutor0.getText());
                 autor[1] = (jTextFieldEditAutor1.getText());
@@ -793,10 +794,10 @@ public class FrameArtigo extends javax.swing.JFrame {
                 palavraChave[2] = (jTextFieldPalavraChave2.getText());
                 palavraChave[3] = (jTextFieldPalavraChave3.getText());
 
-                artigo.setResumo(jTextAreaResumo.getText());
-                artigo.setAbstrat(jTextAreaAbstract.getText());
+//                artigo.setResumo(jTextAreaResumo.getText());
+//                artigo.setAbstrat(jTextAreaAbstract.getText());
 
-                ArtigoCrud.editar(artigo);
+                ArtigoCrud.editar(submissaoCientifica);
 
             }
         }
@@ -827,9 +828,9 @@ public class FrameArtigo extends javax.swing.JFrame {
     private void jListNomesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListNomesValueChanged
         ListarArtigo = ArtigoCrud.getLista();
 
-        for (Artigo artigo : ListarArtigo) {
-            if (artigo.getTitulo().equals(jListNomes.getSelectedValue())) {
-                jTextFieldEditTitulo.setText(artigo.getTitulo());
+        for (SubmissaoCientifica submissaoCientifica : ListarArtigo) {
+            if (submissaoCientifica.getTituloSubmissao().equals(jListNomes.getSelectedValue())) {
+                jTextFieldEditTitulo.setText(submissaoCientifica.getTituloSubmissao());
 
                 jTextFieldEditAutor0.setText(artigo.getAutor()[0]);
                 jTextFieldEditAutor1.setText(artigo.getAutor()[1]);

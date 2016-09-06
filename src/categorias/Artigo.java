@@ -1,92 +1,33 @@
 package categorias;
 
+import java.util.List;
+
 /**
  *
  * @author MauricioEscobar
  */
 public class Artigo extends SubmissaoCientifica {
 
-    private String titulo;
-    private String situacao;
-    private String autor[];
-    private String palavrachave[];
     private String resumo;
     private String abstrat;
 
     /**
-     *
      * @param titulo
-     * @param situacao
      * @param autor
-     * @param palavrachave
+     * @param instituicao
+     * @param palavraChave
      * @param resumo
      * @param abstrat
      */
-    public Artigo(String titulo, String situacao, String autor[], String instituicao[], String palavrachave[], String resumo, String abstrat) {
+    public Artigo(String titulo, List<String> autor, List<String> instituicao,
+                  List<String> palavraChave, String resumo, String abstrat) {
+    /*
+     *  super(titulo, MAX_AUTORES, MAX_INSTITUICAO, MAX_PALAVRACHAVE)
+     */
         super(titulo, 8, 8, 4);
-        
-        this.titulo = titulo;
-        this.situacao = situacao;
-        this.autor = autor;
-        this.palavrachave = palavrachave;
+
         this.resumo = resumo;
         this.abstrat = abstrat;
-    }
-
-    /**
-     * @return the titulo
-     */
-    public String getTitulo() {
-        return titulo;
-    }
-
-    /**
-     * @param titulo the titulo to set
-     */
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    /**
-     * @return the situacao
-     */
-    public String getSituacao() {
-        return situacao;
-    }
-
-    /**
-     * @param situacao the situacao to set
-     */
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
-
-    /**
-     * @return the autor
-     */
-    public String[] getAutor() {
-        return autor;
-    }
-//
-//    /**
-//     * @param autor the autor to set
-//     */
-    public void setAutor(String[] autor) {
-        this.autor = autor;
-    }
-
-    /**
-     * @return the palavrachave
-     */
-    public String[] getPalavrachave() {
-        return palavrachave;
-    }
-//
-//    /**
-//     * @param palavrachave the palavrachave to set
-//     */
-    public void setPalavrachave(String[] palavrachave) {
-        this.palavrachave = palavrachave;
     }
 
     /**
@@ -117,9 +58,13 @@ public class Artigo extends SubmissaoCientifica {
         this.abstrat = abstrat;
     }
 
+    /*
+     * anotação @Override
+     * Método reescrito de um método da classe mãe
+     * 
+     */
     @Override
     public String toString() {
-        return super.toString() + "Resumo" + resumo + "Abstract" + abstrat;
+        return super.toString() + "Resumo: " + getResumo() + "Abstract: " + getAbstrat();
     }
-
 }
