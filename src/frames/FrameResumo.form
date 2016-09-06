@@ -23,7 +23,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPaneResumos" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jTabbedPaneResumos" pref="513" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -61,14 +65,14 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jButtonIncluir" alignment="0" pref="115" max="32767" attributes="0"/>
+                                  <Component id="jButtonIncluir" alignment="0" pref="105" max="32767" attributes="0"/>
                                   <Component id="jButtonEditar" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jButtonExcluir" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jButtonMaisDetalhes" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jButtonVoltar" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="jScrollPaneListaResumos" pref="381" max="32767" attributes="0"/>
+                              <Component id="jScrollPaneListaResumos" pref="371" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -361,7 +365,7 @@
                           </Group>
                           <Component id="jButtonVoltarAutores" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="24" max="32767" attributes="0"/>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
                       <Component id="jButtonSalvarAutores" min="-2" pref="98" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -512,7 +516,7 @@
                                   <Component id="jTextFieldInstituicao" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jTextFieldInstituicao7" alignment="0" min="-2" pref="297" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="109" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="122" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -662,7 +666,7 @@
                                   <Component id="jTextFieldPalavraChave2" alignment="1" min="-2" pref="307" max="-2" attributes="0"/>
                                   <Component id="jTextFieldPalavraChave3" alignment="1" min="-2" pref="307" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="73" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="92" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>

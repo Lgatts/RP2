@@ -6,6 +6,7 @@
 package frames;
 
 import categorias.Resumo;
+import categorias.Situacao;
 import cruds.ResumoCrud;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,8 @@ import javax.swing.JOptionPane;
  * @author junio
  */
 public class FrameResumo extends javax.swing.JFrame {
+
+
 
     /**
      * Creates new form ResumoFrame
@@ -40,9 +43,9 @@ public class FrameResumo extends javax.swing.JFrame {
     private List<Resumo> pesquisarLista;
     private List<String> visualizarLista;
     private int operacao;
-    private String[] autores = new String[8];
-    private String[] instituicoes = new String[8];
-    private String[] palavrasChave = new String[4];
+    private List<String> autores = new ArrayList();
+    private List<String> instituicoes = new ArrayList();
+    private List<String> palavrasChave = new ArrayList();
     private String nomePreencher;
 
     /**
@@ -135,17 +138,12 @@ public class FrameResumo extends javax.swing.JFrame {
      * Método para limpar os campos sempre.
      */
     private void limparCampos() {
-        for (int i = 0; i < this.autores.length; i++) {
-            this.autores[i] = null;
-        }
-
-        for (int i = 0; i < this.instituicoes.length; i++) {
-            this.instituicoes[i] = null;
-        }
-
-        for (int i = 0; i < this.palavrasChave.length; i++) {
-            this.palavrasChave[i] = null;
-        }
+        
+            this.autores = new ArrayList();
+        
+            this.instituicoes = new ArrayList();
+        
+            this.palavrasChave = new ArrayList();
 
         jTextFieldInserirTitulo.setText("");
 
@@ -184,48 +182,47 @@ public class FrameResumo extends javax.swing.JFrame {
         pesquisarLista = ResumoCrud.getLista();
 
         for (Resumo resumo : pesquisarLista) {
-            if (nomePreencher.equals(resumo.getTitulo())) {
+            if (nomePreencher.equals(resumo.getTituloSubmissao())) {
+                
+                this.autores = resumo.getAutores();
 
-                for (int i = 0; i < autores.length; i++) {
-                    this.autores[i] = resumo.getAutor()[i];
-                    this.instituicoes[i] = resumo.getInstituicao()[i];
-                }
+                this.instituicoes = resumo.getInstituicao();
+                    
+                this.palavrasChave = resumo.getPalavraChave();
 
-                for (int i = 0; i < palavrasChave.length; i++) {
-                    this.palavrasChave[i] = resumo.getPalavraChave()[i];
-                }
 
-                jTextFieldInserirTitulo.setText(resumo.getTitulo());
+                jTextFieldInserirTitulo.setText(resumo.getTituloSubmissao());
 
-                for (int i = 0; i < jComboBoxSituacao.getItemCount(); i++) {
+                /*for (int i = 0; i < jComboBoxSituacao.getItemCount(); i++) {
                     if (resumo.getSituacao().equals(jComboBoxSituacao.getItemAt(i))) {
                         jComboBoxSituacao.setSelectedIndex(i);
                         break;
                     }
-                }
+                }*/
 
-                jTextFieldAutor.setText(resumo.getAutor()[0]);
-                jTextFieldAutor1.setText(resumo.getAutor()[1]);
-                jTextFieldAutor2.setText(resumo.getAutor()[2]);
-                jTextFieldAutor3.setText(resumo.getAutor()[3]);
-                jTextFieldAutor4.setText(resumo.getAutor()[4]);
-                jTextFieldAutor5.setText(resumo.getAutor()[5]);
-                jTextFieldAutor6.setText(resumo.getAutor()[6]);
-                jTextFieldAutor7.setText(resumo.getAutor()[7]);
+                //lista.get(2)
+                jTextFieldAutor.setText(resumo.getAutores().get(0));
+                jTextFieldAutor1.setText(resumo.getAutores().get(1));
+                jTextFieldAutor2.setText(resumo.getAutores().get(2));
+                jTextFieldAutor3.setText(resumo.getAutores().get(3));
+                jTextFieldAutor4.setText(resumo.getAutores().get(4));
+                jTextFieldAutor5.setText(resumo.getAutores().get(5));
+                jTextFieldAutor6.setText(resumo.getAutores().get(6));
+                jTextFieldAutor7.setText(resumo.getAutores().get(7));
 
-                jTextFieldInstituicao.setText(resumo.getInstituicao()[0]);
-                jTextFieldInstituicao1.setText(resumo.getInstituicao()[1]);
-                jTextFieldInstituicao2.setText(resumo.getInstituicao()[2]);
-                jTextFieldInstituicao3.setText(resumo.getInstituicao()[3]);
-                jTextFieldInstituicao4.setText(resumo.getInstituicao()[4]);
-                jTextFieldInstituicao5.setText(resumo.getInstituicao()[5]);
-                jTextFieldInstituicao6.setText(resumo.getInstituicao()[6]);
-                jTextFieldInstituicao7.setText(resumo.getInstituicao()[7]);
+                jTextFieldInstituicao.setText(resumo.getInstituicao().get(0));
+                jTextFieldInstituicao1.setText(resumo.getInstituicao().get(1));
+                jTextFieldInstituicao2.setText(resumo.getInstituicao().get(2));
+                jTextFieldInstituicao3.setText(resumo.getInstituicao().get(3));
+                jTextFieldInstituicao4.setText(resumo.getInstituicao().get(4));
+                jTextFieldInstituicao5.setText(resumo.getInstituicao().get(5));
+                jTextFieldInstituicao6.setText(resumo.getInstituicao().get(6));
+                jTextFieldInstituicao7.setText(resumo.getInstituicao().get(7));
 
-                jTextFieldPalavraChave.setText(resumo.getPalavraChave()[0]);
-                jTextFieldPalavraChave1.setText(resumo.getPalavraChave()[1]);
-                jTextFieldPalavraChave2.setText(resumo.getPalavraChave()[2]);
-                jTextFieldPalavraChave3.setText(resumo.getPalavraChave()[3]);
+                jTextFieldPalavraChave.setText(resumo.getPalavraChave().get(0));
+                jTextFieldPalavraChave1.setText(resumo.getPalavraChave().get(1));
+                jTextFieldPalavraChave2.setText(resumo.getPalavraChave().get(2));
+                jTextFieldPalavraChave3.setText(resumo.getPalavraChave().get(3));
                 break;
             }
         }
@@ -364,13 +361,13 @@ public class FrameResumo extends javax.swing.JFrame {
                         .addComponent(jButtonConsultar))
                     .addGroup(jPanelResumoLayout.createSequentialGroup()
                         .addGroup(jPanelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonIncluir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                            .addComponent(jButtonIncluir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                             .addComponent(jButtonEditar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonExcluir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonMaisDetalhes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(12, 12, 12)
-                        .addComponent(jScrollPaneListaResumos, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)))
+                        .addComponent(jScrollPaneListaResumos, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelResumoLayout.setVerticalGroup(
@@ -547,7 +544,7 @@ public class FrameResumo extends javax.swing.JFrame {
                             .addComponent(jTextFieldAutor1)
                             .addComponent(jTextFieldAutor)))
                     .addComponent(jButtonVoltarAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jButtonSalvarAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -636,7 +633,7 @@ public class FrameResumo extends javax.swing.JFrame {
                             .addComponent(jTextFieldInstituicao1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldInstituicao, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldInstituicao7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 109, Short.MAX_VALUE)))
+                        .addGap(0, 122, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelInstituicoesLayout.setVerticalGroup(
@@ -713,7 +710,7 @@ public class FrameResumo extends javax.swing.JFrame {
                                 .addComponent(jTextFieldPalavraChave, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jTextFieldPalavraChave2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldPalavraChave3, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 73, Short.MAX_VALUE)))
+                        .addGap(0, 92, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelPalavrasChavesLayout.setVerticalGroup(
@@ -742,7 +739,10 @@ public class FrameResumo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneResumos)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPaneResumos, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -786,45 +786,55 @@ public class FrameResumo extends javax.swing.JFrame {
         boolean palavraChaves = false;
         boolean instituicoes = false;
 
-        for (int i = 0; i < this.autores.length; i++) {
-            if (this.autores[i] != null) {
+       
+            if (!this.autores.isEmpty()) {
                 autores = true;
-                break;
+                
+            
             }
-        }
 
-        for (int i = 0; i < this.instituicoes.length; i++) {
-            if (this.instituicoes[i] != null) {
+        
+            if (!this.instituicoes.isEmpty()) {
                 instituicoes = true;
-                break;
-            }
+                
+            
         }
 
-        for (int i = 0; i < this.palavrasChave.length; i++) {
-            if (this.palavrasChave[i] != null) {
+        
+            if (!this.palavrasChave.isEmpty()) {
                 palavraChaves = true;
-                break;
-            }
+               
         }
 
         if (jTextFieldInserirTitulo.getText().trim().equals("") || autores == false || palavraChaves == false
                 || instituicoes == false) {
-            JOptionPane.showMessageDialog(null, "É necessário preencher todos os campos e inserir ao menos um autor, uma instituição e uma palavra-chave");
+            JOptionPane.showMessageDialog(null, "É necessário preencher todos os campos e inserir ao"
+                    + " menos um autor, uma instituição e uma palavra-chave");
         } else if (operacao == 1) {
-            ResumoCrud.incluir(jTextFieldInserirTitulo.getText(), jComboBoxSituacao.getSelectedItem().toString(),
-                    this.instituicoes, this.palavrasChave, this.autores);
+            //String s = jComboBoxSituacao.getSelectedItem().toString();
+            
+                
+            Resumo novoResumo = new Resumo(jTextFieldInserirTitulo.getText(), 
+                    Situacao.verificarSituacao(jComboBoxSituacao.getSelectedItem().toString()) ,
+                    this.autores,this.instituicoes, this.palavrasChave);
+            ResumoCrud.incluir(novoResumo);
+            //ResumoCrud.incluir(jTextFieldInserirTitulo.getText().trim(), jComboBoxSituacao.getSelectedItem().toString(),
+                    //this.instituicoes, this.palavrasChave, this.autores);
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
             visualizarLista = ResumoCrud.consultar("");
             listar();
             limparCampos();
+            
         } else if (operacao == 2) {
-            ResumoCrud.editar(nomePreencher, jTextFieldInserirTitulo.getText(), jComboBoxSituacao.getSelectedItem().toString(), this.instituicoes, this.palavrasChave, this.autores);
+            ResumoCrud.editar(nomePreencher, jTextFieldInserirTitulo.getText(), 
+                    Situacao.verificarSituacao(jComboBoxSituacao.getSelectedItem().toString()), 
+                    this.instituicoes, this.palavrasChave, this.autores);
             JOptionPane.showMessageDialog(null, "Editado com sucesso");
             visualizarLista = ResumoCrud.consultar("");
             listar();
             limparCampos();
         }
-
+        
     }//GEN-LAST:event_jButtonSalvarInserirActionPerformed
 
     private void jButtonMaisDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMaisDetalhesActionPerformed
@@ -852,11 +862,17 @@ public class FrameResumo extends javax.swing.JFrame {
                 && jTextFieldPalavraChave2.getText().trim().equals("") && jTextFieldPalavraChave3.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "É necessário a inserção de ao menos uma Instituição para continuar");
         } else {
-            palavrasChave[0] = jTextFieldPalavraChave.getText();
-            palavrasChave[1] = jTextFieldPalavraChave1.getText();
-            palavrasChave[2] = jTextFieldPalavraChave2.getText();
-            palavrasChave[3] = jTextFieldPalavraChave3.getText();
-
+         
+            if (!jTextFieldPalavraChave.getText().trim().equals(""))
+                palavrasChave.add(jTextFieldPalavraChave.getText());
+            if (!jTextFieldPalavraChave1.getText().trim().equals(""))
+                palavrasChave.add(jTextFieldPalavraChave1.getText());
+            if (!jTextFieldPalavraChave2.getText().trim().equals(""))
+                palavrasChave.add(jTextFieldPalavraChave2.getText());
+            if (!jTextFieldPalavraChave3.getText().trim().equals(""))
+                palavrasChave.add(jTextFieldPalavraChave3.getText());
+            
+            
             jTabbedPaneResumos.setSelectedIndex(1);
             jTabbedPaneResumos.setEnabledAt(1, true);
             jTabbedPaneResumos.setEnabledAt(4, false);
@@ -932,14 +948,25 @@ public class FrameResumo extends javax.swing.JFrame {
                 && jTextFieldAutor6.getText().trim().equals("") && jTextFieldAutor7.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "É necessário a inserção de ao menos um Autor para continuar");
         } else {
-            autores[0] = jTextFieldAutor.getText();
-            autores[1] = jTextFieldAutor1.getText();
-            autores[2] = jTextFieldAutor2.getText();
-            autores[3] = jTextFieldAutor3.getText();
-            autores[4] = jTextFieldAutor4.getText();
-            autores[5] = jTextFieldAutor5.getText();
-            autores[6] = jTextFieldAutor6.getText();
-            autores[7] = jTextFieldAutor7.getText();
+                        
+            if(!jTextFieldAutor.getText().trim().equals(""))
+                autores.add(jTextFieldAutor.getText());
+            if(!jTextFieldAutor1.getText().trim().equals(""))
+                autores.add(jTextFieldAutor1.getText());
+            if(!jTextFieldAutor2.getText().trim().equals(""))
+                autores.add(jTextFieldAutor2.getText());
+            if(!jTextFieldAutor3.getText().trim().equals(""))
+                autores.add(jTextFieldAutor3.getText());
+            if(!jTextFieldAutor4.getText().trim().equals(""))
+                autores.add(jTextFieldAutor4.getText());
+            if(!jTextFieldAutor5.getText().trim().equals(""))
+                autores.add(jTextFieldAutor5.getText());
+            if(!jTextFieldAutor6.getText().trim().equals(""))
+                autores.add(jTextFieldAutor6.getText());
+            if(!jTextFieldAutor7.getText().trim().equals(""))
+                autores.add(jTextFieldAutor7.getText());
+            
+                
 
             jTabbedPaneResumos.setSelectedIndex(1);
             jTabbedPaneResumos.setEnabledAt(1, true);
@@ -955,15 +982,24 @@ public class FrameResumo extends javax.swing.JFrame {
                 && jTextFieldInstituicao6.getText().trim().equals("") && jTextFieldInstituicao7.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "É necessário a inserção de ao menos uma Instituição para continuar");
         } else {
-            instituicoes[0] = jTextFieldInstituicao.getText();
-            instituicoes[1] = jTextFieldInstituicao1.getText();
-            instituicoes[2] = jTextFieldInstituicao2.getText();
-            instituicoes[3] = jTextFieldInstituicao3.getText();
-            instituicoes[4] = jTextFieldInstituicao4.getText();
-            instituicoes[5] = jTextFieldInstituicao5.getText();
-            instituicoes[6] = jTextFieldInstituicao6.getText();
-            instituicoes[7] = jTextFieldInstituicao7.getText();
-
+                        
+            if(!jTextFieldInstituicao.getText().trim().equals(""))
+                instituicoes.add(jTextFieldInstituicao.getText());
+            if(!jTextFieldInstituicao1.getText().trim().equals(""))
+                instituicoes.add(jTextFieldInstituicao1.getText());
+            if(!jTextFieldInstituicao2.getText().trim().equals(""))
+                instituicoes.add(jTextFieldInstituicao2.getText());
+            if(!jTextFieldInstituicao3.getText().trim().equals(""))
+                instituicoes.add(jTextFieldInstituicao3.getText());
+            if(!jTextFieldInstituicao4.getText().trim().equals(""))
+                instituicoes.add(jTextFieldInstituicao4.getText());
+            if(!jTextFieldInstituicao5.getText().trim().equals(""))
+                instituicoes.add(jTextFieldInstituicao5.getText());
+            if(!jTextFieldInstituicao6.getText().trim().equals(""))
+                instituicoes.add(jTextFieldInstituicao6.getText());
+            if(!jTextFieldInstituicao7.getText().trim().equals(""))
+                instituicoes.add(jTextFieldInstituicao7.getText());
+            
             jTabbedPaneResumos.setSelectedIndex(1);
             jTabbedPaneResumos.setEnabledAt(1, true);
             jTabbedPaneResumos.setEnabledAt(3, false);
