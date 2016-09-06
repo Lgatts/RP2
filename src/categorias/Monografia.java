@@ -56,6 +56,7 @@ public class Monografia extends SubmissaoCientifica{
         this.nPaginas = nPaginas;
         this.resumo = resumo;
         this.abstractText = abstractText;
+        this.tipo = tipo;
 
     }
 //</editor-fold>

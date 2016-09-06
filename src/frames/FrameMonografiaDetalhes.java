@@ -28,8 +28,8 @@ public class FrameMonografiaDetalhes extends javax.swing.JFrame {
         jTextFieldInstituicao.setText(monografia.getInstituicao().get(0));
         jTextFieldAno.setText(String.valueOf(monografia.getAno()));
         jTextFieldnPaginas.setText(String.valueOf(monografia.getnPaginas()));
-        //jTextFieldTipo.setText(monografia.getTipo().toString());
-        //jTextFieldSituacao.setText(monografia.getSituacaoSubmissao().toString());
+        jTextFieldTipo.setText(monografia.getTipo().name());
+        jTextFieldSituacao.setText(monografia.getSituacaoSubmissao().toString());
         jTextPaneResumo.setText(monografia.getResumo());
         jTextPaneAbstractText.setText(monografia.getAbstractText());
         
