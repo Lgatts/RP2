@@ -19,7 +19,7 @@ public class Resumo extends SubmissaoCientifica {
             List<String> autores, List<String> instituicao, List<String> palavraChave){
         super(titulo, 8, 8, 4);
         super.setTituloSubmissao(titulo);
-        super.getSituacaoSubmissao();
+        super.setSituacaoSubmissao(situacaoSubmissao);
         super.setAutores(autores);
         super.setInstituicao(instituicao);
         super.setPalavraChave(palavraChave);
