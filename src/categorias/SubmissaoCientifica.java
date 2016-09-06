@@ -46,7 +46,6 @@ public abstract class SubmissaoCientifica extends Submissao {
 
         this(tituloSubmissao, MAX_AUTORES, MAX_INSTITUICAO, MAX_PALAVRACHAVE);
         super.setSituacaoSubmissao(situacaoSubmissao);
-        
 
     }
 
@@ -68,12 +67,9 @@ public abstract class SubmissaoCientifica extends Submissao {
         if (instituicao.size() > getMAX_INSTITUICAO() || instituicao.size() == 0) {
             return false;
         }
-
-        for (int i = 0; i < instituicao.size(); i++) {
-            this.instituicao.add(instituicao.get(i));
-        }
-
+        this.instituicao = instituicao;
         return true;
+
     }
 
     /**
@@ -94,12 +90,9 @@ public abstract class SubmissaoCientifica extends Submissao {
         if (palavraChave.size() > getMAX_PALAVRACHAVE() || palavraChave.size() == 0) {
             return false;
         }
-
-        for (int i = 0; i < palavraChave.size(); i++) {
-            this.palavraChave.add(palavraChave.get(i));
-        }
-
+        this.palavraChave = palavraChave;
         return true;
+
     }
 
     /**

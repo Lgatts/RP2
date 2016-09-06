@@ -21,22 +21,22 @@ public class FrameMonografiaDetalhes extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         
-        jTextFieldTitulo.setText(monografia.getTitulo());
-        jTextFieldAutor.setText(monografia.getAutor());
+        jTextFieldTitulo.setText(monografia.getTituloSubmissao());
+        jTextFieldAutor.setText(monografia.getAutores().get(0));
         jTextFieldCurso.setText(monografia.getCurso());
         jTextFieldOrientador.setText(monografia.getOrientador());
-        jTextFieldInstituicao.setText(monografia.getInstituicao());
+        jTextFieldInstituicao.setText(monografia.getInstituicao().get(0));
         jTextFieldAno.setText(String.valueOf(monografia.getAno()));
         jTextFieldnPaginas.setText(String.valueOf(monografia.getnPaginas()));
-        jTextFieldTipo.setText(monografia.getTipo());
-        jTextFieldSituacao.setText(monografia.getSituacao());
+        //jTextFieldTipo.setText(monografia.getTipo().toString());
+        //jTextFieldSituacao.setText(monografia.getSituacaoSubmissao().toString());
         jTextPaneResumo.setText(monografia.getResumo());
         jTextPaneAbstractText.setText(monografia.getAbstractText());
         
-        jTextFieldPalavraChave0.setText(monografia.getPalavraChave()[0]);
-        jTextFieldPalavraChave1.setText(monografia.getPalavraChave()[1]);
-        jTextFieldPalavraChave2.setText(monografia.getPalavraChave()[2]);
-        jTextFieldPalavraChave3.setText(monografia.getPalavraChave()[3]);
+        jTextFieldPalavraChave0.setText(monografia.getPalavraChave().get(0));
+        jTextFieldPalavraChave1.setText(monografia.getPalavraChave().get(1));
+        jTextFieldPalavraChave2.setText(monografia.getPalavraChave().get(2));
+        jTextFieldPalavraChave3.setText(monografia.getPalavraChave().get(3));
         
         
     }
