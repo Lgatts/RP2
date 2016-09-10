@@ -11,7 +11,6 @@ import categorias.Minicurso;
 import cruds.SubmissaoCrud;
 import categorias.Submissao;
 import categorias.Situacao;
-import cruds.MinicursoCRUD;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -148,10 +147,27 @@ public class FrameMinicurso extends javax.swing.JFrame {
     
     //</editor-fold>
     
-    private Minicurso pesquisa(JList jList){
+    //<editor-fold defaultstate="collapsed" desc="Pesquisa por um minicurso dentro de uma lista">
     
+    /**
+     * Método para buscar um minicurso específico dentro da lista.
+     * @param jList - Enviar a jList para que possa pegar o item selecionado
+     * @return - Retorna o minicurso ou null caso o mesmo nao exista
+     */
+    private Minicurso pesquisa(JList jList){
+        nomeEditar = jList.getSelectedValue().toString();
+
+        for (Submissao submissoes : minicursos) {
+            if (nomeEditar.equals(submissoes.getTituloSubmissao())) {
+                Minicurso minicurso = (Minicurso) submissoes;
+                return minicurso;
+            }
+        }
+        return null;
     }
     
+    //</editor-fold>
+
     //<editor-fold defaultstate="collapsed" desc="Método para editar e os campos aparecerem preenchidos">
     
     /**
@@ -1072,7 +1088,8 @@ public class FrameMinicurso extends javax.swing.JFrame {
  */
     private void jButtonMaisDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMaisDetalhesActionPerformed
         // TODO add your handling code here:
-        maisDetalhes(jListNomesMinicursos.getSelectedValue());
+        Minicurso m = pesquisa(jListNomesMinicursos);
+        maisDetalhes(m);
     }//GEN-LAST:event_jButtonMaisDetalhesActionPerformed
 
     //</editor-fold>

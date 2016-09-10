@@ -18,6 +18,7 @@ public class FrameMinicursoDetalhes extends javax.swing.JFrame {
 
     /**
      * Creates new form MoreDetailsShortCourse
+     * @param minicurso
      */
     public FrameMinicursoDetalhes(Minicurso minicurso) {
         initComponents();
