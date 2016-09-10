@@ -36,6 +36,11 @@ public class SubmissaoCrud implements ListaSubmissoes {
     public void setListaSubmissao(List<Submissao> listaSubmissao) {
         this.listaSubmissao = listaSubmissao;
     }
+
+    public String getTipoSubmissao() {
+        return tipoSubmissao;
+    }  
+    
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Incluir">

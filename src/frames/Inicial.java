@@ -5,7 +5,8 @@
  */
 package frames;
 
-import categorias.Monografia;
+import cruds.SubmissaoCrud;
+import java.util.List;
 
 /**
  *
@@ -13,10 +14,17 @@ import categorias.Monografia;
  */
 public class Inicial extends javax.swing.JFrame {
 
+    private List<SubmissaoCrud> submissaoLista;
+    
+    
     /**
      * Creates new form Inicial
+     * @param submissaoLista     
      */
-    public Inicial() {
+    public Inicial(List<SubmissaoCrud> submissaoLista) {        
+        
+       this.submissaoLista = submissaoLista;
+        
         initComponents();
         this.setTitle("RP II - MENU");
         this.setLocationRelativeTo(null);
@@ -119,7 +127,7 @@ public class Inicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonMonografiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMonografiasActionPerformed
-        new FrameMonografia().setVisible(true);
+        new FrameMonografia(this.submissaoLista).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonMonografiasActionPerformed
 

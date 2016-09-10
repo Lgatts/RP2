@@ -498,7 +498,7 @@
                               <Component id="jScrollPane2" linkSize="8" min="-2" pref="166" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" linkSize="8" min="-2" pref="166" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="37" max="32767" attributes="0"/>
+                          <EmptySpace pref="76" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -759,8 +759,8 @@
                               <Component id="jLabelResumoEditar" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelInstituicaoEditar" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextFieldOrientadorEditar" linkSize="12" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldCursoEditar" linkSize="12" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldOrientadorEditar" linkSize="12" alignment="0" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldCursoEditar" linkSize="12" alignment="0" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabelTituloEditar" min="-2" pref="35" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
@@ -768,14 +768,14 @@
                                   </Group>
                                   <Component id="jLabelAutorEditar" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelOrientadorEditar" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldInstituicaoEditar" linkSize="12" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldAutorEditar" linkSize="12" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldInstituicaoEditar" linkSize="12" alignment="0" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldAutorEditar" linkSize="12" alignment="0" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="jTextFieldPalavraChaveEditar0" linkSize="11" min="-2" pref="125" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldPalavraChaveEditar1" linkSize="11" min="-2" pref="115" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldPalavraChaveEditar1" linkSize="11" min="-2" pref="125" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="jScrollPane8" linkSize="13" min="-2" pref="270" max="-2" attributes="0"/>
                                           <Component id="jLabelPalavrasChavesEditar" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -783,9 +783,9 @@
                                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="jTextFieldPalavraChaveEditar2" linkSize="11" min="-2" pref="105" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldPalavraChaveEditar2" linkSize="11" min="-2" pref="125" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldPalavraChaveEditar3" linkSize="11" max="32767" attributes="0"/>
+                                              <Component id="jTextFieldPalavraChaveEditar3" linkSize="11" min="-2" pref="125" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="jScrollPane7" linkSize="13" min="-2" pref="270" max="-2" attributes="0"/>
                                           <Component id="jLabelAbstractTextEditar" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -794,18 +794,18 @@
                                   <Component id="jTextFieldTituloEditar" linkSize="12" alignment="0" min="-2" pref="560" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jComboBoxTipoEditar" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
-                                          <Component id="jLabelTipoEditar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelTipoEditar" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBoxTipoEditar" min="-2" pref="125" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <Component id="jLabelSituacaoEditar" min="-2" pref="61" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                          </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jComboBoxSituacaoEditar" min="-2" pref="125" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabelSituacaoEditar" min="-2" pref="61" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -884,7 +884,7 @@
                               <Component id="jScrollPane8" linkSize="14" min="-2" pref="180" max="-2" attributes="0"/>
                               <Component id="jScrollPane7" linkSize="14" min="-2" pref="180" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                          <EmptySpace pref="62" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
