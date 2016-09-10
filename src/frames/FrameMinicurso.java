@@ -7,6 +7,7 @@ package frames;
 
 //<editor-fold defaultstate="collapsed" desc="Importações">
 
+import main.Main;
 import categorias.Minicurso;
 import cruds.SubmissaoCrud;
 import categorias.Submissao;
@@ -29,6 +30,7 @@ public class FrameMinicurso extends javax.swing.JFrame {
     
     private String nomeEditar;
     private List<Submissao> minicursos;
+    private List<SubmissaoCrud> submissaoLista;
     private List<String> nomeAutores;
     SubmissaoCrud minicursoCrud = new SubmissaoCrud("Minicursos");
             
@@ -38,9 +40,19 @@ public class FrameMinicurso extends javax.swing.JFrame {
     
     /**
      * Creates new form panelShortCourse
+     * @param submissaoLista
      */
-    public FrameMinicurso() {
+    public FrameMinicurso(List<SubmissaoCrud> submissaoLista) {
 
+        this.submissaoLista = submissaoLista;
+        
+        for (SubmissaoCrud crud : submissaoLista) {
+            if(crud.getTipoSubmissao().equalsIgnoreCase("Minicursos")){
+                minicursoCrud = crud;
+                break;
+            }
+        }
+        
         initComponents();
         this.setTitle("RP II - Minicursos");
         this.setLocationRelativeTo(null);
@@ -376,6 +388,12 @@ public class FrameMinicurso extends javax.swing.JFrame {
         jScrollPaneNomesMinicursos.setViewportView(jListNomesMinicursos);
 
         jLabelConsultar.setText("Consultar por:");
+
+        jTextConsultar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextConsultarKeyTyped(evt);
+            }
+        });
 
         jComboBoxConsultar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Listar todos", "Titulo", "Autor" }));
 
@@ -807,7 +825,7 @@ public class FrameMinicurso extends javax.swing.JFrame {
     private void jButtonVoltarInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarInicioActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        Inicial back = new Inicial();
+        Inicial back = new Inicial(this.submissaoLista);
         back.setVisible(true);
     }//GEN-LAST:event_jButtonVoltarInicioActionPerformed
 
@@ -1108,6 +1126,17 @@ public class FrameMinicurso extends javax.swing.JFrame {
         jTabShortCourse.setEnabledAt(0, false);
     }//GEN-LAST:event_jButtonInserirMinicursoActionPerformed
 
+    private void jTextConsultarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextConsultarKeyTyped
+        // TODO add your handling code here:
+        if(jComboBoxConsultar.getSelectedIndex() == 1){
+            this.minicursos = this.minicursoCrud.consultarTitulo(jTextConsultar.getText());
+            visualizarLista();
+        } else if(jComboBoxConsultar.getSelectedIndex() == 2){
+            this.minicursos = this.minicursoCrud.consultarAutor(jTextConsultar.getText());
+            visualizarLista();
+        }
+    }//GEN-LAST:event_jTextConsultarKeyTyped
+
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="JavaSwing">
@@ -1142,7 +1171,7 @@ public class FrameMinicurso extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameMinicurso().setVisible(true);
+                new FrameMinicurso(null).setVisible(true);
             }
         });
     }
