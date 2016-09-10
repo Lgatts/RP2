@@ -1,6 +1,8 @@
 
 package categorias;
 
+import java.util.List;
+
 
 public class Palestras extends SubmissaoApresentacao{
     
@@ -20,8 +22,9 @@ public class Palestras extends SubmissaoApresentacao{
    /*Construtor*/
     
  
-    public  Palestras(String titulo, Situacao situacao, String autor, String resumo, String abstracText, int duracao, String curriculo) {
+    public  Palestras(String titulo, Situacao situacao, List <String> nomeAutores, String resumo, String abstracText, int duracao, String curriculo) {
         super(titulo, duracao, 1, resumo, abstracText);
+        super.setAutores(nomeAutores);
         this.curriculo = curriculo;
         
     }

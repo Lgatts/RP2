@@ -8,6 +8,7 @@ package frames;
 import categorias.Palestras;
 import categorias.Situacao;
 import cruds.PalestrasCrud;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import java.util.List;
 import javax.swing.JList;
@@ -20,11 +21,9 @@ import javax.swing.JOptionPane;
 public class FramePalestras extends javax.swing.JFrame {
 
     private String nomeeditar;
-
     private List<String> palestrasLista;
-
     private DefaultListModel modelList = new DefaultListModel();
-
+    
     List<Palestras> pLista = PalestrasCrud.getLista();
 
     /**
@@ -243,12 +242,17 @@ public class FramePalestras extends javax.swing.JFrame {
         jLabelDuracao.setText("Duração:");
 
         try {
-            jTextAdicionarDuracao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##h:##m")));
+            jTextAdicionarDuracao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
-        jComboBoxAdicionar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sob Avaliação", "Aprovado", "Reprovado" }));
+        jComboBoxAdicionar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sob avaliação", "Aprovado", "Reprovado" }));
+        jComboBoxAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxAdicionarActionPerformed(evt);
+            }
+        });
 
         jLabelSituacao.setText("Situação:");
 
@@ -309,7 +313,7 @@ public class FramePalestras extends javax.swing.JFrame {
                             .addComponent(jLabelAbstract, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jScrollPane1))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelAdicionarLayout.setVerticalGroup(
             jPanelAdicionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,12 +370,22 @@ public class FramePalestras extends javax.swing.JFrame {
         jLabelDuracao2.setText("Duração:");
 
         try {
-            jTextEditarDuracao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##h:##m")));
+            jTextEditarDuracao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jTextEditarDuracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextEditarDuracaoActionPerformed(evt);
+            }
+        });
 
-        jComboBoxEditar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Sob Avaliação", "Aprovado", "Reprovado" }));
+        jComboBoxEditar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sob avaliação", "Aprovado", "Reprovado" }));
+        jComboBoxEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxEditarActionPerformed(evt);
+            }
+        });
 
         jLabelSituacao2.setText("Situação:");
 
@@ -421,7 +435,7 @@ public class FramePalestras extends javax.swing.JFrame {
                                 .addComponent(jTextEditarDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(21, 21, 21)
                                 .addComponent(jLabelSituacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jComboBoxEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane6)))
                     .addGroup(jPanelEditarLayout.createSequentialGroup()
@@ -464,11 +478,10 @@ public class FramePalestras extends javax.swing.JFrame {
                     .addComponent(jLabelAutor2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextEditarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelDuracao2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextEditarDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelSituacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelDuracao2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextEditarDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelSituacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelEditarLayout.createSequentialGroup()
@@ -511,7 +524,7 @@ public class FramePalestras extends javax.swing.JFrame {
         jLabelDuracao4.setText("Duração:");
 
         try {
-            jTextEditarDuracao2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##h:##m")));
+            jTextEditarDuracao2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -651,7 +664,7 @@ public class FramePalestras extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -661,21 +674,54 @@ public class FramePalestras extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean verificarDuracao(String duracaoString){
+         
+            if(Integer.parseInt(duracaoString.substring(4))>=60){ 
+                return true;
+            }
+        return false;
+    }
+    
+    public int converterStringEmNumero(String duracaoString){
+        int duracao=0;
+        
+        duracao += Integer.parseInt(duracaoString.substring(0, 2))*60;
+        duracao += Integer.parseInt(duracaoString.substring(3));
+        
+        return duracao;
+    }
+    
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
 
-        String titulo, situacao, autor, resumo, abstracText, duracao, curriculo;
-
+        String titulo, resumo, abstracText, curriculo;
+        int duracao;
+        
+        List <String> nomeAutores = new ArrayList();
+        
+        
+        if(!(jTextAdicionarAutor.getText().trim().equals(""))){
+            nomeAutores.add(jTextAdicionarAutor.getText().trim());
+        }
+        
         titulo = jTextAdicionarTitulo.getText();
-        situacao = jComboBoxAdicionar.getSelectedItem().toString();
-        autor = jTextAdicionarAutor.getText();
         resumo = jTextAdicionarResumo.getText();
         abstracText = jTextAdicionarAbstract.getText();
-        duracao = jTextAdicionarDuracao.getText();
         curriculo = jTextAdicionarCurriculo.getText();
-
-        if (titulo.trim().equals("") || autor.trim().equals("") || resumo.trim().equals("") || abstracText.trim().equals("") || duracao.trim().equals("") || curriculo.trim().equals("")) {
+        
+        
+        
+        if (titulo.trim().equals("") || nomeAutores.isEmpty() || resumo.trim().equals("") 
+                || abstracText.trim().equals("") || jTextAdicionarDuracao.getText().equals("") || curriculo.trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Deve preencher todos os campos!");
         } else {
+            
+            duracao = converterStringEmNumero(jTextAdicionarDuracao.getText());
+            
+            Situacao ss = Situacao.verificarSituacao(jComboBoxAdicionar.getSelectedItem().toString());
+            
+            PalestrasCrud.inserirPalestra(titulo, ss,
+                    nomeAutores, resumo, abstracText, duracao, curriculo);
+
             jTextAdicionarTitulo.setText("");
             jComboBoxAdicionar.setSelectedIndex(0);
             jTextAdicionarAutor.setText("");
@@ -683,9 +729,6 @@ public class FramePalestras extends javax.swing.JFrame {
             jTextAdicionarAbstract.setText("");
             jTextAdicionarDuracao.setText("");
             jTextAdicionarCurriculo.setText("");
-
-            PalestrasCrud.inserirPalestra(titulo, Situacao.verificarSituacao(jComboBoxAdicionar.getSelectedItem().toString()),
-                    autor, resumo, abstracText, duracao, curriculo);
 
             JOptionPane.showMessageDialog(null, "Salvo Com Sucesso!");
 
@@ -708,19 +751,13 @@ public class FramePalestras extends javax.swing.JFrame {
 
         for (categorias.Palestras palestra : pLista) {
             if (nomeeditar.equals(palestra.getTituloSubmissao())) {
-                for (int i = 0; i < jComboBoxEditar.getItemCount(); i++) {
-                    if (palestra.getSituacaoSubmissao().equals(jComboBoxEditar.getItemAt(i))) {
-                        indexEditSituation = i;
-
-                    }
-                }
 
                 jTextEditarTitulo.setText(palestra.getTituloSubmissao());
-                jComboBoxEditar.setSelectedIndex(indexEditSituation);
+                jComboBoxEditar.setSelectedItem(palestra.getSituacaoSubmissao().getSituacao());
                 jTextEditarResumo.setText(palestra.getResumo());
-                //jTextEditarDuracao.setText(palestra.getDuracao());
+                jTextEditarDuracao.setText(String.valueOf(palestra.getDuracao()));
                 jTextEditarCurriculo.setText(palestra.getCurriculo());
-                //jTextEditarAutor.setText(palestra.getAutores());
+                jTextEditarAutor.setText(palestra.getAutores().get(0));
                 jTextEditarAbstract.setText(palestra.getAbstractText());
 
             }
@@ -797,15 +834,18 @@ public class FramePalestras extends javax.swing.JFrame {
 
     private void jButtonEditarSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarSalvarActionPerformed
         PalestrasCrud editar = new PalestrasCrud();
-        editar.editarPalestra(nomeeditar, jTextEditarTitulo.getText(), Situacao.verificarSituacao(jComboBoxEditar.getSelectedItem().toString())
-                , jTextEditarAutor.getText(), jTextEditarResumo.getText(),
-                jTextEditarAbstract.getText(), jTextEditarDuracao.getText(), 
+        List <String> nomeAutores = new ArrayList();
+        editar.editarPalestra(nomeeditar, jTextEditarTitulo.getText(),
+                Situacao.verificarSituacao(jComboBoxEditar.getSelectedItem().toString())
+                , nomeAutores, jTextEditarResumo.getText(),
+
+                jTextEditarAbstract.getText(), converterStringEmNumero(jTextEditarDuracao.getText()), 
                 jTextEditarCurriculo.getText());
 
         jTabbedPane.setSelectedIndex(0);
 
         jTabbedPane.setEnabledAt(0, true);
-        jTabbedPane.setEnabledAt(1, false);
+        jTabbedPane.setEnabledAt(1, true);
         jTabbedPane.setEnabledAt(3, false);
         jTabbedPane.setEnabledAt(2, false);
 
@@ -830,6 +870,18 @@ public class FramePalestras extends javax.swing.JFrame {
         jTabbedPane.setEnabledAt(2, false);
         jTabbedPane.setSelectedIndex(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBoxEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxEditarActionPerformed
+
+    private void jTextEditarDuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextEditarDuracaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextEditarDuracaoActionPerformed
+
+    private void jComboBoxAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAdicionarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxAdicionarActionPerformed
 
     /**
      * @param args the command line arguments
