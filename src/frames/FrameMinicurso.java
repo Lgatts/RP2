@@ -5,7 +5,11 @@
  */
 package frames;
 
+//<editor-fold defaultstate="collapsed" desc="Importações">
+
 import categorias.Minicurso;
+import cruds.SubmissaoCrud;
+import categorias.Submissao;
 import categorias.Situacao;
 import cruds.MinicursoCRUD;
 import java.util.ArrayList;
@@ -14,18 +18,25 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
+//</editor-fold>
+    
 /**
  *
  * @author YuryAlencar
  */
 public class FrameMinicurso extends javax.swing.JFrame {
-
+    
+    //<editor-fold defaultstate="collapsed" desc="Variáveis">
+    
     private String nomeEditar;
-    private List<String> visualizarLista;    
-    private List<Minicurso> minicursos = MinicursoCRUD.getMinicursos();
+    private List<Submissao> minicursos;
     private List<String> nomeAutores;
-
+    SubmissaoCrud minicursoCrud = new SubmissaoCrud("Minicursos");
             
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Inicializados ao abrir a frame">
+    
     /**
      * Creates new form panelShortCourse
      */
@@ -49,40 +60,32 @@ public class FrameMinicurso extends javax.swing.JFrame {
         jTabShortCourse.setEnabledAt(2, false);
     }
     
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Método para validar duração">
+    
     /**
      * Método para verificar a duracao
-     * @param duracao - recebe a duracao para verificar se é uma quantidade válida
+     * @param duracaoString- recebe a duracao para verificar se é uma quantidade válida
      * @return - boolean , verdadeiro caso for inválida
      */
     public boolean verificarDuracao(String duracaoString){
-        String valores="";
-        int duracao=0, aux=0;
-        for(int i=0; i<duracaoString.length(); i++){
-            
-            if(duracaoString.charAt(i) == ':'){
-                if(aux == 0){
-                    valores ="";
-                    aux++;
-                } else if (aux == 1) {
-                    if(60<=Integer.parseInt(valores)){
-                        return true;
-                    }
-                    valores ="";
-                    aux++;
-                }
-            } else {
-                valores += duracaoString.charAt(i);
-                if(aux==2)
-                    aux++;
-                if(aux == 3){
-                    if(60<=Integer.parseInt(valores)){
-                        return true;
-                    }
-                }
+        for(int i=0; i<duracaoString.length(); i++){ 
+            if(Integer.parseInt(duracaoString.substring(3, 5))>=60){
+                return true;
+            } else if (Integer.parseInt(duracaoString.substring(6))>=60){
+                return true;
+            } else if(Integer.parseInt(duracaoString.substring(3, 5))<= 19
+                    && Integer.parseInt(duracaoString.substring(0, 2)) == 00){
+                return true;
             }
         }
         return false;
     }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Converter duraçãoString em duraçãoInt">
     
     /**
      * Método para converter os campos de duracao para inteiro
@@ -98,6 +101,10 @@ public class FrameMinicurso extends javax.swing.JFrame {
         
         return duracao;
     }
+
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Listar">
     
     /**
      *  Método para exibir a lista no jList
@@ -105,58 +112,65 @@ public class FrameMinicurso extends javax.swing.JFrame {
     public void visualizarLista() {
         DefaultListModel mLista = new DefaultListModel();
         
-        for(String elemento : visualizarLista){
-            mLista.addElement(elemento);
+        for(Submissao elemento : minicursos){
+            mLista.addElement(elemento.getTituloSubmissao());
         }
         
         jListNomesMinicursos.setModel(mLista);
     }
     
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Mais detalhes">
+    
     /**
      * 
      * @param nome 
      */
-    private void maisDetalhes(String nome){
-        FrameMinicursoDetalhes detalhes = new FrameMinicursoDetalhes(nome);
+    private void maisDetalhes(Minicurso details){
+        FrameMinicursoDetalhes detalhes = new FrameMinicursoDetalhes(details);
         detalhes.setVisible(true);
     }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Método para chamar o excluir de um minicurso">
     
     /**
      * 
      * @param jList 
      */
     private void deletar(String nomeMinicurso){
-        MinicursoCRUD.excluir(nomeMinicurso);
-        visualizarLista = MinicursoCRUD.consultar("", "");
+        minicursoCrud.excluir(nomeMinicurso);
+        this.minicursos = minicursoCrud.getListaSubmissao();
         visualizarLista();
     }
+    
+    //</editor-fold>
+    
+    private Minicurso pesquisa(JList jList){
+    
+    }
+    
+    //<editor-fold defaultstate="collapsed" desc="Método para editar e os campos aparecerem preenchidos">
     
     /**
      * 
      * @param jList 
      */
     private void editar(JList jList) {
-        jTabShortCourse.setSelectedIndex(2);
-        jTabShortCourse.setEnabledAt(0, false);
-        jTabShortCourse.setEnabledAt(1, false);
-        jTabShortCourse.setEnabledAt(2, true);
-
+        transitoAbas(0, 2);
+        
         String duracaoEditar;
-        int indexEditarSituacao = 0, hora, minutos,segundos;
+        int hora, minutos, segundos;
         nomeEditar = jList.getSelectedValue().toString();
 
-        for (categorias.Minicurso minicurso : minicursos) {
+        for (Submissao submissoes : minicursos) {
             
-            if (nomeEditar.equals(minicurso.getTituloSubmissao())) {
-            
-                for (int i = 0; i < jComboBoxEditarSituacao.getItemCount(); i++) {
-                    if (minicurso.getSituacaoSubmissao().getSituacao().equals
-                        (jComboBoxEditarSituacao.getItemAt(i))) {
-                        indexEditarSituacao = i;
-                        break;
-                    }
-                }
-
+            if (nomeEditar.equals(submissoes.getTituloSubmissao())) {
+                
+                Minicurso minicurso = (Minicurso) submissoes;
+                
                 hora = minicurso.getDuracao()/3600;
                 minutos = (minicurso.getDuracao()%3600)/60;
                 segundos = (minicurso.getDuracao()%3600)%60;
@@ -187,32 +201,54 @@ public class FrameMinicurso extends javax.swing.JFrame {
                             +String.valueOf(segundos);
                         
                 jTextEditarTitulo.setText(minicurso.getTituloSubmissao());
-                jComboBoxEditarSituacao.setSelectedIndex(indexEditarSituacao);
+                jComboBoxEditarSituacao.setSelectedItem(minicurso.getSituacaoSubmissao().getSituacao());
                 jTextPaneEditarResumoTexto.setText(minicurso.getResumo());
                 jTextPaneEditarAbstractTexto.setText(minicurso.getAbstractText());
                 jFormattedEditarDuracao.setText(duracaoEditar);
                 jTextEditarRecursos.setText(minicurso.getRecursos());
                 jTextPaneEditarMetodologia.setText(minicurso.getMetodologia());
                 
-                if(minicurso.getAutores().size() == 1){
-                    jTextEditarAutor.setText(minicurso.getAutores().get(0));
-                } else if (minicurso.getAutores().size() == 2){
-                    jTextEditarAutor.setText(minicurso.getAutores().get(0));
-                    jTextEditarAutor1.setText(minicurso.getAutores().get(1));
-                } else if(minicurso.getAutores().size() == 3){
-                    jTextEditarAutor.setText(minicurso.getAutores().get(0));
-                    jTextEditarAutor1.setText(minicurso.getAutores().get(1));
-                    jTextEditarAutor2.setText(minicurso.getAutores().get(2));
+                switch (minicurso.getAutores().size()) {
+                    case 1:
+                        jTextEditarAutor.setText(minicurso.getAutores().get(0));
+                        break;
+                    case 2:
+                        jTextEditarAutor.setText(minicurso.getAutores().get(0));
+                        jTextEditarAutor1.setText(minicurso.getAutores().get(1));
+                        break;
+                    case 3:
+                        jTextEditarAutor.setText(minicurso.getAutores().get(0));
+                        jTextEditarAutor1.setText(minicurso.getAutores().get(1));
+                        jTextEditarAutor2.setText(minicurso.getAutores().get(2));
+                        break;
+                    default:
+                        break;
                 }
                 
                 jComboBoxEditarAutor.setSelectedIndex(minicurso.getAutores().size()-1);
                 
             }
         }
-
     }
     
-
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Método para voltar Transitar pelas abas">
+    
+    /**
+     * Método para voltar sempre para a janela de listagem e desativando
+     * as outras abas
+     * @param abaAtual - Aba que o usuário está 
+     */
+    
+    private void transitoAbas(int abaAtual, int abaPosterior){
+        jTabShortCourse.setSelectedIndex(abaPosterior);
+        jTabShortCourse.setEnabledAt(abaPosterior, true);
+        jTabShortCourse.setEnabledAt(abaAtual, false);
+    }
+    
+    //</editor-fold>
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -234,7 +270,6 @@ public class FrameMinicurso extends javax.swing.JFrame {
         jTextConsultar = new javax.swing.JTextField();
         jComboBoxConsultar = new javax.swing.JComboBox<>();
         jButtonConsultar = new javax.swing.JButton();
-        jButtonConsultaAvancada = new javax.swing.JButton();
         jButtonInserirMinicurso = new javax.swing.JButton();
         jPanelInserir = new javax.swing.JPanel();
         jButtonInserirSalvar = new javax.swing.JButton();
@@ -335,13 +370,6 @@ public class FrameMinicurso extends javax.swing.JFrame {
             }
         });
 
-        jButtonConsultaAvancada.setText("Consulta Avançada");
-        jButtonConsultaAvancada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsultaAvancadaActionPerformed(evt);
-            }
-        });
-
         jButtonInserirMinicurso.setText("Incluir Minicurso");
         jButtonInserirMinicurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -355,7 +383,7 @@ public class FrameMinicurso extends javax.swing.JFrame {
             jPanelListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelListarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelListarLayout.createSequentialGroup()
                         .addGroup(jPanelListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonMaisDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -364,17 +392,15 @@ public class FrameMinicurso extends javax.swing.JFrame {
                             .addComponent(jButtonVoltarInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonInserirMinicurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanelListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPaneNomesMinicursos, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jTextConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPaneNomesMinicursos, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelListarLayout.createSequentialGroup()
                         .addComponent(jLabelConsultar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBoxConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonConsultaAvancada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(20, 20, 20))
+                        .addComponent(jButtonConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jTextConsultar))
+                .addGap(50, 50, 50))
         );
         jPanelListarLayout.setVerticalGroup(
             jPanelListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,12 +409,10 @@ public class FrameMinicurso extends javax.swing.JFrame {
                 .addGroup(jPanelListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelConsultar)
                     .addComponent(jComboBoxConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonConsultaAvancada))
+                    .addComponent(jButtonConsultar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonConsultar)
-                .addGap(30, 30, 30)
+                .addGap(72, 72, 72)
                 .addGroup(jPanelListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelListarLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -399,7 +423,7 @@ public class FrameMinicurso extends javax.swing.JFrame {
                         .addComponent(jButtonEditar)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonDeletar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                         .addComponent(jButtonVoltarInicio))
                     .addComponent(jScrollPaneNomesMinicursos, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -732,27 +756,34 @@ public class FrameMinicurso extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    //<editor-fold defaultstate="collapsed" desc="Botão para voltar para a pagina de listagem">
+
 /**
  * botao para voltar para a aba principal desta frame
  * @param evt 
  */
     private void jButtonInserirVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirVoltarActionPerformed
         // TODO add your handling code here:
-        jTabShortCourse.setSelectedIndex(0);
-        jTabShortCourse.setEnabledAt(0, true);
-        jTabShortCourse.setEnabledAt(1, false);
-
+        transitoAbas(1, 0);
     }//GEN-LAST:event_jButtonInserirVoltarActionPerformed
+
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Botão para voltar para a pagina de listagem">
+    
 /**
  * Botao para voltar para a aba principal desta frame
  * @param evt 
  */
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-        jTabShortCourse.setSelectedIndex(0);
-        jTabShortCourse.setEnabledAt(0, true);
-        jTabShortCourse.setEnabledAt(2, false);
+        transitoAbas(2, 0);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Botão para eu voltar para a janela inicial com o MENU">
+    
 /**
  * Botao para voltar ao menu inicial
  * @param evt 
@@ -763,6 +794,11 @@ public class FrameMinicurso extends javax.swing.JFrame {
         Inicial back = new Inicial();
         back.setVisible(true);
     }//GEN-LAST:event_jButtonVoltarInicioActionPerformed
+
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Botão que chama o método editar">
+    
 /**
  * Botao que chama o método editar
  * @param evt 
@@ -771,8 +807,13 @@ public class FrameMinicurso extends javax.swing.JFrame {
         // TODO add your handling code here:
         editar(jListNomesMinicursos);
     }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Botão para salvar um minicurso">
+    
 /**
- * Botao para incluir um novo minicurso e já faz a verificação se os campos estão em branco
+ * Botao para incluir um novo minicursoCrud e já faz a verificação se os campos estão em branco
  * @param evt 
  */
     private void jButtonInserirSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirSalvarActionPerformed
@@ -815,7 +856,7 @@ public class FrameMinicurso extends javax.swing.JFrame {
                     duracao, jTextRecursos.getText().trim(),
                     jTextPaneMetodologia.getText().trim(), nomeAutores);
             
-            MinicursoCRUD.incluir(novoMinicurso);
+            this.minicursoCrud.incluir(novoMinicurso);
             
             jTextTitulo.setText("");
             jComboBoxSituacao.setSelectedIndex(0);
@@ -830,13 +871,18 @@ public class FrameMinicurso extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
             
-            visualizarLista = MinicursoCRUD.consultar("", "");
+            this.minicursos = minicursoCrud.getListaSubmissao();
             visualizarLista();
 
         }
     }//GEN-LAST:event_jButtonInserirSalvarActionPerformed
+
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Botão para editar um minicurso">
+    
 /**
- * Botao para editar um minicurso, a e verifica se os campos estão em branco
+ * Botao para editar um minicursoCrud, a e verifica se os campos estão em branco
  * @param evt 
  */
     private void jButtonEditarSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarSalvarActionPerformed
@@ -873,17 +919,18 @@ public class FrameMinicurso extends javax.swing.JFrame {
                 nomeAutores.add(jTextEditarAutor2.getText());
             }
             
-            MinicursoCRUD editar = new MinicursoCRUD();
-            editar.editar(nomeEditar, jTextEditarTitulo.getText(), 
+            Minicurso editar = new Minicurso(jTextEditarTitulo.getText(), 
                     Situacao.verificarSituacao(jComboBoxEditarSituacao.getSelectedItem().toString()),
                     jTextPaneEditarResumoTexto.getText(),
                     jTextPaneEditarAbstractTexto.getText(), duracao,
                     jTextEditarRecursos.getText(), jTextPaneEditarMetodologia.getText(),
                     nomeAutores);
-
+            
+            minicursoCrud.editar(nomeEditar, editar);
+            
             JOptionPane.showMessageDialog(null, "Editado com sucesso!");
             
-            visualizarLista = MinicursoCRUD.consultar("","");
+            this.minicursos = minicursoCrud.getListaSubmissao();
             visualizarLista();
             
             jTabShortCourse.setSelectedIndex(0);
@@ -892,6 +939,11 @@ public class FrameMinicurso extends javax.swing.JFrame {
             jTabShortCourse.setEnabledAt(2, false);
         }
     }//GEN-LAST:event_jButtonEditarSalvarActionPerformed
+
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Botão que chama o método deletar">
+    
 /**
  * Deltar que chama um método enviando o valor que foi selecionado no jList,
  * e infoma a mensagem deletado com sucesso
@@ -902,6 +954,11 @@ public class FrameMinicurso extends javax.swing.JFrame {
         deletar(jListNomesMinicursos.getSelectedValue().toString());
         JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
     }//GEN-LAST:event_jButtonDeletarActionPerformed
+
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Ação de evento- ativar os botões somente se algo estiver selecionado">
+    
 /**
  * Verificar se tem algo selecionado na lista , se sim ativar os botões
  * @param evt 
@@ -918,6 +975,11 @@ public class FrameMinicurso extends javax.swing.JFrame {
             jButtonMaisDetalhes.setEnabled(true);
         }
     }//GEN-LAST:event_jListNomesMinicursosValueChanged
+
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Ação de evento - para ativar os campos que serão utilizados">
+    
 /**
  * Ação para modificar os campos ativos atraves de um combo box
  * @param evt 
@@ -942,6 +1004,11 @@ public class FrameMinicurso extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_jComboBoxInserirAutorItemStateChanged
+
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Ação de evento - Para poder ativar os campos dos autores(edição)">
+    
 /**
  * Combo box para ativar os campos de acordo com o número escolhido pelo
  * comboBox
@@ -969,18 +1036,36 @@ public class FrameMinicurso extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBoxEditarAutorItemStateChanged
 
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Botão para fazer a consulta">
+    
+/**
+ * Botao para consultar podendo ser por autor ou título
+ * @param evt 
+ */
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         // TODO add your handling code here:
         if (jComboBoxConsultar.getSelectedIndex() != 0 
                 && jTextConsultar.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "É necessário o preenchimento do"
                     + " campo para este tipo de consulta.");
-        } else {
-            visualizarLista = MinicursoCRUD.consultar(jComboBoxConsultar.getSelectedItem().toString()
-                    , jTextConsultar.getText());
+        } else if(jComboBoxConsultar.getSelectedIndex() == 0){
+            this.minicursos = this.minicursoCrud.getListaSubmissao();
+            visualizarLista();
+        } else if(jComboBoxConsultar.getSelectedIndex() == 1){
+            this.minicursos = this.minicursoCrud.consultarTitulo(jTextConsultar.getText());
+            visualizarLista();
+        } else if(jComboBoxConsultar.getSelectedIndex() == 2){
+            this.minicursos = this.minicursoCrud.consultarAutor(jTextConsultar.getText());
             visualizarLista();
         }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
+
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Botão que chama a função de mais detalhes">
+
 /**
  * Mostra mais detalhes, botao chama um método criado anteriormente
  * @param evt 
@@ -989,20 +1074,14 @@ public class FrameMinicurso extends javax.swing.JFrame {
         // TODO add your handling code here:
         maisDetalhes(jListNomesMinicursos.getSelectedValue());
     }//GEN-LAST:event_jButtonMaisDetalhesActionPerformed
-/**
- * Este botão chama uma nova frame que tem o objetivo de fazer uma
- * consulta avançada, que é por título e autor ao mesmo tempo
- * @param evt 
- */
-    private void jButtonConsultaAvancadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaAvancadaActionPerformed
-        // TODO add your handling code here:
-        FrameMinicursoConsultaAvancada consultaAvancada;
-        consultaAvancada = new FrameMinicursoConsultaAvancada(jListNomesMinicursos);
-        consultaAvancada.setVisible(true);
-    }//GEN-LAST:event_jButtonConsultaAvancadaActionPerformed
+
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Botão para pular ativar a aba para incluir um minicurso">
+    
 /**
  * Este botao muda de aba e desativa as que nao vao ser utilizadas para
- * a inclusão de um novo minicurso
+ *a inclusão de um novo minicursoCrud
  * @param evt 
  */
     private void jButtonInserirMinicursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirMinicursoActionPerformed
@@ -1012,8 +1091,9 @@ public class FrameMinicurso extends javax.swing.JFrame {
         jTabShortCourse.setEnabledAt(0, false);
     }//GEN-LAST:event_jButtonInserirMinicursoActionPerformed
 
+    //</editor-fold>
     
-    
+    //<editor-fold defaultstate="collapsed" desc="JavaSwing">
     
     /**
      * @param args the command line arguments
@@ -1041,9 +1121,6 @@ public class FrameMinicurso extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrameMinicurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1054,7 +1131,6 @@ public class FrameMinicurso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonConsultaAvancada;
     private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonDeletar;
     private javax.swing.JButton jButtonEditar;
@@ -1120,3 +1196,6 @@ public class FrameMinicurso extends javax.swing.JFrame {
     private javax.swing.JTextField jTextTitulo;
     // End of variables declaration//GEN-END:variables
 }
+
+    //</editor-fold>
+    

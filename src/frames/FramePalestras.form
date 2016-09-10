@@ -332,7 +332,7 @@
             <Component class="javax.swing.JFormattedTextField" name="jTextAdicionarDuracao">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="##h:##m" subtype="-1" type="5"/>
+                  <Format format="##:##" subtype="-1" type="5"/>
                 </Property>
               </Properties>
             </Component>
@@ -340,12 +340,15 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
-                    <StringItem index="0" value="Sob Avalia&#xe7;&#xe3;o"/>
+                    <StringItem index="0" value="Sob avalia&#xe7;&#xe3;o"/>
                     <StringItem index="1" value="Aprovado"/>
                     <StringItem index="2" value="Reprovado"/>
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxAdicionarActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -444,7 +447,7 @@
                                       <Component id="jTextEditarDuracao" min="-2" pref="112" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                                       <Component id="jLabelSituacao2" min="-2" pref="75" max="-2" attributes="0"/>
-                                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="jComboBoxEditar" min="-2" pref="125" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane6" max="32767" attributes="0"/>
@@ -505,13 +508,11 @@
                           <Component id="jTextEditarAutor" alignment="0" min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabelDuracao2" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jTextEditarDuracao" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jLabelSituacao2" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jComboBoxEditar" alignment="0" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelDuracao2" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="jTextEditarDuracao" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="jLabelSituacao2" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="jComboBoxEditar" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -576,21 +577,26 @@
             <Component class="javax.swing.JFormattedTextField" name="jTextEditarDuracao">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="##h:##m" subtype="-1" type="5"/>
+                  <Format format="##:##" subtype="-1" type="5"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextEditarDuracaoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBoxEditar">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value=""/>
-                    <StringItem index="1" value="Sob Avalia&#xe7;&#xe3;o"/>
-                    <StringItem index="2" value="Aprovado"/>
-                    <StringItem index="3" value="Reprovado"/>
+                  <StringArray count="3">
+                    <StringItem index="0" value="Sob avalia&#xe7;&#xe3;o"/>
+                    <StringItem index="1" value="Aprovado"/>
+                    <StringItem index="2" value="Reprovado"/>
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxEditarActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -829,7 +835,7 @@
             <Component class="javax.swing.JFormattedTextField" name="jTextEditarDuracao2">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="##h:##m" subtype="-1" type="5"/>
+                  <Format format="##:##" subtype="-1" type="5"/>
                 </Property>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>

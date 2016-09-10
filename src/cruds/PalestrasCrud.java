@@ -23,8 +23,8 @@ public class PalestrasCrud {
      * @param duracao   - Duracão da palestra
      * @param curriculo - Currículo da palestra.
      */
-    public static void inserirPalestra(String titulo, Situacao situacao, String autor, String resumo, String abstracText, int duracao, String curriculo) {
-        Palestras palestra = new Palestras(titulo, situacao, autor, resumo, abstracText, duracao, curriculo);
+    public static void inserirPalestra(String titulo, Situacao situacao, List <String> nomeAutores, String resumo, String abstracText, int duracao, String curriculo) {
+        Palestras palestra = new Palestras(titulo, situacao, nomeAutores, resumo, abstracText, duracao, curriculo);
         palestrasLista.add(palestra);
 
     }

@@ -6,7 +6,8 @@
 package frames;
 
 import categorias.Minicurso;
-import cruds.MinicursoCRUD;
+import categorias.Submissao;
+import cruds.SubmissaoCrud;
 import java.util.List;
 
 /**
@@ -15,11 +16,10 @@ import java.util.List;
  */
 public class FrameMinicursoDetalhes extends javax.swing.JFrame {
 
-    List<Minicurso> minicursos = MinicursoCRUD.getMinicursos();
     /**
      * Creates new form MoreDetailsShortCourse
      */
-    public FrameMinicursoDetalhes(String titleDetails) {
+    public FrameMinicursoDetalhes(Minicurso minicurso) {
         initComponents();
         this.setTitle("RP II - Detalhes");
         this.setLocationRelativeTo(null);
@@ -27,63 +27,64 @@ public class FrameMinicursoDetalhes extends javax.swing.JFrame {
         String indexNumberAuthors = "", duracaoEditar;
         int hora, minutos, segundos;
         
-        for(Minicurso minicurso : minicursos){
-            if(minicurso.getTituloSubmissao().equals(titleDetails)){
-                
-                hora = minicurso.getDuracao()/3600;
-                minutos = (minicurso.getDuracao()%3600)/60;
-                segundos = (minicurso.getDuracao()%3600)%60;
-                
-                if(segundos<10 && hora<10 && minutos <10)
-                    duracaoEditar = "0"+String.valueOf(hora)+"0"+String.valueOf(minutos)
-                            +"0"+String.valueOf(segundos);
-                else if(segundos<10 && hora<10)
-                    duracaoEditar = "0"+String.valueOf(hora)+String.valueOf(minutos)
-                            +"0"+String.valueOf(segundos);
-                else if(segundos<10 && minutos<10)
-                    duracaoEditar = String.valueOf(hora)+"0"+String.valueOf(minutos)
-                            +"0"+String.valueOf(segundos);
-                else if(hora<10 && minutos<10)
-                    duracaoEditar = "0"+String.valueOf(hora)+"0"+String.valueOf(minutos)
-                            +String.valueOf(segundos);
-                else if(hora<10)
-                    duracaoEditar = "0"+String.valueOf(hora)+String.valueOf(minutos)
-                            +String.valueOf(segundos);
-                else if(minutos<10)
-                    duracaoEditar = String.valueOf(hora)+"0"+String.valueOf(minutos)
-                            +String.valueOf(segundos);
-                else if(segundos<10)
-                    duracaoEditar = String.valueOf(hora)+String.valueOf(minutos)
-                            +"0"+String.valueOf(segundos);
-                else
-                    duracaoEditar = String.valueOf(hora)+String.valueOf(minutos)
-                            +String.valueOf(segundos);
-                        
-                jTextMaisDetalhesTitulo.setText(minicurso.getTituloSubmissao());
-                jTextMaisDetalhesSituacao.setText(minicurso.getSituacaoSubmissao().getSituacao());
-                jTextPaneMaisDetalhesResumoTexto.setText(minicurso.getResumo());
-                jTextPaneMaisDetalhesAbstractTexto.setText(minicurso.getAbstractText());
-                jFormattedTextMaisDetalhesDuracao.setText(duracaoEditar);
-                jTextPaneMaisDetalhesMetodologia.setText(minicurso.getMetodologia());
-                jTextMaisDetalhesRecursos.setText(minicurso.getRecursos());
-                if(minicurso.getAutores().size() == 1){
-                    jTextMaisDetalhesAutor.setText(minicurso.getAutores().get(0));
-                    indexNumberAuthors = "1";
-                } else if (minicurso.getAutores().size() == 2){
-                    jTextMaisDetalhesAutor.setText(minicurso.getAutores().get(0));
-                    jTextMaisDetalhesAutor1.setText(minicurso.getAutores().get(1));
-                    indexNumberAuthors = "2";
-                } else if(minicurso.getAutores().size() == 3){
-                    jTextMaisDetalhesAutor.setText(minicurso.getAutores().get(0));
-                    jTextMaisDetalhesAutor1.setText(minicurso.getAutores().get(1));
-                    jTextMaisDetalhesAutor2.setText(minicurso.getAutores().get(2));
-                    indexNumberAuthors = "3";
-                }
-                jTextMaisDetalhesNumeroAutores.setText(indexNumberAuthors);
-                
-            }
+        hora = minicurso.getDuracao()/3600;
+        minutos = (minicurso.getDuracao()%3600)/60;
+        segundos = (minicurso.getDuracao()%3600)%60;
+
+        if(segundos<10 && hora<10 && minutos <10)
+            duracaoEditar = "0"+String.valueOf(hora)+"0"+String.valueOf(minutos)
+                    +"0"+String.valueOf(segundos);
+        else if(segundos<10 && hora<10)
+            duracaoEditar = "0"+String.valueOf(hora)+String.valueOf(minutos)
+                    +"0"+String.valueOf(segundos);
+        else if(segundos<10 && minutos<10)
+            duracaoEditar = String.valueOf(hora)+"0"+String.valueOf(minutos)
+                    +"0"+String.valueOf(segundos);
+        else if(hora<10 && minutos<10)
+            duracaoEditar = "0"+String.valueOf(hora)+"0"+String.valueOf(minutos)
+                    +String.valueOf(segundos);
+        else if(hora<10)
+            duracaoEditar = "0"+String.valueOf(hora)+String.valueOf(minutos)
+                    +String.valueOf(segundos);
+        else if(minutos<10)
+            duracaoEditar = String.valueOf(hora)+"0"+String.valueOf(minutos)
+                    +String.valueOf(segundos);
+        else if(segundos<10)
+            duracaoEditar = String.valueOf(hora)+String.valueOf(minutos)
+                    +"0"+String.valueOf(segundos);
+        else
+            duracaoEditar = String.valueOf(hora)+String.valueOf(minutos)
+                    +String.valueOf(segundos);
+
+        jTextMaisDetalhesTitulo.setText(minicurso.getTituloSubmissao());
+        jTextMaisDetalhesSituacao.setText(minicurso.getSituacaoSubmissao().getSituacao());
+        jTextPaneMaisDetalhesResumoTexto.setText(minicurso.getResumo());
+        jTextPaneMaisDetalhesAbstractTexto.setText(minicurso.getAbstractText());
+        jFormattedTextMaisDetalhesDuracao.setText(duracaoEditar);
+        jTextPaneMaisDetalhesMetodologia.setText(minicurso.getMetodologia());
+        jTextMaisDetalhesRecursos.setText(minicurso.getRecursos());
+        switch (minicurso.getAutores().size()) {
+            case 1:
+                jTextMaisDetalhesAutor.setText(minicurso.getAutores().get(0));
+                indexNumberAuthors = "1";
+                break;
+            case 2:
+                jTextMaisDetalhesAutor.setText(minicurso.getAutores().get(0));
+                jTextMaisDetalhesAutor1.setText(minicurso.getAutores().get(1));
+                indexNumberAuthors = "2";
+                break;
+            case 3:
+                jTextMaisDetalhesAutor.setText(minicurso.getAutores().get(0));
+                jTextMaisDetalhesAutor1.setText(minicurso.getAutores().get(1));
+                jTextMaisDetalhesAutor2.setText(minicurso.getAutores().get(2));
+                indexNumberAuthors = "3";
+                break;
+            default:
+                break;
         }
-        
+
+        jTextMaisDetalhesNumeroAutores.setText(indexNumberAuthors);
+
         jTextMaisDetalhesTitulo.setEnabled(false);
         jTextMaisDetalhesSituacao.setEnabled(false);
         jTextPaneMaisDetalhesResumoTexto.setEnabled(false);
