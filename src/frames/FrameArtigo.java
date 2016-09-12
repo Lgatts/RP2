@@ -37,11 +37,11 @@ public class FrameArtigo extends javax.swing.JFrame {
         }
     }
 
-    private void listar(List<Submissao> listaMonografias) {
+    private void listar(List<Submissao> listaArtigos) {
 
         DefaultListModel listModel = new DefaultListModel();
 
-        for (Submissao submissao : listaMonografias) {
+        for (Submissao submissao : listaArtigos) {
             listModel.addElement(submissao);
         }
 
@@ -696,7 +696,7 @@ public class FrameArtigo extends javax.swing.JFrame {
         String titulo, abstrat, resumo;
         Situacao situacao;
         titulo = jTextFieldTitulo.getText();
-        situacao = Situacao.verificarSituacao(jComboBoxEditSituacao.getSelectedItem().toString());
+        situacao = Situacao.verificarSituacao(jComboBoxSituacao.getSelectedItem().toString());
 
         autores.add(jTextFieldAutor0.getText());
         autores.add(jTextFieldAutor1.getText());
@@ -770,20 +770,6 @@ public class FrameArtigo extends javax.swing.JFrame {
         } else {
             listar(artigoCrud.getListaSubmissao());
         }
-
-
-
-//        switch ((String) jComboBoxPesquisar.getSelectedItem()) {
-//            case "Autor":
-//                listar(artigoCrud.consultarAutor(jTextFieldBuscar.getText()));
-//                break;
-//            case "Título":
-//                listar(artigoCrud.consultarTitulo(jTextFieldBuscar.getText()));
-//                break;
-//            default:
-//                listar(artigoCrud.getListaSubmissao());
-//                break;
-//        }
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -842,7 +828,7 @@ public class FrameArtigo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldEditTituloActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        artigoCrud.excluir(jListNomes.getSelectedValue());
+        artigoCrud.excluir(artigoEditar.getTituloSubmissao());
         listar(artigoCrud.getListaSubmissao());
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
