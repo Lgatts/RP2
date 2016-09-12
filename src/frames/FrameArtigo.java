@@ -119,6 +119,7 @@ public class FrameArtigo extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jTextFieldEditTitulo = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -488,6 +489,14 @@ public class FrameArtigo extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel22.setText("Titulo:");
 
+        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton2.setText("Consultar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -502,6 +511,15 @@ public class FrameArtigo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addGap(171, 171, 171))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel20)
+                        .addGap(330, 330, 330))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addGap(307, 307, 307))))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -563,22 +581,14 @@ public class FrameArtigo extends javax.swing.JFrame {
                                     .addComponent(jTextFieldEditAutor3))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSalvarEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(53, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addGap(330, 330, 330))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addGap(307, 307, 307))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButtonSalvarEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(273, 273, 273))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -619,7 +629,7 @@ public class FrameArtigo extends javax.swing.JFrame {
                     .addComponent(jTextFieldEditInstituicao7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldEditPalavraChave3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldEditPalavraChave1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -633,9 +643,11 @@ public class FrameArtigo extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(jButtonSalvarEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSalvarEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
         );
 
         jTabbedPaneArtigo.addTab("Editar", jPanel4);
@@ -666,7 +678,7 @@ public class FrameArtigo extends javax.swing.JFrame {
         List<String> instituicoes = new ArrayList();
         List<String> palavrasChave = new ArrayList();
 
-        String titulo,abstrat, resumo;
+        String titulo, abstrat, resumo;
         Situacao situacao;
         titulo = jTextFieldTitulo.getText();
         situacao = Situacao.verificarSituacao(jComboBoxEditSituacao.getSelectedItem().toString());
@@ -697,11 +709,13 @@ public class FrameArtigo extends javax.swing.JFrame {
         resumo = jTextAreaResumo.getText();
         abstrat = jTextAreaAbstract.getText();
 
-        ArtigoCrud.incluir(titulo, situacao,autores, instituicoes,
-                           palavrasChave, resumo, abstrat);
+        ArtigoCrud.incluir(titulo, situacao, autores, instituicoes,
+                palavrasChave, resumo, abstrat);
+        
+        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
 
         jTextFieldTitulo.setText("");
-
+        jComboBoxEditSituacao.setSelectedIndex(0);
         jTextFieldAutor0.setText("");
         jTextFieldAutor1.setText("");
         jTextFieldAutor2.setText("");
@@ -727,8 +741,6 @@ public class FrameArtigo extends javax.swing.JFrame {
 
         jTextAreaResumo.setText("");
         jTextAreaAbstract.setText("");
-
-        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
@@ -755,34 +767,37 @@ public class FrameArtigo extends javax.swing.JFrame {
                 artigo.setTituloSubmissao(jTextFieldEditTitulo.getText());
                 artigo.setSituacaoSubmissao(Situacao.verificarSituacao(jComboBoxEditSituacao.getSelectedItem().toString()));
 
-                autores.add(jTextFieldAutor0.getText());
-                autores.add(jTextFieldAutor1.getText());
-                autores.add(jTextFieldAutor2.getText());
-                autores.add(jTextFieldAutor3.getText());
-                autores.add(jTextFieldAutor4.getText());
-                autores.add(jTextFieldAutor5.getText());
-                autores.add(jTextFieldAutor6.getText());
-                autores.add(jTextFieldAutor7.getText());
+                autores.add(jTextFieldEditAutor0.getText());
+                autores.add(jTextFieldEditAutor1.getText());
+                autores.add(jTextFieldEditAutor2.getText());
+                autores.add(jTextFieldEditAutor3.getText());
+                autores.add(jTextFieldEditAutor4.getText());
+                autores.add(jTextFieldEditAutor5.getText());
+                autores.add(jTextFieldEditAutor6.getText());
+                autores.add(jTextFieldEditAutor7.getText());
 
-                instituicoes.add(jTextFieldInstituicao0.getText());
-                instituicoes.add(jTextFieldInstituicao1.getText());
-                instituicoes.add(jTextFieldInstituicao2.getText());
-                instituicoes.add(jTextFieldInstituicao3.getText());
-                instituicoes.add(jTextFieldInstituicao4.getText());
-                instituicoes.add(jTextFieldInstituicao5.getText());
-                instituicoes.add(jTextFieldInstituicao6.getText());
-                instituicoes.add(jTextFieldInstituicao7.getText());
+                instituicoes.add(jTextFieldEditInstituicao0.getText());
+                instituicoes.add(jTextFieldEditInstituicao1.getText());
+                instituicoes.add(jTextFieldEditInstituicao2.getText());
+                instituicoes.add(jTextFieldEditInstituicao3.getText());
+                instituicoes.add(jTextFieldEditInstituicao4.getText());
+                instituicoes.add(jTextFieldEditInstituicao5.getText());
+                instituicoes.add(jTextFieldEditInstituicao6.getText());
+                instituicoes.add(jTextFieldEditInstituicao7.getText());
 
-                palavrasChave.add(jTextFieldPalavraChave0.getText());
-                palavrasChave.add(jTextFieldPalavraChave1.getText());
-                palavrasChave.add(jTextFieldPalavraChave2.getText());
-                palavrasChave.add(jTextFieldPalavraChave3.getText());
+                palavrasChave.add(jTextFieldEditPalavraChave0.getText());
+                palavrasChave.add(jTextFieldEditPalavraChave1.getText());
+                palavrasChave.add(jTextFieldEditPalavraChave2.getText());
+                palavrasChave.add(jTextFieldEditPalavraChave3.getText());
 
-                artigo.setResumo(jTextAreaResumo.getText());
-                artigo.setAbstrat(jTextAreaAbstract.getText());
+                artigo.setResumo(jTextAreaEditResumo.getText());
+                artigo.setAbstrat(jTextAreaEditAbstract.getText());
 
                 ArtigoCrud.editar(artigo);
 
+                JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!");
+                jTabbedPaneArtigo.setSelectedIndex(0);
+                jTabbedPaneArtigo.setEnabledAt(2, false);
             }
         }
     }//GEN-LAST:event_jButtonSalvarEditActionPerformed
@@ -794,25 +809,23 @@ public class FrameArtigo extends javax.swing.JFrame {
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         ArtigoCrud.excluir(jListNomes.getSelectedValue());
         Lista = ArtigoCrud.buscar("", "");
-
         listar();
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
         jTabbedPaneArtigo.setSelectedIndex(2);
+        jTabbedPaneArtigo.setEnabledAt(0, false);
+        jTabbedPaneArtigo.setEnabledAt(1, false);
         jTabbedPaneArtigo.setEnabledAt(2, true);
 
         editar = jListNomes.getSelectedValue();
-    }//GEN-LAST:event_jButtonEditarActionPerformed
-
-    private void jListNomesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListNomesValueChanged
         ListarArtigo = ArtigoCrud.getLista();
 
         for (Artigo artigo : ListarArtigo) {
             if (artigo.getTituloSubmissao().equals(jListNomes.getSelectedValue())) {
                 jTextFieldEditTitulo.setText(artigo.getTituloSubmissao());
-                
 
+//                jComboBoxEditSituacao.getSelectedItem().toString();
                 jTextFieldEditAutor0.setText(artigo.getAutores().get(0));
                 jTextFieldEditAutor1.setText(artigo.getAutores().get(1));
                 jTextFieldEditAutor2.setText(artigo.getAutores().get(2));
@@ -840,7 +853,47 @@ public class FrameArtigo extends javax.swing.JFrame {
                 jTextAreaEditAbstract.setText(artigo.getAbstrat());
             }
         }
+    }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jListNomesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListNomesValueChanged
     }//GEN-LAST:event_jListNomesValueChanged
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jTabbedPaneArtigo.setSelectedIndex(0);
+        jTabbedPaneArtigo.setEnabledAt(0, true);
+        jTabbedPaneArtigo.setEnabledAt(1, true);
+        jTabbedPaneArtigo.setEnabledAt(2, false);
+
+        jTextFieldEditTitulo.setText("");
+        
+        jComboBoxEditSituacao.setSelectedIndex(0);
+
+        jTextFieldEditAutor0.setText("");
+        jTextFieldEditAutor1.setText("");
+        jTextFieldEditAutor2.setText("");
+        jTextFieldEditAutor3.setText("");
+        jTextFieldEditAutor4.setText("");
+        jTextFieldEditAutor5.setText("");
+        jTextFieldEditAutor6.setText("");
+        jTextFieldEditAutor7.setText("");
+
+        jTextFieldEditInstituicao0.setText("");
+        jTextFieldEditInstituicao1.setText("");
+        jTextFieldEditInstituicao2.setText("");
+        jTextFieldEditInstituicao3.setText("");
+        jTextFieldEditInstituicao4.setText("");
+        jTextFieldEditInstituicao5.setText("");
+        jTextFieldEditInstituicao6.setText("");
+        jTextFieldEditInstituicao7.setText("");
+
+        jTextFieldEditPalavraChave0.setText("");
+        jTextFieldEditPalavraChave1.setText("");
+        jTextFieldEditPalavraChave2.setText("");
+        jTextFieldEditPalavraChave3.setText("");
+
+        jTextAreaEditResumo.setText("");
+        jTextAreaEditAbstract.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
 
@@ -852,6 +905,7 @@ public class FrameArtigo extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonEditar;

@@ -22,27 +22,19 @@ public class ArtigoCrud {
         return artigoList;
     }
 
-    public static void incluir(String titulo,Situacao situacao, List<String> autor, List<String> instituicao,
-                               List<String> palavraChave, String resumo, String abstrat) {
+    public static void incluir(String titulo, Situacao situacao,
+            List<String> autor, List<String> instituicao,
+            List<String> palavraChave, String resumo, String abstrat) {
 
-        Artigo artigo = new Artigo(titulo, situacao, autor, instituicao, palavraChave, resumo, abstrat);
+        Artigo artigo = new Artigo(titulo, situacao, autor, instituicao,
+                palavraChave, resumo, abstrat);
 
         artigoList.add(artigo);
-    }
-
-    public static void excluir(String titulo) {
-
-        for (Artigo artigo : artigoList) {
-            if (artigo.getTituloSubmissao().equals(titulo)) {
-                artigoList.remove(artigo);
-            }
-        }
     }
 
     public static void editar(Artigo artigoEditar) {
         for (Artigo artigo : artigoList) {
             if (artigo.getTituloSubmissao().equals(artigoEditar.getTituloSubmissao())) {
-
                 artigo.setTituloSubmissao(artigoEditar.getTituloSubmissao());
                 artigo.setSituacaoSubmissao(artigoEditar.getSituacaoSubmissao());
                 artigo.setAutores(artigoEditar.getAutores());
@@ -50,6 +42,15 @@ public class ArtigoCrud {
                 artigo.setPalavraChave(artigoEditar.getPalavraChave());
                 artigo.setResumo(artigoEditar.getResumo());
                 artigo.setAbstrat(artigoEditar.getAbstrat());
+            }
+        }
+    }
+
+    public static void excluir(String titulo) {
+
+        for (Artigo artigo : artigoList) {
+            if (artigo.getTituloSubmissao().equals(titulo)) {
+                artigoList.remove(artigo);
             }
         }
     }

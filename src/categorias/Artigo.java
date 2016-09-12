@@ -19,13 +19,13 @@ public class Artigo extends SubmissaoCientifica {
      * @param resumo
      * @param abstrat
      */
-    public Artigo(String titulo,Situacao situacao, List<String> autor, List<String> instituicao,
+    public Artigo(String titulo, Situacao situacao, List<String> autor, List<String> instituicao,
             List<String> palavraChave, String resumo, String abstrat) {
         /*
          *  Acesso a um método da superclasse através da palavra-chave "super"
          *  super(titulo, MAX_AUTORES, MAX_INSTITUICAO, MAX_PALAVRACHAVE)
          */
-        super(titulo,situacao, 8, 8, 4);
+        super(titulo, situacao, 8, 8, 4);
 
         this.resumo = resumo;
         this.abstrat = abstrat;
