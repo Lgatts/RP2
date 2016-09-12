@@ -22,14 +22,9 @@ public class ArtigoCrud {
         return artigoList;
     }
 
-    public static void incluir(String titulo, Situacao situacao,
-            List<String> autor, List<String> instituicao,
-            List<String> palavraChave, String resumo, String abstrat) {
-
-        Artigo artigo = new Artigo(titulo, situacao, autor, instituicao,
-                palavraChave, resumo, abstrat);
-
+    public static void incluir(Artigo artigo) {
         artigoList.add(artigo);
+        
     }
 
     public static void editar(Artigo artigoEditar) {

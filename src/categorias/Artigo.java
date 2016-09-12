@@ -13,6 +13,7 @@ public class Artigo extends SubmissaoCientifica {
 
     /**
      * @param titulo
+     * @param situacao
      * @param autor
      * @param instituicao
      * @param palavraChave
@@ -26,6 +27,9 @@ public class Artigo extends SubmissaoCientifica {
          *  super(titulo, MAX_AUTORES, MAX_INSTITUICAO, MAX_PALAVRACHAVE)
          */
         super(titulo, situacao, 8, 8, 4);
+        super.setAutores(autor);
+        super.setInstituicao(instituicao);
+        super.setPalavraChave(palavraChave);
 
         this.resumo = resumo;
         this.abstrat = abstrat;

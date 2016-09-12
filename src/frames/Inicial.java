@@ -144,7 +144,7 @@ public class Inicial extends javax.swing.JFrame {
         open.setVisible(true);
     }//GEN-LAST:event_jButtonPalestrasActionPerformed
     private void jButtonArtigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArtigosActionPerformed
-        new FrameArtigo().setVisible(true);
+        new FrameArtigo(this.submissaoLista).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonArtigosActionPerformed
 
