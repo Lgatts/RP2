@@ -5,8 +5,12 @@
  */
 package main;
 
+import cruds.SubmissaoCrud;
 import frames.Inicial;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import persistenciaDados.ObjectCrud;
 
 /**
  *
@@ -16,8 +20,27 @@ public class Main {
 
     public static void main(String[] args) {
 
+        SubmissaoCrud monografiasLista = new SubmissaoCrud("Monografias");
+        SubmissaoCrud minicursoLista = new SubmissaoCrud("MiniCursos");
+        SubmissaoCrud palestrasLista = new SubmissaoCrud("Palestras");
+        SubmissaoCrud artigosLista = new SubmissaoCrud("Artigos");
+        SubmissaoCrud resumosLista = new SubmissaoCrud("Resumos");
+
+        List<SubmissaoCrud> submissaoLista = new ArrayList();
+
         createDirectories();
-        new Inicial().setVisible(true);
+
+        //Salvado objetos do hd na lista de Monografias
+        monografiasLista = new SubmissaoCrud("Monografias");
+        monografiasLista.setListaSubmissao(ObjectCrud.readObject("Monografias"));
+
+        submissaoLista.add(monografiasLista);
+        submissaoLista.add(minicursoLista);
+        submissaoLista.add(palestrasLista);
+        submissaoLista.add(artigosLista);
+        submissaoLista.add(resumosLista);
+
+        new Inicial(submissaoLista).setVisible(true);
 
     }
 
@@ -56,14 +79,13 @@ public class Main {
         } else {
             new File(System.getenv("APPDATA") + "\\.RP2\\MiniCursos").mkdir();
         }
-        
+
         //Criação diretorio Resumos
         if (new File(System.getenv("APPDATA") + "\\.RP2\\Resumos").exists()) {
 
         } else {
             new File(System.getenv("APPDATA") + "\\.RP2\\Resumos").mkdir();
         }
-
 
     }
 
