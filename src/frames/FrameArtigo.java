@@ -11,13 +11,14 @@ import javax.swing.JOptionPane;
 
 public class FrameArtigo extends javax.swing.JFrame {
 
-    private List<SubmissaoCrud> submissaoLista;
+    private List<SubmissaoCrud> submissaoCrudLista;
+    private List<Submissao> submissaoLista;
     private SubmissaoCrud artigoCrud;
-    private Artigo artigoEscolhido;
+    private String tituloEditar;
 
     public FrameArtigo(List<SubmissaoCrud> submissaoLista) {
 
-        this.submissaoLista = submissaoLista;
+        this.submissaoCrudLista = submissaoLista;
 
         for (SubmissaoCrud crud : submissaoLista) {
             if (crud.getTipoSubmissao().equalsIgnoreCase("Artigos")) {
@@ -42,7 +43,7 @@ public class FrameArtigo extends javax.swing.JFrame {
         DefaultListModel listModel = new DefaultListModel();
 
         for (Submissao submissao : listaArtigos) {
-            listModel.addElement(submissao);
+            listModel.addElement(submissao.getTituloSubmissao());
         }
 
         jListArtigos.setModel(listModel);
@@ -272,7 +273,6 @@ public class FrameArtigo extends javax.swing.JFrame {
         });
 
         jComboBoxSituacao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBoxSituacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sob avaliação", "Aprovado", "Reprovado" }));
 
         jTextAreaResumo.setColumns(20);
         jTextAreaResumo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -489,7 +489,6 @@ public class FrameArtigo extends javax.swing.JFrame {
         jLabel20.setText("Autor(es):");
 
         jComboBoxEditSituacao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBoxEditSituacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sob avaliação", "Aprovado", "Reprovado" }));
 
         jLabel21.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel21.setText("Situação:");
@@ -730,9 +729,9 @@ public class FrameArtigo extends javax.swing.JFrame {
         artigoCrud.incluir(artigo);
 
         JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
-
+        
         jTextFieldTitulo.setText("");
-        jComboBoxEditSituacao.setSelectedIndex(0);
+        jComboBoxSituacao.setSelectedIndex(0);
         jTextFieldAutor0.setText("");
         jTextFieldAutor1.setText("");
         jTextFieldAutor2.setText("");
@@ -774,7 +773,7 @@ public class FrameArtigo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        new Inicial(this.submissaoLista).setVisible(true);
+        new Inicial(this.submissaoCrudLista).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -817,11 +816,17 @@ public class FrameArtigo extends javax.swing.JFrame {
                 Situacao.verificarSituacao(jComboBoxEditSituacao.getSelectedItem().toString()),
                 autores, instituicoes, palavrasChave, resumo, abstrat);
 
-        artigoCrud.editar(artigoEscolhido.getTituloSubmissao(), artigo);
+        artigoCrud.editar(tituloEditar, artigo);
 
         JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!");
 
+        submissaoLista = artigoCrud.getListaSubmissao();
+        listar(submissaoLista);
+        
+        jComboBoxEditSituacao.setSelectedIndex(0);
         jTabbedPaneArtigo.setSelectedIndex(0);
+        jTabbedPaneArtigo.setEnabledAt(0, true);
+        jTabbedPaneArtigo.setEnabledAt(1, true);
         jTabbedPaneArtigo.setEnabledAt(2, false);
     }//GEN-LAST:event_jButtonSalvarAlteracaoActionPerformed
 
@@ -831,8 +836,8 @@ public class FrameArtigo extends javax.swing.JFrame {
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
 //        JOptionPane.showMessageDialog(null, jListArtigos.getSelectedValue());
-//        artigoCrud.excluir(jListArtigos.getSelectedValue());
-        artigoCrud.excluir(artigoEscolhido.getTituloSubmissao());
+        artigoCrud.excluir(jListArtigos.getSelectedValue());
+
         listar(artigoCrud.getListaSubmissao());
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
@@ -841,50 +846,54 @@ public class FrameArtigo extends javax.swing.JFrame {
         jTabbedPaneArtigo.setEnabledAt(0, false);
         jTabbedPaneArtigo.setEnabledAt(1, false);
         jTabbedPaneArtigo.setEnabledAt(2, true);
-                
-//        for (Submissao submissao : listaSubmissao) {
-//            if (submissao.getTituloSubmissao().equals(jListArtigos.getSelectedValue())) {
 
-        jTextFieldEditTitulo.setText(artigoEscolhido.getTituloSubmissao());
+        submissaoLista = artigoCrud.getListaSubmissao();
+
+        tituloEditar = jListArtigos.getSelectedValue();
+        
+        for (Submissao submissao : submissaoLista) {
+            if (submissao.getTituloSubmissao().equals(jListArtigos.getSelectedValue())) {
+                
+                Artigo artigo = (Artigo) submissao;
+                
+                jTextFieldEditTitulo.setText(artigo.getTituloSubmissao());
 
         for (int i = 0; i < 3; i++) {
-            if (jComboBoxEditSituacao.getItemAt(i).equalsIgnoreCase(artigoEscolhido.getSituacaoSubmissao().toString())) {
+            if (jComboBoxEditSituacao.getItemAt(i).equalsIgnoreCase(artigo.getSituacaoSubmissao().getSituacao())) {
                 jComboBoxEditSituacao.setSelectedIndex(i);
             }
         }
 
-        jTextFieldEditAutor0.setText(artigoEscolhido.getAutores().get(0));
-        jTextFieldEditAutor1.setText(artigoEscolhido.getAutores().get(1));
-        jTextFieldEditAutor2.setText(artigoEscolhido.getAutores().get(2));
-        jTextFieldEditAutor3.setText(artigoEscolhido.getAutores().get(3));
-        jTextFieldEditAutor4.setText(artigoEscolhido.getAutores().get(4));
-        jTextFieldEditAutor5.setText(artigoEscolhido.getAutores().get(5));
-        jTextFieldEditAutor6.setText(artigoEscolhido.getAutores().get(6));
-        jTextFieldEditAutor7.setText(artigoEscolhido.getAutores().get(7));
+                jTextFieldEditAutor0.setText(artigo.getAutores().get(0));
+                jTextFieldEditAutor1.setText(artigo.getAutores().get(1));
+                jTextFieldEditAutor2.setText(artigo.getAutores().get(2));
+                jTextFieldEditAutor3.setText(artigo.getAutores().get(3));
+                jTextFieldEditAutor4.setText(artigo.getAutores().get(4));
+                jTextFieldEditAutor5.setText(artigo.getAutores().get(5));
+                jTextFieldEditAutor6.setText(artigo.getAutores().get(6));
+                jTextFieldEditAutor7.setText(artigo.getAutores().get(7));
 
-        jTextFieldEditInstituicao0.setText(artigoEscolhido.getInstituicao().get(0));
-        jTextFieldEditInstituicao1.setText(artigoEscolhido.getInstituicao().get(1));
-        jTextFieldEditInstituicao2.setText(artigoEscolhido.getInstituicao().get(2));
-        jTextFieldEditInstituicao3.setText(artigoEscolhido.getInstituicao().get(3));
-        jTextFieldEditInstituicao4.setText(artigoEscolhido.getInstituicao().get(4));
-        jTextFieldEditInstituicao5.setText(artigoEscolhido.getInstituicao().get(5));
-        jTextFieldEditInstituicao6.setText(artigoEscolhido.getInstituicao().get(6));
-        jTextFieldEditInstituicao7.setText(artigoEscolhido.getInstituicao().get(7));
+                jTextFieldEditInstituicao0.setText(artigo.getInstituicao().get(0));
+                jTextFieldEditInstituicao1.setText(artigo.getInstituicao().get(1));
+                jTextFieldEditInstituicao2.setText(artigo.getInstituicao().get(2));
+                jTextFieldEditInstituicao3.setText(artigo.getInstituicao().get(3));
+                jTextFieldEditInstituicao4.setText(artigo.getInstituicao().get(4));
+                jTextFieldEditInstituicao5.setText(artigo.getInstituicao().get(5));
+                jTextFieldEditInstituicao6.setText(artigo.getInstituicao().get(6));
+                jTextFieldEditInstituicao7.setText(artigo.getInstituicao().get(7));
 
-        jTextFieldEditPalavraChave0.setText(artigoEscolhido.getPalavraChave().get(0));
-        jTextFieldEditPalavraChave1.setText(artigoEscolhido.getPalavraChave().get(1));
-        jTextFieldEditPalavraChave2.setText(artigoEscolhido.getPalavraChave().get(2));
-        jTextFieldEditPalavraChave3.setText(artigoEscolhido.getPalavraChave().get(3));
+                jTextFieldEditPalavraChave0.setText(artigo.getPalavraChave().get(0));
+                jTextFieldEditPalavraChave1.setText(artigo.getPalavraChave().get(1));
+                jTextFieldEditPalavraChave2.setText(artigo.getPalavraChave().get(2));
+                jTextFieldEditPalavraChave3.setText(artigo.getPalavraChave().get(3));
 
-        jTextAreaEditResumo.setText(artigoEscolhido.getResumo());
-        jTextAreaEditAbstract.setText(artigoEscolhido.getAbstrat());
-//            }
-//        }
+                jTextAreaEditResumo.setText(artigo.getResumo());
+                jTextAreaEditAbstract.setText(artigo.getAbstrat());
+            }
+        }
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
     private void jListArtigosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListArtigosValueChanged
-
-        
     }//GEN-LAST:event_jListArtigosValueChanged
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
