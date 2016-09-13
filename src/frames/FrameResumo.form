@@ -56,10 +56,10 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLabelTitulo" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jComboBoxConsulta" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextConsultarResumo" max="32767" attributes="0"/>
+                              <Component id="jTextConsultarResumo" min="-2" pref="291" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jButtonConsultar" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -83,10 +83,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextConsultarResumo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonConsultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTextConsultarResumo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jButtonConsultar" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -102,7 +104,7 @@
                               <Component id="jButtonEditar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButtonExcluir" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="137" max="32767" attributes="0"/>
+                              <EmptySpace pref="140" max="32767" attributes="0"/>
                               <Component id="jButtonVoltar" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -112,11 +114,6 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabelTitulo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Titulo :"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JTextField" name="jTextConsultarResumo">
             </Component>
             <Component class="javax.swing.JToggleButton" name="jButtonConsultar">
@@ -188,6 +185,19 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonIncluirActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBoxConsulta">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="T&#xed;tulo"/>
+                    <StringItem index="1" value="Autor"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

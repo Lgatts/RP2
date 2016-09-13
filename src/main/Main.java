@@ -32,8 +32,11 @@ public class Main {
 
         //Salvado objetos do hd na lista de Monografias
         monografiasLista = new SubmissaoCrud("Monografias");
+        resumosLista = new SubmissaoCrud("Resumos");
+        
         monografiasLista.setListaSubmissao(ObjectCrud.readObject("Monografias"));
-
+        resumosLista.setListaSubmissao(ObjectCrud.readObject("Resumos"));
+        
         submissaoLista.add(monografiasLista);
         submissaoLista.add(minicursoLista);
         submissaoLista.add(palestrasLista);

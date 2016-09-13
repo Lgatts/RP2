@@ -53,7 +53,7 @@ public class SubmissaoCrud implements ListaSubmissoes {
     @Override
     public boolean incluir(Submissao submissao) {
         listaSubmissao.add(submissao);
-        ObjectCrud.saveObject(submissao, "Monografias");
+        ObjectCrud.saveObject(submissao, this.tipoSubmissao);
         return true;
     }
     //</editor-fold>

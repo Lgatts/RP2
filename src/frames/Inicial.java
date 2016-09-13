@@ -151,7 +151,7 @@ public class Inicial extends javax.swing.JFrame {
     private void jButtonResumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResumosActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        FrameResumo abrirJanela = new FrameResumo();
+        FrameResumo abrirJanela = new FrameResumo(submissaoLista);
         abrirJanela.setVisible(true);
     }//GEN-LAST:event_jButtonResumosActionPerformed
 
