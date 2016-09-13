@@ -7,11 +7,14 @@ import java.util.List;
  * @author MauricioEscobar
  */
 public class Artigo extends SubmissaoCientifica {
-
+    
     private String resumo;
     private String abstrat;
 
+    //<editor-fold defaultstate="collapsed" desc="Construtor">
     /**
+     * Construtor da classe artigo
+     *
      * @param titulo
      * @param situacao
      * @param autor
@@ -34,7 +37,9 @@ public class Artigo extends SubmissaoCientifica {
         this.resumo = resumo;
         this.abstrat = abstrat;
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Get's & set's do Artigo">
     /**
      * @return the resumo
      */
@@ -62,7 +67,9 @@ public class Artigo extends SubmissaoCientifica {
     public void setAbstrat(String abstrat) {
         this.abstrat = abstrat;
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="toString">
     /*
      * anotação @Override
      * Método reescrito de um método da classe mãe
@@ -72,4 +79,5 @@ public class Artigo extends SubmissaoCientifica {
     public String toString() {
         return super.toString() + "Resumo: " + getResumo() + "Abstract: " + getAbstrat();
     }
+    //</editor-fold>
 }
