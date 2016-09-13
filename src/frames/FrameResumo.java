@@ -7,7 +7,6 @@ package frames;
 
 import categorias.Resumo;
 import categorias.Situacao;
-import cruds.ResumoCrud;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -923,15 +922,15 @@ public class FrameResumo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "É necessário preencher todos os campos e inserir ao"
                     + " menos um autor, uma instituição e uma palavra-chave");
         } else if (operacao == 1) {
-            //String s = jComboBoxSituacao.getSelectedItem().toString();
+            String s = jComboBoxSituacao.getSelectedItem().toString();
             
                 
             Resumo novoResumo = new Resumo(jTextFieldInserirTitulo.getText(), 
                     Situacao.verificarSituacao(jComboBoxSituacao.getSelectedItem().toString()) ,
                     this.autores,this.instituicoes, this.palavrasChave);
             ResumoCrud.incluir(novoResumo);
-            //ResumoCrud.incluir(jTextFieldInserirTitulo.getText().trim(), jComboBoxSituacao.getSelectedItem().toString(),
-                    //this.instituicoes, this.palavrasChave, this.autores);
+            ResumoCrud.incluir(jTextFieldInserirTitulo.getText().trim(), jComboBoxSituacao.getSelectedItem().toString(),
+                    this.instituicoes, this.palavrasChave, this.autores);
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
             visualizarLista = ResumoCrud.consultar("");
             listar();

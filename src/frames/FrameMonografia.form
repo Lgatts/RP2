@@ -498,7 +498,7 @@
                               <Component id="jScrollPane2" linkSize="8" min="-2" pref="166" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" linkSize="8" min="-2" pref="166" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="76" max="32767" attributes="0"/>
+                          <EmptySpace pref="83" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -884,7 +884,7 @@
                               <Component id="jScrollPane8" linkSize="14" min="-2" pref="180" max="-2" attributes="0"/>
                               <Component id="jScrollPane7" linkSize="14" min="-2" pref="180" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="62" max="32767" attributes="0"/>
+                          <EmptySpace pref="65" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

@@ -4,7 +4,7 @@ package categorias;
 import java.util.List;
 
 
-public class Palestras extends SubmissaoApresentacao{
+public class Palestra extends SubmissaoApresentacao{
     
     private String curriculo;
     
@@ -22,8 +22,8 @@ public class Palestras extends SubmissaoApresentacao{
    /*Construtor*/
     
  
-    public  Palestras(String titulo, Situacao situacao, List <String> nomeAutores, String resumo, String abstracText, int duracao, String curriculo) {
-        super(titulo, duracao, 1, resumo, abstracText);
+    public  Palestra(String titulo, Situacao situacao, List <String> nomeAutores, String resumo, String abstracText, int duracao, String curriculo) {
+        super(titulo, situacao, duracao, 1, resumo, abstracText);
         super.setAutores(nomeAutores);
         this.curriculo = curriculo;
         
@@ -46,4 +46,8 @@ public class Palestras extends SubmissaoApresentacao{
         this.curriculo = curriculo;
     }
     
+    @Override
+    public String toString(){
+        return "OI";
+    }
 }
