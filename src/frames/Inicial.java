@@ -134,14 +134,14 @@ public class Inicial extends javax.swing.JFrame {
     private void jButtonMinicursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinicursoActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        FrameMinicurso openWindow = new FrameMinicurso();
+        FrameMinicurso openWindow = new FrameMinicurso(this.submissaoLista);
         openWindow.setVisible(true);
     }//GEN-LAST:event_jButtonMinicursoActionPerformed
 
     private void jButtonPalestrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPalestrasActionPerformed
         this.dispose();
-        FramePalestras open = new FramePalestras();
-        open.setVisible(true);
+        FramePalestras openWindow = new FramePalestras(this.submissaoLista);
+        openWindow.setVisible(true);
     }//GEN-LAST:event_jButtonPalestrasActionPerformed
     private void jButtonArtigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArtigosActionPerformed
         new FrameArtigo(this.submissaoLista).setVisible(true);
