@@ -21,7 +21,7 @@ public class Main {
     public static void main(String[] args) {
 
         SubmissaoCrud monografiasLista = new SubmissaoCrud("Monografias");
-        SubmissaoCrud minicursoLista = new SubmissaoCrud("MiniCursos");
+        SubmissaoCrud minicursoLista = new SubmissaoCrud("Minicursos");
         SubmissaoCrud palestrasLista = new SubmissaoCrud("Palestras");
         SubmissaoCrud artigosLista = new SubmissaoCrud("Artigos");
         SubmissaoCrud resumosLista = new SubmissaoCrud("Resumos");
@@ -32,8 +32,13 @@ public class Main {
 
         //Salvado objetos do hd na lista de Monografias
         monografiasLista = new SubmissaoCrud("Monografias");
+        resumosLista = new SubmissaoCrud("Resumos");
+        
+        palestrasLista.setListaSubmissao(ObjectCrud.readObject("Palestras"));
+        minicursoLista.setListaSubmissao(ObjectCrud.readObject("Minicursos"));
         monografiasLista.setListaSubmissao(ObjectCrud.readObject("Monografias"));
-
+        resumosLista.setListaSubmissao(ObjectCrud.readObject("Resumos"));
+        
         submissaoLista.add(monografiasLista);
         submissaoLista.add(minicursoLista);
         submissaoLista.add(palestrasLista);
@@ -74,10 +79,10 @@ public class Main {
         }
 
         //Criação diretorio MiniCursos
-        if (new File(System.getenv("APPDATA") + "\\.RP2\\MiniCursos").exists()) {
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\Minicursos").exists()) {
 
         } else {
-            new File(System.getenv("APPDATA") + "\\.RP2\\MiniCursos").mkdir();
+            new File(System.getenv("APPDATA") + "\\.RP2\\Minicursos").mkdir();
         }
 
         //Criação diretorio Resumos

@@ -11,13 +11,14 @@ import javax.swing.JOptionPane;
 
 public class FrameArtigo extends javax.swing.JFrame {
 
-    private List<SubmissaoCrud> submissaoLista;
+    private List<SubmissaoCrud> submissaoCrudLista;
+    private List<Submissao> submissaoLista;
     private SubmissaoCrud artigoCrud;
-    private Artigo artigoEditar;
+    private String tituloEditar;
 
     public FrameArtigo(List<SubmissaoCrud> submissaoLista) {
 
-        this.submissaoLista = submissaoLista;
+        this.submissaoCrudLista = submissaoLista;
 
         for (SubmissaoCrud crud : submissaoLista) {
             if (crud.getTipoSubmissao().equalsIgnoreCase("Artigos")) {
@@ -42,10 +43,10 @@ public class FrameArtigo extends javax.swing.JFrame {
         DefaultListModel listModel = new DefaultListModel();
 
         for (Submissao submissao : listaArtigos) {
-            listModel.addElement(submissao);
+            listModel.addElement(submissao.getTituloSubmissao());
         }
 
-        jListNomes.setModel(listModel);
+        jListArtigos.setModel(listModel);
     }
 
     @SuppressWarnings("unchecked")
@@ -59,7 +60,7 @@ public class FrameArtigo extends javax.swing.JFrame {
         jTextFieldBuscar = new javax.swing.JTextField();
         jButtonBuscar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jListNomes = new javax.swing.JList<String>();
+        jListArtigos = new javax.swing.JList<String>();
         jComboBoxPesquisar = new javax.swing.JComboBox<String>();
         jButton3 = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
@@ -78,7 +79,7 @@ public class FrameArtigo extends javax.swing.JFrame {
         jTextAreaResumo = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaAbstract = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        jButtonCadastrar = new javax.swing.JButton();
         jTextFieldAutor0 = new javax.swing.JTextField();
         jTextFieldInstituicao0 = new javax.swing.JTextField();
         jTextFieldPalavraChave0 = new javax.swing.JTextField();
@@ -100,7 +101,7 @@ public class FrameArtigo extends javax.swing.JFrame {
         jTextFieldPalavraChave2 = new javax.swing.JTextField();
         jTextFieldPalavraChave3 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jButtonSalvarEdit = new javax.swing.JButton();
+        jButtonSalvarAlteracao = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextAreaEditAbstract = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -160,12 +161,12 @@ public class FrameArtigo extends javax.swing.JFrame {
             }
         });
 
-        jListNomes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        jListArtigos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                jListNomesValueChanged(evt);
+                jListArtigosValueChanged(evt);
             }
         });
-        jScrollPane4.setViewportView(jListNomes);
+        jScrollPane4.setViewportView(jListArtigos);
 
         jComboBoxPesquisar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jComboBoxPesquisar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos", "Titulo", "Autor", "Instituição" }));
@@ -272,7 +273,6 @@ public class FrameArtigo extends javax.swing.JFrame {
         });
 
         jComboBoxSituacao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBoxSituacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sob avaliação", "Aprovado", "Reprovado" }));
 
         jTextAreaResumo.setColumns(20);
         jTextAreaResumo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -284,11 +284,11 @@ public class FrameArtigo extends javax.swing.JFrame {
         jTextAreaAbstract.setRows(5);
         jScrollPane2.setViewportView(jTextAreaAbstract);
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonCadastrar.setText("Cadastrar");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonCadastrarActionPerformed(evt);
             }
         });
 
@@ -386,7 +386,7 @@ public class FrameArtigo extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addGap(295, 295, 295))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(258, 258, 258))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -443,17 +443,17 @@ public class FrameArtigo extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73))
         );
 
         jTabbedPaneArtigo.addTab("Adicionar", jPanel3);
 
-        jButtonSalvarEdit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonSalvarEdit.setText("Salvar");
-        jButtonSalvarEdit.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSalvarAlteracao.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonSalvarAlteracao.setText("Salvar");
+        jButtonSalvarAlteracao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalvarEditActionPerformed(evt);
+                jButtonSalvarAlteracaoActionPerformed(evt);
             }
         });
 
@@ -489,7 +489,6 @@ public class FrameArtigo extends javax.swing.JFrame {
         jLabel20.setText("Autor(es):");
 
         jComboBoxEditSituacao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBoxEditSituacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sob avaliação", "Aprovado", "Reprovado" }));
 
         jLabel21.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel21.setText("Situação:");
@@ -505,7 +504,7 @@ public class FrameArtigo extends javax.swing.JFrame {
         jLabel22.setText("Titulo:");
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setText("Consultar");
+        jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -598,7 +597,7 @@ public class FrameArtigo extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonSalvarEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButtonSalvarAlteracao, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -660,7 +659,7 @@ public class FrameArtigo extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSalvarEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSalvarAlteracao, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41))
         );
@@ -688,7 +687,7 @@ public class FrameArtigo extends javax.swing.JFrame {
     private void jTextFieldTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTituloActionPerformed
     }//GEN-LAST:event_jTextFieldTituloActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         List<String> autores = new ArrayList();
         List<String> instituicoes = new ArrayList();
         List<String> palavrasChave = new ArrayList();
@@ -724,14 +723,15 @@ public class FrameArtigo extends javax.swing.JFrame {
         resumo = jTextAreaResumo.getText();
         abstrat = jTextAreaAbstract.getText();
 
-        Artigo artigo = new Artigo(titulo, situacao, autores, instituicoes, palavrasChave, resumo, abstrat);
+        Artigo artigo = new Artigo(titulo, situacao, autores, instituicoes,
+                palavrasChave, resumo, abstrat);
 
         artigoCrud.incluir(artigo);
 
         JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
-
+        
         jTextFieldTitulo.setText("");
-        jComboBoxEditSituacao.setSelectedIndex(0);
+        jComboBoxSituacao.setSelectedIndex(0);
         jTextFieldAutor0.setText("");
         jTextFieldAutor1.setText("");
         jTextFieldAutor2.setText("");
@@ -757,7 +757,7 @@ public class FrameArtigo extends javax.swing.JFrame {
 
         jTextAreaResumo.setText("");
         jTextAreaAbstract.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
 
@@ -773,19 +773,19 @@ public class FrameArtigo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        new Inicial(this.submissaoLista).setVisible(true);
+        new Inicial(this.submissaoCrudLista).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButtonSalvarEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarEditActionPerformed
+    private void jButtonSalvarAlteracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarAlteracaoActionPerformed
         List<String> autores = new ArrayList();
         List<String> instituicoes = new ArrayList();
         List<String> palavrasChave = new ArrayList();
-        
+
         String titulo, abstrat, resumo;
 
         titulo = jTextFieldEditTitulo.getText();
-        
+
         autores.add(jTextFieldEditAutor0.getText());
         autores.add(jTextFieldEditAutor1.getText());
         autores.add(jTextFieldEditAutor2.getText());
@@ -816,19 +816,28 @@ public class FrameArtigo extends javax.swing.JFrame {
                 Situacao.verificarSituacao(jComboBoxEditSituacao.getSelectedItem().toString()),
                 autores, instituicoes, palavrasChave, resumo, abstrat);
 
-        artigoCrud.editar(artigoEditar.getTituloSubmissao(), artigo);
+        artigoCrud.editar(tituloEditar, artigo);
 
         JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!");
+
+        submissaoLista = artigoCrud.getListaSubmissao();
+        listar(submissaoLista);
+        
+        jComboBoxEditSituacao.setSelectedIndex(0);
         jTabbedPaneArtigo.setSelectedIndex(0);
+        jTabbedPaneArtigo.setEnabledAt(0, true);
+        jTabbedPaneArtigo.setEnabledAt(1, true);
         jTabbedPaneArtigo.setEnabledAt(2, false);
-    }//GEN-LAST:event_jButtonSalvarEditActionPerformed
+    }//GEN-LAST:event_jButtonSalvarAlteracaoActionPerformed
 
     private void jTextFieldEditTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEditTituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldEditTituloActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        artigoCrud.excluir(artigoEditar.getTituloSubmissao());
+//        JOptionPane.showMessageDialog(null, jListArtigos.getSelectedValue());
+        artigoCrud.excluir(jListArtigos.getSelectedValue());
+
         listar(artigoCrud.getListaSubmissao());
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
@@ -838,43 +847,54 @@ public class FrameArtigo extends javax.swing.JFrame {
         jTabbedPaneArtigo.setEnabledAt(1, false);
         jTabbedPaneArtigo.setEnabledAt(2, true);
 
-        jTextFieldEditTitulo.setText(artigoEditar.getTituloSubmissao());
+        submissaoLista = artigoCrud.getListaSubmissao();
+
+        tituloEditar = jListArtigos.getSelectedValue();
+        
+        for (Submissao submissao : submissaoLista) {
+            if (submissao.getTituloSubmissao().equals(jListArtigos.getSelectedValue())) {
+                
+                Artigo artigo = (Artigo) submissao;
+                
+                jTextFieldEditTitulo.setText(artigo.getTituloSubmissao());
 
         for (int i = 0; i < 3; i++) {
-            if (jComboBoxEditSituacao.getItemAt(i).equalsIgnoreCase(artigoEditar.getSituacaoSubmissao().toString())) {
+            if (jComboBoxEditSituacao.getItemAt(i).equalsIgnoreCase(artigo.getSituacaoSubmissao().getSituacao())) {
                 jComboBoxEditSituacao.setSelectedIndex(i);
             }
         }
 
-        jTextFieldEditAutor0.setText(artigoEditar.getAutores().get(0));
-        jTextFieldEditAutor1.setText(artigoEditar.getAutores().get(1));
-        jTextFieldEditAutor2.setText(artigoEditar.getAutores().get(2));
-        jTextFieldEditAutor3.setText(artigoEditar.getAutores().get(3));
-        jTextFieldEditAutor4.setText(artigoEditar.getAutores().get(4));
-        jTextFieldEditAutor5.setText(artigoEditar.getAutores().get(5));
-        jTextFieldEditAutor6.setText(artigoEditar.getAutores().get(6));
-        jTextFieldEditAutor7.setText(artigoEditar.getAutores().get(7));
+                jTextFieldEditAutor0.setText(artigo.getAutores().get(0));
+                jTextFieldEditAutor1.setText(artigo.getAutores().get(1));
+                jTextFieldEditAutor2.setText(artigo.getAutores().get(2));
+                jTextFieldEditAutor3.setText(artigo.getAutores().get(3));
+                jTextFieldEditAutor4.setText(artigo.getAutores().get(4));
+                jTextFieldEditAutor5.setText(artigo.getAutores().get(5));
+                jTextFieldEditAutor6.setText(artigo.getAutores().get(6));
+                jTextFieldEditAutor7.setText(artigo.getAutores().get(7));
 
-        jTextFieldEditInstituicao0.setText(artigoEditar.getInstituicao().get(0));
-        jTextFieldEditInstituicao1.setText(artigoEditar.getInstituicao().get(1));
-        jTextFieldEditInstituicao2.setText(artigoEditar.getInstituicao().get(2));
-        jTextFieldEditInstituicao3.setText(artigoEditar.getInstituicao().get(3));
-        jTextFieldEditInstituicao4.setText(artigoEditar.getInstituicao().get(4));
-        jTextFieldEditInstituicao5.setText(artigoEditar.getInstituicao().get(5));
-        jTextFieldEditInstituicao6.setText(artigoEditar.getInstituicao().get(6));
-        jTextFieldEditInstituicao7.setText(artigoEditar.getInstituicao().get(7));
+                jTextFieldEditInstituicao0.setText(artigo.getInstituicao().get(0));
+                jTextFieldEditInstituicao1.setText(artigo.getInstituicao().get(1));
+                jTextFieldEditInstituicao2.setText(artigo.getInstituicao().get(2));
+                jTextFieldEditInstituicao3.setText(artigo.getInstituicao().get(3));
+                jTextFieldEditInstituicao4.setText(artigo.getInstituicao().get(4));
+                jTextFieldEditInstituicao5.setText(artigo.getInstituicao().get(5));
+                jTextFieldEditInstituicao6.setText(artigo.getInstituicao().get(6));
+                jTextFieldEditInstituicao7.setText(artigo.getInstituicao().get(7));
 
-        jTextFieldEditPalavraChave0.setText(artigoEditar.getPalavraChave().get(0));
-        jTextFieldEditPalavraChave1.setText(artigoEditar.getPalavraChave().get(1));
-        jTextFieldEditPalavraChave2.setText(artigoEditar.getPalavraChave().get(2));
-        jTextFieldEditPalavraChave3.setText(artigoEditar.getPalavraChave().get(3));
+                jTextFieldEditPalavraChave0.setText(artigo.getPalavraChave().get(0));
+                jTextFieldEditPalavraChave1.setText(artigo.getPalavraChave().get(1));
+                jTextFieldEditPalavraChave2.setText(artigo.getPalavraChave().get(2));
+                jTextFieldEditPalavraChave3.setText(artigo.getPalavraChave().get(3));
 
-        jTextAreaEditResumo.setText(artigoEditar.getResumo());
-        jTextAreaEditAbstract.setText(artigoEditar.getAbstrat());
+                jTextAreaEditResumo.setText(artigo.getResumo());
+                jTextAreaEditAbstract.setText(artigo.getAbstrat());
+            }
+        }
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
-    private void jListNomesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListNomesValueChanged
-    }//GEN-LAST:event_jListNomesValueChanged
+    private void jListArtigosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListArtigosValueChanged
+    }//GEN-LAST:event_jListArtigosValueChanged
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jTabbedPaneArtigo.setSelectedIndex(0);
@@ -922,13 +942,13 @@ public class FrameArtigo extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonExcluir;
-    private javax.swing.JButton jButtonSalvarEdit;
+    private javax.swing.JButton jButtonSalvarAlteracao;
     private javax.swing.JComboBox<String> jComboBoxEditSituacao;
     private javax.swing.JComboBox<String> jComboBoxPesquisar;
     private javax.swing.JComboBox<String> jComboBoxSituacao;
@@ -947,7 +967,7 @@ public class FrameArtigo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jListNomes;
+    private javax.swing.JList<String> jListArtigos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

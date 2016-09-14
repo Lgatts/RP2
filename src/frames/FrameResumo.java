@@ -7,6 +7,9 @@ package frames;
 
 import categorias.Resumo;
 import categorias.Situacao;
+import categorias.Submissao;
+//import cruds.ResumoCrud;
+import cruds.SubmissaoCrud;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -18,12 +21,28 @@ import javax.swing.JOptionPane;
  */
 public class FrameResumo extends javax.swing.JFrame {
 
-
+    private List<Resumo> pesquisarLista;
+    private List<String> visualizarLista;
+    private int operacao;
+    private List<String> autores = new ArrayList();
+    private List<String> instituicoes = new ArrayList();
+    private List<String> palavrasChave = new ArrayList();
+    private String nomePreencher;
+    private SubmissaoCrud resumoCrud= new SubmissaoCrud("Resumos");
+    private List<SubmissaoCrud> submissaoLista;
+    private List<Submissao> resumos;
 
     /**
      * Creates new form ResumoFrame
      */
-    public FrameResumo() {
+    public FrameResumo(List<SubmissaoCrud> submissaoLista) {
+        this.submissaoLista = submissaoLista;
+        for(SubmissaoCrud crud: submissaoLista){
+            if(crud.getTipoSubmissao().equalsIgnoreCase("Resumos")){
+                resumoCrud = crud;
+            }
+        }
+        
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("RP - Resumos");
@@ -39,14 +58,8 @@ public class FrameResumo extends javax.swing.JFrame {
         jTabbedPaneResumos.setEnabledAt(4, false);
     }
 
-    private List<Resumo> pesquisarLista;
-    private List<String> visualizarLista;
-    private int operacao;
-    private List<String> autores = new ArrayList();
-    private List<String> instituicoes = new ArrayList();
-    private List<String> palavrasChave = new ArrayList();
-    private String nomePreencher;
 
+    
     /**
      * Método para ativar todos os campos quando necessário
      */
@@ -125,8 +138,9 @@ public class FrameResumo extends javax.swing.JFrame {
     private void listar() {
 
         DefaultListModel mLista = new DefaultListModel();
-        for (String elemento : visualizarLista) {
-            mLista.addElement(elemento);
+        
+        for (Submissao elemento : resumos) {
+            mLista.addElement(elemento.getTituloSubmissao());
         }
 
         jListListarResumos.setModel(mLista);
@@ -178,12 +192,12 @@ public class FrameResumo extends javax.swing.JFrame {
      * detalhes
      */
     private void preencherCampos() {
-        pesquisarLista = ResumoCrud.getLista();
+        nomePreencher = jListListarResumos.getSelectedValue();
 
-        for (Resumo resumo : pesquisarLista) {
-            if (nomePreencher.equals(resumo.getTituloSubmissao())) {
-               
-                jTextFieldInserirTitulo.setText(resumo.getTituloSubmissao());
+        for (Submissao submissoes : resumos) {
+            if (nomePreencher.equals(submissoes.getTituloSubmissao())) {
+               Resumo novoResumo = (Resumo) submissoes;
+                jTextFieldInserirTitulo.setText(novoResumo.getTituloSubmissao());
 
                 /*for (int i = 0; i < jComboBoxSituacao.getItemCount(); i++) {
                     if (resumo.getSituacao().equals(jComboBoxSituacao.getItemAt(i))) {
@@ -193,146 +207,146 @@ public class FrameResumo extends javax.swing.JFrame {
                 }*/
 
                 //lista.get(2)
-                jComboBoxSituacao.setSelectedItem(resumo.getSituacaoSubmissao().getSituacao());
+                jComboBoxSituacao.setSelectedItem(novoResumo.getSituacaoSubmissao().getSituacao());
                 
-                this.autores = resumo.getAutores();
+                this.autores = novoResumo.getAutores();
                 switch (autores.size()) {
                     case 1:
-                        jTextFieldAutor.setText(resumo.getAutores().get(0));
+                        jTextFieldAutor.setText(novoResumo.getAutores().get(0));
                         break;
                     case 2:
-                        jTextFieldAutor.setText(resumo.getAutores().get(0));
-                        jTextFieldAutor1.setText(resumo.getAutores().get(1));
+                        jTextFieldAutor.setText(novoResumo.getAutores().get(0));
+                        jTextFieldAutor1.setText(novoResumo.getAutores().get(1));
                         break;
                     case 3:
-                        jTextFieldAutor.setText(resumo.getAutores().get(0));
-                        jTextFieldAutor1.setText(resumo.getAutores().get(1));
-                        jTextFieldAutor2.setText(resumo.getAutores().get(2));
+                        jTextFieldAutor.setText(novoResumo.getAutores().get(0));
+                        jTextFieldAutor1.setText(novoResumo.getAutores().get(1));
+                        jTextFieldAutor2.setText(novoResumo.getAutores().get(2));
                         break;
                     case 4:
-                        jTextFieldAutor.setText(resumo.getAutores().get(0));
-                        jTextFieldAutor1.setText(resumo.getAutores().get(1));
-                        jTextFieldAutor2.setText(resumo.getAutores().get(2));
-                        jTextFieldAutor3.setText(resumo.getAutores().get(3));
+                        jTextFieldAutor.setText(novoResumo.getAutores().get(0));
+                        jTextFieldAutor1.setText(novoResumo.getAutores().get(1));
+                        jTextFieldAutor2.setText(novoResumo.getAutores().get(2));
+                        jTextFieldAutor3.setText(novoResumo.getAutores().get(3));
                         break;
                     case 5:
-                        jTextFieldAutor.setText(resumo.getAutores().get(0));
-                        jTextFieldAutor1.setText(resumo.getAutores().get(1));
-                        jTextFieldAutor2.setText(resumo.getAutores().get(2));
-                        jTextFieldAutor3.setText(resumo.getAutores().get(3));
-                        jTextFieldAutor4.setText(resumo.getAutores().get(4));
+                        jTextFieldAutor.setText(novoResumo.getAutores().get(0));
+                        jTextFieldAutor1.setText(novoResumo.getAutores().get(1));
+                        jTextFieldAutor2.setText(novoResumo.getAutores().get(2));
+                        jTextFieldAutor3.setText(novoResumo.getAutores().get(3));
+                        jTextFieldAutor4.setText(novoResumo.getAutores().get(4));
                         break;
                     case 6:
-                        jTextFieldAutor.setText(resumo.getAutores().get(0));
-                        jTextFieldAutor1.setText(resumo.getAutores().get(1));
-                        jTextFieldAutor2.setText(resumo.getAutores().get(2));
-                        jTextFieldAutor3.setText(resumo.getAutores().get(3));
-                        jTextFieldAutor4.setText(resumo.getAutores().get(4));
-                        jTextFieldAutor5.setText(resumo.getAutores().get(5));
+                        jTextFieldAutor.setText(novoResumo.getAutores().get(0));
+                        jTextFieldAutor1.setText(novoResumo.getAutores().get(1));
+                        jTextFieldAutor2.setText(novoResumo.getAutores().get(2));
+                        jTextFieldAutor3.setText(novoResumo.getAutores().get(3));
+                        jTextFieldAutor4.setText(novoResumo.getAutores().get(4));
+                        jTextFieldAutor5.setText(novoResumo.getAutores().get(5));
                         break;
                     case 7:
-                        jTextFieldAutor.setText(resumo.getAutores().get(0));
-                        jTextFieldAutor1.setText(resumo.getAutores().get(1));
-                        jTextFieldAutor2.setText(resumo.getAutores().get(2));
-                        jTextFieldAutor3.setText(resumo.getAutores().get(3));
-                        jTextFieldAutor4.setText(resumo.getAutores().get(4));
-                        jTextFieldAutor5.setText(resumo.getAutores().get(5));
-                        jTextFieldAutor6.setText(resumo.getAutores().get(6));
+                        jTextFieldAutor.setText(novoResumo.getAutores().get(0));
+                        jTextFieldAutor1.setText(novoResumo.getAutores().get(1));
+                        jTextFieldAutor2.setText(novoResumo.getAutores().get(2));
+                        jTextFieldAutor3.setText(novoResumo.getAutores().get(3));
+                        jTextFieldAutor4.setText(novoResumo.getAutores().get(4));
+                        jTextFieldAutor5.setText(novoResumo.getAutores().get(5));
+                        jTextFieldAutor6.setText(novoResumo.getAutores().get(6));
                         break;
                     default:
-                        jTextFieldAutor.setText(resumo.getAutores().get(0));
-                        jTextFieldAutor1.setText(resumo.getAutores().get(1));
-                        jTextFieldAutor2.setText(resumo.getAutores().get(2));
-                        jTextFieldAutor3.setText(resumo.getAutores().get(3));
-                        jTextFieldAutor4.setText(resumo.getAutores().get(4));
-                        jTextFieldAutor5.setText(resumo.getAutores().get(5));
-                        jTextFieldAutor6.setText(resumo.getAutores().get(6));
-                        jTextFieldAutor7.setText(resumo.getAutores().get(7));
+                        jTextFieldAutor.setText(novoResumo.getAutores().get(0));
+                        jTextFieldAutor1.setText(novoResumo.getAutores().get(1));
+                        jTextFieldAutor2.setText(novoResumo.getAutores().get(2));
+                        jTextFieldAutor3.setText(novoResumo.getAutores().get(3));
+                        jTextFieldAutor4.setText(novoResumo.getAutores().get(4));
+                        jTextFieldAutor5.setText(novoResumo.getAutores().get(5));
+                        jTextFieldAutor6.setText(novoResumo.getAutores().get(6));
+                        jTextFieldAutor7.setText(novoResumo.getAutores().get(7));
                         break;
                 }
      
                 
-                this.instituicoes = resumo.getInstituicao();
+                this.instituicoes = novoResumo.getInstituicao();
                 switch (instituicoes.size()) {
                     case 1:
-                        jTextFieldInstituicao.setText(resumo.getAutores().get(0));
+                        jTextFieldInstituicao.setText(novoResumo.getAutores().get(0));
                         break;
                     case 2:
-                        jTextFieldInstituicao.setText(resumo.getAutores().get(0));
-                        jTextFieldInstituicao1.setText(resumo.getAutores().get(1));
+                        jTextFieldInstituicao.setText(novoResumo.getAutores().get(0));
+                        jTextFieldInstituicao1.setText(novoResumo.getAutores().get(1));
                         break;
                     case 3:
-                        jTextFieldInstituicao.setText(resumo.getAutores().get(0));
-                        jTextFieldInstituicao1.setText(resumo.getAutores().get(1));
-                        jTextFieldInstituicao2.setText(resumo.getAutores().get(2));
+                        jTextFieldInstituicao.setText(novoResumo.getAutores().get(0));
+                        jTextFieldInstituicao1.setText(novoResumo.getAutores().get(1));
+                        jTextFieldInstituicao2.setText(novoResumo.getAutores().get(2));
                         break;
                     case 4:
-                        jTextFieldInstituicao.setText(resumo.getAutores().get(0));
-                        jTextFieldInstituicao1.setText(resumo.getAutores().get(1));
-                        jTextFieldInstituicao2.setText(resumo.getAutores().get(2));
-                        jTextFieldInstituicao3.setText(resumo.getAutores().get(3));
+                        jTextFieldInstituicao.setText(novoResumo.getAutores().get(0));
+                        jTextFieldInstituicao1.setText(novoResumo.getAutores().get(1));
+                        jTextFieldInstituicao2.setText(novoResumo.getAutores().get(2));
+                        jTextFieldInstituicao3.setText(novoResumo.getAutores().get(3));
                         break;
                     case 5:
-                        jTextFieldInstituicao.setText(resumo.getAutores().get(0));
-                        jTextFieldInstituicao1.setText(resumo.getAutores().get(1));
-                        jTextFieldInstituicao2.setText(resumo.getAutores().get(2));
-                        jTextFieldInstituicao3.setText(resumo.getAutores().get(3));
-                        jTextFieldInstituicao4.setText(resumo.getAutores().get(4));
+                        jTextFieldInstituicao.setText(novoResumo.getAutores().get(0));
+                        jTextFieldInstituicao1.setText(novoResumo.getAutores().get(1));
+                        jTextFieldInstituicao2.setText(novoResumo.getAutores().get(2));
+                        jTextFieldInstituicao3.setText(novoResumo.getAutores().get(3));
+                        jTextFieldInstituicao4.setText(novoResumo.getAutores().get(4));
                         break;
                     case 6:
-                        jTextFieldInstituicao.setText(resumo.getAutores().get(0));
-                        jTextFieldInstituicao1.setText(resumo.getAutores().get(1));
-                        jTextFieldInstituicao2.setText(resumo.getAutores().get(2));
-                        jTextFieldInstituicao3.setText(resumo.getAutores().get(3));
-                        jTextFieldInstituicao4.setText(resumo.getAutores().get(4));
-                        jTextFieldInstituicao5.setText(resumo.getAutores().get(5));
+                        jTextFieldInstituicao.setText(novoResumo.getAutores().get(0));
+                        jTextFieldInstituicao1.setText(novoResumo.getAutores().get(1));
+                        jTextFieldInstituicao2.setText(novoResumo.getAutores().get(2));
+                        jTextFieldInstituicao3.setText(novoResumo.getAutores().get(3));
+                        jTextFieldInstituicao4.setText(novoResumo.getAutores().get(4));
+                        jTextFieldInstituicao5.setText(novoResumo.getAutores().get(5));
                         break;
                     case 7:
-                        jTextFieldInstituicao.setText(resumo.getAutores().get(0));
-                        jTextFieldInstituicao1.setText(resumo.getAutores().get(1));
-                        jTextFieldInstituicao2.setText(resumo.getAutores().get(2));
-                        jTextFieldInstituicao3.setText(resumo.getAutores().get(3));
-                        jTextFieldInstituicao4.setText(resumo.getAutores().get(4));
-                        jTextFieldInstituicao5.setText(resumo.getAutores().get(5));
-                        jTextFieldInstituicao6.setText(resumo.getAutores().get(6));
+                        jTextFieldInstituicao.setText(novoResumo.getAutores().get(0));
+                        jTextFieldInstituicao1.setText(novoResumo.getAutores().get(1));
+                        jTextFieldInstituicao2.setText(novoResumo.getAutores().get(2));
+                        jTextFieldInstituicao3.setText(novoResumo.getAutores().get(3));
+                        jTextFieldInstituicao4.setText(novoResumo.getAutores().get(4));
+                        jTextFieldInstituicao5.setText(novoResumo.getAutores().get(5));
+                        jTextFieldInstituicao6.setText(novoResumo.getAutores().get(6));
                         break;
                     default:
-                        jTextFieldInstituicao.setText(resumo.getAutores().get(0));
-                        jTextFieldInstituicao1.setText(resumo.getAutores().get(1));
-                        jTextFieldInstituicao2.setText(resumo.getAutores().get(2));
-                        jTextFieldInstituicao3.setText(resumo.getAutores().get(3));
-                        jTextFieldInstituicao4.setText(resumo.getAutores().get(4));
-                        jTextFieldInstituicao5.setText(resumo.getAutores().get(5));
-                        jTextFieldInstituicao6.setText(resumo.getAutores().get(6));
-                        jTextFieldInstituicao7.setText(resumo.getAutores().get(7));
+                        jTextFieldInstituicao.setText(novoResumo.getAutores().get(0));
+                        jTextFieldInstituicao1.setText(novoResumo.getAutores().get(1));
+                        jTextFieldInstituicao2.setText(novoResumo.getAutores().get(2));
+                        jTextFieldInstituicao3.setText(novoResumo.getAutores().get(3));
+                        jTextFieldInstituicao4.setText(novoResumo.getAutores().get(4));
+                        jTextFieldInstituicao5.setText(novoResumo.getAutores().get(5));
+                        jTextFieldInstituicao6.setText(novoResumo.getAutores().get(6));
+                        jTextFieldInstituicao7.setText(novoResumo.getAutores().get(7));
                         break;
                 }
                 
                 
-                this.palavrasChave = resumo.getPalavraChave();
+                this.palavrasChave = novoResumo.getPalavraChave();
                 switch (palavrasChave.size()) {
                     case 1:
-                        jTextFieldPalavraChave.setText(resumo.getPalavraChave().get(0));
+                        jTextFieldPalavraChave.setText(novoResumo.getPalavraChave().get(0));
                         break;
                     case 2:
-                        jTextFieldPalavraChave.setText(resumo.getPalavraChave().get(0));
-                        jTextFieldPalavraChave1.setText(resumo.getPalavraChave().get(1));
+                        jTextFieldPalavraChave.setText(novoResumo.getPalavraChave().get(0));
+                        jTextFieldPalavraChave1.setText(novoResumo.getPalavraChave().get(1));
                         break;
                     case 3:
-                        jTextFieldPalavraChave.setText(resumo.getPalavraChave().get(0));
-                        jTextFieldPalavraChave1.setText(resumo.getPalavraChave().get(1));
-                        jTextFieldPalavraChave2.setText(resumo.getPalavraChave().get(2));
+                        jTextFieldPalavraChave.setText(novoResumo.getPalavraChave().get(0));
+                        jTextFieldPalavraChave1.setText(novoResumo.getPalavraChave().get(1));
+                        jTextFieldPalavraChave2.setText(novoResumo.getPalavraChave().get(2));
                         break;
                     default:
-                        jTextFieldPalavraChave.setText(resumo.getPalavraChave().get(0));
-                        jTextFieldPalavraChave1.setText(resumo.getPalavraChave().get(1));
-                        jTextFieldPalavraChave2.setText(resumo.getPalavraChave().get(2));
-                        jTextFieldPalavraChave3.setText(resumo.getPalavraChave().get(3));
+                        jTextFieldPalavraChave.setText(novoResumo.getPalavraChave().get(0));
+                        jTextFieldPalavraChave1.setText(novoResumo.getPalavraChave().get(1));
+                        jTextFieldPalavraChave2.setText(novoResumo.getPalavraChave().get(2));
+                        jTextFieldPalavraChave3.setText(novoResumo.getPalavraChave().get(3));
                         break;
                 }
             }
         }
-
+    
     }
 
     /**
@@ -346,7 +360,6 @@ public class FrameResumo extends javax.swing.JFrame {
 
         jTabbedPaneResumos = new javax.swing.JTabbedPane();
         jPanelResumo = new javax.swing.JPanel();
-        jLabelTitulo = new javax.swing.JLabel();
         jTextConsultarResumo = new javax.swing.JTextField();
         jButtonConsultar = new javax.swing.JToggleButton();
         jScrollPaneListaResumos = new javax.swing.JScrollPane();
@@ -356,6 +369,7 @@ public class FrameResumo extends javax.swing.JFrame {
         jButtonExcluir = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
         jButtonIncluir = new javax.swing.JButton();
+        jComboBoxConsulta = new javax.swing.JComboBox<>();
         jPanelInserirResumo = new javax.swing.JPanel();
         jLabelInserirTitulo = new javax.swing.JLabel();
         jTextFieldInserirTitulo = new javax.swing.JTextField();
@@ -400,8 +414,6 @@ public class FrameResumo extends javax.swing.JFrame {
         jTextFieldPalavraChave3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabelTitulo.setText("Titulo :");
 
         jButtonConsultar.setText("Consultar");
         jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -452,6 +464,8 @@ public class FrameResumo extends javax.swing.JFrame {
             }
         });
 
+        jComboBoxConsulta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Título", "Autor" }));
+
         javax.swing.GroupLayout jPanelResumoLayout = new javax.swing.GroupLayout(jPanelResumo);
         jPanelResumo.setLayout(jPanelResumoLayout);
         jPanelResumoLayout.setHorizontalGroup(
@@ -460,9 +474,9 @@ public class FrameResumo extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelResumoLayout.createSequentialGroup()
-                        .addComponent(jLabelTitulo)
+                        .addComponent(jComboBoxConsulta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextConsultarResumo)
+                        .addComponent(jTextConsultarResumo, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonConsultar))
                     .addGroup(jPanelResumoLayout.createSequentialGroup()
@@ -480,10 +494,11 @@ public class FrameResumo extends javax.swing.JFrame {
             jPanelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelResumoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTitulo)
-                    .addComponent(jTextConsultarResumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonConsultar))
+                .addGroup(jPanelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextConsultarResumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelResumoLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
@@ -497,7 +512,7 @@ public class FrameResumo extends javax.swing.JFrame {
                         .addComponent(jButtonEditar)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                         .addComponent(jButtonVoltar)))
                 .addContainerGap())
         );
@@ -872,8 +887,21 @@ public class FrameResumo extends javax.swing.JFrame {
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         // TODO add your handling code here:
-        visualizarLista = ResumoCrud.consultar(jTextConsultarResumo.getText());
-        listar();
+        switch (jComboBoxConsulta.getSelectedItem().toString()) {
+            case "Autor":
+                this.resumos = this.resumoCrud.consultarAutor(jTextConsultarResumo.getText());
+                listar();
+                break;
+            case "Título":
+                this.resumos = this.resumoCrud.consultarTitulo(jTextConsultarResumo.getText());
+                listar();
+                break;
+            default:
+                this.resumos = this.resumoCrud.getListaSubmissao();
+                listar();
+                break;
+        }
+     
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     private void jButtonInstituicoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInstituicoesActionPerformed
@@ -896,25 +924,18 @@ public class FrameResumo extends javax.swing.JFrame {
         boolean autores = false;
         boolean palavraChaves = false;
         boolean instituicoes = false;
-
-       
-            if (!this.autores.isEmpty()) {
-                autores = true;
-                
-            
-            }
-
         
-            if (!this.instituicoes.isEmpty()) {
-                instituicoes = true;
-                
-            
+        if (!this.autores.isEmpty()) {
+            autores = true;
         }
 
         
-            if (!this.palavrasChave.isEmpty()) {
-                palavraChaves = true;
-               
+        if (!this.instituicoes.isEmpty()) {
+            instituicoes = true;
+        }
+
+        if (!this.palavrasChave.isEmpty()) {
+            palavraChaves = true;
         }
 
         if (jTextFieldInserirTitulo.getText().trim().equals("") || autores == false || palavraChaves == false
@@ -922,26 +943,22 @@ public class FrameResumo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "É necessário preencher todos os campos e inserir ao"
                     + " menos um autor, uma instituição e uma palavra-chave");
         } else if (operacao == 1) {
-            String s = jComboBoxSituacao.getSelectedItem().toString();
-            
                 
             Resumo novoResumo = new Resumo(jTextFieldInserirTitulo.getText(), 
                     Situacao.verificarSituacao(jComboBoxSituacao.getSelectedItem().toString()) ,
                     this.autores,this.instituicoes, this.palavrasChave);
-            ResumoCrud.incluir(novoResumo);
-            ResumoCrud.incluir(jTextFieldInserirTitulo.getText().trim(), jComboBoxSituacao.getSelectedItem().toString(),
-                    this.instituicoes, this.palavrasChave, this.autores);
-            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
-            visualizarLista = ResumoCrud.consultar("");
-            listar();
+            this.resumoCrud.incluir(novoResumo);
+            
             limparCampos();
             
         } else if (operacao == 2) {
-            ResumoCrud.editar(nomePreencher, jTextFieldInserirTitulo.getText(), 
+            Resumo r = new Resumo(jTextFieldInserirTitulo.getText(), 
                     Situacao.verificarSituacao(jComboBoxSituacao.getSelectedItem().toString()), 
                     this.instituicoes, this.palavrasChave, this.autores);
+            
+            resumoCrud.editar(nomePreencher, r);
             JOptionPane.showMessageDialog(null, "Editado com sucesso");
-            visualizarLista = ResumoCrud.consultar("");
+            this.resumos = this.resumoCrud.getListaSubmissao();
             listar();
             limparCampos();
         }
@@ -993,9 +1010,8 @@ public class FrameResumo extends javax.swing.JFrame {
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
+        new Inicial(this.submissaoLista).setVisible(true);
         this.dispose();
-        Inicial voltar = new Inicial();
-        voltar.setVisible(true);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIncluirActionPerformed
@@ -1013,7 +1029,7 @@ public class FrameResumo extends javax.swing.JFrame {
         jTabbedPaneResumos.setSelectedIndex(1);
         jTabbedPaneResumos.setEnabledAt(0, false);
         jTabbedPaneResumos.setEnabledAt(1, true);
-
+       
         operacao = 2; // Define inclusão ou edição
         nomePreencher = jListListarResumos.getSelectedValue();
 
@@ -1023,9 +1039,10 @@ public class FrameResumo extends javax.swing.JFrame {
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         // TODO add your handling code here:
-        ResumoCrud.deletar(jListListarResumos.getSelectedValue());
-        visualizarLista = ResumoCrud.consultar("");
+        resumoCrud.excluir(jListListarResumos.getSelectedValue());
+        this.resumos = resumoCrud.getListaSubmissao();
         listar();
+        
         JOptionPane.showMessageDialog(null, "Excluído com sucesso");
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
@@ -1167,7 +1184,7 @@ public class FrameResumo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameResumo().setVisible(true);
+                new FrameResumo(null).setVisible(true);
             }
         });
     }
@@ -1190,13 +1207,13 @@ public class FrameResumo extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVoltarInserir;
     private javax.swing.JButton jButtonVoltarInstituicoes;
     private javax.swing.JButton jButtonVoltarPalavrasChaves;
+    private javax.swing.JComboBox<String> jComboBoxConsulta;
     private javax.swing.JComboBox<String> jComboBoxSituacao;
     private javax.swing.JLabel jLabelAutores;
     private javax.swing.JLabel jLabelInserirSituacao;
     private javax.swing.JLabel jLabelInserirTitulo;
     private javax.swing.JLabel jLabelInstituicoes;
     private javax.swing.JLabel jLabelPalavrasChaves;
-    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JList<String> jListListarResumos;
     private javax.swing.JPanel jPanelAutores;
     private javax.swing.JPanel jPanelInserirResumo;
