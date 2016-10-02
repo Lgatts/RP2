@@ -35,6 +35,13 @@ public abstract class SubmissaoCientifica extends Submissao {
         this.palavraChave = new ArrayList();
 
     }
+    
+    public SubmissaoCientifica(int MAX_AUTORES,int MAX_INSTITUICAO, int MAX_PALAVRACHAVE){
+        super(MAX_AUTORES);
+        this.MAX_INSTITUICAO = MAX_INSTITUICAO;
+        this.MAX_PALAVRACHAVE = MAX_PALAVRACHAVE;
+    }
+    
 
     /**
      * Construtor para uma Submissão científica com todos os dados informados

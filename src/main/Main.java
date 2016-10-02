@@ -5,12 +5,8 @@
  */
 package main;
 
-import cruds.SubmissaoCrud;
 import frames.Inicial;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import persistenciaDados.ObjectCrud;
 
 /**
  *
@@ -20,32 +16,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        SubmissaoCrud monografiasLista = new SubmissaoCrud("Monografias");
-        SubmissaoCrud minicursoLista = new SubmissaoCrud("Minicursos");
-        SubmissaoCrud palestrasLista = new SubmissaoCrud("Palestras");
-        SubmissaoCrud artigosLista = new SubmissaoCrud("Artigos");
-        SubmissaoCrud resumosLista = new SubmissaoCrud("Resumos");
-
-        List<SubmissaoCrud> submissaoLista = new ArrayList();
-
         createDirectories();
 
-        //Salvado objetos do hd na lista de Monografias
-        monografiasLista = new SubmissaoCrud("Monografias");
-        resumosLista = new SubmissaoCrud("Resumos");
-        
-        palestrasLista.setListaSubmissao(ObjectCrud.readObject("Palestras"));
-        minicursoLista.setListaSubmissao(ObjectCrud.readObject("Minicursos"));
-        monografiasLista.setListaSubmissao(ObjectCrud.readObject("Monografias"));
-        resumosLista.setListaSubmissao(ObjectCrud.readObject("Resumos"));
-        
-        submissaoLista.add(monografiasLista);
-        submissaoLista.add(minicursoLista);
-        submissaoLista.add(palestrasLista);
-        submissaoLista.add(artigosLista);
-        submissaoLista.add(resumosLista);
-
-        new Inicial(submissaoLista).setVisible(true);
+        new Inicial().setVisible(true);
 
     }
 
@@ -58,38 +31,38 @@ public class Main {
         }
 
         //Criação diretório Monografias
-        if (new File(System.getenv("APPDATA") + "\\.RP2\\Monografias").exists()) {
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\Monografia").exists()) {
 
         } else {
-            new File(System.getenv("APPDATA") + "\\.RP2\\Monografias").mkdir();
+            new File(System.getenv("APPDATA") + "\\.RP2\\Monografia").mkdir();
         }
 
         //Criação diretorio Artigos
-        if (new File(System.getenv("APPDATA") + "\\.RP2\\Artigos").exists()) {
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\Artigo").exists()) {
 
         } else {
-            new File(System.getenv("APPDATA") + "\\.RP2\\Artigos").mkdir();
+            new File(System.getenv("APPDATA") + "\\.RP2\\Artigo").mkdir();
         }
 
         //Criação diretório Palestras
-        if (new File(System.getenv("APPDATA") + "\\.RP2\\Palestras").exists()) {
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\Palestra").exists()) {
 
         } else {
-            new File(System.getenv("APPDATA") + "\\.RP2\\Palestras").mkdir();
+            new File(System.getenv("APPDATA") + "\\.RP2\\Palestra").mkdir();
         }
 
         //Criação diretorio MiniCursos
-        if (new File(System.getenv("APPDATA") + "\\.RP2\\Minicursos").exists()) {
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\Minicurso").exists()) {
 
         } else {
-            new File(System.getenv("APPDATA") + "\\.RP2\\Minicursos").mkdir();
+            new File(System.getenv("APPDATA") + "\\.RP2\\Minicurso").mkdir();
         }
 
         //Criação diretorio Resumos
-        if (new File(System.getenv("APPDATA") + "\\.RP2\\Resumos").exists()) {
+        if (new File(System.getenv("APPDATA") + "\\.RP2\\Resumo").exists()) {
 
         } else {
-            new File(System.getenv("APPDATA") + "\\.RP2\\Resumos").mkdir();
+            new File(System.getenv("APPDATA") + "\\.RP2\\Resumo").mkdir();
         }
 
     }

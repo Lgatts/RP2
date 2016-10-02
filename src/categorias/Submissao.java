@@ -35,12 +35,16 @@ public abstract class Submissao implements Serializable {
     public Submissao(String tituloSubmissao, int MAX_AUTORES) {
         //Criação de uma id únicia para o objecto que for criado
         this.iD = UUID.randomUUID().toString();
-        this.tituloSubmissao = tituloSubmissao;
-        this.situacaoSubmissao = Situacao.SOBAVALIACAO;
+        this.tituloSubmissao = tituloSubmissao;        
         this.autores = new ArrayList();
         this.MAX_AUTORES = MAX_AUTORES;
     }
 
+    public Submissao(int MAX_AUTORES){
+        this.iD = UUID.randomUUID().toString();
+        this.MAX_AUTORES = MAX_AUTORES;
+    }
+    
     /**
      * Construtor que recebe todos os parâmetros
      *
