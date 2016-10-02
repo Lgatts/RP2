@@ -5,8 +5,9 @@
  */
 package frames;
 
+import categorias.SubmissaoTipo;
 import cruds.SubmissaoCrud;
-import java.util.List;
+import persistenciaDados.ObjectCrud;
 
 /**
  *
@@ -14,16 +15,25 @@ import java.util.List;
  */
 public class Inicial extends javax.swing.JFrame {
 
-    private List<SubmissaoCrud> submissaoLista;
     
-    
+    private SubmissaoCrud monografiasLista = new SubmissaoCrud(SubmissaoTipo.Monografia);
+    private SubmissaoCrud minicursoLista = new SubmissaoCrud(SubmissaoTipo.Minicurso);
+    private SubmissaoCrud palestrasLista = new SubmissaoCrud(SubmissaoTipo.Palestra);
+    private SubmissaoCrud artigosLista = new SubmissaoCrud(SubmissaoTipo.Artigo);
+    private SubmissaoCrud resumosLista = new SubmissaoCrud(SubmissaoTipo.Resumo);
+
     /**
      * Creates new form Inicial
-     * @param submissaoLista     
+     *
      */
-    public Inicial(List<SubmissaoCrud> submissaoLista) {        
+    public Inicial() {
         
-       this.submissaoLista = submissaoLista;
+        //Obtendo objetos já salvos no hd
+        palestrasLista.setListaSubmissao(ObjectCrud.readObject(SubmissaoTipo.Palestra.toString()));
+        minicursoLista.setListaSubmissao(ObjectCrud.readObject(SubmissaoTipo.Minicurso.toString()));
+        monografiasLista.setListaSubmissao(ObjectCrud.readObject(SubmissaoTipo.Monografia.toString()));
+        resumosLista.setListaSubmissao(ObjectCrud.readObject(SubmissaoTipo.Resumo.toString()));       
+        artigosLista.setListaSubmissao(ObjectCrud.readObject(SubmissaoTipo.Artigo.toString()));
         
         initComponents();
         this.setTitle("RP II - MENU");
@@ -127,32 +137,27 @@ public class Inicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonMonografiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMonografiasActionPerformed
-        new FrameMonografia(this.submissaoLista).setVisible(true);
-        this.dispose();
+        new ListarFrame(this.monografiasLista).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonMonografiasActionPerformed
 
     private void jButtonMinicursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinicursoActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        FrameMinicurso openWindow = new FrameMinicurso(this.submissaoLista);
-        openWindow.setVisible(true);
+        new ListarFrame(this.minicursoLista).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonMinicursoActionPerformed
 
     private void jButtonPalestrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPalestrasActionPerformed
-        this.dispose();
-        FramePalestras openWindow = new FramePalestras(this.submissaoLista);
-        openWindow.setVisible(true);
+        new ListarFrame(this.palestrasLista).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonPalestrasActionPerformed
     private void jButtonArtigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArtigosActionPerformed
-        new FrameArtigo(this.submissaoLista).setVisible(true);
+        new ListarFrame(this.artigosLista).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonArtigosActionPerformed
 
     private void jButtonResumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResumosActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        FrameResumo abrirJanela = new FrameResumo(submissaoLista);
-        abrirJanela.setVisible(true);
+        new ListarFrame(this.resumosLista).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonResumosActionPerformed
 
     /**
@@ -185,7 +190,7 @@ public class Inicial extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inicial(null).setVisible(true);
+                new Inicial().setVisible(true);
             }
         });
     }

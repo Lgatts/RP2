@@ -9,7 +9,7 @@ import java.util.List;
 public class Artigo extends SubmissaoCientifica {
     
     private String resumo;
-    private String abstrat;
+    private String abstractText;
 
     //<editor-fold defaultstate="collapsed" desc="Construtor">
     /**
@@ -21,10 +21,10 @@ public class Artigo extends SubmissaoCientifica {
      * @param instituicao
      * @param palavraChave
      * @param resumo
-     * @param abstrat
+     * @param abstractText
      */
     public Artigo(String titulo, Situacao situacao, List<String> autor, List<String> instituicao,
-            List<String> palavraChave, String resumo, String abstrat) {
+            List<String> palavraChave, String resumo, String abstractText) {
         /*
          *  Acesso a um método da superclasse através da palavra-chave "super"
          *  super(titulo, MAX_AUTORES, MAX_INSTITUICAO, MAX_PALAVRACHAVE)
@@ -35,7 +35,11 @@ public class Artigo extends SubmissaoCientifica {
         super.setPalavraChave(palavraChave);
 
         this.resumo = resumo;
-        this.abstrat = abstrat;
+        this.abstractText = abstractText;
+    }
+    
+    public Artigo(){
+        super(8,8,4);
     }
     //</editor-fold>
 
@@ -57,15 +61,15 @@ public class Artigo extends SubmissaoCientifica {
     /**
      * @return the abstrat
      */
-    public String getAbstrat() {
-        return abstrat;
+    public String getAbstractText() {
+        return abstractText;
     }
 
     /**
      * @param abstrat the abstrat to set
      */
-    public void setAbstrat(String abstrat) {
-        this.abstrat = abstrat;
+    public void setAbstrat(String abstractText) {
+        this.abstractText = abstractText;
     }
     //</editor-fold>
 
@@ -77,7 +81,7 @@ public class Artigo extends SubmissaoCientifica {
      */
     @Override
     public String toString() {
-        return super.toString() + "Resumo: " + getResumo() + "Abstract: " + getAbstrat();
+        return super.getTituloSubmissao();
     }
     //</editor-fold>
 }

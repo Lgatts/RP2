@@ -58,7 +58,14 @@ public class Monografia extends SubmissaoCientifica{
         this.abstractText = abstractText;
         this.tipo = tipo;
 
+        SubmissaoTipo.Artigo.toString();
+        
     }
+    
+    public Monografia(){
+        super(1, 1, 4);
+    }
+    
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Get Sets">

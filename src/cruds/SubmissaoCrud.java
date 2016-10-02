@@ -6,6 +6,7 @@
 package cruds;
 
 import categorias.Submissao;
+import categorias.SubmissaoTipo;
 import java.util.ArrayList;
 import java.util.List;
 import persistenciaDados.ObjectCrud;
@@ -20,11 +21,11 @@ public class SubmissaoCrud implements ListaSubmissoes {
 
     //Declaração Lista genérica de submissoes
     private List<Submissao> listaSubmissao = new ArrayList();
-    private String tipoSubmissao;
+    private SubmissaoTipo submissaoTipo;
 
     //<editor-fold defaultstate="collapsed" desc="Construtor">
-    public SubmissaoCrud(String tipoSubmissao) {
-        this.tipoSubmissao = tipoSubmissao;
+    public SubmissaoCrud(SubmissaoTipo submissaoTipo) {
+        this.submissaoTipo = submissaoTipo;
     }
     //</editor-fold>
 
@@ -37,8 +38,8 @@ public class SubmissaoCrud implements ListaSubmissoes {
         this.listaSubmissao = listaSubmissao;
     }
 
-    public String getTipoSubmissao() {
-        return tipoSubmissao;
+    public SubmissaoTipo getTipoSubmissao() {
+        return submissaoTipo;
     }  
     
     //</editor-fold>
@@ -53,7 +54,7 @@ public class SubmissaoCrud implements ListaSubmissoes {
     @Override
     public boolean incluir(Submissao submissao) {
         listaSubmissao.add(submissao);
-        ObjectCrud.saveObject(submissao, this.tipoSubmissao);
+        ObjectCrud.saveObject(submissao, this.submissaoTipo.toString());
         return true;
     }
     //</editor-fold>
@@ -125,9 +126,9 @@ public class SubmissaoCrud implements ListaSubmissoes {
             if (submissaoAnterior.getTituloSubmissao().equals(titulo)) {
                 int index = listaSubmissao.indexOf(submissaoAnterior);
                 
-                ObjectCrud.deleteObject(submissaoAnterior, this.tipoSubmissao);
+                ObjectCrud.deleteObject(submissaoAnterior, this.submissaoTipo.toString());
                 listaSubmissao.set(index, submissao);                
-                ObjectCrud.saveObject(submissao, this.tipoSubmissao);
+                ObjectCrud.saveObject(submissao, this.submissaoTipo.toString());
                 return true;
             }
         }
@@ -148,7 +149,7 @@ public class SubmissaoCrud implements ListaSubmissoes {
         for (Submissao submissao : listaSubmissao) {
             if (submissao.getTituloSubmissao().equals(titulo)) {
                 listaSubmissao.remove(submissao);
-                ObjectCrud.deleteObject(submissao, this.tipoSubmissao);
+                ObjectCrud.deleteObject(submissao, this.submissaoTipo.toString());
                 return true;
             }
         }

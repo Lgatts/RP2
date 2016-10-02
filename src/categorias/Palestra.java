@@ -28,6 +28,10 @@ public class Palestra extends SubmissaoApresentacao{
         this.curriculo = curriculo;
         
     }
+    
+    public Palestra(){
+        super(1);
+    }
    
    /*Getter and Setter*/
    
@@ -48,6 +52,6 @@ public class Palestra extends SubmissaoApresentacao{
     
     @Override
     public String toString(){
-        return "OI";
+       return super.getTituloSubmissao();
     }
 }

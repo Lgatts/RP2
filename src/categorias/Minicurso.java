@@ -36,6 +36,9 @@ public class Minicurso extends SubmissaoApresentacao {
         super.setAutores(autores);
     }
 
+    public Minicurso(){
+        super(3);
+    }
     /**
      *
      * @return - Retorna os recursos que serão
@@ -81,9 +84,6 @@ public class Minicurso extends SubmissaoApresentacao {
      */
     @Override
     public String toString(){
-        String dados = super.toString();
-        dados += "\nMetodologia: "+getMetodologia();
-        dados += "\nRecursos: "+getRecursos();
-        return dados;
+        return super.getTituloSubmissao();
     }
 }
